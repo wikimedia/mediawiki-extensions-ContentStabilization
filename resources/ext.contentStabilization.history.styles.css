@@ -1,0 +1,16 @@
+.content-stabilization-not-stable {
+	background-color: #e8cc98 !important;
+}
+.content-stabilization-stable {
+	background-color: #ade3ad !important;
+}
+
+.content-stabilization-not-stable,
+.content-stabilization-stable {
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+
+.content-stabilization-hidden {
+	display: none !important;
+}

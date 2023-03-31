@@ -1,0 +1,406 @@
+{
+	"name": "ContentStabilization",
+	"version": "",
+	"license-name": "GPL-3.0-only",
+	"author": [
+		"[http://www.hallowelt.com Hallo Welt! GmbH]"
+	],
+	"url": "http://www.hallowelt.com",
+	"descriptionmsg": "contentstabilization-desc",
+	"requires": {
+		"MediaWiki": ">= 1.39.0",
+		"extensions": {
+			"OOJSPlus": "*"
+		}
+	},
+	"attributes": {
+		"ContentStabilization": {
+			"InclusionModes": {
+				"stable": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\InclusionMode\\Stable",
+					"services": [
+						"RevisionLookup", "ContentStabilization._Store", "RepoGroup", "TitleFactory", "ContentStabilization._Config"
+					]
+				}
+			}
+		},
+		"PageHeader": {
+			"PageInfoRegistry": {
+				"contentstabilization-versionswitch": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\VersionSwitch::factory",
+				"contentstabilization-pagestatus-dropdown": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\PageStatusDropdown::factory"
+			}
+		},
+		"Notifications": {
+			"Events": {
+				"stable-point-added": {
+					"buckets": [ "qm" ]
+				}
+			}
+		},
+		"BlueSpiceFoundation": {
+			"PermissionRegistry": {
+				"contentstabilization-admin": {
+					"type": "namespace",
+					"roles": [ "admin" ]
+				},
+				"contentstabilization-oversight": {
+					"type": "namespace",
+					"roles": [ "reviewer", "admin" ]
+				},
+				"contentstabilization-stabilize": {
+					"type": "namespace",
+					"roles": [ "reviewer", "admin" ]
+				}
+			},
+			"ConfigDefinitionRegistry": {
+				"ContentStabilizationInclusionMode": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\HandleIncludes::getInstance",
+				"ContentStabilizationDraftGroups": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\DraftGroups::getInstance",
+				"ContentStabilizationAllowFirstUnstable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\AllowFirstUnstable::getInstance",
+				"ContentStabilizationStabilizeSMWProperties": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\StabilizeSMWProperties::getInstance",
+				"BlueSpiceExtendedSearchIndexOnlyStable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\SearchIndexOnlyStable::getInstance",
+				"BlueSpiceUEModulePDFShowStabilizationTag": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\PDFExportShowTag::getInstance",
+				"BlueSpiceBookshelfExportListStable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\BookshelfExportListStable::getInstance",
+				"BlueSpiceBookshelfExportListUnstable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\BookshelfExportListUnstable::getInstance",
+				"BlueSpiceBookshelfExportListDisabled": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\BookshelfExportListDisabled::getInstance"
+			},
+			"AlertProviderRegistry": {
+				"contentstabilization-revisionstate": "MediaWiki\\Extension\\ContentStabilization\\Integration\\AlertProvider\\RevisionState::factory"
+			}
+		},
+		"Workflows": {
+			"LogicObjects": {
+				"ActivityRegistry": {
+					"approve_revision": {
+						"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Workflows\\Activity\\ApprovePageActivity",
+						"services": [
+							"TitleFactory",
+							"ContentStabilization.Stabilizer",
+							"RevisionStore",
+							"UserFactory"
+						]
+					}
+				}
+			},
+			"PropertyValidators": {
+				"valid-reviewer": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Workflows\\PropertyValidator\\ValidReviewer",
+					"services": [ "UserFactory", "PermissionManager" ]
+				}
+			}
+		},
+		"BlueSpiceSMWConnector": {
+			"ExtraPropertyRegistry": {
+				"docstatefields": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Property\\DocumentStatePropertyValueProvider::factory",
+				"docsversionfields": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Property\\DocumentVersionPropertyValueProvider::factory",
+				"approvaldatefields": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Property\\ApprovalDatePropertyValueProvider::factory",
+				"approvaluserfields": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Property\\ApprovalUserPropertyValueProvider::factory"
+			}
+		}
+	},
+	"ExtensionMessagesFiles": {
+		"ContentStabilization.alias": "languages/ContentStabilization.special.alias.php"
+	},
+	"MessagesDirs": {
+		"ContentStabilization": "i18n"
+	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\ContentStabilization\\": "src/",
+		"MediaWiki\\Extension\\ContentStabilization\\Tests\\": "tests/phpunit"
+	},
+	"ResourceModules": {
+		"ext.contentStabilization.bootstrap": {
+			"scripts": [
+				"ext.contentStabilization.bootstrap.js"
+			]
+		},
+		"ext.contentStabilization.special": {
+			"scripts": [
+				"ext.contentStabilization.special.js"
+			],
+			"dependencies": [
+				"ext.oOJSPlus.data"
+			],
+			"messages": [
+				"contentstabilization-status-stable",
+				"contentstabilization-status-unstable",
+				"contentstabilization-status-first-unstable",
+				"contentstabilization-overview-no-enabled",
+				"contentstabilization-overview-enabled",
+				"contentstabilization-overview-approver-bot",
+				"contentstabilization-overview-header-title",
+				"contentstabilization-overview-header-status",
+				"contentstabilization-overview-header-is-in-sync",
+				"contentstabilization-overview-header-has-changed-last-approver",
+				"contentstabilization-overview-header-has-changed-last-stable-ts",
+				"contentstabilization-overview-header-has-changed-last-comment"
+			]
+		},
+		"ext.contentStabilization.view.styles": {
+			"styles": [
+				"ext.contentStabilization.view.styles.css"
+			]
+		},
+		"ext.contentStabilization.history.styles": {
+			"styles": [
+				"ext.contentStabilization.history.styles.css"
+			]
+		},
+		"ext.contentStabilization.approve": {
+			"scripts": [
+				"ui/ApproveDialog.js"
+			],
+			"messages": [
+				"contentstabilization-ui-approve-title",
+				"contentstabilization-ui-approve-approve",
+				"contentstabilization-ui-approve-cancel",
+				"contentstabilization-ui-approve-error",
+				"contentstabilization-ui-approve-notice",
+				"contentstabilization-ui-approve-comment"
+			],
+			"dependencies": [
+				"oojs-ui"
+			]
+		},
+		"ext.contentStabilization.alert.styles": {
+			"styles": [
+				"ext.contentStabilization.alert.css"
+			]
+		},
+		"ext.contentStabilization.alert": {
+			"scripts": [
+				"ext.contentStabilization.alert.js"
+			],
+			"messages": [
+				"contentstabilization-state-draft-info-btn-title",
+				"contentstabilization-state-draft-info-btn-popup-title"
+			],
+			"dependencies": [
+				"oojs-ui"
+			]
+		},
+		"ext.contentStabilization.pageassignments.stabilization": {
+			"scripts": "pageassignments.addStabilizationColumn.js",
+			"messages": [
+				"contentstabilization-column-last-stable",
+				"contentstabilization-no-stable"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "ContentStabilization/resources"
+	},
+	"AvailableRights": [
+		"contentstabilization-admin",
+		"contentstabilization-oversight",
+		"contentstabilization-stabilize"
+	],
+	"GroupPermissions": {
+		"reviewer": {
+			"contentstabilization-admin": false,
+			"contentstabilization-oversight": true,
+			"contentstabilization-stabilize":  true
+		},
+		"sysop": {
+			"contentstabilization-admin": true,
+			"contentstabilization-oversight": true,
+			"contentstabilization-stabilize":  true
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": [ "addBootstrap", "integrationAddStyles", "stabilizeContent" ],
+		"LoadExtensionSchemaUpdates": "runDatabaseUpdates",
+		"ArticleViewHeader": "stabilizeContent",
+		"BeforeParserFetchTemplateRevisionRecord": "stabilizeContent",
+		"BeforeParserFetchFileAndTitle": "stabilizeContent",
+		"PageDeleteComplete": "stabilizeContent",
+		"PageMoveComplete": "stabilizeContent",
+		"ImagePageFindFile": "stabilizeContent",
+		"MWStakeCommonUIRegisterSkinSlotComponents": "registerGlobalAction",
+		"PageHistoryLineEnding": "integrateIntoHistory",
+		"ImagePageFileHistoryLine": "integrateIntoHistory",
+		"BeforeInitialize": [ "integrateIntoHistory", "stabilizePDFExport", "stabilizeBookExport" ],
+		"NamespaceManager::getMetaFields": "integrateIntoNamespaceManager",
+		"BSApiNamespaceStoreMakeData": "integrateIntoNamespaceManager",
+		"NamespaceManager::editNamespace": "integrateIntoNamespaceManager",
+		"NamespaceManager::writeNamespaceConfiguration": "integrateIntoNamespaceManager",
+		"SMW::RevisionGuard::ChangeRevisionID":  "stabilizeSMWProperties",
+		"SMW::RevisionGuard::ChangeRevision": "stabilizeSMWProperties",
+		"SMW::RevisionGuard::ChangeFile": "stabilizeSMWProperties",
+		"SMW::RevisionGuard::IsApprovedRevision": "stabilizeSMWProperties",
+		"ContentStabilizationStablePointAdded": "runUpdatesOnStabilizationChange",
+		"ContentStabilizationStablePointUpdated": "runUpdatesOnStabilizationChange",
+		"ContentStabilizationStablePointRemoved": "runUpdatesOnStabilizationChange",
+		"ContentStabilizationStablePointMoved": "runUpdatesOnStabilizationChange",
+		"DrawioGetFile": "stabilizeDrawioFile",
+		"ImgAuthBeforeStream": "stabilizeImgAuthFile",
+		"BSExtendedSearchWikipageFetchRevision": "stabilizeExtendedSearch",
+		"BSExtendedSearchRepoFileGetRepoFile": "stabilizeExtendedSearch",
+		"BSUEModulePDFgetPage": "stabilizePDFExport",
+		"BSUEModulePDFBeforeAddingStyleBlocks": [ "stabilizePDFExport", "stabilizeBookExport" ],
+		"BSUEModulePDFbeforeGetPage": "stabilizePDFExport",
+		"BSBookshelfExportBeforeArticles": "stabilizeBookExport",
+		"BSApiExtJSStoreBaseBeforePostProcessData": "addStabilizationInfoToPageAssignments",
+		"BSPageAssignmentsOverview": "addStabilizationInfoToPageAssignments",
+		"MediaWikiPerformAction": "stabilizeContent"
+
+	},
+	"HookHandlers": {
+		"addBootstrap": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddBootstrap"
+		},
+		"runDatabaseUpdates": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RunDatabaseUpdates"
+		},
+		"stabilizeContent": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\StabilizeContent",
+			"services": [
+				"ContentStabilization.Lookup", "Parser", "RevisionLookup", "ContentStabilization.Stabilizer"
+			]
+		},
+		"registerGlobalAction": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\RegisterGlobalAction"
+		},
+		"integrationAddStyles": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddStyles"
+		},
+		"integrateIntoHistory": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateIntoHistory",
+			"services": [
+				"ContentStabilization.Lookup", "ContentLanguage", "TitleFactory"
+			]
+		},
+		"integrateIntoNamespaceManager": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateIntoNamespaceManager",
+			"services": [
+				"MainConfig", "NamespaceInfo"
+			]
+		},
+		"stabilizeSMWProperties": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeSMWProperties",
+			"services": [
+				"ContentStabilization.Lookup", "ContentStabilization._Config"
+			]
+		},
+		"runUpdatesOnStabilizationChange": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\ReactToStabilizationChanges",
+			"services": [
+				"WikiPageFactory", "MWStake.Notifier", "ContentStabilization._SpecialLogLogger"
+			]
+		},
+		"stabilizeDrawioFile": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeDrawioFiles",
+			"services": [
+				"ContentStabilization.Lookup"
+			]
+		},
+		"stabilizeImgAuthFile": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeImgAuth",
+			"services": [
+				"ContentStabilization.Lookup", "RepoGroup"
+			]
+		},
+		"stabilizeExtendedSearch": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeSearchIndex",
+			"services": [ "ContentStabilization.Lookup", "MainConfig" ]
+		},
+		"stabilizePDFExport": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizePDFExport",
+			"services": [ "ContentStabilization.Lookup", "TitleFactory", "ContentLanguage", "MainConfig" ]
+		},
+		"stabilizeBookExport": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeBookExport",
+			"services": [
+				"ContentStabilization.Lookup", "TitleFactory", "ContentLanguage", "PageProps", "MainConfig", "HookContainer"
+			]
+		},
+		"addStabilizationInfoToPageAssignments": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddStabilizationInfoToPageAssignments",
+			"services": [ "ContentStabilization.Lookup", "TitleFactory" ]
+		}
+	},
+	"SpecialPages": {
+		"ContentStabilization": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Special\\ContentStabilization",
+			"services": [
+				"ContentStabilization._Config", "ContentLanguage"
+			]
+		}
+	},
+	"RestRoutes": [
+		{
+			"path": "/content_stabilization",
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\ListStablePointsHandler",
+			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup" ]
+		},
+		{
+			"method": "PUT",
+			"path": "/content_stabilization",
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\SetStablePointHandler",
+			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup", "RevisionStore" ]
+		},
+		{
+			"method": "DELETE",
+			"path": "/content_stabilization/{rev_id}",
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\RemoveStablePointHandler",
+			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup", "RevisionStore" ]
+		},
+		{
+			"path": "/content_stabilization/list",
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\StabilizationOverviewHandler",
+			"services": [ "HookContainer", "PermissionManager", "ContentStabilization.Lookup", "DBLoadBalancer", "MainConfig" ]
+		}
+	],
+	"config": {
+		"ContentStabilizationEnabledNamespaces": {
+			"description": "Array of namespace IDs for which content stabilization is allowed",
+			"value": []
+		},
+		"ContentStabilizationInclusionMode": {
+			"description": "One of the ContentStabilizationInclusionModes keys. Null for default: keep state as it was at the time of stabilization",
+			"value": null
+		},
+		"ContentStabilizationAllowFirstUnstable": {
+			"description": "Whether to allow users who would otherwise be blocked from viewing draft, to see first draft",
+			"value": true
+		},
+		"ContentStabilizationStabilizeSMWProperties": {
+			"description": "Whether to stabilize SMW properties. If true, it will only show properties that are stable",
+			"value": true
+		},
+		"ContentStabilizationDraftGroups": {
+			"description": "Array of user groups that are allowed to view draft content",
+			"value": [ "user" ]
+		},
+		"BlueSpiceExtendedSearchIndexOnlyStable": {
+			"description": "Whether to only index stable content in the search index",
+			"value": false
+		},
+		"BlueSpiceUEModulePDFShowStabilizationTag": {
+			"value": true
+		},
+		"BlueSpiceBookshelfExportListStable": {
+			"value": true,
+			"description": "List approved revisions log",
+			"public": true
+		},
+		"BlueSpiceBookshelfExportListUnstable": {
+			"value": true,
+			"description": "List pages without stable revision",
+			"public": true
+		},
+		"BlueSpiceBookshelfExportListDisabled": {
+			"value": true,
+			"description": "List pages that do not have stabilization enabled",
+			"public": true
+		}
+	},
+	"LogTypes": [ "stabilization" ],
+	"LogActionsHandlers": {
+		"stabilization/*": "LogFormatter"
+	},
+	"manifest_version": 2
+}

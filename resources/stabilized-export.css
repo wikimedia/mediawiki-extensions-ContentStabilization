@@ -1,0 +1,34 @@
+.contentstabilization-stabilizationhistory-stables-list thead tr {
+	background-color: #d7e4f3;
+}
+.contentstabilization-stabilizationhistory-stables-list td {
+	padding: 0.2cm;
+	vertical-align: top;
+}
+.contentstabilization-stabilizationhistory-stables-list tr.odd {
+	background-color: #f5f8fa;
+}
+.contentstabilization-stabilizationhistory-stables-list tr.even {
+	background-color: #fcfcfc;
+}
+.contentstabilization-export-laststable-tag > .nostable,
+.contentstabilization-stabilizationhistory-no-stables-list {
+	font-style: oblique;
+	font-weight: bold;
+	color: #f00;
+}
+table.fr-diff-ratings {
+	width: 100%;
+}
+table.fr-diff-ratings td {
+	width: 50%;
+}
+span.flaggedrevs-color-0 {
+	background-color: #f9f9f9;
+}
+span.flaggedrevs-color-2 {
+	background-color: #e1ffe1;
+}
+span.flaggedrevs-color-3 {
+	background-color: #afa;
+}

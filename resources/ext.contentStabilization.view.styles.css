@@ -1,0 +1,11 @@
+.contentstabilization-pageinfo-page-first-unstable,
+.contentstabilization-pageinfo-page-implicit-unstable,
+.contentstabilization-pageinfo-page-unstable {
+	color: #e49c00 !important;
+	margin-right: 5px;
+}
+
+.contentstabilization-pageinfo-page-stable {
+	color: #38c748 !important;
+	margin-right: 5px;
+}
