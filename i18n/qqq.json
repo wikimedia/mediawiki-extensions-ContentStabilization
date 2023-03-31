@@ -1,0 +1,5 @@
+{
+	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
+	"contentstabilization-column-last-stable": "Column header that lists approval dates of pages.\n{{Identical|Reviewed}}",
+	"contentstabilization-no-stable": "Column content that shows the default information, when the page is not approved yet.\n{{Identical|not reviewed}}"
+}
