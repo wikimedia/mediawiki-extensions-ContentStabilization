@@ -28,7 +28,7 @@ $( function () {
 					list: [
 						{ data: 'unstable', label: mw.message( 'contentstabilization-status-unstable' ).text() },
 						{ data: 'stable', label: mw.message( 'contentstabilization-status-stable' ).text() },
-						{ data: 'first-unstable', label: mw.message( 'contentstabilization-first-unstable' ).text() }
+						{ data: 'first-unstable', label: mw.message( 'contentstabilization-status-first-unstable' ).text() }
 					]
 				}
 			},
