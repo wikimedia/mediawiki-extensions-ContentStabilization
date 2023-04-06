@@ -7,17 +7,14 @@ $( function () {
 		deletable: false,
 		style: 'differentiate-rows',
 		columns: {
-			page_title: {
+			page_display_text: {
 				headerText: mw.message( 'contentstabilization-overview-header-title' ).text(),
 				type: 'url',
 				sortable: true,
 				filter: {
 					type: 'text'
 				},
-				urlProperty: 'page_link',
-				valueParser: function ( value, row ) {
-					return row.page_display_text;
-				}
+				urlProperty: 'page_link'
 			},
 			status: {
 				headerText: mw.message( 'contentstabilization-overview-header-status' ).text(),

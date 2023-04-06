@@ -351,7 +351,10 @@
 		{
 			"path": "/content_stabilization/list",
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\StabilizationOverviewHandler",
-			"services": [ "HookContainer", "PermissionManager", "ContentStabilization.Lookup", "DBLoadBalancer", "MainConfig" ]
+			"services": [
+				"HookContainer", "PermissionManager", "ContentStabilization.Lookup",
+				"DBLoadBalancer", "ContentStabilization._Config", "ContentLanguage"
+			]
 		}
 	],
 	"config": {

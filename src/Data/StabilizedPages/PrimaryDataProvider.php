@@ -2,11 +2,13 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
+use Language;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MWStake\MediaWiki\Component\DataStore\Filter;
 use MWStake\MediaWiki\Component\DataStore\PrimaryDatabaseDataProvider;
 use MWStake\MediaWiki\Component\DataStore\ReaderParams;
 use MWStake\MediaWiki\Component\DataStore\Schema;
+use stdClass;
 use Wikimedia\Rdbms\IDatabase;
 
 class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
@@ -22,14 +24,22 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 	/** @var array */
 	private $enabledNamespaces = [];
 
+	/** @var array */
+	private $namespaceTexts = [];
+
+	/** @var Language */
+	private $language;
+
 	/**
 	 * @param IDatabase $db
 	 * @param Schema $schema
 	 * @param array $enabledNamespaces
+	 * @param Language $language
 	 */
-	public function __construct( IDatabase $db, Schema $schema, array $enabledNamespaces ) {
+	public function __construct( IDatabase $db, Schema $schema, array $enabledNamespaces, Language $language ) {
 		parent::__construct( $db, $schema );
 		$this->enabledNamespaces = $enabledNamespaces;
+		$this->language = $language;
 	}
 
 	/**
@@ -124,11 +134,11 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 	}
 
 	/**
-	 * @param \stdClass $row
+	 * @param stdClass $row
 	 *
 	 * @return void
 	 */
-	protected function appendRowToData( \stdClass $row ) {
+	protected function appendRowToData( stdClass $row ) {
 		$state = $this->getState( $row );
 		$this->data[] = new Record( (object)[
 			Record::PAGE_ID => $row->page_id,
@@ -139,12 +149,13 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 			Record::LAST_STABLE => (int)$row->last_stable,
 			Record::LAST_APPROVER => $row->last_approver,
 			Record::LAST_COMMENT => $row->sp_comment,
+			Record::PAGE_DISPLAY_TEXT => $this->getDisplayText( $row ),
 			Record::STATUS => $state,
 		] );
 	}
 
 	/**
-	 * @param \stdClass $row
+	 * @param stdClass $row
 	 *
 	 * @return string
 	 */
@@ -159,5 +170,22 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 			return StableView::STATE_STABLE;
 		}
 		return StableView::STATE_UNSTABLE;
+	}
+
+	/**
+	 * @param stdClass $row
+	 *
+	 * @return string
+	 */
+	private function getDisplayText( stdClass $row ): string {
+		$ns = (int)$row->page_namespace;
+		if ( $ns === NS_MAIN ) {
+			return $row->page_title;
+		}
+		if ( !isset( $this->namespaceTexts[$ns] ) ) {
+			$this->namespaceTexts[$ns] = $this->language->getNsText( $ns );
+		}
+		$nsText = $this->namespaceTexts[$ns];
+		return "$nsText:{$row->page_title}";
 	}
 }

@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Rest;
 
 use Config;
+use Language;
 use MediaWiki\Extension\ContentStabilization\Data\StabilizedPages\Store;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\HookContainer\HookContainer;
@@ -30,6 +31,12 @@ class StabilizationOverviewHandler extends QueryStore {
 	 * @var ILoadBalancer
 	 */
 	private $lb;
+
+	/**
+	 * @var Language
+	 */
+	private $language;
+
 	/**
 	 * @var array
 	 */
@@ -41,16 +48,18 @@ class StabilizationOverviewHandler extends QueryStore {
 	 * @param StabilizationLookup $lookup
 	 * @param ILoadBalancer $lb
 	 * @param Config $config
+	 * @param Language $language
 	 */
 	public function __construct(
 		HookContainer $hookContainer, PermissionManager $permissionManager,
-		StabilizationLookup $lookup, ILoadBalancer $lb, Config $config
+		StabilizationLookup $lookup, ILoadBalancer $lb, Config $config, Language $language
 	) {
 		parent::__construct( $hookContainer );
 		$this->permissionManager = $permissionManager;
 		$this->lookup = $lookup;
 		$this->lb = $lb;
-		$this->enabledNamespace = $config->get( 'ContentStabilizationEnabledNamespaces' );
+		$this->enabledNamespace = $config->get( 'EnabledNamespaces' );
+		$this->language = $language;
 	}
 
 	/**
@@ -66,7 +75,7 @@ class StabilizationOverviewHandler extends QueryStore {
 	 * @return IStore
 	 */
 	protected function getStore(): IStore {
-		return new Store( $this->lookup, $this->lb, $this->enabledNamespace );
+		return new Store( $this->lookup, $this->lb, $this->enabledNamespace, $this->language );
 	}
 
 	/**

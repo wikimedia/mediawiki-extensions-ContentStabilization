@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
+use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MWStake\MediaWiki\Component\DataStore\ReaderParams;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -24,15 +25,24 @@ class Reader extends \MWStake\MediaWiki\Component\DataStore\Reader {
 	private $enabledNamespaces;
 
 	/**
+	 * @var Language
+	 */
+	private $language;
+
+	/**
 	 * @param ILoadBalancer $lb
 	 * @param StabilizationLookup $lookup
 	 * @param array $enabledNamespaces
+	 * @param Language $language
 	 */
-	public function __construct( ILoadBalancer $lb, StabilizationLookup $lookup, array $enabledNamespaces ) {
+	public function __construct(
+		ILoadBalancer $lb, StabilizationLookup $lookup, array $enabledNamespaces, Language $language
+	) {
 		parent::__construct();
 		$this->lb = $lb;
 		$this->lookup = $lookup;
 		$this->enabledNamespaces = $enabledNamespaces;
+		$this->language = $language;
 	}
 
 	/**
@@ -49,7 +59,7 @@ class Reader extends \MWStake\MediaWiki\Component\DataStore\Reader {
 	 */
 	public function makePrimaryDataProvider( $params ) {
 		$db = $this->lb->getConnection( DB_REPLICA );
-		return new PrimaryDataProvider( $db, $this->getSchema(), $this->enabledNamespaces );
+		return new PrimaryDataProvider( $db, $this->getSchema(), $this->enabledNamespaces, $this->language );
 	}
 
 	/**

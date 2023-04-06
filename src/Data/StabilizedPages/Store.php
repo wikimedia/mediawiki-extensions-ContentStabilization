@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
 use BadMethodCallException;
 use JakubOnderka\PhpParallelLint\IWriter;
+use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MWStake\MediaWiki\Component\DataStore\IReader;
 use MWStake\MediaWiki\Component\DataStore\IStore;
@@ -20,15 +21,22 @@ class Store implements IStore {
 	/** @var array */
 	private $enabledNamespace;
 
+	/** @var Language */
+	private $language;
+
 	/**
 	 * @param StabilizationLookup $lookup
 	 * @param ILoadBalancer $lb
 	 * @param array $enabledNamespace
+	 * @param Language $language
 	 */
-	public function __construct( StabilizationLookup $lookup, ILoadBalancer $lb, array $enabledNamespace ) {
+	public function __construct(
+		StabilizationLookup $lookup, ILoadBalancer $lb, array $enabledNamespace, Language $language
+	) {
 		$this->lookup = $lookup;
 		$this->lb = $lb;
 		$this->enabledNamespace = $enabledNamespace;
+		$this->language = $language;
 	}
 
 	/**
@@ -42,7 +50,7 @@ class Store implements IStore {
 	 * @return IReader
 	 */
 	public function getReader() {
-		return new Reader( $this->lb, $this->lookup, $this->enabledNamespace );
+		return new Reader( $this->lb, $this->lookup, $this->enabledNamespace, $this->language );
 	}
 
 	/**
