@@ -5,3 +5,11 @@
 	transform: translate( 0, -50% );
 	z-index: 100;
 }
+
+.contentstabilization-state-draft-info-popup .contentstabilization-state-draft-info-popup-title {
+	color: #202122;
+}
+
+.contentstabilization-state-draft-info-popup .contentstabilization-state-draft-info-popup-link span {
+	color: #0d6efd;
+}

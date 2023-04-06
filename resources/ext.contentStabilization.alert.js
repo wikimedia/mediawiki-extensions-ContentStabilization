@@ -23,10 +23,15 @@
 	} );
 
 	function getPopupContent( data ) {
-		var layout = new OO.ui.PanelLayout( { padded: true, expanded: false } );
+		var layout = new OO.ui.PanelLayout( {
+			classes: [ 'contentstabilization-state-draft-info-popup' ],
+			padded: true,
+			expanded: false
+		} );
 		layout.$element.append(
 			new OO.ui.LabelWidget( {
-				label: mw.message( 'contentstabilization-state-draft-info-btn-popup-title' ).text()
+				label: mw.message( 'contentstabilization-state-draft-info-btn-popup-title' ).text(),
+				classes: [ 'contentstabilization-state-draft-info-popup-title' ]
 			} ).$element
 		);
 
@@ -39,7 +44,8 @@
 				label: text,
 				framed: false,
 				title: text,
-				href: data[ text ]
+				href: data[ text ],
+				classes: [ 'contentstabilization-state-draft-info-popup-link' ]
 			} ).$element ) );
 		}
 
