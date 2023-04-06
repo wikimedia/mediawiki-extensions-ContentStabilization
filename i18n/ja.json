@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"MathXplore"
+		]
+	},
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "差分を表示",
+	"contentstabilization-ui-approve-cancel": "キャンセル",
+	"contentstabilization-ui-approve-comment": "コメント",
+	"contentstabilization-overview-header-title": "ページ",
+	"contentstabilization-stabilizationhistory-title": "ページ",
+	"contentstabilization-stabilizationhistory-comment": "コメント"
+}

@@ -2,12 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Dejan Savuljesku",
-			"Robert Vogel"
+			"Robert Vogel",
+			"Verdy p"
 		]
 	},
 	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
-	"contentstabilization-column-last-stable": "Column header that lists approval dates of pages.\n{{Identical|Reviewed}}",
-	"contentstabilization-no-stable": "Column content that shows the default information, when the page is not approved yet.\n{{Identical|not reviewed}}",
 	"right-contentstabilization-oversight": "{{doc-right|contentstabilization-oversight}}",
 	"right-contentstabilization-admin": "{{doc-right|contentstabilization-admin}}",
 	"right-contentstabilization-stabilize": "{{doc-right|contentstabilization-stabilize}}",
@@ -39,7 +38,7 @@
 	"contentstabilization-ui-approve-error": "Error message in a dialog that allows to approve a page",
 	"contentstabilization-ui-approve-notice": "Hint message in a dialog that allows to approve a page",
 	"contentstabilization-ui-approve-comment": "Label of a input element in a dialog that allows to approve a page",
-	"contentstabilization-pref-handleincludes": "This is the label of a input element on [[Special:ConfigManager]]",
+	"contentstabilization-pref-handleincludes": "This is the label of a input element on [[Special:ConfigManager]].\n\nIt means the \"handling of inclusions\": this setting is about how to manage ressources that are included and possibly handle their possible changes in cascade for the approval of pages including them.",
 	"contentstabilization-pref-handleinclude-none": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-handleinclude-stable": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-handleincludes-help": "This help message of a input element on [[Special:ConfigManager]]",
@@ -94,6 +93,8 @@
 	"contentstabilization-pref-export-list-stable": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-export-list-unstable": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-export-list-disabled": "This is the label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-column-last-stable": "Column header that lists approval dates of pages.\n{{Identical|Reviewed}}",
+	"contentstabilization-no-stable": "Column content that shows the default information, when the page is not approved yet.\n{{Identical|not reviewed}}",
 	"contentstabilization-pref-draftgroups": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-draftgroups-help": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-stabilizationhistory-stabledate": "Header of a table column within the export of a page",

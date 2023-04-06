@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kasey"
+		]
+	},
+	"action-contentstabilization-admin": "управлявайте одобрения",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "има чернова версия",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "Чернова версия",
+	"content-stabilization-integration-activity-error-no-user": "Никой валиден потребител не може да бъде потвърден за извършване на одобрението.",
+	"contentstabilization-document-version-sesp-desc": "Броят на одобрените проверки в хронологията на страницата.",
+	"contentstabilization-pref-export-list-disabled": "Експортиране: Избройте страниците, съдържащи се в книгата, които нямат активирана стабилизация."
+}

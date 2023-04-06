@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Прикажи разлике",
+	"contentstabilization-ui-approve-cancel": "Откажи",
+	"contentstabilization-overview-header-title": "Страница",
+	"contentstabilization-overview-header-status": "Стање",
+	"contentstabilization-column-last-stable": "Одобрено"
+}

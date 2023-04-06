@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"contentstabilization-desc": "Gör se så att användare kan markera sidor som \"godkända\" eller \"utkast\" och visa de senaste godkända versionen av en sida.",
+	"right-contentstabilization-oversight": "Läs översikten över alla godkännanden av en sida",
+	"right-contentstabilization-admin": "Ändra vem som kan se utkast, radera och ändra godkännanden",
+	"right-contentstabilization-stabilize": "Godkänn sidor",
+	"action-contentstabilization-oversight": "läs översikt över godkännanden",
+	"action-contentstabilization-stabilize": "godkänn en sida",
+	"action-contentstabilization-admin": "hantera godkännanden",
+	"contentstabilization": "Översikt över kvalitetshantering",
+	"contentstabilization-global-action-overview": "Översikt över kvalitetshantering",
+	"contentstabilization-global-action-overview-desc": "Översikt över sidor i godkännandeprocessen",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "har en utkastsversion",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "har en godkänd version",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-title": "Visa utkastsversion",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-title": "Visa godkänd version",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "Visa skillnad",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Visa skillnad",
+	"contentstabilization-pageinfoelement-pagestatus-accept": "Godkänn sida",
+	"contentstabilization-pageinfoelement-pagestatus-update": "Godkänn ändringar i resurser",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-text": "ett utkast",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "Utkastsversion",
+	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text": "ett första utkast",
+	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Första utkastsversion",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "godkänd",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Godkänd version",
+	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "ett utkast, på grund av ändringar i inkluderade resurser",
+	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Utkast på grund av ändringar i inkluderade resurser",
+	"contentstabilization-ui-approve-title": "Godkänd sida",
+	"contentstabilization-ui-approve-approve": "Godkänn",
+	"contentstabilization-ui-approve-cancel": "Avbryt",
+	"contentstabilization-ui-approve-error": "Kunde inte godkänna sidan"
+}
