@@ -102,5 +102,6 @@
 	"contentstabilization-stabilizationhistory-comment": "Header of a table column within the export of a page",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Section header within the export of a page",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Section header within the export of a page",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Section header within the export of a page"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Section header within the export of a page",
+	"content-stabilization-stable-diff": "Link label for reviewing difference between unstable and last stable version"
 }
