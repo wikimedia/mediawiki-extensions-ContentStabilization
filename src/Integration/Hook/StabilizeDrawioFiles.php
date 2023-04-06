@@ -3,32 +3,40 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
 use File;
+use IContextSource;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
-use MediaWiki\Extension\ContentStabilization\StableFilePoint;
-use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\DrawioEditor\Hook\DrawioGetFileHook;
-use Title;
+use MediaWiki\Hook\BeforeInitializeHook;
+use RepoGroup;
 use User;
 
-class StabilizeDrawioFiles implements DrawioGetFileHook {
+class StabilizeDrawioFiles implements DrawioGetFileHook, BeforeInitializeHook {
 
 	/** @var StabilizationLookup */
 	private $lookup;
 
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/** @var IContextSource */
+	private $context;
+
+	private $doNotStabilize = false;
+
 	/**
 	 * @param StabilizationLookup $lookup
+	 * @param RepoGroup $repoGroup
 	 */
-	public function __construct( StabilizationLookup $lookup ) {
+	public function __construct( StabilizationLookup $lookup, RepoGroup $repoGroup ) {
 		$this->lookup = $lookup;
+		$this->repoGroup = $repoGroup;
 	}
 
 	/**
-	 * @param Title $title
-	 *
-	 * @return StablePoint|null
+	 * @inheritDoc
 	 */
-	private function getStable( Title $title ): ?StablePoint {
-		return $this->lookup->getLastStablePoint( $title->toPageIdentity() );
+	public function onBeforeInitialize( $title, $unused, $output, $user, $request, $mediaWiki ) {
+		$this->context = $output->getContext();
 	}
 
 	/**
@@ -37,31 +45,39 @@ class StabilizeDrawioFiles implements DrawioGetFileHook {
 	public function onDrawioGetFile(
 		File &$file, &$latestIsStable, User $user, bool &$isNotApproved, File &$displayFile
 	) {
-		if ( !$this->lookup->isStabilizationEnabled( $file->getTitle()->toPageIdentity() ) ) {
+		if ( !$this->context ) {
 			return;
 		}
-		if ( $this->lookup->canUserSeeUnstable( $user ) ) {
+		if ( !$this->lookup->isStabilizationEnabled( $this->context->getTitle() ) ) {
 			return;
 		}
-		$stable = $this->getStable( $file->getTitle() );
-		if ( !$stable || !( $stable instanceof StableFilePoint ) ) {
-			if ( $this->lookup->isFirstUnstableAllowed() ) {
+		if ( $this->doNotStabilize ) {
+			return;
+		}
+		// This is an edge case of stabilizing a transclusion that happens though a parser hook
+		// In order to determine the view for the current page, we need to parse it to get the latest transclusions
+		// so that we can compare to frozen transclusions and determine the state of the page
+		// However, doing this will process parser functions and therefore call this hook again,
+		// causing an infinite loop. So we need to prevent by "turning the handler off" while we are
+		// determining the view
+		$this->doNotStabilize = true;
+		$view = $this->lookup->getStableViewFromContext( $this->context );
+		$this->doNotStabilize = false;
+		if ( !$view ) {
+			$isNotApproved = true;
+			return;
+		}
+		foreach ( $view->getInclusions()['images'] as $image ) {
+			if ( $image['name'] === $file->getName() ) {
+				if ( $image['revision'] === 0 ) {
+					$isNotApproved = true;
+					return;
+				}
+				$file = $this->repoGroup->findFile( $file->getTitle(), [ 'time' => $image['timestamp'] ] );
+				$displayFile = $file;
 				return;
 			}
-			// Cannot show anything
-			$isNotApproved = true;
-			$latestIsStable = false;
-			$displayFile = null;
-			return;
 		}
-
-		if ( $stable->getRevision()->isCurrent() ) {
-			$latestIsStable = true;
-			return;
-		}
-		$latestIsStable = false;
-		$file = $stable->getFile();
-		$displayFile = $file;
 	}
 
 }

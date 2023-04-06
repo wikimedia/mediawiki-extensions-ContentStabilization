@@ -213,7 +213,7 @@
 	"Hooks": {
 		"BeforePageDisplay": [ "addBootstrap", "integrationAddStyles", "stabilizeContent" ],
 		"LoadExtensionSchemaUpdates": "runDatabaseUpdates",
-		"ArticleViewHeader": "stabilizeContent",
+		"ArticleViewHeader": [ "stabilizeContent" ],
 		"BeforeParserFetchTemplateRevisionRecord": "stabilizeContent",
 		"BeforeParserFetchFileAndTitle": "stabilizeContent",
 		"PageDeleteComplete": "stabilizeContent",
@@ -222,7 +222,7 @@
 		"MWStakeCommonUIRegisterSkinSlotComponents": "registerGlobalAction",
 		"PageHistoryLineEnding": "integrateIntoHistory",
 		"ImagePageFileHistoryLine": "integrateIntoHistory",
-		"BeforeInitialize": [ "integrateIntoHistory", "stabilizePDFExport", "stabilizeBookExport" ],
+		"BeforeInitialize": [ "integrateIntoHistory", "stabilizePDFExport", "stabilizeBookExport", "stabilizeDrawioFile" ],
 		"NamespaceManager::getMetaFields": "integrateIntoNamespaceManager",
 		"BSApiNamespaceStoreMakeData": "integrateIntoNamespaceManager",
 		"NamespaceManager::editNamespace": "integrateIntoNamespaceManager",
@@ -294,7 +294,7 @@
 		"stabilizeDrawioFile": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeDrawioFiles",
 			"services": [
-				"ContentStabilization.Lookup"
+				"ContentStabilization.Lookup", "RepoGroup"
 			]
 		},
 		"stabilizeImgAuthFile": {
