@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"right-contentstabilization-stabilize": "核准頁面",
+	"action-contentstabilization-stabilize": "核准頁面",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "顯示差異",
+	"contentstabilization-pageinfoelement-pagestatus-accept": "核准日期",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-text": "草稿",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "草稿版本",
+	"contentstabilization-ui-approve-approve": "核准",
+	"contentstabilization-ui-approve-cancel": "取消",
+	"contentstabilization-export-laststable-tag-text": "已核准",
+	"contentstabilization-export-stablerevisiondate-tag-text": "修訂",
+	"contentstabilization-status-unstable": "草稿",
+	"contentstabilization-overview-header-title": "頁面",
+	"contentstabilization-approval-date-sesp-alias": "品管/核准日期",
+	"contentstabilization-column-last-stable": "已核准",
+	"contentstabilization-stabilizationhistory-stabledate": "核准日期",
+	"contentstabilization-stabilizationhistory-title": "頁面"
+}

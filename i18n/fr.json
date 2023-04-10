@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
@@ -94,7 +95,7 @@
 	"contentstabilization-column-last-stable": "Approuvé",
 	"contentstabilization-no-stable": "non approuvé",
 	"contentstabilization-pref-draftgroups": "Affiche les pages non approuvées pour les groupes suivants",
-	"contentstabilization-pref-draftgroups-help": "Définit le droit d’accès aux versions en brouillon. Les utilisateurs du groupe d’administrateurs « sysop » peuvent toujours voir les versions en brouillon.",
+	"contentstabilization-pref-draftgroups-help": "Définit le droit d’accès aux versions de brouillon. Les utilisateurs du groupe d’administrateurs « sysop » peuvent toujours voir les versions de brouillon.",
 	"contentstabilization-stabilizationhistory-stabledate": "Date d’approbation",
 	"contentstabilization-stabilizationhistory-title": "Page",
 	"contentstabilization-stabilizationhistory-comment": "Commentaire",

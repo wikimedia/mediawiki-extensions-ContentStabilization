@@ -4,9 +4,18 @@
 			"Milicevic01"
 		]
 	},
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "Прикажи разлику",
 	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Прикажи разлике",
+	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text": "први нацрт",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "одобрено",
 	"contentstabilization-ui-approve-cancel": "Откажи",
+	"logentry-stabilization-add": "$1 је {{GENDER:$2|одобрио|одобрила}} страницу $3",
+	"logentry-stabilization-remove": "$1 је {{GENDER:$2|уклонио|уклонила}} одобрење са странице $3",
+	"contentstabilization-status-stable": "Одобрено",
+	"contentstabilization-status-unstable": "Нацрт",
 	"contentstabilization-overview-header-title": "Страница",
 	"contentstabilization-overview-header-status": "Стање",
-	"contentstabilization-column-last-stable": "Одобрено"
+	"contentstabilization-column-last-stable": "Одобрено",
+	"contentstabilization-stabilizationhistory-title": "Страница",
+	"contentstabilization-stabilizationhistory-comment": "Коментар"
 }

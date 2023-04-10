@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeeputer"
+		]
+	},
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "دارای یک نسخهٔ پیش‌نویس است",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-title": "نمایش نسخهٔ پیش‌نویس",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-text": "یک پیش‌نویس",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "نسخهٔ پیش‌نویس",
+	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text": "یک پیش‌نویس اولیه",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "تأییدشده",
+	"contentstabilization-ui-approve-cancel": "لغو",
+	"contentstabilization-export-stablerevisiondate-tag-text": "نسخه",
+	"log-name-stabilization": "سیاههٔ پایدارسازی محتوا",
+	"contentstabilization-overview-header-title": "صفحه",
+	"contentstabilization-stabilizationhistory-comment": "نظر"
+}

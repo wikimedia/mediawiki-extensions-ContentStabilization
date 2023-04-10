@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"right-contentstabilization-stabilize": "ورقے منظور کرو",
+	"action-contentstabilization-stabilize": "ورقہ منظور کرو",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "فرق ݙکھاؤ",
+	"contentstabilization-pageinfoelement-pagestatus-accept": "ورقے منظور کرو",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "منظور تھی ڳیا",
+	"contentstabilization-ui-approve-title": "ورقہ منظور کرو",
+	"contentstabilization-ui-approve-approve": "منظور",
+	"contentstabilization-ui-approve-cancel": "منسوخ",
+	"contentstabilization-ui-approve-comment": "تبصرہ",
+	"contentstabilization-label-stabilize-ns": "منظوری",
+	"contentstabilization-export-laststable-tag-text": "منظور تھی ڳیا",
+	"contentstabilization-export-stablerevisiondate-tag-text": "نظر ثانی",
+	"contentstabilization-status-stable": "منظور تھی ڳیا",
+	"contentstabilization-status-unstable": "ڈرافٹ",
+	"contentstabilization-overview-header-title": "ورقہ",
+	"contentstabilization-overview-header-status": "حالت",
+	"contentstabilization-column-last-stable": "منظور تھی ڳیا",
+	"contentstabilization-stabilizationhistory-stabledate": "منظوری دی تریخ",
+	"contentstabilization-stabilizationhistory-title": "ورقہ",
+	"contentstabilization-stabilizationhistory-comment": "تبصرہ",
+	"contentstabilization-stabilizationhistory-stableversionstabletitle": "منظور تھئے ورقے"
+}

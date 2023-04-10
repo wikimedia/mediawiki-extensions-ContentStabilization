@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"TayfunEt."
+		]
+	},
+	"contentstabilization-desc": "Ulanyjylara sahypalary \"tassyklanan\" ýa-da \"garalama\" diýip bellemäge we sahypanyň iň soňky tassyklanan görnüşini görmäge mümkinçilik berýär.",
+	"right-contentstabilization-stabilize": "Sahypalary tassyklaň",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-title": "Taslama görnüşini görkeziň",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-title": "Makullanan wersiýany görkez",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "Tapawut görkez",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Tapawut görkez",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "tassyklandy",
+	"contentstabilization-ui-approve-cancel": "Goýbolsun et",
+	"contentstabilization-ui-approve-comment": "Teswir",
+	"contentstabilization-pref-handleinclude-none": "Tassyklanylanda bar bolan wersiýalar",
+	"contentstabilization-pref-allowfirstunstable-help": "Işledilen bolsa, sahypanyň birinji garalama wersiýasy başgaça garalama wersiýalaryny görüp bilmeýän ulanyjylara görkeziler",
+	"contentstabilization-export-no-stable-date": "Tassyklanmady",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Wersiýa",
+	"contentstabilization-overview-header-title": "Sahypa",
+	"contentstabilization-overview-header-status": "Döwlet",
+	"contentstabilization-overview-header-has-changed-last-stable-ts": "Soňky tassyklama senesi",
+	"contentstabilization-overview-header-has-changed-last-comment": "Soňky tassyklamadan düşündiriş",
+	"contentstabilization-approval-user-sesp-desc": "Sahypany gözden geçiren ulanyjy",
+	"contentstabilization-stabilizationhistory-comment": "Teswir"
+}
