@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ella Lachow"
+		]
+	},
+	"right-contentstabilization-stabilize": "Sinttata boxooxissa",
+	"action-contentstabilization-stabilize": "Sinttaa boxooxissa",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "Doometta xuufiya birshshettay de'ees",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "Boxooxida birshshettay de'ees",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "Dummatettaa bessa",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Dummatettaa bessa",
+	"contentstabilization-pageinfoelement-pagestatus-accept": "Sinttaa boxooxissa",
+	"contentstabilization-pageinfoelement-pagestatus-update": "Xaafotun de'iya laameta boxooxissa",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "Doometta xuufiya birshshettaa",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "ekettiis",
+	"contentstabilization-ui-approve-approve": "Boxooxissa",
+	"contentstabilization-ui-approve-cancel": "Qucca",
+	"contentstabilization-ui-approve-comment": "Qofaa",
+	"contentstabilization-export-no-stable-date": "Ekettibeenna",
+	"contentstabilization-export-laststable-tag-text": "Boxooxis",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Zaaretuwaa",
+	"contentstabilization-status-stable": "Boxooxis",
+	"contentstabilization-status-unstable": "Doomettaa xuufiya",
+	"contentstabilization-overview-header-title": "Sinttaa",
+	"contentstabilization-overview-header-has-changed-last-approver": "Wurssetta boxooxissidaagaa",
+	"contentstabilization-overview-header-has-changed-last-comment": "Wurssetta boxooxidaagan qofaa imma",
+	"contentstabilization-stabilizationhistory-title": "Sinttaa"
+}

@@ -4,10 +4,21 @@
 			"MathXplore"
 		]
 	},
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-title": "承認されたバージョンを表示",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "差分を表示",
 	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "差分を表示",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "ドラフト版",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "承認済",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "承認済み版",
+	"contentstabilization-ui-approve-approve": "承認",
 	"contentstabilization-ui-approve-cancel": "キャンセル",
 	"contentstabilization-ui-approve-comment": "コメント",
+	"contentstabilization-label-stabilize-ns": "承認",
+	"contentstabilization-export-laststable-tag-text": "承認済",
+	"contentstabilization-export-stablerevisiondate-tag-text": "版",
+	"contentstabilization-status-stable": "承認済",
 	"contentstabilization-overview-header-title": "ページ",
+	"contentstabilization-column-last-stable": "承認済",
 	"contentstabilization-stabilizationhistory-title": "ページ",
 	"contentstabilization-stabilizationhistory-comment": "コメント"
 }

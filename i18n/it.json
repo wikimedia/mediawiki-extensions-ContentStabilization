@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"action-contentstabilization-admin": "gestire le approvazioni",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "ha una versione in bozza",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "Versione in bozza",
+	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text": "una prima bozza",
+	"contentstabilization-ui-approve-cancel": "Annulla",
+	"content-stabilization-integration-activity-error-context-data-missing": "\"pageId\" mancante",
+	"content-stabilization-integration-activity-error-title-rev-mismatch": "La versione specificata non coincide con il titolo specificato",
+	"contentstabilization-overview-header-title": "Pagina",
+	"contentstabilization-document-version-sesp-desc": "Il numero delle versioni approvate nella cronologia della pagina"
+}

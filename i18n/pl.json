@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"WaldiSt"
+		]
+	},
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-title": "Pokaż wersję roboczą",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-title": "Pokaż zatwierdzoną wersję",
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-text": "szkic",
+	"contentstabilization-ui-approve-cancel": "Anuluj",
+	"contentstabilization-ui-approve-comment": "Komentarz",
+	"contentstabilization-pref-handleinclude-stable": "Zatwierdzone wersje dołączonych stron",
+	"contentstabilization-pref-handleincludes-help": "Określa, która wersja dołączonych zasobów powinna być wyświetlana użytkownikowi podczas renderowania zatwierdzonej wersji strony",
+	"content-stabilization-integration-activity-error-context-invalid-title": "Nie można utworzyć prawidłowego tytułu na podstawie podanego „pageId”.",
+	"contentstabilization-pref-allowfirstunstable-help": "Jeśli ta opcja jest włączona, pierwsza wersja robocza strony będzie wyświetlana użytkownikom, którzy w przeciwnym razie nie mogliby zobaczyć wersji roboczych",
+	"contentstabilization-stablepoint-added-message": "dodano nową zatwierdzoną wersję strony",
+	"contentstabilization-overview-enabled": "Zatwierdzanie jest obecnie włączone dla następujących przestrzeni nazw: $1",
+	"contentstabilization-overview-header-title": "Strona",
+	"contentstabilization-overview-header-status": "Status",
+	"contentstabilization-overview-header-has-changed-last-stable-ts": "Ostatnia data zatwierdzenia",
+	"contentstabilization-document-state-sesp-desc": "Stan strony. Może być „Zatwierdzony” (najnowsza wersja została pomyślnie sprawdzona), „W wersji roboczej” (jest wersja robocza tej strony) lub „Prośba o zatwierdzenie” (przepływ pracy recenzji został uruchomiony w odniesieniu do istniejącej wersji roboczej).",
+	"contentstabilization-stabilizationhistory-title": "Strona",
+	"contentstabilization-stabilizationhistory-comment": "Komentarz"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac"
+		]
+	},
+	"contentstabilization-ui-approve-cancel": "Отмена",
+	"contentstabilization-ui-approve-comment": "Комментарий",
+	"contentstabilization-overview-header-title": "Страница",
+	"contentstabilization-stabilizationhistory-title": "Страница"
+}
