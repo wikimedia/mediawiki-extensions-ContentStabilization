@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "차이 보기",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "차이 보기",
+	"contentstabilization-ui-approve-approve": "승인",
+	"contentstabilization-ui-approve-cancel": "취소",
+	"contentstabilization-label-stabilize-ns": "승인",
+	"contentstabilization-export-laststable-tag-text": "승인됨",
+	"contentstabilization-export-stablerevisiondate-tag-text": "판",
+	"contentstabilization-status-stable": "승인됨",
+	"contentstabilization-status-unstable": "초안",
+	"contentstabilization-overview-header-status": "상태",
+	"contentstabilization-column-last-stable": "승인됨"
+}
