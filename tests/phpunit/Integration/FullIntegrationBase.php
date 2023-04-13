@@ -26,7 +26,7 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	/** @var StabilizationLookup */
 	protected $lookup;
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->setMwGlobals( 'wgContLang', 'en' );
 		$this->setMwGlobals( 'wgParserCacheType', CACHE_NONE );
@@ -118,7 +118,7 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	/**
 	 * @return void
 	 */
-	protected function tearDown() : void {
+	protected function tearDown(): void {
 		parent::tearDown();
 		$this->deletePage( $this->pageToTest->toPageIdentity() );
 		$this->deletePage( $this->templatePage->toPageIdentity() );

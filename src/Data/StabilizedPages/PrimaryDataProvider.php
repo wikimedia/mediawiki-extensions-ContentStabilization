@@ -11,6 +11,7 @@ use Wikimedia\Rdbms\IDatabase;
 
 class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 
+	/** @var array */
 	private $fields = [
 		Record::PAGE_ID => 'page_id',
 		Record::PAGE_TITLE => 'page_title',
@@ -147,7 +148,7 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 	 *
 	 * @return string
 	 */
-	private function getState( \stdClass $row ) : string {
+	private function getState( \stdClass $row ): string {
 		$pageLatest = (int)$row->page_latest;
 		$lastStable = (int)$row->last_stable;
 

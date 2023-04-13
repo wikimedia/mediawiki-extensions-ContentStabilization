@@ -46,7 +46,7 @@ class ReactToStabilizationChanges implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onContentStabilizationStablePointMoved( StablePoint $oldPoint, StablePoint $newPoint ) : void {
+	public function onContentStabilizationStablePointMoved( StablePoint $oldPoint, StablePoint $newPoint ): void {
 		$this->runUpdates( $oldPoint );
 		$this->runUpdates( $newPoint );
 
@@ -56,7 +56,7 @@ class ReactToStabilizationChanges implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onContentStabilizationStablePointRemoved( StablePoint $removedPoint, Authority $remover ) : void {
+	public function onContentStabilizationStablePointRemoved( StablePoint $removedPoint, Authority $remover ): void {
 		$this->runUpdates( $removedPoint );
 		$this->specialLogLogger->stablePointRemoved( $removedPoint, $remover );
 	}
@@ -64,7 +64,7 @@ class ReactToStabilizationChanges implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onContentStabilizationStablePointAdded( StablePoint $stablePoint ) : void {
+	public function onContentStabilizationStablePointAdded( StablePoint $stablePoint ): void {
 		$this->runUpdates( $stablePoint );
 
 		$this->notifier->emit( new StablePointAdded( $stablePoint ) );
@@ -74,7 +74,7 @@ class ReactToStabilizationChanges implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onContentStabilizationStablePointUpdated( StablePoint $updatedPoint ) : void {
+	public function onContentStabilizationStablePointUpdated( StablePoint $updatedPoint ): void {
 		$this->runUpdates( $updatedPoint );
 
 		$this->notifier->emit( new StablePointAdded( $updatedPoint ) );

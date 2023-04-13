@@ -38,7 +38,7 @@ class StableFilePoint extends StablePoint {
 	/**
 	 * @return array
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return parent::jsonSerialize() + [
 			'file_name' => $this->getFile()->getName(),
 			'file_timestamp' => $this->getFile()->getTimestamp(),

@@ -132,7 +132,7 @@ class StableView implements JsonSerializable {
 	/**
 	 * @return array
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return [
 			'page' => $this->getPage() ? $this->getPage()->getId() : null,
 			'revision' => $this->getRevision() ? $this->getRevision()->getId() : null,

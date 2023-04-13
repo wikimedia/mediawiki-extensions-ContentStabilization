@@ -65,7 +65,7 @@ class StabilizationOverviewHandler extends QueryStore {
 	/**
 	 * @return IStore
 	 */
-	protected function getStore() : IStore {
+	protected function getStore(): IStore {
 		return new Store( $this->lookup, $this->lb, $this->enabledNamespace );
 	}
 

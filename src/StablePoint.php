@@ -101,7 +101,7 @@ class StablePoint implements JsonSerializable {
 	/**
 	 * @return array
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return [
 			'page' => $this->page->getId(),
 			'revision' => $this->revision->getId(),

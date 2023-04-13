@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
 use MWException;
 use PermissionsError;
+use Title;
 use User;
 
 /**
@@ -11,12 +12,13 @@ use User;
  */
 class InclusionStableTest extends FullIntegrationBase {
 
-	private $notEnabledPage;
+	/** @var Title */
+	private Title $notEnabledPage;
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 		$res = $this->insertPage( 'Help:Inclusion', 'H1' );
 		$this->notEnabledPage = $res['title'];
@@ -32,14 +34,14 @@ class InclusionStableTest extends FullIntegrationBase {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getEnabledNamespaces() : array {
+	protected function getEnabledNamespaces(): array {
 		return [ NS_MAIN, NS_TEMPLATE ];
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function shouldAllowFirstUnstable() : bool {
+	protected function shouldAllowFirstUnstable(): bool {
 		return false;
 	}
 

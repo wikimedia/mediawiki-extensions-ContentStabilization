@@ -18,14 +18,14 @@ class StablePointAdded extends TitleEvent {
 	/**
 	 * @return string
 	 */
-	public function getKey() : string {
+	public function getKey(): string {
 		return 'stable-point-added';
 	}
 
 	/**
 	 * @return Message
 	 */
-	public function getMessage() : Message {
+	public function getMessage(): Message {
 		if ( $this->getAgent()->isSystemUser() ) {
 			return Message::newFromKey( 'contentstabilization-stablepoint-added-message-passive' );
 		}

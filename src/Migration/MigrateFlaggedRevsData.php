@@ -12,6 +12,7 @@ class MigrateFlaggedRevsData extends LoggedUpdateMaintenance {
 	/** @var MediaWikiServices */
 	protected $services = null;
 
+	/** @var array */
 	private $config = [
 		'database' => [
 			'minQuality' => 1

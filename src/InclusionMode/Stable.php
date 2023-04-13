@@ -41,7 +41,7 @@ class Stable implements InclusionMode {
 		$this->enabledNamespaces = $config->get( 'EnabledNamespaces' );
 	}
 
-	public function canBeOutOfSync() : bool {
+	public function canBeOutOfSync(): bool {
 		// Bound to stable versions of the inclusions, not the current revision of the page that includes them
 		return false;
 	}

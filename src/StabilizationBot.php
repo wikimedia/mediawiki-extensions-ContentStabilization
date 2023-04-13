@@ -23,28 +23,28 @@ class StabilizationBot implements Authority {
 	/**
 	 * @inheritDoc
 	 */
-	public function getUser() : UserIdentity {
+	public function getUser(): UserIdentity {
 		return \User::newSystemUser( "ContentStabilizationBot", [ "steal" => true ] );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getBlock( int $freshness = self::READ_NORMAL ) : ?Block {
+	public function getBlock( int $freshness = self::READ_NORMAL ): ?Block {
 		return null;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function isAllowed( string $permission ) : bool {
+	public function isAllowed( string $permission ): bool {
 		return in_array( $permission, $this->permissions );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function isAllowedAny( ...$permissions ) : bool {
+	public function isAllowedAny( ...$permissions ): bool {
 		if ( !$permissions ) {
 			return false;
 		}
@@ -59,7 +59,7 @@ class StabilizationBot implements Authority {
 	/**
 	 * @inheritDoc
 	 */
-	public function isAllowedAll( ...$permissions ) : bool {
+	public function isAllowedAll( ...$permissions ): bool {
 		if ( !$permissions ) {
 			return true;
 		}
@@ -74,49 +74,49 @@ class StabilizationBot implements Authority {
 	/**
 	 * @inheritDoc
 	 */
-	public function probablyCan( string $action, PageIdentity $target, PermissionStatus $status = null ) : bool {
+	public function probablyCan( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function definitelyCan( string $action, PageIdentity $target, PermissionStatus $status = null ) : bool {
+	public function definitelyCan( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function authorizeRead( string $action, PageIdentity $target, PermissionStatus $status = null ) : bool {
+	public function authorizeRead( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function authorizeWrite( string $action, PageIdentity $target, PermissionStatus $status = null ) : bool {
+	public function authorizeWrite( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function isRegistered() : bool {
+	public function isRegistered(): bool {
 		return true;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function isTemp() : bool {
+	public function isTemp(): bool {
 		return true;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function isNamed() : bool {
+	public function isNamed(): bool {
 		return true;
 	}
 }

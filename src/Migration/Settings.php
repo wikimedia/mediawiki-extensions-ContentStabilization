@@ -6,6 +6,8 @@ use Status;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Settings {
+
+	/** @var array */
 	private $mapping = [
 		'FlaggedRevsConnectorBookshelfShowNoFR' => 'BlueSpiceBookshelfExportListDisabled',
 		'FlaggedRevsConnectorBookshelfShowNoStable' => 'BlueSpiceBookshelfExportListUnstable',

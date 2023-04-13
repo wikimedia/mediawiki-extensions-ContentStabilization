@@ -74,7 +74,7 @@ class StabilizeContent implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onBeforePageDisplay( $out, $skin ) : void {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		$action = $out->getRequest()->getVal( 'action', 'view' );
 		if ( $action !== 'view' ) {
 			return;

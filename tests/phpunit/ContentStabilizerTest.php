@@ -146,7 +146,7 @@ class ContentStabilizerTest extends TestCase {
 		$mock = $this->getMockBuilder( PermissionManager::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$mock->method( 'userCan' )->willReturnCallback( function ( $action, $user, $title ) {
+		$mock->method( 'userCan' )->willReturnCallback( static function ( $action, $user, $title ) {
 			if ( $user->getName() === 'reader' ) {
 				return false;
 			}

@@ -287,7 +287,7 @@ class InclusionManagerTest extends TestCase {
 	 */
 	private function getInclusionManager(
 		?ILoadBalancer $lb = null, ?InclusionMode $inclusionModeMock = null
-	) : InclusionManager {
+	): InclusionManager {
 		return new InclusionManager(
 			$lb ?? $this->mockLoadBalancer(),
 			$this->mockWikiPageFactory(),
@@ -303,7 +303,7 @@ class InclusionManagerTest extends TestCase {
 	 *
 	 * @return array
 	 */
-	private function getPageMocks( array $data ) : array {
+	private function getPageMocks( array $data ): array {
 		$pages = [];
 		foreach ( $data as $dbKey ) {
 			$page = $this->createMock( LinkTarget::class );
@@ -319,7 +319,7 @@ class InclusionManagerTest extends TestCase {
 	 *
 	 * @return ParserOutput
 	 */
-	private function getParserOutput( LinkTarget $page ) : ParserOutput {
+	private function getParserOutput( LinkTarget $page ): ParserOutput {
 		$output = $this->createMock( ParserOutput::class );
 		$currentInclusions = $this->getParserOutputData();
 		$output->method( 'getTemplates' )->willReturnCallback(

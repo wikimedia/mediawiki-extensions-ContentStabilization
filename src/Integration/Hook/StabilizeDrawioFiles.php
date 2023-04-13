@@ -21,6 +21,7 @@ class StabilizeDrawioFiles implements DrawioGetFileHook, BeforeInitializeHook {
 	/** @var IContextSource */
 	private $context;
 
+	/** @var bool */
 	private $doNotStabilize = false;
 
 	/**

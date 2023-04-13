@@ -9,7 +9,7 @@ class AddBootstrap implements BeforePageDisplayHook {
 	/**
 	 * @inheritDoc
 	 */
-	public function onBeforePageDisplay( $out, $skin ) : void {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		$out->addModules( [ 'ext.contentStabilization.bootstrap' ] );
 	}
 }

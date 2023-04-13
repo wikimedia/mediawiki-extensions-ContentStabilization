@@ -19,14 +19,14 @@ class InclusionFreezeTest extends FullIntegrationBase {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getEnabledNamespaces() : array {
+	protected function getEnabledNamespaces(): array {
 		return [ NS_MAIN ];
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function shouldAllowFirstUnstable() : bool {
+	protected function shouldAllowFirstUnstable(): bool {
 		return false;
 	}
 
