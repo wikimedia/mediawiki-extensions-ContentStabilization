@@ -59,7 +59,7 @@ class IntegrateIntoNamespaceManager {
 		for ( $i = 0; $i < $iResults; $i++ ) {
 			$aResults[ $i ][ 'contentstabilization' ] = [
 				'value' => in_array( $aResults[ $i ][ 'id' ], $current ),
-				'disabled' => $aResults[ $i ]['isTalkNS']
+				'disabled' => $aResults[ $i ]['isTalkNS'] || $i === NS_MEDIAWIKI
 			];
 		}
 		return true;
