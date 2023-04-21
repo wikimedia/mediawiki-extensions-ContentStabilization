@@ -270,7 +270,7 @@
 		"integrateIntoHistory": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateIntoHistory",
 			"services": [
-				"ContentStabilization.Lookup", "ContentLanguage", "TitleFactory"
+				"ContentStabilization.Lookup", "ContentLanguage", "TitleFactory", "LinkRenderer"
 			]
 		},
 		"integrateIntoNamespaceManager": {

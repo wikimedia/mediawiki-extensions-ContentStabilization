@@ -41,7 +41,7 @@
 	"contentstabilization-pref-handleinclude-none": "Versions that were current at the time of approval",
 	"contentstabilization-pref-handleinclude-stable": "Approved versions of included pages",
 	"contentstabilization-pref-handleincludes-help": "Determines which version of included resources should be shown to the user when rendering an approved version of the page",
-	"content-stabilization-stable-data": "Approved by {{GENDER:$1|[[$1]]}} on $2. Comment: $3",
+	"content-stabilization-stable-data": "Approved by {{GENDER:$1|[[User:$1]]}} on $2. Comment: $3",
 	"contentstabilization-label-stabilize-ns": "Approval",
 	"content-stabilization-integration-activity-error-context-data-missing": "\"pageId\" missing",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Cannot create a valid title from the \"pageId\" provided",
@@ -101,5 +101,6 @@
 	"contentstabilization-stabilizationhistory-comment": "Comment",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Approved pages",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Not approved pages",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approval not enabled"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approval not enabled",
+	"content-stabilization-stable-diff": "pending review"
 }

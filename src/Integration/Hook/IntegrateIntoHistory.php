@@ -7,6 +7,7 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\PageHistoryLineEndingHook;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Page\Hook\ImagePageFileHistoryLineHook;
 use MediaWiki\User\UserIdentity;
 use Message;
@@ -24,6 +25,9 @@ class IntegrateIntoHistory implements PageHistoryLineEndingHook, BeforeInitializ
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var LinkRenderer */
+	private $linkRenderer;
+
 	/** @var UserIdentity|null */
 	private $user;
 
@@ -31,13 +35,15 @@ class IntegrateIntoHistory implements PageHistoryLineEndingHook, BeforeInitializ
 	 * @param StabilizationLookup $lookup
 	 * @param Language $language
 	 * @param TitleFactory $titleFactory
+	 * @param LinkRenderer $linkRenderer
 	 */
 	public function __construct(
-		StabilizationLookup $lookup, Language $language, TitleFactory $titleFactory
+		StabilizationLookup $lookup, Language $language, TitleFactory $titleFactory, LinkRenderer $linkRenderer
 	) {
 		$this->lookup = $lookup;
 		$this->language = $language;
 		$this->titleFactory = $titleFactory;
+		$this->linkRenderer = $linkRenderer;
 	}
 
 	/**
@@ -57,7 +63,19 @@ class IntegrateIntoHistory implements PageHistoryLineEndingHook, BeforeInitializ
 			}
 			if ( !$this->lookup->canUserSeeUnstable( $this->user ) && !$this->showFirstUnstable( $title ) ) {
 				$classes[] = 'content-stabilization-hidden';
+			} elseif ( $title->getLatestRevID() === (int)$row->rev_id ) {
+				$lastStable = $this->lookup->getLastStablePoint( $title->toPageIdentity() );
+				if ( !$lastStable ) {
+					return;
+				}
+				$link = $this->linkRenderer->makeLink(
+					$title,
+					Message::newFromKey( 'content-stabilization-stable-diff' )->text(),
+					[], [ 'oldid' => $lastStable->getRevision()->getId() ] );
+
+				$s .= "[<b>$link</b>]";
 			}
+
 			return;
 		}
 		$classes[] = 'content-stabilization-stable';
