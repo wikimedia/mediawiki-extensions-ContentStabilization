@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"right-contentstabilization-stabilize": "Aprobar páginas",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "Mostrar diferencia",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Mostrar diferencia",
+	"contentstabilization-pageinfoelement-pagestatus-accept": "Aprobar página",
+	"contentstabilization-ui-approve-cancel": "Cancelar",
+	"contentstabilization-ui-approve-comment": "Comentario",
+	"contentstabilization-overview-header-title": "Página",
+	"contentstabilization-stabilizationhistory-title": "Página",
+	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Páginas aprobadas"
+}
