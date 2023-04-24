@@ -40,7 +40,7 @@
 	"contentstabilization-pref-handleinclude-none": "Верзии кои биле тековни кога е дадено одобрението",
 	"contentstabilization-pref-handleinclude-stable": "Одобрени верзии на вклучени страници",
 	"contentstabilization-pref-handleincludes-help": "Одредува која верзија на вклучените ресурси треба да му се прикажува на корисникот кога се дава одобрена верзија на страницата",
-	"content-stabilization-stable-data": "Одобрено од {{GENDER:$1|[[$1]]}} на $2. Коментар: $3",
+	"content-stabilization-stable-data": "Одобрено од {{GENDER:$1|[[User:$1]]}} на $2. Коментар: $3",
 	"contentstabilization-label-stabilize-ns": "Одобрение",
 	"content-stabilization-integration-activity-error-context-data-missing": "Недостасува „pageId“",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Не можам да создадам важечки наслов од укажаниот „pageId“",
@@ -100,5 +100,6 @@
 	"contentstabilization-stabilizationhistory-comment": "Коментар",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Одобрени страници",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Неодобрени страници",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Одобрувањето не е овозможено"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Одобрувањето не е овозможено",
+	"content-stabilization-stable-diff": "чека на проверка"
 }

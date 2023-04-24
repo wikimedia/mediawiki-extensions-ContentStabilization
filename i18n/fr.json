@@ -41,7 +41,7 @@
 	"contentstabilization-pref-handleinclude-none": "Versions en vigueur au moment de l'approbation",
 	"contentstabilization-pref-handleinclude-stable": "Versions approuvées des pages incluses",
 	"contentstabilization-pref-handleincludes-help": "Détermine quelle version des ressources incluses doit être montrée à l’utilisateur lors du rendu d’une version approuvée de la page",
-	"content-stabilization-stable-data": "Approuvé par {{GENDER:$1|}}[[$1]] sur $2. Commentaire : $3",
+	"content-stabilization-stable-data": "Approuvé par {{GENDER:$1|}}[[User:$1|$1]] sur $2. Commentaire : $3",
 	"contentstabilization-label-stabilize-ns": "Approbation",
 	"content-stabilization-integration-activity-error-context-data-missing": "« pageId » (identifiant de page) manquant",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Impossible de créer un titre valide à partir de l’identifiant de page fourni",
@@ -101,5 +101,6 @@
 	"contentstabilization-stabilizationhistory-comment": "Commentaire",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Pages approuvées",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Pages non approuvées",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approbation non activée"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approbation non activée",
+	"content-stabilization-stable-diff": "relecture en attente"
 }

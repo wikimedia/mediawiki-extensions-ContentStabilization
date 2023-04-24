@@ -40,7 +40,7 @@
 	"contentstabilization-pref-handleinclude-none": "Versiones que esseva actual al momento del approbation",
 	"contentstabilization-pref-handleinclude-stable": "Versiones approbate de paginas includite",
 	"contentstabilization-pref-handleincludes-help": "Determina qual version de ressources includite debe esser monstrate al usator durante le rendition de un version approbate del pagina",
-	"content-stabilization-stable-data": "Approbate per {{GENDER:$1|[[$1]]}} le $2. Commento: $3",
+	"content-stabilization-stable-data": "Approbate per {{GENDER:$1|[[User:$1]]}} le $2. Commento: $3",
 	"contentstabilization-label-stabilize-ns": "Approbation",
 	"content-stabilization-integration-activity-error-context-data-missing": "\"pageId\" mancante",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Non pote crear un titulo valide al partir del \"pageId\" fornite",
@@ -100,5 +100,6 @@
 	"contentstabilization-stabilizationhistory-comment": "Commento",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Paginas approbate",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Paginas non approbate",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approbation non activate"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approbation non activate",
+	"content-stabilization-stable-diff": "attende revision"
 }

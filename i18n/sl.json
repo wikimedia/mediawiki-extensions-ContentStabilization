@@ -40,7 +40,7 @@
 	"contentstabilization-pref-handleinclude-none": "Redakcije, ki so bile prikazane ob času odobritve",
 	"contentstabilization-pref-handleinclude-stable": "Odobrene različice vključenih strani",
 	"contentstabilization-pref-handleincludes-help": "Določa, katera različica vključenih virov naj bo prikazana uporabniku pri upodabljanju odobrene redakcije strani",
-	"content-stabilization-stable-data": "{{GENDER:$1|Odobril [[$1]]|Odobrila [[$1]]|Odobril_a [[$1]]}} na $2. Komentar: $3",
+	"content-stabilization-stable-data": "{{GENDER:$1|Odobril [[User:$1|$1]]|Odobrila [[User:$1|$1]]|Odobril_a [[User:$1|$1]]}} na $2. Komentar: $3",
 	"contentstabilization-label-stabilize-ns": "Odobritev",
 	"content-stabilization-integration-activity-error-context-data-missing": "manjka »pageId«",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Iz podanega »pageId« ni mogoče ustvariti veljavnega naslova",
@@ -100,5 +100,6 @@
 	"contentstabilization-stabilizationhistory-comment": "Komentar",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Odobrene strani",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Neodobrene strani",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Odobritev ni omogočena"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Odobritev ni omogočena",
+	"content-stabilization-stable-diff": "čaka na pregled"
 }
