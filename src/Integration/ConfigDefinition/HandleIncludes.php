@@ -46,6 +46,7 @@ class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 			// NONE - Default behaviour is "freeze"
 			$this->msg( 'contentstabilization-pref-handleinclude-none' )->plain() => null,
 			$this->msg( 'contentstabilization-pref-handleinclude-stable' )->plain() => 'stable',
+			$this->msg( 'contentstabilization-pref-handleinclude-current' )->plain() => 'current',
 		];
 	}
 

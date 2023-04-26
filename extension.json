@@ -21,6 +21,10 @@
 					"services": [
 						"RevisionLookup", "ContentStabilization._Store", "RepoGroup", "TitleFactory", "ContentStabilization._Config"
 					]
+				},
+				"current": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\InclusionMode\\Current",
+					"services": ["RevisionLookup", "RepoGroup", "TitleFactory"]
 				}
 			}
 		},
