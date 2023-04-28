@@ -291,7 +291,7 @@ class StabilizationLookup {
 		if ( $namespace === NS_MEDIA ) {
 			$namespace = NS_FILE;
 		}
-		if ( $page->getNamespace() < 0 ) {
+		if ( $namespace === NS_MEDIAWIKI || $namespace === NS_SPECIAL ) {
 			return false;
 		}
 		if ( $namespace !== NS_FILE ) {
