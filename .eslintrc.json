@@ -2,7 +2,8 @@
 	"root": true,
 	"extends": [
 		"wikimedia/client",
-		"wikimedia/mediawiki"
+		"wikimedia/mediawiki",
+		"wikimedia/jquery"
 	],
 	"rules": {
 		"space-before-blocks": "warn",
@@ -57,14 +58,14 @@
 		"no-prototype-builtins": "warn",
 		"mediawiki/msg-doc": "warn",
 		"new-cap": "warn",
-		"semi-style": "warn"
+		"semi-style": "warn",
+		"no-jquery/no-global-selector": "warn",
+		"no-jquery/no-class-state": "warn"
 	},
 	"globals": {
-		"$": true,
 		"ext": true,
 		"Ext": true,
 		"jQuery": true,
-		"mediaWiki": true,
-		"OO": true
+		"mediaWiki": true
 	}
 }
