@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jopparn",
 			"Sabelöga"
 		]
 	},
@@ -52,7 +53,7 @@
 	"contentstabilization-pref-allowfirstunstable": "Tillåt visning av första utkastsversionen för användare som normalt inte kan se utkast",
 	"contentstabilization-pref-stabilize-smw": "Uppdatera semantiska egenskaper bara från godkända versioner",
 	"contentstabilization-pref-allowfirstunstable-help": "När det aktiverats kommer den första utkastsversionen av en sida visas för användare som annars inte skulle kunna se utkastsversioner",
-	"contentstabilization-pref-stabilize-smw-help": "När det aktiverats kommer uppdatering av Semantiv MediaWiki-egenskaper triggas bara på aktuella versioner av sidor",
+	"contentstabilization-pref-stabilize-smw-help": "När det aktiverats kommer uppdatering av Semantisk MediaWiki-egenskaper triggas bara på aktuella versioner av sidor",
 	"contentstabilization-stablepoint-added-message-passive": "Ny godkänd version av sidan finns tillgänglig",
 	"contentstabilization-stablepoint-added-message": "lade till en ny godkänd version av sidan",
 	"contentstabilization-export-no-stable-date": "Inte godkänd",
