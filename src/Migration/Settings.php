@@ -46,9 +46,12 @@ class Settings {
 			$value = $row->s_value;
 			if ( $row->s_name === 'FlaggedRevsConnectorFlaggedRevsHandleIncludes' ) {
 				$old = (int)$value;
-				if ( $old === 0 || $old === 1 ) {
-					// OLD: FR_INCLUDES_NONE, FR_INCLUDES_FREEZE
+				if ( $old === 1 ) {
+					// OLD: FR_INCLUDES_FREEZE
 					$value = '';
+				} elseif ( $old === 0 ) {
+					// OLD: FR_INCLUDES_CURRENT
+					$value = 'current';
 				} elseif ( $old === 2 ) {
 					// OLD: FR_INCLUDES_STABLE
 					$value = 'stable';

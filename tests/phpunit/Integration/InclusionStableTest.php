@@ -154,18 +154,19 @@ class InclusionStableTest extends FullIntegrationBase {
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onBeforeParserFetchTemplateRevisionRecord
 	 */
 	public function testNotEnabledNamespace() {
+		// Not enabled namespaces behave like freeze
 		$this->editPage( $this->pageToTest, 'V1{{Help:Inclusion}}' );
 		$this->stabilize( $this->pageToTest );
 
 		$this->editPage( $this->notEnabledPage, 'H2' );
 
 		$this->assertOutputContains(
-			$this->testUser, "V1H2", [],
+			$this->testUser, "V1H2", [ 'stable' => 0 ],
 			'Permitted user should see draft of the current page, ' .
 			'and latest version of the inclusion when stabilization is not enabled'
 		);
 		$this->assertOutputContains(
-			new User(), "V1H2", [],
+			new User(), "V1H1", [],
 			'Anon user should see draft of the current page, ' .
 			'and latest version of the inclusion when stabilization is not enabled'
 		);

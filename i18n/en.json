@@ -102,5 +102,6 @@
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Approved pages",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Not approved pages",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approval not enabled",
-	"content-stabilization-stable-diff": "pending review"
+	"content-stabilization-stable-diff": "pending review",
+	"contentstabilization-pref-handleinclude-current": "Current versions of included pages"
 }

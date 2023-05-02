@@ -41,9 +41,12 @@ class Stable implements InclusionMode {
 		$this->enabledNamespaces = $config->get( 'EnabledNamespaces' );
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function canBeOutOfSync(): bool {
-		// Bound to stable versions of the inclusions, not the current revision of the page that includes them
-		return false;
+		// If ContentStabilization is disabled, default back to "none" (freeze)
+		return true;
 	}
 
 	/**
@@ -63,46 +66,42 @@ class Stable implements InclusionMode {
 				if ( !$page->exists() ) {
 					continue;
 				}
-				if ( in_array( $page->getNamespace(), $this->enabledNamespaces ) ) {
-					// In case user is viewing the latest revision of the page, or latest stable revision,
-					// show the latest stable version of includes.
-					// Otherwise, limit to the last stable version before the freezing point
-					$revLimit = !$viewingLatest ? $inclusion['revision'] : 0;
-					// TODO: Discuss
-					$conds = [
-						'sp_page' => $page->getArticleID()
-					];
-					if ( $revLimit ) {
-						$conds[] = 'sp_revision <= ' . $revLimit;
-					}
-					$stableInclusion = $this->store->getLatestMatchingPoint( $conds );
-					// If there is no stable version,
-					// use revision that was current at the time of $mainRevision's stabilization
-					if ( $stableInclusion instanceof StablePoint ) {
-						$revisionRecord = $stableInclusion->getRevision();
-					} else {
-						$revisionRecord = $this->revisionLookup->getRevisionById( $inclusion['revision'] );
-					}
-					if ( !$revisionRecord ) {
-						continue;
-					}
-					// Set stabilized revision to the inclusion
-					$inclusion['revision'] = $revisionRecord->getId();
-				} else {
-					// Stabilization not enabled, include latest
-					$inclusion['revision'] = $page->getLatestRevID();
+				if ( !in_array( $page->getNamespace(), $this->enabledNamespaces ) ) {
+					continue;
 				}
 
-				if ( $type === 'images' ) {
-					if ( in_array( NS_FILE, $this->enabledNamespaces ) ) {
-						// Get the file at the time of this revision
-						$file = $this->repoGroup->findFile(
-							$inclusion['name'], [ 'time' => $revisionRecord->getTimestamp() ]
-						);
+				// In case user is viewing the latest revision of the page, or latest stable revision,
+				// show the latest stable version of includes.
+				// Otherwise, limit to the last stable version before the freezing point
+				$revLimit = !$viewingLatest ? $inclusion['revision'] : 0;
+				$conds = [
+					'sp_page' => $page->getArticleID()
+				];
+				if ( $revLimit ) {
+					$conds[] = 'sp_revision <= ' . $revLimit;
+				}
+				$stableInclusion = $this->store->getLatestMatchingPoint( $conds );
+				// If there is no stable version,
+				// use revision that was current at the time of $mainRevision's stabilization
+				if ( $stableInclusion instanceof StablePoint ) {
+					$revisionRecord = $stableInclusion->getRevision();
+				} else {
+					$revisionRecord = $this->revisionLookup->getRevisionById( $inclusion['revision'] );
+				}
+				if ( !$revisionRecord ) {
+					continue;
+				}
+				// Set stabilized revision to the inclusion
+				$inclusion['revision'] = $revisionRecord->getId();
 
-					} else {
-						$file = $this->repoGroup->findFile( $inclusion['name'] );
+				if ( $type === 'images' ) {
+					if ( !in_array( NS_FILE, $this->enabledNamespaces ) ) {
+						continue;
 					}
+					// Get the file at the time of this revision
+					$file = $this->repoGroup->findFile(
+						$inclusion['name'], [ 'time' => $revisionRecord->getTimestamp() ]
+					);
 
 					if ( !$file ) {
 						// Do not show file at all
@@ -111,7 +110,6 @@ class Stable implements InclusionMode {
 					}
 					$inclusion['timestamp'] = $file->getTimestamp();
 					$inclusion['sha1'] = $file->getSha1();
-
 				}
 			}
 		}
