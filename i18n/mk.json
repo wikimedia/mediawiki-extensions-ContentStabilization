@@ -101,5 +101,6 @@
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Одобрени страници",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Неодобрени страници",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Одобрувањето не е овозможено",
-	"content-stabilization-stable-diff": "чека на проверка"
+	"content-stabilization-stable-diff": "чека на проверка",
+	"contentstabilization-pref-handleinclude-current": "Тековни верзии на вклучените страници"
 }

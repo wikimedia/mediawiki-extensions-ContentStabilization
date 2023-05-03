@@ -102,5 +102,6 @@
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Pages approuvées",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Pages non approuvées",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approbation non activée",
-	"content-stabilization-stable-diff": "relecture en attente"
+	"content-stabilization-stable-diff": "relecture en attente",
+	"contentstabilization-pref-handleinclude-current": "versions actuelles des pages incluses"
 }

@@ -101,5 +101,6 @@
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Odobrene strani",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Neodobrene strani",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Odobritev ni omogočena",
-	"content-stabilization-stable-diff": "čaka na pregled"
+	"content-stabilization-stable-diff": "čaka na pregled",
+	"contentstabilization-pref-handleinclude-current": "Trenutne različice vključenih strani"
 }
