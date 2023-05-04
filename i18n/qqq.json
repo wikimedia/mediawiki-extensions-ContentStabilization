@@ -59,7 +59,7 @@
 	"contentstabilization-stablepoint-added-message": "Message displayed to the user when a page is approved",
 	"contentstabilization-export-no-stable-date": "Part of a status information box displayed after the title within the export of a page",
 	"contentstabilization-export-laststable-tag-text": "Part of a status information box displayed after the title within the export of a page",
-	"contentstabilization-export-stablerevisiondate-tag-text": "Part of a status information box displayed after the title within the export of a page",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Part of a status information box displayed after the title within the export of a page.\n$1 - revision timestamp",
 	"contentstabilization-state-draft-resources-desc": "Text in a message box shown above the title",
 	"contentstabilization-state-draft-info-btn-title": "Label of a button in a message box shown above the title",
 	"contentstabilization-state-draft-info-btn-popup-title": "Tooltip of a button in a message box shown above the title",
