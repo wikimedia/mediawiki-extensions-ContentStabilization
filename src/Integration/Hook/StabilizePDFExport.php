@@ -9,7 +9,7 @@ use Config;
 use DOMXPath;
 use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
-use MediaWiki\Extension\ContentStabilization\StablePoint;
+use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Hook\BeforeInitializeHook;
 use Title;
 use TitleFactory;
@@ -37,8 +37,8 @@ class StabilizePDFExport implements
 	/** @var User */
 	private $user;
 
-	/** @var StablePoint|null */
-	private $stable = null;
+	/** @var StableView|null */
+	private $view = null;
 
 	/** @var Language */
 	private $language;
@@ -95,6 +95,7 @@ class StabilizePDFExport implements
 			// If not set anywhere, use latest
 			$oldId = $title->getLatestRevID();
 		}
+		error_log( var_export( $params, 1 ) );
 
 		if ( !isset( $params['article-id'] ) && $title instanceof Title && $title->exists() ) {
 			$params['article-id'] = $title->getArticleID();
@@ -131,9 +132,6 @@ class StabilizePDFExport implements
 		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
 			return;
 		}
-		if ( !$this->stable ) {
-			return;
-		}
 		if ( !$this->view || !$this->view->getRevision() ) {
 			return;
 		}
@@ -157,9 +155,10 @@ class StabilizePDFExport implements
 				->text()
 		);
 
-		$stableTag->setAttribute( 'class', '.contentstabilization-export-laststable-tag' );
+		$stableTag->setAttribute( 'class', 'contentstabilization-export-laststable-tag' );
 		if ( !$lastStableTime ) {
-			$dateNode = $page['dom']->createTextNode(
+			$dateNode = $page['dom']->createElement(
+				'span',
 				\Message::newFromKey( 'contentstabilization-export-no-stable-date' )
 					->plain()
 			);
@@ -172,8 +171,8 @@ class StabilizePDFExport implements
 
 		$stableRevDateTag = $page['dom']->createElement(
 			'span',
-			\Message::newFromKey( 'contentstabilization-export-stablerevisiondate-tag-text' )
-				->params( $lastStableRevisionTime )
+			' / ' . \Message::newFromKey( 'contentstabilization-export-stablerevisiondate-tag-text' )
+				->params( $page['meta']['stablerevisiondate'] )
 				->text()
 		);
 		$stableRevDateTag->setAttribute( 'class', 'contentstabilization-export' );
@@ -181,6 +180,7 @@ class StabilizePDFExport implements
 		$page['firstheading-element']->parentNode->insertBefore(
 			$stableRevDateTag, $page['firstheading-element']->nextSibling
 		);
+
 		$page['firstheading-element']->parentNode->insertBefore(
 			$stableTag, $page['firstheading-element']->nextSibling
 		);
