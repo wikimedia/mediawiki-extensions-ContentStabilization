@@ -30,7 +30,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Tooltip of a part of a sentence displayed next to the title",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "Part of a sentence displayed next to the title",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Tooltip of a part of a sentence displayed next to the title",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "Part of a sentence displayed next to the title",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Tooltip of a part of a sentence displayed next to the title",
 	"contentstabilization-ui-approve-title": "Title of a dialog that allows to approve a page",
 	"contentstabilization-ui-approve-approve": "Label of a button in a dialog that allows to approve a page.\n{{Identical|Approve}}",
