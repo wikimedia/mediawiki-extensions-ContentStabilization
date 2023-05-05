@@ -268,7 +268,9 @@ class StabilizationLookup {
 	 * @return bool
 	 */
 	public function canUserSeeUnstable( UserIdentity $user ): bool {
-		$draftGroups = $this->config->get( 'DraftGroups' );
+		$draftGroups = $this->config->get( 'DraftGroups' ) ?? [];
+		// Sysop hardcoded
+		$draftGroups[] = 'sysop';
 		if ( in_array( '*', $draftGroups ) ) {
 			return true;
 		}
