@@ -27,6 +27,8 @@ class MigrateFlaggedRevsData extends LoggedUpdateMaintenance {
 	 * @inheritDoc
 	 */
 	protected function doDBUpdates() {
+		$this->output( 'Migrate FlaggedRevs data... ' );
+
 		$this->services = MediaWikiServices::getInstance();
 		$value = [];
 
@@ -41,6 +43,7 @@ class MigrateFlaggedRevsData extends LoggedUpdateMaintenance {
 			return false;
 		}
 		$value['database'] = $dStatus->getValue();
+		$this->output( "Migrated database\n" );
 
 		// Log
 		$log = new Log( $this->services->getDBLoadBalancer() );
@@ -49,6 +52,7 @@ class MigrateFlaggedRevsData extends LoggedUpdateMaintenance {
 			return false;
 		}
 		$value['log'] = $lStatus->getValue();
+		$this->output( "Migrated logs\n" );
 
 		// Settings
 		$log = new Settings( $this->services->getDBLoadBalancer() );
@@ -57,8 +61,9 @@ class MigrateFlaggedRevsData extends LoggedUpdateMaintenance {
 			return false;
 		}
 		$value['settings'] = $lStatus->getValue();
+		$this->output( "Migrated settings\n" );
 
-		$this->output( json_encode( $value, JSON_PRETTY_PRINT ) );
+		$this->output( json_encode( $value, JSON_PRETTY_PRINT ) . "\n" );
 		return true;
 	}
 

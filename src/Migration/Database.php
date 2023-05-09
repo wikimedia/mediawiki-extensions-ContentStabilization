@@ -68,7 +68,7 @@ class Database {
 		}
 
 		$migrated = 0;
-		$batchSize = 100;
+		$batchSize = 250;
 		$db->startAtomic( __METHOD__ );
 		do {
 			$res = $db->select(
@@ -79,7 +79,7 @@ class Database {
 				],
 				[ 'fr_quality >= ' . $db->addQuotes( $this->minQuality ) ],
 				__METHOD__,
-				[ 'LIMIT' => $batchSize ]
+				[ "LIMIT" => $batchSize, "OFFSET" => $migrated ],
 			);
 
 			$numRows = $res->count();
@@ -108,7 +108,6 @@ class Database {
 				if ( $fileInserts ) {
 					$db->insert( 'stable_file_points', $fileInserts, __METHOD__, [ 'IGNORE' ] );
 				}
-
 			}
 			$migrated += $numRows;
 		} while ( $numRows >= $batchSize );
@@ -131,7 +130,7 @@ class Database {
 		}
 
 		$migrated = 0;
-		$batchSize = 100;
+		$batchSize = 250;
 		$db->startAtomic( __METHOD__ );
 		do {
 			$res = $db->select(
@@ -139,7 +138,7 @@ class Database {
 				[ 'ft_rev_id', 'ft_namespace', 'ft_title', 'ft_tmp_rev_id', 'fr_page_id' ],
 				[],
 				__METHOD__,
-				[ 'LIMIT' => $batchSize ],
+				[ "LIMIT" => $batchSize, "OFFSET" => $migrated ],
 				[ 'flaggedrevs' => [ 'INNER JOIN', 'ft_rev_id = fr_rev_id' ] ]
 			);
 
@@ -171,7 +170,7 @@ class Database {
 		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
 
 		$migrated = 0;
-		$batchSize = 100;
+		$batchSize = 250;
 		$db->startAtomic( __METHOD__ );
 		do {
 			$res = $db->select(
@@ -179,7 +178,7 @@ class Database {
 				[ 'fi_rev_id', 'fi_name', 'fi_img_timestamp', 'fi_img_sha1', 'fr_page_id' ],
 				[],
 				__METHOD__,
-				[ 'LIMIT' => $batchSize ],
+				[ "LIMIT" => $batchSize, "OFFSET" => $migrated ],
 				[ 'flaggedrevs' => [ 'INNER JOIN', 'fi_rev_id = fr_rev_id' ] ]
 			);
 
