@@ -158,7 +158,7 @@ class ContentStabilizerTest extends TestCase {
 	/**
 	 * @return array[]
 	 */
-	public function provideRevisions() {
+	public static function provideRevisions() {
 		return [
 			'already-stable' => [
 				'user' => 'admin',
@@ -190,7 +190,7 @@ class ContentStabilizerTest extends TestCase {
 	/**
 	 * @return array[]
 	 */
-	public function provideStablePoints() {
+	public static function provideStablePoints() {
 		return [
 			'valid' => [
 				'username' => 'admin',
