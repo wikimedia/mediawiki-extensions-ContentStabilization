@@ -230,7 +230,7 @@
 		"NamespaceManager::getMetaFields": "integrateIntoNamespaceManager",
 		"BSApiNamespaceStoreMakeData": "integrateIntoNamespaceManager",
 		"NamespaceManager::editNamespace": "integrateIntoNamespaceManager",
-		"NamespaceManager::writeNamespaceConfiguration": "integrateIntoNamespaceManager",
+		"NamespaceManagerBeforePersistSettings": "integrateIntoNamespaceManager",
 		"SMW::RevisionGuard::ChangeRevisionID":  "stabilizeSMWProperties",
 		"SMW::RevisionGuard::ChangeRevision": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::ChangeFile": "stabilizeSMWProperties",
