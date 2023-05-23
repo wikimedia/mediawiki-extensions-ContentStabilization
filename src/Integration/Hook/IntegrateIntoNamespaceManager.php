@@ -4,11 +4,12 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
+use BlueSpice\NamespaceManager\Hook\NamespaceManagerBeforePersistSettingsHook;
 use Config;
 use Message;
 use NamespaceInfo;
 
-class IntegrateIntoNamespaceManager {
+class IntegrateIntoNamespaceManager implements NamespaceManagerBeforePersistSettingsHook {
 
 	/**
 	 *
@@ -90,23 +91,17 @@ class IntegrateIntoNamespaceManager {
 	}
 
 	/**
-	 * @param string &$saveContent
-	 * @param string $constName
-	 * @param int $nsId
-	 * @param array $definition
-	 *
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function onNamespaceManager__writeNamespaceConfiguration(
-		&$saveContent, $constName, $nsId, $definition
-	) {
-		$current = $this->config->get( 'ContentStabilizationEnabledNamespaces' );
-		if ( $nsId === null || $this->namespaceInfo->isTalk( $nsId ) ) {
+	public function onNamespaceManagerBeforePersistSettings(
+		array &$configuration, int $id, array $definition, array $mwGlobals
+	): void {
+		$enabledNamespaces = $mwGlobals['wgContentStabilizationEnabledNamespaces'] ?? [];
+		if ( $this->namespaceInfo->isTalk( $id ) ) {
 			// Stabilization can not be activated for TALK namespaces!
-			return true;
+			return;
 		}
-
-		$currentlyActivated = in_array( $nsId, $current );
+		$currentlyActivated = in_array( $id, $enabledNamespaces );
 
 		$explicitlyDeactivated = false;
 		if ( isset( $definition['contentstabilization'] ) && $definition['contentstabilization'] === false ) {
@@ -119,9 +114,7 @@ class IntegrateIntoNamespaceManager {
 		}
 
 		if ( ( $currentlyActivated && !$explicitlyDeactivated ) || $explicitlyActivated ) {
-			$saveContent .= "\$GLOBALS['wgContentStabilizationEnabledNamespaces'][] = {$constName};\n";
+			$configuration['wgContentStabilizationEnabledNamespaces'][] = $id;
 		}
-
-		return true;
 	}
 }
