@@ -5,11 +5,11 @@
 			"StanProg"
 		]
 	},
-	"contentstabilization-desc": "Позволява на потребителите да отбелязват страниците като \"одобрени\" или \"чернови\" и да разглеждат най-скорошната одобрена версия на страница.",
+	"contentstabilization-desc": "Позволява на потребителите да отбелязват страниците като „одобрени“ или „чернови“ и да преглеждат най-скорошната одобрена версия на страница.",
 	"right-contentstabilization-oversight": "Вижте преглед на всички одобрявания на страница",
 	"action-contentstabilization-oversight": "виждате обобщение на одобренията",
 	"action-contentstabilization-admin": "управление на одобренията",
-	"contentstabilization-global-action-overview-desc": "Кратко изложение на страниците в процес на одобрение",
+	"contentstabilization-global-action-overview-desc": "Преглед на страниците в процес на одобрение",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "има чернова версия",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-title": "Показване на черновата версия",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-title": "Показване на одобрената версия",
