@@ -251,8 +251,9 @@
 		"BSBookshelfExportBeforeArticles": "stabilizeBookExport",
 		"BSApiExtJSStoreBaseBeforePostProcessData": "addStabilizationInfoToPageAssignments",
 		"BSPageAssignmentsOverview": "addStabilizationInfoToPageAssignments",
-		"MediaWikiPerformAction": "stabilizeContent"
-
+		"MediaWikiPerformAction": "stabilizeContent",
+		"SkinTemplateNavigation::Universal": "addApproveAction",
+		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -326,6 +327,13 @@
 		"addStabilizationInfoToPageAssignments": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddStabilizationInfoToPageAssignments",
 			"services": [ "ContentStabilization.Lookup", "TitleFactory" ]
+		},
+		"addApproveAction": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddApproveAction",
+			"services": [ "ContentStabilization.Lookup", "PermissionManager" ]
+		},
+		"addApproveActionDiscovery": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddApproveActionDiscovery"
 		}
 	},
 	"SpecialPages": {

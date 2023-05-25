@@ -74,23 +74,20 @@ window.ext.contentStabilization = {
 
 // Handle approval link
 $( function () {
-	var $stablilizationLink = $( '#contentstabilization-stabilize-link' );
-	if ( $stablilizationLink.length ) {
+	$( document ).on( 'click', '#contentstabilization-stabilize-link,#ca-cs-approve', function( e ) {
 		mw.loader.using( 'ext.contentStabilization.approve' ).then( function () {
-			$stablilizationLink.on( 'click', function ( e ) {
-				e.preventDefault();
-				var dialog = new ext.contentStabilization.ui.ApproveDialog( {
-						page: mw.config.get( 'wgPageName' )
-					} ),
+			e.preventDefault();
+			var dialog = new ext.contentStabilization.ui.ApproveDialog( {
+					page: mw.config.get( 'wgPageName' )
+				} ),
 				manager = new OO.ui.WindowManager();
-				$( 'body' ).append( manager.$element );
-				manager.addWindows( [ dialog ] );
-				manager.openWindow( dialog ).closed.then( function ( data ) {
-					if ( data && data.action === 'approve' ) {
-						window.location.reload();
-					}
-				} );
+			$( 'body' ).append( manager.$element );
+			manager.addWindows( [ dialog ] );
+			manager.openWindow( dialog ).closed.then( function ( data ) {
+				if ( data && data.action === 'approve' ) {
+					window.location.reload();
+				}
 			} );
 		} );
-	}
+	} );
 } );
