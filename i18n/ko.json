@@ -14,5 +14,6 @@
 	"contentstabilization-status-stable": "승인됨",
 	"contentstabilization-status-unstable": "초안",
 	"contentstabilization-overview-header-status": "상태",
-	"contentstabilization-column-last-stable": "승인됨"
+	"contentstabilization-column-last-stable": "승인됨",
+	"contentstabilization-pref-handleinclude-current": "포함된 문서의 현재 판"
 }
