@@ -103,5 +103,7 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Not approved pages",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approval not enabled",
 	"content-stabilization-stable-diff": "pending review",
-	"contentstabilization-pref-handleinclude-current": "Current versions of included pages"
+	"contentstabilization-pref-handleinclude-current": "Current versions of included pages",
+	"contentstabilization-overview-header-page-id": "Page ID",
+	"contentstabilization-overview-header-page-namespace": "Page namespaces"
 }

@@ -139,7 +139,9 @@
 				"contentstabilization-overview-header-is-in-sync",
 				"contentstabilization-overview-header-has-changed-last-approver",
 				"contentstabilization-overview-header-has-changed-last-stable-ts",
-				"contentstabilization-overview-header-has-changed-last-comment"
+				"contentstabilization-overview-header-has-changed-last-comment",
+				"contentstabilization-overview-header-page-id",
+				"contentstabilization-overview-header-page-namespace"
 			]
 		},
 		"ext.contentStabilization.view.styles": {
