@@ -104,5 +104,7 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Section header within the export of a page",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Section header within the export of a page",
 	"content-stabilization-stable-diff": "Link label for reviewing difference between unstable and last stable version",
-	"contentstabilization-pref-handleinclude-current": "This is the label of an option on [[Special:ConfigManager]]"
+	"contentstabilization-pref-handleinclude-current": "This is the label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-overview-header-page-id": "Header of a column on [[Special:ContentStabilization]]",
+	"contentstabilization-overview-header-page-namespace": "Header of a column on [[Special:ContentStabilization]]"
 }
