@@ -125,15 +125,14 @@ class StabilizeBookExport implements
 			if ( !( $title instanceof Title ) || !$title->exists() ) {
 				continue;
 			}
+			$displayTitles[$title->getArticleID()] = $this->getDisplayTitle( $title );
 			// If the articles namespace does not have stabilization enabled, we skip it
 			if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
 				$disabled[] = $title;
 				continue;
 			}
-
-			$displayTitles[$title->getArticleID()] = $this->getDisplayTitle( $title );
 			$stablePoint = $this->lookup->getLastStablePoint( $title->toPageIdentity() );
-			if ( $stablePoint && $stablePoint->getRevision()->isCurrent() ) {
+			if ( $stablePoint ) {
 				$stable[] = $stablePoint;
 			} else {
 				$unstable[] = $title;
