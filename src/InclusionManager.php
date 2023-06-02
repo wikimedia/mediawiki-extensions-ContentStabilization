@@ -9,6 +9,7 @@ use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use ParserFactory;
 use RepoGroup;
 use Title;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -33,6 +34,9 @@ class InclusionManager {
 	/** @var GlobalVarConfig */
 	private $config;
 
+	/** @var ParserFactory */
+	private $parserFactory;
+
 	/** @var array */
 	private $inclusionModes;
 
@@ -42,17 +46,20 @@ class InclusionManager {
 	 * @param RevisionLookup $revisionLookup
 	 * @param RepoGroup $repoGroup
 	 * @param GlobalVarConfig $config
+	 * @param ParserFactory $parserFactory
 	 * @param array $inclusionModes
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer, WikiPageFactory $wikiPageFactory,
-		RevisionLookup $revisionLookup, RepoGroup $repoGroup, Config $config, array $inclusionModes
+		RevisionLookup $revisionLookup, RepoGroup $repoGroup, Config $config,
+		ParserFactory $parserFactory, array $inclusionModes
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->repoGroup = $repoGroup;
 		$this->config = $config;
+		$this->parserFactory = $parserFactory;
 		$this->inclusionModes = $inclusionModes;
 	}
 
@@ -173,7 +180,10 @@ class InclusionManager {
 	private function getCurrentInclusions( LinkTarget $target ): array {
 		$page = $this->wikiPageFactory->newFromLinkTarget( $target );
 		$parserOptions = $page->makeParserOptions( 'canonical' );
-		$parserOutput = $page->getParserOutput( $parserOptions );
+		$parser = $this->parserFactory->create();
+		$parserOutput = $parser->parse(
+			$page->getContent()->getWikitextForTransclusion(), $page->getTitle(), $parserOptions
+		);
 		$transclusions = $parserOutput->getTemplates();
 		$images = $parserOutput->getImages();
 

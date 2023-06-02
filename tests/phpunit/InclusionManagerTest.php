@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests;
 
+use Content;
 use File;
 use HashConfig;
 use LocalRepo;
@@ -12,6 +13,8 @@ use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use Parser;
+use ParserFactory;
 use ParserOptions;
 use ParserOutput;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -294,6 +297,7 @@ class InclusionManagerTest extends TestCase {
 			$this->mockRevisionLookup(),
 			$this->mockRepoGroup(),
 			new HashConfig( [ 'InclusionMode' => 'default' ] ),
+			$this->getParserFactoryMock(),
 			[ 'default' => $inclusionModeMock ]
 		);
 	}
@@ -367,13 +371,35 @@ class InclusionManagerTest extends TestCase {
 			$wikipageMock->method( 'makeParserOptions' )->willReturn(
 				$this->createMock( ParserOptions::class )
 			);
-			$wikipageMock->method( 'getParserOutput' )->willReturnCallback(
-				function ( ParserOptions $options ) use ( $target ) {
-					return $this->getParserOutput( $target );
-				}
-			);
+			$contentMock = $this->createMock( Content::class );
+			$contentMock->method( 'getWikitextForTransclusion' )->willReturn( '' );
+			$wikipageMock->method( 'getContent' )->willReturn( $contentMock );
+			$titleMock = $this->createMock( Title::class );
+			$titleMock->method( 'getNamespace' )->willReturn( $target->getNamespace() );
+			$titleMock->method( 'getDBkey' )->willReturn( $target->getDBkey() );
+			$titleMock->method( 'getText' )->willReturn( $target->getText() );
+			$wikipageMock->method( 'getTitle' )->willReturn( $titleMock );
 			return $wikipageMock;
 		} );
+		return $mock;
+	}
+
+	/**
+	 * @return ParserFactory&MockObject|MockObject
+	 */
+	private function getParserFactoryMock() {
+		$parserMock = $this->createMock( Parser::class );
+		$parserMock->method( 'parse' )->willReturnCallback(
+			function ( $text, Title $title, ParserOptions $options ) {
+				return $this->getParserOutput( $title );
+			}
+		);
+
+		$mock = $this->getMockBuilder( ParserFactory::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$mock->method( 'create' )->willReturn( $parserMock );
+
 		return $mock;
 	}
 

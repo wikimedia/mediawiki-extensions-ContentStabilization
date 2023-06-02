@@ -45,6 +45,7 @@ return [
 			$services->getRevisionLookup(),
 			$services->getRepoGroup(),
 			$services->getService( 'ContentStabilization._Config' ),
+			$services->getParserFactory(),
 			$inclusionModes
 		);
 	},
