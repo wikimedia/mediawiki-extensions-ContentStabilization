@@ -103,5 +103,7 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Pages non approuvées",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approbation non activée",
 	"content-stabilization-stable-diff": "relecture en attente",
-	"contentstabilization-pref-handleinclude-current": "versions actuelles des pages incluses"
+	"contentstabilization-pref-handleinclude-current": "versions actuelles des pages incluses",
+	"contentstabilization-overview-header-page-id": "Identifiant de la page",
+	"contentstabilization-overview-header-page-namespace": "Espaces de noms des pages"
 }
