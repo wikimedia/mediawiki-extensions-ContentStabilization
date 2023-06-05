@@ -29,7 +29,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Första utkastsversion",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "godkänd",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Godkänd version",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "ett utkast, på grund av ändringar i inkluderade resurser",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Utkast på grund av ändringar i inkluderade resurser",
 	"contentstabilization-ui-approve-title": "Godkänd sida",
 	"contentstabilization-ui-approve-approve": "Godkänn",
@@ -41,7 +40,7 @@
 	"contentstabilization-pref-handleinclude-none": "Versioner som var aktuella vid tiden för godkännandet",
 	"contentstabilization-pref-handleinclude-stable": "Godkända versioner av inkluderade sidor",
 	"contentstabilization-pref-handleincludes-help": "Bestämmer vilken version av inkluderade resurser som ska visas för användare när man renderar en godkänd version av sidan",
-	"content-stabilization-stable-data": "Godkänd av {{GENDER:$1|[[$1]]}} den $2. Kommentar: $3",
+	"content-stabilization-stable-data": "Godkänd av {{GENDER:$1|[[User:$1]]}} den $2. Kommentar: $3",
 	"contentstabilization-label-stabilize-ns": "Godkännande",
 	"content-stabilization-integration-activity-error-context-data-missing": "\"pageId\" saknas",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Det går inte att skapa en giltig titel från det angivna \"pageId\".",
@@ -57,8 +56,8 @@
 	"contentstabilization-stablepoint-added-message-passive": "Ny godkänd version av sidan finns tillgänglig",
 	"contentstabilization-stablepoint-added-message": "lade till en ny godkänd version av sidan",
 	"contentstabilization-export-no-stable-date": "Inte godkänd",
-	"contentstabilization-export-laststable-tag-text": "Godkänd",
-	"contentstabilization-export-stablerevisiondate-tag-text": "Sidversion",
+	"contentstabilization-export-laststable-tag-text": "Godkänd:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Sidversion: $1",
 	"contentstabilization-state-draft-resources-desc": "Sidan är ett utkast på grund av ändringar i inkluderade resurser",
 	"contentstabilization-state-draft-info-btn-title": "Information om ändra resurser",
 	"contentstabilization-state-draft-info-btn-popup-title": "Ändra resurser:",
@@ -101,5 +100,9 @@
 	"contentstabilization-stabilizationhistory-comment": "Kommentar",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Godkända sidor",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Icke-godkända sidor",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Godkännande inte aktiverat"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Godkännande inte aktiverat",
+	"content-stabilization-stable-diff": "väntar på granskning",
+	"contentstabilization-pref-handleinclude-current": "Aktuella versioner av inkluderade sidor",
+	"contentstabilization-overview-header-page-id": "Sid-ID",
+	"contentstabilization-overview-header-page-namespace": "Sidnamnrymd"
 }
