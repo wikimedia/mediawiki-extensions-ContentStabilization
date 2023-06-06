@@ -5,7 +5,7 @@
 		]
 	},
 	"contentstabilization-ui-approve-cancel": "रद्द करें",
-	"contentstabilization-export-stablerevisiondate-tag-text": "संशोधन",
+	"contentstabilization-export-stablerevisiondate-tag-text": "अवतरण: $1",
 	"contentstabilization-overview-header-title": "पृष्ठ",
 	"contentstabilization-stabilizationhistory-title": "पृष्ठ",
 	"contentstabilization-stabilizationhistory-comment": "टिप्पणी"
