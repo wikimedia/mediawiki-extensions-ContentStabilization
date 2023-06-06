@@ -56,8 +56,8 @@
 	"contentstabilization-stablepoint-added-message-passive": "Na voljo je nova odobrena redakcija strani",
 	"contentstabilization-stablepoint-added-message": "dodana nova odobrena redakcija strani",
 	"contentstabilization-export-no-stable-date": "Ni odobreno",
-	"contentstabilization-export-laststable-tag-text": "Odobreno",
-	"contentstabilization-export-stablerevisiondate-tag-text": "Redakcija",
+	"contentstabilization-export-laststable-tag-text": "Odobreno:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Redakcija: $1",
 	"contentstabilization-state-draft-resources-desc": "Stran je osnutek zaradi spremembe vključenih virov",
 	"contentstabilization-state-draft-info-btn-title": "Informacije o spremenjenih virih",
 	"contentstabilization-state-draft-info-btn-popup-title": "Spremenjeni viri:",
@@ -102,5 +102,7 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Neodobrene strani",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Odobritev ni omogočena",
 	"content-stabilization-stable-diff": "čaka na pregled",
-	"contentstabilization-pref-handleinclude-current": "Trenutne različice vključenih strani"
+	"contentstabilization-pref-handleinclude-current": "Trenutne različice vključenih strani",
+	"contentstabilization-overview-header-page-id": "ID strani",
+	"contentstabilization-overview-header-page-namespace": "Imenski prostori strani"
 }

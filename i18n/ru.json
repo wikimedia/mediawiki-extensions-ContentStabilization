@@ -7,5 +7,6 @@
 	"contentstabilization-ui-approve-cancel": "Отмена",
 	"contentstabilization-ui-approve-comment": "Комментарий",
 	"contentstabilization-overview-header-title": "Страница",
-	"contentstabilization-stabilizationhistory-title": "Страница"
+	"contentstabilization-stabilizationhistory-title": "Страница",
+	"contentstabilization-overview-header-page-id": "Идентификатор страницы"
 }

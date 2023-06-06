@@ -19,7 +19,7 @@
 	"contentstabilization-ui-approve-comment": "تبصرہ",
 	"contentstabilization-label-stabilize-ns": "منظوری",
 	"contentstabilization-export-no-stable-date": "منظور کائنی تھیا",
-	"contentstabilization-export-laststable-tag-text": "منظور تھی ڳیا",
+	"contentstabilization-export-laststable-tag-text": "منظور تھی ڳیا:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "نظر ثانی",
 	"contentstabilization-status-stable": "منظور تھی ڳیا",
 	"contentstabilization-status-unstable": "ڈرافٹ",
@@ -31,5 +31,6 @@
 	"contentstabilization-stabilizationhistory-stabledate": "منظوری دی تریخ",
 	"contentstabilization-stabilizationhistory-title": "ورقہ",
 	"contentstabilization-stabilizationhistory-comment": "تبصرہ",
-	"contentstabilization-stabilizationhistory-stableversionstabletitle": "منظور تھئے ورقے"
+	"contentstabilization-stabilizationhistory-stableversionstabletitle": "منظور تھئے ورقے",
+	"contentstabilization-overview-header-page-id": "ورقے دی آئی ڈی"
 }

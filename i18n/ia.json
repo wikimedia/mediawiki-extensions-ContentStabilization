@@ -56,8 +56,8 @@
 	"contentstabilization-stablepoint-added-message-passive": "Un nove version approbate del pagina es disponibile",
 	"contentstabilization-stablepoint-added-message": "un nove version approbate del pagina ha essite addite",
 	"contentstabilization-export-no-stable-date": "Non approbate",
-	"contentstabilization-export-laststable-tag-text": "Approbate",
-	"contentstabilization-export-stablerevisiondate-tag-text": "Version",
+	"contentstabilization-export-laststable-tag-text": "Approbate:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Version: $1",
 	"contentstabilization-state-draft-resources-desc": "Le pagina es un version provisori a causa de modificationes in le ressources includite",
 	"contentstabilization-state-draft-info-btn-title": "Information sur ressources cambiate",
 	"contentstabilization-state-draft-info-btn-popup-title": "Ressources cambiate:",
@@ -102,5 +102,7 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Paginas non approbate",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Approbation non activate",
 	"content-stabilization-stable-diff": "attende revision",
-	"contentstabilization-pref-handleinclude-current": "Versiones actual de paginas includite"
+	"contentstabilization-pref-handleinclude-current": "Versiones actual de paginas includite",
+	"contentstabilization-overview-header-page-id": "ID del pagina",
+	"contentstabilization-overview-header-page-namespace": "Spatios de nomines de paginas"
 }

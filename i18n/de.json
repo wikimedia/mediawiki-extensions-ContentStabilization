@@ -61,7 +61,7 @@
 	"contentstabilization-stablepoint-added-message-passive": "Es ist eine neue freigegebene Version der Seite hinzugefügt worden",
 	"contentstabilization-stablepoint-added-message": "Es wurde eine neue freigegebene Version der Seite hinzugefügt",
 	"contentstabilization-export-no-stable-date": "Nicht freigegeben",
-	"contentstabilization-export-laststable-tag-text": "Freigegeben: ",
+	"contentstabilization-export-laststable-tag-text": "Freigegeben:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Revision vom: $1",
 	"contentstabilization-state-draft-resources-desc": "Die Seite ist eine Entwurfsversion aufgrund von Änderungen an eingebetteten Ressourcen",
 	"contentstabilization-state-draft-info-btn-title": "Informationen über Änderungen an eingebetteten Ressourcen",
