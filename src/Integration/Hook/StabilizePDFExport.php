@@ -87,7 +87,7 @@ class StabilizePDFExport implements
 			// if not set, get from request
 			$oldId = $this->request->getInt( 'oldid', null );
 		}
-		$title = $this->titleFactory->newFromText( $params['title'] );
+		$title = $this->titleFactory->newFromText( $params['title'] ?? '' );
 		if ( !( $title instanceof Title ) ) {
 			return;
 		}
