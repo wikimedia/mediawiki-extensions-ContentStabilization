@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"HanV",
 			"Sjoerddebruin"
 		]
 	},
 	"contentstabilization-ui-approve-cancel": "Annuleren",
-	"contentstabilization-export-stablerevisiondate-tag-text": "Versie"
+	"contentstabilization-export-stablerevisiondate-tag-text": "Versie: $1"
 }
