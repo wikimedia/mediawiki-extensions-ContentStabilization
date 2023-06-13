@@ -9,11 +9,13 @@
 	"contentstabilization-ui-approve-approve": "승인",
 	"contentstabilization-ui-approve-cancel": "취소",
 	"contentstabilization-label-stabilize-ns": "승인",
-	"contentstabilization-export-laststable-tag-text": "승인됨",
-	"contentstabilization-export-stablerevisiondate-tag-text": "판",
+	"contentstabilization-export-laststable-tag-text": "승인됨:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "판: $1",
 	"contentstabilization-status-stable": "승인됨",
 	"contentstabilization-status-unstable": "초안",
 	"contentstabilization-overview-header-status": "상태",
 	"contentstabilization-column-last-stable": "승인됨",
-	"contentstabilization-pref-handleinclude-current": "포함된 문서의 현재 판"
+	"contentstabilization-pref-handleinclude-current": "포함된 문서의 현재 판",
+	"contentstabilization-overview-header-page-id": "문서 ID",
+	"contentstabilization-overview-header-page-namespace": "문서 이름공간"
 }

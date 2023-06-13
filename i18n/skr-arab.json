@@ -20,7 +20,7 @@
 	"contentstabilization-label-stabilize-ns": "منظوری",
 	"contentstabilization-export-no-stable-date": "منظور کائنی تھیا",
 	"contentstabilization-export-laststable-tag-text": "منظور تھی ڳیا:",
-	"contentstabilization-export-stablerevisiondate-tag-text": "نظر ثانی",
+	"contentstabilization-export-stablerevisiondate-tag-text": "دہرائی: $1",
 	"contentstabilization-status-stable": "منظور تھی ڳیا",
 	"contentstabilization-status-unstable": "ڈرافٹ",
 	"contentstabilization-status-first-unstable": "پہلا ڈرافٹ",

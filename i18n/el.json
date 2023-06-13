@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ellentilav"
+			"Ellentilav",
+			"Pablothecat"
 		]
 	},
+	"contentstabilization-export-laststable-tag-text": "Εγκρίθηκε:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "αναθεώρηση $1",
 	"contentstabilization-overview-header-page-id": "Αναγνωριστικό σελίδας"
 }
