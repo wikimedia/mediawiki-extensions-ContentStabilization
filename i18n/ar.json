@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alshamiri1"
+			"Alshamiri1",
+			"Asma"
 		]
 	},
 	"contentstabilization-desc": "يسمح للمستخدمين بوضع علامة على الصفحات على أنها \"موافق عليها\" أو \"مسودة\" وعرض أحدث نسخة تمت الموافقة عليها من الصفحة.",
@@ -55,8 +56,8 @@
 	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة",
 	"contentstabilization-stablepoint-added-message": "أضاف نسخة جديدة معتمدة من الصفحة",
 	"contentstabilization-export-no-stable-date": "غير مقبول",
-	"contentstabilization-export-laststable-tag-text": "مقبول",
-	"contentstabilization-export-stablerevisiondate-tag-text": "مراجعة",
+	"contentstabilization-export-laststable-tag-text": "مقبول:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "مراجعة: $1",
 	"contentstabilization-state-draft-resources-desc": "الصفحة عبارة عن مسودة بسبب التغييرات في الموارد المضمنة",
 	"contentstabilization-state-draft-info-btn-title": "معلومات حول الموارد المتغيرة",
 	"contentstabilization-state-draft-info-btn-popup-title": "الموارد المتغيرة:",
@@ -101,5 +102,7 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "الصفحات غير المعتمدة",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "الموافقة غير ممكّنة",
 	"content-stabilization-stable-diff": "في انتظار المراجعة",
-	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة"
+	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
+	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
+	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة"
 }
