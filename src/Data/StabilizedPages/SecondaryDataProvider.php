@@ -48,7 +48,7 @@ class SecondaryDataProvider implements ISecondaryDataProvider {
 			}
 
 			// This is very expensive, maybe even for an SDP, but there is no way to determine implicit draft otherwise
-			$currentView = $this->lookup->getStableView( $title->toPageIdentity() );
+			$currentView = $this->lookup->getStableView( $title );
 			if ( !$currentView ) {
 				continue;
 			}
