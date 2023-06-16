@@ -113,9 +113,15 @@ class StabilizeContent implements
 		}
 
 		// TODO: This only considers MAIN slot (as does FR)
-		$content = $this->view->getRevision()->getContent( SlotRecord::MAIN );
+		$revision = $this->view->getRevision();
+		$content = $revision->getContent( SlotRecord::MAIN );
 		$options = $this->parser->getOptions() ?? ParserOptions::newFromContext( $article->getContext() );
-		$parserOutput = $this->parser->parse( $content->getText(), $article->getTitle(), $options );
+		$options->setCurrentRevisionRecordCallback( static function () use ( $revision ) {
+			return $revision;
+		} );
+		$parserOutput = $this->parser->parse(
+			$content->getText(), $article->getTitle(), $options, true, true, $revision->getId()
+		);
 		$parserOutput->setExtensionData( 'contentstabilization', [
 			'rev' => $this->view->getRevision()->getId(),
 			'status' => $this->view->getStatus(),
