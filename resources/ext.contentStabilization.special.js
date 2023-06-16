@@ -125,9 +125,12 @@ $( function () {
 					$row.append( $cell );
 
 					$cell = $( '<td>' );
-					record.page_namespace === 0 ?
-						$cell.append( mw.message( 'blanknamespace' ).text() ) :
+					if ( record.page_namespace === 0  ) {
+						$cell.append( mw.message( 'blanknamespace' ).text() );
+					} else {
 						$cell.append( namespaces[record.page_namespace] );
+					}
+
 					$row.append( $cell );
 
 					$cell = $( '<td>' );
