@@ -10,6 +10,8 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "одобрено",
 	"contentstabilization-ui-approve-cancel": "Откажи",
 	"content-stabilization-stable-data": "{{GENDER:$1|Одобрио|Одобрила}} [[User:$1]], $2. Опис: $3",
+	"contentstabilization-export-laststable-tag-text": "Одобрено:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Измена: $1",
 	"logentry-stabilization-add": "$1 је {{GENDER:$2|одобрио|одобрила}} страницу $3",
 	"logentry-stabilization-remove": "$1 је {{GENDER:$2|уклонио|уклонила}} одобрење са странице $3",
 	"contentstabilization-status-stable": "Одобрено",

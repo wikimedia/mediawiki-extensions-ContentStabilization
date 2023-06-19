@@ -22,8 +22,8 @@
 	"contentstabilization-ui-approve-cancel": "取消",
 	"contentstabilization-label-stabilize-ns": "核准",
 	"contentstabilization-export-no-stable-date": "未核准",
-	"contentstabilization-export-laststable-tag-text": "已核准",
-	"contentstabilization-export-stablerevisiondate-tag-text": "修訂",
+	"contentstabilization-export-laststable-tag-text": "已核准：",
+	"contentstabilization-export-stablerevisiondate-tag-text": "修訂：$1",
 	"contentstabilization-status-stable": "已核准",
 	"contentstabilization-status-unstable": "草稿",
 	"contentstabilization-status-first-unstable": "初稿",
@@ -35,5 +35,7 @@
 	"contentstabilization-stabilizationhistory-stabledate": "核准日期",
 	"contentstabilization-stabilizationhistory-title": "頁面",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "已核准的頁面",
-	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "未核准的頁面"
+	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "未核准的頁面",
+	"contentstabilization-overview-header-page-id": "頁面ID",
+	"contentstabilization-overview-header-page-namespace": "頁面命名空間"
 }
