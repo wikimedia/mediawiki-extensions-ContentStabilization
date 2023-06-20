@@ -2,10 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Ellentilav",
-			"Pablothecat"
+			"Pablothecat",
+			"Norhorn",
+			"Spyridon Eftychios Kokotos"
 		]
 	},
 	"contentstabilization-export-laststable-tag-text": "Εγκρίθηκε:",
-	"contentstabilization-export-stablerevisiondate-tag-text": "αναθεώρηση $1",
-	"contentstabilization-overview-header-page-id": "Αναγνωριστικό σελίδας"
+	"contentstabilization-export-stablerevisiondate-tag-text": "Αναθεώρηση: $1",
+	"contentstabilization-overview-header-page-id": "Αναγνωριστικό σελίδας",
+	"contentstabilization-overview-header-page-namespace": "Ονοματοχώροι σελίδων"
 }
