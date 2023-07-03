@@ -2,6 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
+use BS\ExtendedSearch\MediaWiki\Hook\ExtendedSearchRepoFileGetFileHook;
+use BS\ExtendedSearch\MediaWiki\Hook\ExtendedSearchWikiPageFetchRevisionHook;
 use Config;
 use File;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
@@ -10,7 +12,7 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
 
-class StabilizeSearchIndex {
+class StabilizeSearchIndex implements ExtendedSearchWikiPageFetchRevisionHook, ExtendedSearchRepoFileGetFileHook {
 
 	/** @var StabilizationLookup */
 	private $lookup;
@@ -28,12 +30,30 @@ class StabilizeSearchIndex {
 	}
 
 	/**
-	 * @param Title $title
-	 * @param RevisionRecord|null &$revision
-	 *
-	 * @return void
+	 * @inheritDoc
 	 */
-	public function onBSExtendedSearchWikipageFetchRevision( Title $title, ?RevisionRecord &$revision ) {
+	public function onExtendedSearchRepoFileGetFile( File &$file ) {
+		if (
+			!$this->shouldIndexStableOnly() ||
+			!$this->lookup->isStabilizationEnabled( $file->getTitle()->toPageIdentity() )
+		) {
+			return;
+		}
+		$stable = $this->getStable( $file->getTitle() );
+		if ( !( $stable instanceof StableFilePoint ) ) {
+			if ( $this->lookup->isFirstUnstableAllowed() ) {
+				return;
+			}
+			$file = null;
+			return;
+		}
+		$file = $stable->getFile();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onExtendedSearchWikiPageFetchRevision( Title $title, RevisionRecord &$revision ) {
 		if ( !$this->shouldIndexStableOnly() || !$this->lookup->isStabilizationEnabled( $title ) ) {
 			return;
 		}
@@ -46,29 +66,6 @@ class StabilizeSearchIndex {
 			return;
 		}
 		$revision = $stable->getRevision();
-	}
-
-	/**
-	 * @param File|null &$file
-	 *
-	 * @return void
-	 */
-	public function onBSExtendedSearchRepoFileGetRepoFile( ?File &$file ) {
-		if (
-			!$this->shouldIndexStableOnly() ||
-			!$this->lookup->isStabilizationEnabled( $file->getTitle()->toPageIdentity() )
-		) {
-			return;
-		}
-		$stable = $this->getStable( $file->getTitle() );
-		if ( !$stable || !( $stable instanceof StableFilePoint ) ) {
-			if ( $this->lookup->isFirstUnstableAllowed() ) {
-				return;
-			}
-			$file = null;
-			return;
-		}
-		$file = $stable->getFile();
 	}
 
 	/**
