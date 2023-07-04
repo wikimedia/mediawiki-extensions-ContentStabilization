@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"MathXplore"
+			"MathXplore",
+			"Kokage si"
 		]
 	},
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-title": "承認されたバージョンを表示",
@@ -14,8 +15,8 @@
 	"contentstabilization-ui-approve-cancel": "キャンセル",
 	"contentstabilization-ui-approve-comment": "コメント",
 	"contentstabilization-label-stabilize-ns": "承認",
-	"contentstabilization-export-laststable-tag-text": "承認済",
-	"contentstabilization-export-stablerevisiondate-tag-text": "版",
+	"contentstabilization-export-laststable-tag-text": "承認済:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "版: $1",
 	"contentstabilization-status-stable": "承認済",
 	"contentstabilization-overview-header-title": "ページ",
 	"contentstabilization-column-last-stable": "承認済",
