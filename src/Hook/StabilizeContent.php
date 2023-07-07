@@ -14,6 +14,7 @@ use MediaWiki\Hook\BeforeParserFetchTemplateRevisionRecordHook;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewHeaderHook;
 use MediaWiki\Page\Hook\ImagePageFindFileHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
@@ -28,6 +29,7 @@ use OutputPage;
 use Parser;
 use ParserOptions;
 use PermissionsError;
+use Title;
 
 class StabilizeContent implements
 	ArticleViewHeaderHook,
@@ -108,6 +110,7 @@ class StabilizeContent implements
 			$outputDone = true;
 			throw new PermissionsError( 'badaccess-group0' );
 		}
+
 		if ( $article->getContext()->getRequest()->getBool( 'debug' ) ) {
 			$this->outputStableViewInfo( $article->getContext()->getOutput() );
 		}
@@ -116,9 +119,23 @@ class StabilizeContent implements
 		$revision = $this->view->getRevision();
 		$content = $revision->getContent( SlotRecord::MAIN );
 		$options = $this->parser->getOptions() ?? ParserOptions::newFromContext( $article->getContext() );
-		$options->setCurrentRevisionRecordCallback( static function () use ( $revision ) {
-			return $revision;
-		} );
+		$options->setCurrentRevisionRecordCallback(
+			static function ( LinkTarget $link, $parser = null ) use ( $revision ) {
+				if ( $link instanceof PageIdentity ) {
+					$page = $link;
+				} else {
+					$page = Title::castFromLinkTarget( $link );
+				}
+				if (
+					$page->getDBkey() === $revision->getPage()->getDBkey() &&
+					$page->getNamespace() === $revision->getPage()->getNamespace()
+				) {
+					return $revision;
+				}
+				return MediaWikiServices::getInstance()
+					->getRevisionLookup()
+					->getKnownCurrentRevision( $page );
+			} );
 		$parserOutput = $this->parser->parse(
 			$content->getText(), $article->getTitle(), $options, true, true, $revision->getId()
 		);
@@ -190,11 +207,18 @@ class StabilizeContent implements
 			return;
 		}
 
+		if ( !$this->pageEquals( $contextTitle, $this->view->getPage() ) ) {
+			// Not checking for the page we are expecting, don't do anything
+			return;
+		}
+
+		$found = false;
 		foreach ( $this->view->getInclusions()['transclusions'] as $transclusion ) {
 			if (
 				$transclusion['namespace'] === $title->getNamespace() &&
 				$transclusion['title'] === $title->getDBkey()
 			) {
+				$found = true;
 				if ( $revRecord && $revRecord->getId() === $transclusion['revision'] ) {
 					// Already the right revision
 					return;
@@ -205,6 +229,10 @@ class StabilizeContent implements
 					return;
 				}
 			}
+		}
+		if ( !$found ) {
+			// Nested transclusion, we dont have info on this
+			return;
 		}
 
 		// Did not find a replacement
@@ -323,5 +351,15 @@ class StabilizeContent implements
 		// Replace revision to edit, if needed
 		$request->setVal( 'stable', 0 );
 		$request->unsetVal( 'oldid' );
+	}
+
+	/**
+	 * @param LinkTarget|PageIdentity $a
+	 * @param LinkTarget|PageIdentity $b
+	 *
+	 * @return bool
+	 */
+	private function pageEquals( $a, $b ): bool {
+		return $a && $b && $a->getNamespace() === $b->getNamespace() && $a->getDBkey() === $b->getDBkey();
 	}
 }

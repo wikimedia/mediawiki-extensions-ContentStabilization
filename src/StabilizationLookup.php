@@ -190,7 +190,6 @@ class StabilizationLookup {
 		if ( !$selected ) {
 			return null;
 		}
-
 		// At this point, we know there is a revision to possibly show, in requested version
 
 		$userId = $forUser ? $forUser->getId() : -1;
