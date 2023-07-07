@@ -194,6 +194,10 @@ class InclusionManager {
 		$res = [ 'transclusions' => [], 'images' => [] ];
 		foreach ( $transclusions as $nsId => $pages ) {
 			foreach ( $pages as $dbKey => $pageId ) {
+				if ( $dbKey === $target->getDBkey() && $target->getNamespace() === $nsId ) {
+					// For some reason, getTemplates returns the current page as a transclusion
+					continue;
+				}
 				$latest = $this->revisionLookup->getRevisionByPageId( $pageId );
 				if ( !$latest ) {
 					// Page doesn't exist (or something worse)
