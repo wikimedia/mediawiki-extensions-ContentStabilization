@@ -4,9 +4,10 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\ConfigDefinition;
 
 use BlueSpice\Bookshelf\ISettingPaths;
 use BlueSpice\ConfigDefinition\BooleanSetting;
+use BlueSpice\ConfigDefinition\IOverwriteGlobal;
 use ExtensionRegistry;
 
-class BookshelfExportListDisabled extends BooleanSetting implements ISettingPaths {
+class BookshelfExportListDisabled extends BooleanSetting implements ISettingPaths, IOverwriteGlobal {
 
 	/**
 	 *
@@ -40,5 +41,12 @@ class BookshelfExportListDisabled extends BooleanSetting implements ISettingPath
 	 */
 	public function isHidden() {
 		return !ExtensionRegistry::getInstance()->isLoaded( 'BlueSpiceBookshelf' );
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getGlobalName() {
+		return 'wgBlueSpiceBookshelfExportListDisabled';
 	}
 }
