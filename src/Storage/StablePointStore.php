@@ -111,7 +111,7 @@ class StablePointStore {
 		$time = DateTime::createFromFormat( 'YmdHis', $row->sp_time );
 		$file = $this->maybeGetFile( $revision, $row );
 		if ( $file ) {
-			return new StableFilePoint( $file, $revision, $actor, $time, $row->sp_comment );
+			return new StableFilePoint( $file, $revision, $actor, $time, $row->sp_comment ?? '' );
 		}
 		return new StablePoint( $revision, $actor, $time, $row->sp_comment ?? '' );
 	}
