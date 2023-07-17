@@ -53,7 +53,13 @@ class IntegrateIntoHistory implements PageHistoryLineEndingHook, BeforeInitializ
 		if ( !$this->lookup->isStabilizationEnabled( $historyAction->getTitle()->toPageIdentity() ) ) {
 			return;
 		}
-		$point = $this->lookup->getStablePointForRevisionId( (int)$row->rev_id );
+		try {
+			$point = $this->lookup->getStablePointForRevisionId( (int)$row->rev_id );
+		} catch ( \Throwable $e ) {
+			// Cannot find info on stable file point - sanity
+			$point = null;
+		}
+
 		if ( !$point ) {
 			$classes[] = 'content-stabilization-not-stable';
 			$title = $this->titleFactory->newFromID( $row->rev_page );

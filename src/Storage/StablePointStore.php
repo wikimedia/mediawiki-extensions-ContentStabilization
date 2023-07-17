@@ -317,7 +317,7 @@ class StablePointStore {
 			'time' => $row->sfp_file_timestamp,
 		] );
 		if ( !$file ) {
-			throw new Exception( 'Invalid stable file point' );
+			return null;
 		}
 		return $file;
 	}
