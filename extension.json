@@ -79,6 +79,7 @@
 						"services": [
 							"TitleFactory",
 							"ContentStabilization.Stabilizer",
+							"ContentStabilization.Lookup",
 							"RevisionStore",
 							"UserFactory"
 						]
