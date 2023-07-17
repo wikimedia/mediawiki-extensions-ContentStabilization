@@ -4,6 +4,8 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\Workflows\Activit
 
 use Exception;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
+use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
+use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\Workflows\Activity\ExecutionStatus;
 use MediaWiki\Extension\Workflows\Activity\GenericActivity;
 use MediaWiki\Extension\Workflows\Definition\ITask;
@@ -28,6 +30,8 @@ use User;
 class ApprovePageActivity extends GenericActivity {
 	/** @var ContentStabilizer */
 	private $stabilizer;
+	/** @var StabilizationLookup */
+	private $stabilizationLookup;
 	/** @var RevisionStore */
 	private $revisionStore;
 	/** @var UserFactory */
@@ -47,17 +51,19 @@ class ApprovePageActivity extends GenericActivity {
 	 *
 	 * @param TitleFactory $titleFactory
 	 * @param ContentStabilizer $stabilizer
+	 * @param StabilizationLookup $stabilizationLookup
 	 * @param RevisionStore $revisionStore
 	 * @param UserFactory $userFactory
 	 * @param ITask $task
 	 */
 	public function __construct(
-		TitleFactory $titleFactory, ContentStabilizer $stabilizer, RevisionStore $revisionStore,
-		UserFactory $userFactory, ITask $task
+		TitleFactory $titleFactory, ContentStabilizer $stabilizer, StabilizationLookup $stabilizationLookup,
+		RevisionStore $revisionStore, UserFactory $userFactory, ITask $task
 	) {
 		parent::__construct( $task );
 		$this->titleFactory = $titleFactory;
 		$this->stabilizer = $stabilizer;
+		$this->stabilizationLookup = $stabilizationLookup;
 		$this->revisionStore = $revisionStore;
 		$this->userFactory = $userFactory;
 		$this->maintenanceUser = User::newSystemUser( 'MediaWiki default', [ 'steal' => true ] );
@@ -163,7 +169,13 @@ class ApprovePageActivity extends GenericActivity {
 	 */
 	private function doApprove( string $comment ) {
 		try {
-			$point = $this->stabilizer->addStablePoint( $this->revision, $this->user, $comment );
+			$currentPoint = $this->stabilizationLookup->getStablePointForRevision( $this->revision );
+			if ( $currentPoint instanceof StablePoint ) {
+				$point = $this->stabilizer->updateStablePoint( $currentPoint, $this->user, $comment );
+			} else {
+				$point = $this->stabilizer->addStablePoint( $this->revision, $this->user, $comment );
+			}
+
 			if ( $point === null ) {
 				throw new Exception( Message::newFromKey(
 					'content-stabilization-integration-activity-error-cannot-approve'
