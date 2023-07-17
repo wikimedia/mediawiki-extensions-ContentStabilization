@@ -189,8 +189,6 @@ class StabilizeContent implements
 				return;
 			}
 		}
-		// No suitable image found
-		$options['broken'] = true;
 	}
 
 	/**
@@ -284,6 +282,7 @@ class StabilizeContent implements
 
 		$point = $this->view->getLastStablePoint();
 		if ( !( $point instanceof StableFilePoint ) ) {
+			$file = null;
 			$displayFile = null;
 			return;
 		}
