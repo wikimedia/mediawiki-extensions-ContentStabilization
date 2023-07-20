@@ -11,7 +11,7 @@ class BatchStabilize extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->addOption( 'pages', 'Page titles to stabilize, pipe separated', false, true );
+		$this->addArg( 'pages', 'File with pages to stabilize, newline separate', false );
 		$this->addOption( 'namespace', 'Namespace to stabilize', false, true );
 		$this->addOption( 'user', 'Stabilization actor', false, true );
 		$this->addOption( 'comment', 'Stabilization comment', false, true );
@@ -91,19 +91,9 @@ class BatchStabilize extends Maintenance {
 	 * @return array|ResultWrapper
 	 */
 	private function selectPages() {
-		if ( $this->hasOption( 'pages' ) ) {
-			$pages = explode( '|', $this->getOption( 'pages' ) );
-			$pages = array_map( 'trim', $pages );
-			$data = [];
-			foreach ( $pages as $page ) {
-				$title = MediaWikiServices::getInstance()->getTitleFactory()->newFromText( $this->getOption( 'page' ) );
-				if ( !$title ) {
-					$this->error( "Invalid page title: " . $page );
-					continue;
-				}
-				$data[] = (object)[ 'page_id' => $title->getArticleID(), 'page_title' => $title->getPrefixedText() ];
-			}
-			return $data;
+		$pages = $this->readInPagesFromArg();
+		if ( is_array( $pages ) ) {
+			return $pages;
 		}
 		if ( $this->hasOption( 'namespace' ) ) {
 			$namespace = $this->getOption( 'namespace' );
@@ -117,6 +107,39 @@ class BatchStabilize extends Maintenance {
 				->select( 'page', [ 'page_id', 'page_title' ], [ 'page_namespace' => $namespace ] );
 		}
 		return [];
+	}
+
+	/**
+	 * @return array|null
+	 */
+	private function readInPagesFromArg() {
+		$oldCwd = getcwd();
+		chdir( $oldCwd );
+
+		$file = null;
+		if ( $this->hasArg( 0 ) ) {
+			$file = fopen( $this->getArg( 0 ), 'r' );
+		}
+
+		if ( !$file ) {
+			// No pages file specified
+			return null;
+		}
+		$pages = [];
+		for ( $linenum = 1; !feof( $file ); $linenum++ ) {
+			$line = trim( fgets( $file ) );
+			if ( $line == '' ) {
+				continue;
+			}
+			$title = MediaWikiServices::getInstance()->getTitleFactory()->newFromText( $line );
+			if ( !$title ) {
+				$this->error( "Invalid page title: " . $line );
+				continue;
+			}
+			$pages[] = (object)[ 'page_id' => $title->getArticleID(), 'page_title' => $title->getPrefixedText() ];
+		}
+
+		return $pages;
 	}
 }
 
