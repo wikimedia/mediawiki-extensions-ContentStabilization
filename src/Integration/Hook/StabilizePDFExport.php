@@ -95,7 +95,6 @@ class StabilizePDFExport implements
 			// If not set anywhere, use latest
 			$oldId = $title->getLatestRevID();
 		}
-		error_log( var_export( $params, 1 ) );
 
 		if ( !isset( $params['article-id'] ) && $title instanceof Title && $title->exists() ) {
 			$params['article-id'] = $title->getArticleID();
