@@ -12,6 +12,7 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\MediaWikiServices;
 use PageProps;
 use Title;
 use TitleFactory;
@@ -119,13 +120,18 @@ class StabilizeBookExport implements
 		$disabled = [];
 
 		$displayTitles = [];
-
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$useBookDisplayTitle = $config->get( 'BookshelfTitleDisplayText' );
 		foreach ( $articles as $article ) {
 			$title = $this->titleFactory->newFromText( $article['title'] );
 			if ( !( $title instanceof Title ) || !$title->exists() ) {
 				continue;
 			}
-			$displayTitles[$title->getArticleID()] = $this->getDisplayTitle( $title );
+			if ( $useBookDisplayTitle ) {
+				$displayTitles[$title->getArticleID()] = $article['display-title'];
+			} else {
+				$displayTitles[$title->getArticleID()] = $this->getDisplayTitle( $title );
+			}
 			// If the articles namespace does not have stabilization enabled, we skip it
 			if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
 				$disabled[] = $title;
