@@ -180,10 +180,6 @@ class StabilizeContent implements
 
 		foreach ( $this->view->getInclusions()['images'] as $image ) {
 			if ( $image['name'] === $filename ) {
-				if ( $image['revision'] === 0 ) {
-					$options['broken'] = true;
-					return;
-				}
 				$options['sha1'] = $image['sha1'];
 				$options['time'] = $image['timestamp'];
 				return;
