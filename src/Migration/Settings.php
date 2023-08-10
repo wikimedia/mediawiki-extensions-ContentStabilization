@@ -33,6 +33,9 @@ class Settings {
 	 */
 	public function migrate() {
 		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		if ( !$db->tableExists( 'bs_settings3' ) ) {
+			return Status::newGood( [ 'migrated_settings' => 'table_not_found' ] );
+		}
 		$res = $db->select(
 			'bs_settings3',
 			[ 's_name', 's_value' ],

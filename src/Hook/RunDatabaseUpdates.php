@@ -31,5 +31,8 @@ class RunDatabaseUpdates implements LoadExtensionSchemaUpdatesHook {
 		$updater->addPostDatabaseUpdateMaintenance(
 			'MediaWiki\Extension\ContentStabilization\Migration\MigrateFlaggedRevsData'
 		);
+		$updater->addPostDatabaseUpdateMaintenance(
+			'MediaWiki\Extension\ContentStabilization\Migration\MigrateNamespaceSettings'
+		);
 	}
 }
