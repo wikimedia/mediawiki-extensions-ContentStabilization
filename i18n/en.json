@@ -104,5 +104,7 @@
 	"content-stabilization-stable-diff": "pending review",
 	"contentstabilization-pref-handleinclude-current": "Current versions of included pages",
 	"contentstabilization-overview-header-page-id": "Page ID",
-	"contentstabilization-overview-header-page-namespace": "Page namespaces"
+	"contentstabilization-overview-header-page-namespace": "Page namespaces",
+	"contentstabilization-ui-switch-to-draft-title": "Switch to draft version",
+	"contentstabilization-ui-switch-to-stable-title": "Switch to stable version"
 }
