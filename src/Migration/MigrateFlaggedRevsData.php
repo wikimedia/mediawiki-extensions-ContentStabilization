@@ -55,8 +55,8 @@ class MigrateFlaggedRevsData extends LoggedUpdateMaintenance {
 		$this->output( "Migrated logs\n" );
 
 		// Settings
-		$log = new Settings( $this->services->getDBLoadBalancer() );
-		$lStatus = $log->migrate();
+		$settings = new Settings( $this->services->getDBLoadBalancer() );
+		$lStatus = $settings->migrate();
 		if ( !$lStatus->isOK() ) {
 			return false;
 		}
