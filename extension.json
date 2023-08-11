@@ -100,6 +100,17 @@
 				"approvaldatefields": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Property\\ApprovalDatePropertyValueProvider::factory",
 				"approvaluserfields": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Property\\ApprovalUserPropertyValueProvider::factory"
 			}
+		},
+		"BlueSpiceSmartList": {
+			"ModeRegistry": {
+				"stablepages": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\SmartList\\StablePages"
+				},
+				"flaggedrevisions": {
+					"@reason": "backwards compatibility",
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\SmartList\\StablePages"
+				}
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
