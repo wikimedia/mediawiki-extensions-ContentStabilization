@@ -14,6 +14,7 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use Title;
+use WebRequest;
 use WikitextContent;
 
 class StabilizationLookup {
@@ -138,14 +139,27 @@ class StabilizationLookup {
 		$oldId = $context->getRequest()->getInt( 'oldid' );
 		$revId = $context->getTitle()->getLatestRevID();
 		$requestedRev = $oldId > 0 ? $oldId : $revId;
+		$params = [ 'upToRevision' => $requestedRev ];
 		// Default true to force stable view by default
-		$forceUnstable = $context->getRequest()->getBool( 'stable', true ) === false;
-		return $this->getStableView(
-			$context->getTitle()->toPageIdentity(), $context->getUser(), [
-				'upToRevision' => $requestedRev,
-				'forceUnstable' => $forceUnstable,
-			]
-		);
+		$explicitlyStable = $this->getStableParamFromRequest( $context->getRequest() );
+		if ( $explicitlyStable !== null ) {
+			$params['forceUnstable'] = !$explicitlyStable;
+		}
+
+		return $this->getStableView( $context->getTitle()->toPageIdentity(), $context->getUser(), $params );
+	}
+
+	/**
+	 * @param WebRequest $request
+	 *
+	 * @return bool|null null if not set
+	 */
+	public function getStableParamFromRequest( WebRequest $request ): ?bool {
+		$queryParams = $request->getValueNames();
+		if ( !in_array( 'stable', $queryParams ) ) {
+			return null;
+		}
+		return $request->getBool( 'stable' );
 	}
 
 	/**
