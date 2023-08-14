@@ -53,7 +53,10 @@ abstract class StabilizedPageElement extends PageInfo {
 			if ( $oldId > 0 ) {
 				$options['upToRevision'] = $oldId;
 			}
-			$options['forceUnstable'] = $this->context->getRequest()->getBool( 'stable', true ) === false;
+			$explicitlyStable = $this->lookup->getStableParamFromRequest( $this->context->getRequest() );
+			if ( $explicitlyStable !== null ) {
+				$options['forceUnstable'] = !$explicitlyStable;
+			}
 			if ( !$this->context->getTitle() || !$this->context->getUser() ) {
 				$this->view = null;
 				return $this->view;
