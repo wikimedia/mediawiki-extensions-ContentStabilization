@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
 /**
- * @group database
+ * @group Database
  */
 class AllowFirstDraftTest extends InclusionFreezeTest {
 

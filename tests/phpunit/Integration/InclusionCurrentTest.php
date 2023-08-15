@@ -7,7 +7,7 @@ use PermissionsError;
 use User;
 
 /**
- * @group database
+ * @group Database
  */
 class InclusionCurrentTest extends FullIntegrationBase {
 

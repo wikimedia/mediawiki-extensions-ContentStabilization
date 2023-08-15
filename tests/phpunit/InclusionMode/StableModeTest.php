@@ -15,7 +15,7 @@ use Title;
 
 /**
  * @covers \MediaWiki\Extension\ContentStabilization\InclusionMode\Stable
- * @group broken To be fixed when discussion on how this should be handled happens
+ * @group Broken To be fixed when discussion on how this should be handled happens
  *
  */
 class StableModeTest extends TestCase {

@@ -8,7 +8,7 @@ use Title;
 use User;
 
 /**
- * @group database
+ * @group Database
  */
 class InclusionStableTest extends FullIntegrationBase {
 

@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 use User;
 
 /**
- * @group database
+ * @group Database
  */
 class InclusionFreezeTest extends FullIntegrationBase {
 
