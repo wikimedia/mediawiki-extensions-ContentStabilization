@@ -78,11 +78,4 @@ class ApprovePageActivityTest extends MediaWikiIntegrationTestCase {
 		$this->assertInstanceOf( StablePoint::class, $lastStable );
 		$this->assertEquals( $this->title->getLatestRevID(), $lastStable->getRevision()->getId() );
 	}
-
-	/**
-	 * @return bool
-	 */
-	public function needsDB() {
-		return true;
-	}
 }

@@ -109,13 +109,6 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @return bool
-	 */
-	public function needsDB() {
-		return true;
-	}
-
-	/**
 	 * @return void
 	 */
 	protected function tearDown(): void {
