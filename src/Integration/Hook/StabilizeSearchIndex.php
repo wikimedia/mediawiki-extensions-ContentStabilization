@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use BS\ExtendedSearch\MediaWiki\Hook\ExtendedSearchRepoFileGetFileHook;
-use BS\ExtendedSearch\MediaWiki\Hook\ExtendedSearchWikiPageFetchRevisionHook;
+use BS\ExtendedSearch\MediaWiki\Hook\BSExtendedSearchRepoFileGetFileHook;
+use BS\ExtendedSearch\MediaWiki\Hook\BSExtendedSearchWikipageFetchRevisionHook;
 use Config;
 use File;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
@@ -12,7 +12,7 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
 
-class StabilizeSearchIndex implements ExtendedSearchWikiPageFetchRevisionHook, ExtendedSearchRepoFileGetFileHook {
+class StabilizeSearchIndex implements BSExtendedSearchWikipageFetchRevisionHook, BSExtendedSearchRepoFileGetFileHook {
 
 	/** @var StabilizationLookup */
 	private $lookup;
@@ -30,9 +30,11 @@ class StabilizeSearchIndex implements ExtendedSearchWikiPageFetchRevisionHook, E
 	}
 
 	/**
-	 * @inheritDoc
+	 * @param File $file
+	 *
+	 * @return bool|void
 	 */
-	public function onExtendedSearchRepoFileGetFile( File &$file ) {
+	public function onBSExtendedSearchRepoFileGetFile( File &$file ) {
 		if (
 			!$this->shouldIndexStableOnly() ||
 			!$this->lookup->isStabilizationEnabled( $file->getTitle()->toPageIdentity() )
@@ -51,9 +53,12 @@ class StabilizeSearchIndex implements ExtendedSearchWikiPageFetchRevisionHook, E
 	}
 
 	/**
-	 * @inheritDoc
+	 * @param Title $title
+	 * @param RevisionRecord $revision
+	 *
+	 * @return bool|void
 	 */
-	public function onExtendedSearchWikiPageFetchRevision( Title $title, RevisionRecord &$revision ) {
+	public function onBSExtendedSearchWikipageFetchRevision( Title $title, RevisionRecord &$revision ) {
 		if ( !$this->shouldIndexStableOnly() || !$this->lookup->isStabilizationEnabled( $title ) ) {
 			return;
 		}
