@@ -11,8 +11,10 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text": "یک پیش‌نویس اولیه",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "تأییدشده",
 	"contentstabilization-ui-approve-cancel": "لغو",
-	"contentstabilization-export-stablerevisiondate-tag-text": "نسخه",
+	"contentstabilization-export-stablerevisiondate-tag-text": "نسخه: $1",
 	"log-name-stabilization": "سیاههٔ پایدارسازی محتوا",
+	"contentstabilization-status-unstable": "پیش‌نویس",
+	"contentstabilization-status-first-unstable": "اولین پیش‌نویس",
 	"contentstabilization-overview-header-title": "صفحه",
 	"contentstabilization-stabilizationhistory-comment": "نظر"
 }
