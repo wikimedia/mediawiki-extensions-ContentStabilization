@@ -192,6 +192,11 @@ class StabilizeBookExport implements
 			return $pageProperties['displaytitle'];
 		}
 
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		if ( $config->get( 'BookshelfSupressBookNS' ) ) {
+			return $title->getText();
+		}
+
 		return $title->getPrefixedText();
 	}
 
