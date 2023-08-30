@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Verdy p",
 			"Wladek92"
 		]
@@ -104,5 +105,7 @@
 	"content-stabilization-stable-diff": "relecture en attente",
 	"contentstabilization-pref-handleinclude-current": "versions actuelles des pages incluses",
 	"contentstabilization-overview-header-page-id": "Identifiant de la page",
-	"contentstabilization-overview-header-page-namespace": "Espaces de noms des pages"
+	"contentstabilization-overview-header-page-namespace": "Espaces de noms des pages",
+	"contentstabilization-ui-switch-to-draft-title": "Basculer vers la version brouillon",
+	"contentstabilization-ui-switch-to-stable-title": "Basculer vers la version stable"
 }
