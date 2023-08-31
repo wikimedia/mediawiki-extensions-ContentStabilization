@@ -13,5 +13,7 @@
 	"content-stabilization-integration-activity-error-title-rev-mismatch": "La versione specificata non coincide con il titolo specificato",
 	"contentstabilization-overview-header-title": "Pagina",
 	"contentstabilization-document-version-sesp-desc": "Il numero delle versioni approvate nella cronologia della pagina",
-	"contentstabilization-pref-handleinclude-current": "Versioni attuali delle pagine incluse"
+	"contentstabilization-pref-handleinclude-current": "Versioni attuali delle pagine incluse",
+	"contentstabilization-ui-switch-to-draft-title": "Passa alla versione bozza",
+	"contentstabilization-ui-switch-to-stable-title": "Passa alla versione stabile"
 }
