@@ -107,5 +107,9 @@
 	"contentstabilization-overview-header-page-id": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-header-page-namespace": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-ui-switch-to-draft-title": "Tool label",
-	"contentstabilization-ui-switch-to-draftstable-title": "Tool label"
+	"contentstabilization-ui-switch-to-draftstable-title": "Tool label",
+	"contentstabilization-ui-switch-to-stable-title": "Tool label",
+	"contentstabilization-wikiexplorer-state": "Label for the WikiExplorer column",
+	"contentstabilization-wikiexplorer-date": "Label for the WikiExplorer column",
+	"contentstabilization-wikiexplorer-is-new-available": "Label for the WikiExplorer column"
 }
