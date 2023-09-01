@@ -393,6 +393,15 @@ class StabilizationLookup {
 	}
 
 	/**
+	 * @param int $namespace
+	 *
+	 * @return bool
+	 */
+	public function isStabilizedNamespace( int $namespace ) {
+		return in_array( $namespace, $this->config->get( 'EnabledNamespaces' ) );
+	}
+
+	/**
 	 * @param PageIdentity $page
 	 *
 	 * @return LinkTarget

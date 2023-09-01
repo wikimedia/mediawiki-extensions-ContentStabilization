@@ -431,5 +431,8 @@
 	"LogActionsHandlers": {
 		"stabilization/*": "LogFormatter"
 	},
+	"ExtensionFunctions": [
+		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateWikiExplorer::register"
+	],
 	"manifest_version": 2
 }
