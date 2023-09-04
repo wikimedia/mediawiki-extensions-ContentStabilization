@@ -103,5 +103,7 @@
 	"content-stabilization-stable-diff": "attende revision",
 	"contentstabilization-pref-handleinclude-current": "Versiones actual de paginas includite",
 	"contentstabilization-overview-header-page-id": "ID del pagina",
-	"contentstabilization-overview-header-page-namespace": "Spatios de nomines de paginas"
+	"contentstabilization-overview-header-page-namespace": "Spatios de nomines de paginas",
+	"contentstabilization-ui-switch-to-draft-title": "Cambiar al version provisori",
+	"contentstabilization-ui-switch-to-stable-title": "Cambiar al version stabile"
 }
