@@ -28,7 +28,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Prva redakcija osnutek",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "odobreno",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Odobrena redakcija",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "osnutek zaradi sprememb v vključenih virih",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Osnutek zaradi spremembe vključenih virov",
 	"contentstabilization-ui-approve-title": "Odobri stran",
 	"contentstabilization-ui-approve-approve": "Odobri",
@@ -104,5 +103,7 @@
 	"content-stabilization-stable-diff": "čaka na pregled",
 	"contentstabilization-pref-handleinclude-current": "Trenutne različice vključenih strani",
 	"contentstabilization-overview-header-page-id": "ID strani",
-	"contentstabilization-overview-header-page-namespace": "Imenski prostori strani"
+	"contentstabilization-overview-header-page-namespace": "Imenski prostori strani",
+	"contentstabilization-ui-switch-to-draft-title": "Preklop na osnutek",
+	"contentstabilization-ui-switch-to-stable-title": "Preklop na stabilno različico"
 }

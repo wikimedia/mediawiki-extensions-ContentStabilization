@@ -28,7 +28,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Prime version provisori",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "approbate",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Version approbate",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "un version provisori a causa de modificationes in le ressources includite",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Version provisori a causa de modificationes in le ressources includite",
 	"contentstabilization-ui-approve-title": "Approbar pagina",
 	"contentstabilization-ui-approve-approve": "Approbar",
@@ -104,5 +103,7 @@
 	"content-stabilization-stable-diff": "attende revision",
 	"contentstabilization-pref-handleinclude-current": "Versiones actual de paginas includite",
 	"contentstabilization-overview-header-page-id": "ID del pagina",
-	"contentstabilization-overview-header-page-namespace": "Spatios de nomines de paginas"
+	"contentstabilization-overview-header-page-namespace": "Spatios de nomines de paginas",
+	"contentstabilization-ui-switch-to-draft-title": "Cambiar al version provisori",
+	"contentstabilization-ui-switch-to-stable-title": "Cambiar al version stabile"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Dejan Savuljesku",
 			"Robert Vogel",
-			"Verdy p"
+			"Verdy p",
+			"Raymond"
 		]
 	},
 	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
@@ -107,5 +108,5 @@
 	"contentstabilization-overview-header-page-id": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-header-page-namespace": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-ui-switch-to-draft-title": "Tool label",
-	"contentstabilization-ui-switch-to-draftstable-title": "Tool label"
+	"contentstabilization-ui-switch-to-stable-title": "Tool label"
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Gomoko"
 		]
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
@@ -29,7 +30,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Première version ébauchée",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "approuvé",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Version approuvée",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "un brouillon, en raison de changements dans les ressources incluses",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Brouillon en raison de changements dans les ressources incluses",
 	"contentstabilization-ui-approve-title": "Approuver la page",
 	"contentstabilization-ui-approve-approve": "Approuver",
@@ -105,5 +105,7 @@
 	"content-stabilization-stable-diff": "relecture en attente",
 	"contentstabilization-pref-handleinclude-current": "versions actuelles des pages incluses",
 	"contentstabilization-overview-header-page-id": "Identifiant de la page",
-	"contentstabilization-overview-header-page-namespace": "Espaces de noms des pages"
+	"contentstabilization-overview-header-page-namespace": "Espaces de noms des pages",
+	"contentstabilization-ui-switch-to-draft-title": "Basculer vers la version brouillon",
+	"contentstabilization-ui-switch-to-stable-title": "Basculer vers la version stable"
 }

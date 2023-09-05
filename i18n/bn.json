@@ -5,5 +5,8 @@
 		]
 	},
 	"contentstabilization-export-laststable-tag-text": "অনুমোদিত:",
-	"contentstabilization-export-stablerevisiondate-tag-text": "সংস্করণ: $1"
+	"contentstabilization-export-stablerevisiondate-tag-text": "সংস্করণ: $1",
+	"contentstabilization-status-unstable": "খসড়া",
+	"contentstabilization-ui-switch-to-draft-title": "খসড়া সংস্করণে যান",
+	"contentstabilization-ui-switch-to-stable-title": "স্থিতিশীল সংস্করণে যান"
 }
