@@ -10,7 +10,7 @@ use DOMXPath;
 use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
-use MediaWiki\Hook\BeforeInitializeHook;
+use RequestContext;
 use Title;
 use TitleFactory;
 use User;
@@ -19,8 +19,7 @@ use WebRequest;
 class StabilizePDFExport implements
 	BSUEModulePDFgetPageHook,
 	BSUEModulePDFBeforeAddingStyleBlocksHook,
-	BSUEModulePDFbeforeGetPageHook,
-	BeforeInitializeHook
+	BSUEModulePDFbeforeGetPageHook
 {
 	/** @var StabilizationLookup */
 	private $lookup;
@@ -58,14 +57,9 @@ class StabilizePDFExport implements
 
 		$this->language = $language;
 		$this->config = $config;
-	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function onBeforeInitialize( $title, $unused, $output, $user, $request, $mediaWiki ) {
-		$this->request = $request;
-		$this->user = $user;
+		$this->request = RequestContext::getMain()->getRequest();
+		$this->user = RequestContext::getMain()->getUser();
 	}
 
 	/**
