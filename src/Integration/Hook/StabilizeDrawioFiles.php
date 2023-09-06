@@ -6,11 +6,11 @@ use File;
 use IContextSource;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\DrawioEditor\Hook\DrawioGetFileHook;
-use MediaWiki\Hook\BeforeInitializeHook;
 use RepoGroup;
+use RequestContext;
 use User;
 
-class StabilizeDrawioFiles implements DrawioGetFileHook, BeforeInitializeHook {
+class StabilizeDrawioFiles implements DrawioGetFileHook {
 
 	/** @var StabilizationLookup */
 	private $lookup;
@@ -31,13 +31,8 @@ class StabilizeDrawioFiles implements DrawioGetFileHook, BeforeInitializeHook {
 	public function __construct( StabilizationLookup $lookup, RepoGroup $repoGroup ) {
 		$this->lookup = $lookup;
 		$this->repoGroup = $repoGroup;
-	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function onBeforeInitialize( $title, $unused, $output, $user, $request, $mediaWiki ) {
-		$this->context = $output->getContext();
+		$this->context = RequestContext::getMain();
 	}
 
 	/**
