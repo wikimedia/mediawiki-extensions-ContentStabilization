@@ -103,5 +103,7 @@
 	"content-stabilization-stable-diff": "чека на проверка",
 	"contentstabilization-pref-handleinclude-current": "Тековни верзии на вклучените страници",
 	"contentstabilization-overview-header-page-id": "Назнака на страницата",
-	"contentstabilization-overview-header-page-namespace": "Именски простори на страниците"
+	"contentstabilization-overview-header-page-namespace": "Именски простори на страниците",
+	"contentstabilization-ui-switch-to-draft-title": "Прејди на нацрт-верзија",
+	"contentstabilization-ui-switch-to-stable-title": "Прејди на устојчива верзија"
 }
