@@ -10,7 +10,7 @@ window.ext.contentStabilization = {
 		if ( !page ) {
 			return $.Deferred().reject( 'ext.contentStabilization.setStablePoint: page must be a string' ).promise();
 		}
-		return ext.contentStabilization._api.put( '', JSON.stringify( { page: page, comment: comment } ) );
+		return ext.contentStabilization._api.post( '', JSON.stringify( { page: page, comment: comment } ) );
 	},
 	deleteStablePoint: function ( revid ) {
 		if ( !revid ) {
@@ -24,9 +24,6 @@ window.ext.contentStabilization = {
 		},
 		post: function ( path, params ) {
 			return ext.contentStabilization._api._ajax( path, params, 'POST' );
-		},
-		put: function ( path, params ) {
-			return ext.contentStabilization._api._ajax( path, params, 'PUT' );
 		},
 		delete: function ( path, params ) {
 			return ext.contentStabilization._api._ajax( path, params, 'DELETE' );

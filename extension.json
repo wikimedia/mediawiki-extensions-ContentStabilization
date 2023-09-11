@@ -363,7 +363,7 @@
 			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup" ]
 		},
 		{
-			"method": "PUT",
+			"method": "POST",
 			"path": "/content_stabilization",
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\SetStablePointHandler",
 			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup", "RevisionStore" ]
