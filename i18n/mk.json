@@ -28,7 +28,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Прва нацрт-верзија",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "одобрено",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Одобрена верзија",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "нацрт, поради промени во вклучените ресурси",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Нацрт поради промени во вклучените ресурси",
 	"contentstabilization-ui-approve-title": "Одобрување на страница",
 	"contentstabilization-ui-approve-approve": "Одобри",
@@ -104,5 +103,7 @@
 	"content-stabilization-stable-diff": "чека на проверка",
 	"contentstabilization-pref-handleinclude-current": "Тековни верзии на вклучените страници",
 	"contentstabilization-overview-header-page-id": "Назнака на страницата",
-	"contentstabilization-overview-header-page-namespace": "Именски простори на страниците"
+	"contentstabilization-overview-header-page-namespace": "Именски простори на страниците",
+	"contentstabilization-ui-switch-to-draft-title": "Прејди на нацрт-верзија",
+	"contentstabilization-ui-switch-to-stable-title": "Прејди на устојчива верзија"
 }
