@@ -104,5 +104,13 @@
 	"contentstabilization-stabilizationhistory-comment": "Kommentar",
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Freigegebene Seiten",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Nicht freigegebene Seiten",
-	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Seiten ohne Freigabemechanismus"
+	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Seiten ohne Freigabemechanismus",
+	"contentstabilization-pref-handleinclude-current": "Aktuelle Versionen der enthaltenen Seiten",
+	"contentstabilization-wikiexplorer-state": "Freigegeben",
+	"contentstabilization-wikiexplorer-date": "Freigabedatum",
+	"contentstabilization-wikiexplorer-is-new-available": "Neuere Version steht zur Freigabe an",
+	"contentstabilization-versionhistory-grid-header-state": "Status",
+	"contentstabilization-versionhistory-grid-header-approver": "Freigegeben von",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Freigabedatum",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Freigabekommentar"
 }
