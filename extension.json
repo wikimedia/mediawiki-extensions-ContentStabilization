@@ -111,6 +111,16 @@
 					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\SmartList\\StablePages"
 				}
 			}
+		},
+		"EnhancedStandardUIs": {
+			"HistoryPagePlugins": {
+				"contentstabilization": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\EnhancedStandardUIs\\StablePagesHistoryPlugin",
+					"services": [
+						"ContentStabilization.Lookup", "ContentLanguage", "UserFactory"
+					]
+				}
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
@@ -204,6 +214,15 @@
 			"messages": [
 				"contentstabilization-column-last-stable",
 				"contentstabilization-no-stable"
+			]
+		},
+		"ext.contentStabilization.enhanced.history": {
+			"scripts": "ext.contentStabilization.enhancedHistory.js",
+			"messages": [
+				"contentstabilization-versionhistory-grid-header-state",
+				"contentstabilization-versionhistory-grid-header-approver",
+				"contentstabilization-versionhistory-grid-header-approval-date",
+				"contentstabilization-versionhistory-grid-header-approval-comment"
 			]
 		}
 	},

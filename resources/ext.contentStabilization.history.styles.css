@@ -6,12 +6,11 @@
 }
 
 .content-stabilization-not-stable {
-	border-left: 3px solid #ef9802 !important;
-	background-color: rgba(239, 152, 2, 0.11) !important;
+	border-left: 3px solid #f28c00 !important;
 }
 .content-stabilization-stable {
-	border-left: 3px solid #00bd00 !important;
-	background-color: rgba(0, 189, 0, 0.07) !important;
+	border-left: 3px solid #94c11f !important;
+	background-color: #eff6dd !important;
 }
 
 .content-stabilization-hidden {

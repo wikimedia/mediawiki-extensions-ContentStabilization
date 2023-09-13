@@ -109,5 +109,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "Switch to stable version",
 	"contentstabilization-wikiexplorer-state": "Approved",
 	"contentstabilization-wikiexplorer-date": "Approval date",
-	"contentstabilization-wikiexplorer-is-new-available": "Approval pending"
+	"contentstabilization-wikiexplorer-is-new-available": "Approval pending",
+	"contentstabilization-versionhistory-grid-header-state": "State",
+	"contentstabilization-versionhistory-grid-header-approver": "Approved by",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Approval date",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Approval comment"
 }
