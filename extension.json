@@ -425,6 +425,10 @@
 			"value": true,
 			"description": "List pages that do not have stabilization enabled",
 			"public": true
+		},
+		"BlueSpicePageApprovedReminderDelay": {
+			"public": false,
+			"value": 168
 		}
 	},
 	"LogTypes": [ "stabilization" ],
