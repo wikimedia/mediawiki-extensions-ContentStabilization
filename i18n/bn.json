@@ -8,5 +8,7 @@
 	"contentstabilization-export-stablerevisiondate-tag-text": "সংস্করণ: $1",
 	"contentstabilization-status-unstable": "খসড়া",
 	"contentstabilization-ui-switch-to-draft-title": "খসড়া সংস্করণে যান",
-	"contentstabilization-ui-switch-to-stable-title": "স্থিতিশীল সংস্করণে যান"
+	"contentstabilization-ui-switch-to-stable-title": "স্থিতিশীল সংস্করণে যান",
+	"contentstabilization-wikiexplorer-state": "অনুমোদিত",
+	"contentstabilization-wikiexplorer-date": "অনুমোদনের তারিখ"
 }

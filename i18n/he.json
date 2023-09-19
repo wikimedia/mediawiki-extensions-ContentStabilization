@@ -105,5 +105,8 @@
 	"contentstabilization-overview-header-page-id": "מזהה הדף",
 	"contentstabilization-overview-header-page-namespace": "מרחבי השם של הדף",
 	"contentstabilization-ui-switch-to-draft-title": "מעבר לגרסת טיוטה",
-	"contentstabilization-ui-switch-to-stable-title": "מעבר לגרסה יציבה"
+	"contentstabilization-ui-switch-to-stable-title": "מעבר לגרסה יציבה",
+	"contentstabilization-wikiexplorer-state": "מאושרת",
+	"contentstabilization-wikiexplorer-date": "תאריך האישור",
+	"contentstabilization-wikiexplorer-is-new-available": "בהמתנה לאישור"
 }
