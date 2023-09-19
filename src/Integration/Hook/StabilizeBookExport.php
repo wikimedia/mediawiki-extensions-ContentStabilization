@@ -10,17 +10,16 @@ use DOMElement;
 use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
-use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use PageProps;
+use RequestContext;
 use Title;
 use TitleFactory;
 use User;
 
 class StabilizeBookExport implements
 	BSBookshelfExportBeforeArticlesHook,
-	BeforeInitializeHook,
 	BSUEModulePDFBeforeAddingStyleBlocksHook
 {
 	/** @var StabilizationLookup */
@@ -63,13 +62,8 @@ class StabilizeBookExport implements
 		$this->pageProps = $pageProps;
 		$this->config = $config;
 		$this->hookContainer = $hookContainer;
-	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function onBeforeInitialize( $title, $unused, $output, $user, $request, $mediaWiki ) {
-		$this->user = $user;
+		$this->user = RequestContext::getMain()->getUser();
 	}
 
 	/**
