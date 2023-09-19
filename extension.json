@@ -240,7 +240,7 @@
 		"MWStakeCommonUIRegisterSkinSlotComponents": "registerGlobalAction",
 		"PageHistoryLineEnding": "integrateIntoHistory",
 		"ImagePageFileHistoryLine": "integrateIntoHistory",
-		"BeforeInitialize": [ "integrateIntoHistory", "stabilizePDFExport", "stabilizeBookExport", "stabilizeDrawioFile" ],
+		"BeforeInitialize": [ "integrateIntoHistory" ],
 		"NamespaceManager::getMetaFields": "integrateIntoNamespaceManager",
 		"BSApiNamespaceStoreMakeData": "integrateIntoNamespaceManager",
 		"NamespaceManager::editNamespace": "integrateIntoNamespaceManager",
