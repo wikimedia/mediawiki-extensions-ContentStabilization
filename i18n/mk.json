@@ -105,5 +105,8 @@
 	"contentstabilization-overview-header-page-id": "Назнака на страницата",
 	"contentstabilization-overview-header-page-namespace": "Именски простори на страниците",
 	"contentstabilization-ui-switch-to-draft-title": "Прејди на нацрт-верзија",
-	"contentstabilization-ui-switch-to-stable-title": "Прејди на устојчива верзија"
+	"contentstabilization-ui-switch-to-stable-title": "Прејди на устојчива верзија",
+	"contentstabilization-wikiexplorer-state": "Одобрено",
+	"contentstabilization-wikiexplorer-date": "Состојба на одобреност",
+	"contentstabilization-wikiexplorer-is-new-available": "Се чека на одобрување"
 }
