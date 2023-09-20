@@ -206,31 +206,38 @@ class StabilizeContent implements
 			return;
 		}
 
-		$found = false;
 		foreach ( $this->view->getInclusions()['transclusions'] as $transclusion ) {
 			if (
 				$transclusion['namespace'] === $title->getNamespace() &&
 				$transclusion['title'] === $title->getDBkey()
 			) {
-				$found = true;
-				if ( $revRecord && $revRecord->getId() === $transclusion['revision'] ) {
-					// Already the right revision
+				$selectedRevision = $revRecord;
+				if ( !$selectedRevision || $selectedRevision->getId() !== $transclusion['revision'] ) {
+					$replacement = $this->revisionLookup->getRevisionById( $transclusion['revision'] );
+					if ( $replacement ) {
+						$selectedRevision = $replacement;
+					}
+				}
+				if ( !$selectedRevision ) {
+					// NO revision to show
+					$skip = true;
 					return;
 				}
-				$replacement = $this->revisionLookup->getRevisionById( $transclusion['revision'] );
-				if ( $replacement ) {
-					$revRecord = $replacement;
+				// Get stable view for transclusion
+				$view = $this->lookup->getStableView(
+					Title::newFromLinkTarget( $title )->toPageIdentity(),
+					$this->view->getTargetUser(), [
+						'upToRevision' => $selectedRevision->getId(),
+				] );
+				if ( !$view ) {
+					$skip = true;
 					return;
 				}
+				$revRecord = $view->getRevision();
+				$skip = $revRecord === null;
+				return;
 			}
 		}
-		if ( !$found ) {
-			// Nested transclusion, we dont have info on this
-			return;
-		}
-
-		// Did not find a replacement
-		$skip = true;
 	}
 
 	/**
