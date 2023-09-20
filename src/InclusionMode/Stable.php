@@ -73,6 +73,7 @@ class Stable implements InclusionMode {
 				// In case user is viewing the latest revision of the page, or latest stable revision,
 				// show the latest stable version of includes.
 				// Otherwise, limit to the last stable version before the freezing point
+				// (if user is viewing old version of the page, show transclusions as they were at that time)
 				$revLimit = !$viewingLatest ? $inclusion['revision'] : 0;
 				$conds = [
 					'sp_page' => $page->getArticleID()
