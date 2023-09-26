@@ -346,6 +346,7 @@ class InclusionManager {
 		$latestInclusions = $this->getCurrentStabilizedInclusions( $point->getRevision() );
 		$tc = $this->compareTransclusions( $latestInclusions['transclusions'], $stableInclusions['transclusions'] );
 		$ic = $this->compareImages( $latestInclusions['images'], $stableInclusions['images'] );
+		$untracked = $this->getUntrackedInclusions( $latestInclusions, $stableInclusions );
 
 		$res = [];
 		if ( !empty( $tc ) ) {
@@ -353,6 +354,9 @@ class InclusionManager {
 		}
 		if ( !empty( $ic ) ) {
 			$res['images'] = $ic;
+		}
+		if ( !empty( $untracked ) ) {
+			$res['untracked'] = $untracked;
 		}
 		return $res;
 	}
@@ -408,6 +412,36 @@ class InclusionManager {
 			$simpleKey = implode( '|', array_values( $relevantKeys ) );
 			$simplified[$simpleKey] = $inclusion;
 		}
+		return $simplified;
+	}
+
+	/**
+	 * @param array $latestInclusions
+	 * @param array $stableInclusions
+	 *
+	 * @return array
+	 */
+	private function getUntrackedInclusions( array $latestInclusions, array $stableInclusions ): array {
+		return array_values( array_diff(
+			$this->simplifyForUntrackedCheck( $latestInclusions ),
+			$this->simplifyForUntrackedCheck( $stableInclusions )
+		) );
+	}
+
+	/**
+	 * @param array $inclusions
+	 *
+	 * @return array
+	 */
+	private function simplifyForUntrackedCheck( array $inclusions ): array {
+		$simplified = [];
+		foreach ( $inclusions['transclusions'] as $inclusion ) {
+			$simplified[] = 't|' . $inclusion['namespace'] . '|' . $inclusion['title'];
+		}
+		foreach ( $inclusions['images'] as $inclusion ) {
+			$simplified[] = 'i|' . $inclusion['name'];
+		}
+
 		return $simplified;
 	}
 }
