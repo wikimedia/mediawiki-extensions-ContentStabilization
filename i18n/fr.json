@@ -107,5 +107,8 @@
 	"contentstabilization-overview-header-page-id": "Identifiant de la page",
 	"contentstabilization-overview-header-page-namespace": "Espaces de noms des pages",
 	"contentstabilization-ui-switch-to-draft-title": "Basculer vers la version brouillon",
-	"contentstabilization-ui-switch-to-stable-title": "Basculer vers la version stable"
+	"contentstabilization-ui-switch-to-stable-title": "Basculer vers la version stable",
+	"contentstabilization-wikiexplorer-state": "Approuvé",
+	"contentstabilization-wikiexplorer-date": "Date d’approbation",
+	"contentstabilization-wikiexplorer-is-new-available": "Approbation en attente"
 }

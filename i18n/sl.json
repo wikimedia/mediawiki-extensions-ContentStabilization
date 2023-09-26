@@ -105,5 +105,8 @@
 	"contentstabilization-overview-header-page-id": "ID strani",
 	"contentstabilization-overview-header-page-namespace": "Imenski prostori strani",
 	"contentstabilization-ui-switch-to-draft-title": "Preklop na osnutek",
-	"contentstabilization-ui-switch-to-stable-title": "Preklop na stabilno različico"
+	"contentstabilization-ui-switch-to-stable-title": "Preklop na stabilno različico",
+	"contentstabilization-wikiexplorer-state": "Odobreno",
+	"contentstabilization-wikiexplorer-date": "Datum odobritve",
+	"contentstabilization-wikiexplorer-is-new-available": "Odobritev v teku"
 }

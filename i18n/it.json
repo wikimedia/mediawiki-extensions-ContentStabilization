@@ -15,5 +15,8 @@
 	"contentstabilization-document-version-sesp-desc": "Il numero delle versioni approvate nella cronologia della pagina",
 	"contentstabilization-pref-handleinclude-current": "Versioni attuali delle pagine incluse",
 	"contentstabilization-ui-switch-to-draft-title": "Passa alla versione bozza",
-	"contentstabilization-ui-switch-to-stable-title": "Passa alla versione stabile"
+	"contentstabilization-ui-switch-to-stable-title": "Passa alla versione stabile",
+	"contentstabilization-wikiexplorer-state": "Approvato",
+	"contentstabilization-wikiexplorer-date": "Data approvazione",
+	"contentstabilization-wikiexplorer-is-new-available": "In attesa di approvazione"
 }
