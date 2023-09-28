@@ -159,15 +159,22 @@ class SyncResources extends Maintenance {
 		if ( $onlyUntracked ) {
 			$this->output( "Only syncing untracked resources\n" );
 		}
-		$iCount = $tCount = 0;
+		$imageCount = $transclusionCount = 0;
 		foreach ( $views as $view ) {
 			$outOfSync = $view->getOutOfSyncInclusions();
-			$tCount += $this->syncTransclusions( $view, $outOfSync, $resources, $onlyUntracked );
-			$iCount += $this->syncImages( $view, $outOfSync, $resources, $onlyUntracked );
+			$didSyncTransclusions = $this->syncTransclusions( $view, $outOfSync, $resources, $onlyUntracked );
+			$didSyncImages = $this->syncImages( $view, $outOfSync, $resources, $onlyUntracked );
+			if ( $didSyncTransclusions || $didSyncImages ) {
+				$this->output(
+					"Synced:" . $view->getPage()->getNamespace() . ':' . $view->getPage()->getDBkey() . "\n"
+				);
+			}
+			$transclusionCount += $didSyncTransclusions;
+			$imageCount += $didSyncImages;
 		}
 
-		if ( $tCount || $iCount ) {
-			$this->output( "Synced $tCount transclusions and $iCount images\n" );
+		if ( $transclusionCount || $imageCount ) {
+			$this->output( "Synced $transclusionCount transclusions and $imageCount images\n" );
 		} else {
 			$this->output( "No resources to sync\n" );
 		}
@@ -328,7 +335,7 @@ class SyncResources extends Maintenance {
 		$res = true;
 		if ( $insertData ) {
 			$res = $this->getDB( DB_PRIMARY )->insert(
-				$table, $insertData, $method
+				$table, $insertData, $method, [ 'IGNORE' ]
 			);
 		}
 
