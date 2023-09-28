@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration\Property;
 
 use BlueSpice\SMWConnector\PropertyValueProvider;
+use MediaWiki\Extension\ContentStabilization\StabilizationBot;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\MediaWikiServices;
 use Message;
@@ -84,7 +85,8 @@ class DocumentStatePropertyValueProvider extends PropertyValueProvider {
 		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
 			return;
 		}
-		$view = $this->lookup->getStableView( $title->toPageIdentity(), null, [
+		// Use user who can see all versions, to get the latest page state
+		$view = $this->lookup->getStableView( $title->toPageIdentity(), ( new StabilizationBot() )->getUser(), [
 			'forceUnstable' => true
 		] );
 		if ( $view === null ) {

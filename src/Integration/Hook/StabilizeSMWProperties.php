@@ -19,7 +19,7 @@ class StabilizeSMWProperties {
 	private $csConfig;
 
 	/** @var StablePoint|null */
-	private $stable = -1;
+	private $stable = null;
 
 	/**
 	 * @param StabilizationLookup $lookup
@@ -108,14 +108,12 @@ class StabilizeSMWProperties {
 	 * @return void
 	 */
 	private function assertStable( Title $title, ?int $revId = null ) {
-		if ( $this->stable === -1 ) {
-			$stable = $this->lookup->getLastStablePoint( $title->toPageIdentity(), $revId );
-			if ( !$stable ) {
-				$this->stable = null;
-				return;
-			}
-			$this->stable = $stable;
+		$stable = $this->lookup->getLastStablePoint( $title->toPageIdentity(), $revId );
+		if ( !$stable ) {
+			$this->stable = null;
+			return;
 		}
+		$this->stable = $stable;
 	}
 
 	/**

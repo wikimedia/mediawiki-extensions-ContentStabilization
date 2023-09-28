@@ -44,6 +44,9 @@ class StabilizeDrawioFiles implements DrawioGetFileHook {
 		if ( !$this->context ) {
 			return;
 		}
+		if ( !$this->context->getTitle() ) {
+			return;
+		}
 		if ( !$this->lookup->isStabilizationEnabled( $this->context->getTitle() ) ) {
 			return;
 		}
