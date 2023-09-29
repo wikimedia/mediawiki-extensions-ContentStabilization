@@ -13,6 +13,7 @@ use MediaWiki\Hook\BeforeParserFetchFileAndTitleHook;
 use MediaWiki\Hook\BeforeParserFetchTemplateRevisionRecordHook;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewHeaderHook;
@@ -30,6 +31,7 @@ use Parser;
 use ParserOptions;
 use PermissionsError;
 use Title;
+use TitleFactory;
 
 class StabilizeContent implements
 	ArticleViewHeaderHook,
@@ -54,6 +56,12 @@ class StabilizeContent implements
 	/** @var ContentStabilizer */
 	private $stabilizer;
 
+	/** @var HookContainer */
+	private $hookContainer;
+
+	/** @var TitleFactory */
+	private $titleFactory;
+
 	/** @var StableView|null */
 	private $view = null;
 
@@ -62,15 +70,19 @@ class StabilizeContent implements
 	 * @param Parser $parser
 	 * @param RevisionLookup $revisionLookup
 	 * @param ContentStabilizer $stabilizer
+	 * @param HookContainer $hookContainer
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
-		StabilizationLookup $lookup, Parser $parser,
-		RevisionLookup $revisionLookup, ContentStabilizer $stabilizer
+		StabilizationLookup $lookup, Parser $parser, RevisionLookup $revisionLookup, ContentStabilizer $stabilizer,
+		HookContainer $hookContainer, TitleFactory $titleFactory
 	) {
 		$this->lookup = $lookup;
 		$this->parser = $parser;
 		$this->revisionLookup = $revisionLookup;
 		$this->stabilizer = $stabilizer;
+		$this->hookContainer = $hookContainer;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/**
@@ -145,7 +157,13 @@ class StabilizeContent implements
 		] );
 		$outputDone = $parserOutput;
 		$parserOutput->setRevisionTimestampUsed( $this->view->getRevision()->getTimestamp() );
+		$parserOutput->setCacheRevisionId( $this->view->getRevision()->getId() );
 		$parserOutput->setRevisionUsedSha1Base36( $this->view->getRevision()->getSha1() );
+
+		$pageTitle = $this->titleFactory->castFromPageIdentity( $this->view->getRevision()->getPage() );
+		$this->hookContainer->run(
+			'ContentAlterParserOutput', [ $content, $pageTitle, &$parserOutput ]
+		);
 		$article->getContext()->getOutput()->addParserOutput( $parserOutput );
 		$article->getContext()->getOutput()->setRevisionId( $this->view->getRevision()->getId() );
 	}
@@ -229,12 +247,13 @@ class StabilizeContent implements
 					$this->view->getTargetUser(), [
 						'upToRevision' => $selectedRevision->getId(),
 				] );
-				if ( !$view ) {
-					$skip = true;
-					return;
+				if ( $view ) {
+					// Resource stabilized
+					$revRecord = $view->getRevision();
+					$skip = $revRecord === null;
 				}
-				$revRecord = $view->getRevision();
-				$skip = $revRecord === null;
+
+				$revRecord = $selectedRevision;
 				return;
 			}
 		}
