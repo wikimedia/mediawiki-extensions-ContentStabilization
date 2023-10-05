@@ -120,7 +120,7 @@ class StabilizeContent implements
 		}
 		if ( !$this->view->getRevision() ) {
 			$outputDone = true;
-			throw new PermissionsError( 'badaccess-group0' );
+			throw new PermissionsError( null, [ 'badaccess-group0' ] );
 		}
 
 		if ( $article->getContext()->getRequest()->getBool( 'debug' ) ) {
