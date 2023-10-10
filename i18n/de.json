@@ -33,7 +33,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "Erstentwurfsversion",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "freigegeben",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Freigegebene Version",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "eine Entwurfsversion aufgrund unfreigegebener Änderungen an verwendeten Ressourcen",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Entwurfsversion aufgrund von Änderungen an verwendeten Ressourcen",
 	"contentstabilization-ui-approve-title": "Seite freigeben",
 	"contentstabilization-ui-approve-approve": "Freigeben",
@@ -106,5 +105,8 @@
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Freigegebene Seiten",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Nicht freigegebene Seiten",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Seiten ohne Freigabemechanismus",
-	"contentstabilization-pref-handleinclude-current": "Aktuelle Versionen der enthaltenen Seiten"
+	"contentstabilization-pref-handleinclude-current": "Aktuelle Versionen der enthaltenen Seiten",
+	"contentstabilization-wikiexplorer-state": "Freigegeben",
+	"contentstabilization-wikiexplorer-date": "Freigabedatum",
+	"contentstabilization-wikiexplorer-is-new-available": "Neuere Version steht zur Freigabe an"
 }
