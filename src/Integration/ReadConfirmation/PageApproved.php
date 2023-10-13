@@ -308,7 +308,10 @@ class PageApproved implements IMechanism {
 	 * @return bool
 	 */
 	public function mustRead( Title $title ) {
-		$enabledNamespaces = $this->config->get( 'NamespacesWithEnabledReadConfirmation' );
+		$enabledNamespaces =
+			$this->config->has( 'NamespacesWithEnabledReadConfirmation' )
+			? $this->config->get( 'NamespacesWithEnabledReadConfirmation' )
+			: [];
 		if (
 			!isset( $enabledNamespaces[$title->getNamespace()] ) ||
 			!$enabledNamespaces[$title->getNamespace()]
