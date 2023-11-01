@@ -25,5 +25,6 @@
 	"contentstabilization-no-stable": "net akzeptéiert",
 	"contentstabilization-stabilizationhistory-title": "Säit",
 	"contentstabilization-stabilizationhistory-comment": "Bemierkung",
-	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Akzeptéiert Säiten"
+	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Akzeptéiert Säiten",
+	"contentstabilization-versionhistory-grid-header-state": "Status"
 }

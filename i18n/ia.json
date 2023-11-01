@@ -108,5 +108,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "Cambiar al version stabile",
 	"contentstabilization-wikiexplorer-state": "Approbate",
 	"contentstabilization-wikiexplorer-date": "Data de approbation",
-	"contentstabilization-wikiexplorer-is-new-available": "Attende approbation"
+	"contentstabilization-wikiexplorer-is-new-available": "Attende approbation",
+	"contentstabilization-versionhistory-grid-header-state": "Stato",
+	"contentstabilization-versionhistory-grid-header-approver": "Approbate per",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Data de approbation",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Commento de approbation"
 }

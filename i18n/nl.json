@@ -110,5 +110,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "Naar stabiele versie overschakelen",
 	"contentstabilization-wikiexplorer-state": "Goedgekeurd",
 	"contentstabilization-wikiexplorer-date": "Datum goedkeuring",
-	"contentstabilization-wikiexplorer-is-new-available": "In afwachting van goedkeuring"
+	"contentstabilization-wikiexplorer-is-new-available": "In afwachting van goedkeuring",
+	"contentstabilization-versionhistory-grid-header-state": "Status",
+	"contentstabilization-versionhistory-grid-header-approver": "Goedgekeurd door",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Datum goedkeuring",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Commentaar goedkeuring"
 }

@@ -108,5 +108,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "מעבר לגרסה יציבה",
 	"contentstabilization-wikiexplorer-state": "מאושרת",
 	"contentstabilization-wikiexplorer-date": "תאריך האישור",
-	"contentstabilization-wikiexplorer-is-new-available": "בהמתנה לאישור"
+	"contentstabilization-wikiexplorer-is-new-available": "בהמתנה לאישור",
+	"contentstabilization-versionhistory-grid-header-state": "מצב",
+	"contentstabilization-versionhistory-grid-header-approver": "אושר על־ידי",
+	"contentstabilization-versionhistory-grid-header-approval-date": "תאריך האישור",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "הערת אישור"
 }
