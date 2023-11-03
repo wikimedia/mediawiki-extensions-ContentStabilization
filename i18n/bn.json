@@ -12,6 +12,7 @@
 	"contentstabilization-ui-switch-to-stable-title": "স্থিতিশীল সংস্করণে যান",
 	"contentstabilization-wikiexplorer-state": "অনুমোদিত",
 	"contentstabilization-wikiexplorer-date": "অনুমোদনের তারিখ",
+	"contentstabilization-versionhistory-grid-header-state": "অবস্থা",
 	"contentstabilization-versionhistory-grid-header-approver": "অনুমোদন করেছেন",
 	"contentstabilization-versionhistory-grid-header-approval-date": "অনুমোদনের তারিখ"
 }
