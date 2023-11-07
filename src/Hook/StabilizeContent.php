@@ -246,6 +246,8 @@ class StabilizeContent implements
 					Title::newFromLinkTarget( $title )->toPageIdentity(),
 					$this->view->getTargetUser(), [
 						'upToRevision' => $selectedRevision->getId(),
+						// Add marker for customized third-party code to know about the context
+						'transclusionCheck' => true
 				] );
 				if ( $view ) {
 					// Resource stabilized
