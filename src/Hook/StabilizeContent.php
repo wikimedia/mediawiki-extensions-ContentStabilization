@@ -249,11 +249,11 @@ class StabilizeContent implements
 				] );
 				if ( $view ) {
 					// Resource stabilized
-					$revRecord = $view->getRevision();
-					$skip = $revRecord === null;
+					$selectedRevision = $view->getRevision();
 				}
 
 				$revRecord = $selectedRevision;
+				$skip = $selectedRevision === null;
 				return;
 			}
 		}
