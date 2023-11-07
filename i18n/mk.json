@@ -108,5 +108,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "Прејди на устојчива верзија",
 	"contentstabilization-wikiexplorer-state": "Одобрено",
 	"contentstabilization-wikiexplorer-date": "Состојба на одобреност",
-	"contentstabilization-wikiexplorer-is-new-available": "Се чека на одобрување"
+	"contentstabilization-wikiexplorer-is-new-available": "Се чека на одобрување",
+	"contentstabilization-versionhistory-grid-header-state": "Состојба",
+	"contentstabilization-versionhistory-grid-header-approver": "Одобрено од",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Одобрено на",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Коментар при одобрување"
 }

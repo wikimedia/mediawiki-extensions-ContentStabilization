@@ -17,5 +17,6 @@
 	"contentstabilization-column-last-stable": "승인됨",
 	"contentstabilization-pref-handleinclude-current": "포함된 문서의 현재 판",
 	"contentstabilization-overview-header-page-id": "문서 ID",
-	"contentstabilization-overview-header-page-namespace": "문서 이름공간"
+	"contentstabilization-overview-header-page-namespace": "문서 이름공간",
+	"contentstabilization-versionhistory-grid-header-approval-date": "승인 날짜"
 }

@@ -18,5 +18,8 @@
 	"contentstabilization-ui-switch-to-stable-title": "Passa alla versione stabile",
 	"contentstabilization-wikiexplorer-state": "Approvato",
 	"contentstabilization-wikiexplorer-date": "Data approvazione",
-	"contentstabilization-wikiexplorer-is-new-available": "In attesa di approvazione"
+	"contentstabilization-wikiexplorer-is-new-available": "In attesa di approvazione",
+	"contentstabilization-versionhistory-grid-header-state": "Stato",
+	"contentstabilization-versionhistory-grid-header-approver": "Approvato da",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Data approvazione"
 }
