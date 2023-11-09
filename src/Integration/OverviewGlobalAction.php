@@ -50,7 +50,7 @@ class OverviewGlobalAction extends RestrictedTextLink {
 	 * @return Message
 	 */
 	public function getTitle(): Message {
-		return Message::newFromKey( 'contentstabilization-global-action-overview' );
+		return Message::newFromKey( 'contentstabilization-global-action-overview-desc' );
 	}
 
 	/**

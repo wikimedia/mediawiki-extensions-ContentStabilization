@@ -13,7 +13,7 @@
 	"action-contentstabilization-stabilize": "approve a page",
 	"action-contentstabilization-admin": "manage approvals",
 	"contentstabilization": "Quality management overview",
-	"contentstabilization-global-action-overview": "Quality management overview",
+	"contentstabilization-global-action-overview": "Quality management",
 	"contentstabilization-global-action-overview-desc": "Overview of pages in the approval process",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "has a draft version",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "has an approved version",
