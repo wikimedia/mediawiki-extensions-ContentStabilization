@@ -16,7 +16,7 @@
 	"action-contentstabilization-stabilize": "Seiten freizugeben",
 	"action-contentstabilization-admin": "Freigaben zu verwalten",
 	"contentstabilization": "Qualitätsmanagement Überblick",
-	"contentstabilization-global-action-overview": "Qualitätsmanagement Überblick",
+	"contentstabilization-global-action-overview": "Qualitätsmanagement",
 	"contentstabilization-global-action-overview-desc": "Überblick über Seiten, die sich im Freigabeprozess befinden",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "hat eine Entwurfsversion",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "hat eine freigegebene Version",
