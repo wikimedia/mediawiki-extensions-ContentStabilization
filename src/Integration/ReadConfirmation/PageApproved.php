@@ -245,6 +245,7 @@ class PageApproved implements IMechanism {
 		if ( $revision instanceof RevisionRecord ) {
 			return $revision->isMinor();
 		}
+
 		return false;
 	}
 
@@ -446,7 +447,6 @@ class PageApproved implements IMechanism {
 		foreach ( $res as $row ) {
 			$latestRevs[ (int)$row->rc_user_id ][ (int)$row->rev_page ] = (int)$row->latest_rev;
 		}
-
 		return $latestRevs;
 	}
 
@@ -580,25 +580,33 @@ class PageApproved implements IMechanism {
 			$conds['rev_page'] = $pageIds;
 		}
 
+		$lastStablesRes = $this->dbLoadBalancer->getConnection( DB_REPLICA )->select(
+			'stable_points',
+			[ 'sp_page', 'MAX(sp_revision) as last_stable' ],
+			[],
+			__METHOD__,
+			[ 'GROUP BY' => 'sp_page' ]
+		);
+
+		$lastStableRevisions = [];
+		foreach ( $lastStablesRes as $row ) {
+			$lastStableRevisions[$row->sp_page] = (int)$row->last_stable;
+		}
+
 		$res = $this->dbLoadBalancer->getConnection( DB_REPLICA )->select(
-			[ 'revision', 'stable_points' ],
-			[ 'rev_id', 'rev_page', 'rev_minor_edit', 'last_stable' ],
+			[ 'revision' ],
+			[ 'rev_id', 'rev_page', 'rev_minor_edit' ],
 			$conds,
 			__METHOD__,
-			[ 'ORDER BY' => 'rev_id DESC' ],
-			[
-				'stable_points' => [
-					'LEFT JOIN',
-					'(SELECT sp_page, MAX(sp_revision) as last_stable from stable_points GROUP BY sp_page) sp'
-				]
-			]
+			[ 'ORDER BY' => 'rev_id DESC' ]
 		);
 
 		foreach ( $res as $row ) {
 			if ( isset( $recentData[$row->rev_page] ) ) {
 				continue;
 			}
-			if ( $row->rev_id <= $row->last_stable && (int)$row->rev_minor_edit === 0 ) {
+			$lastStableForPage = $lastStableRevisions[$row->rev_page] ?? 0;
+			if ( (int)$row->rev_id <= $lastStableForPage && (int)$row->rev_minor_edit === 0 ) {
 				$recentData[$row->rev_page] = (int)$row->rev_id;
 			}
 		}

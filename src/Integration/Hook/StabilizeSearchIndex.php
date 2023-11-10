@@ -30,7 +30,7 @@ class StabilizeSearchIndex implements BSExtendedSearchWikipageFetchRevisionHook,
 	}
 
 	/**
-	 * @param File $file
+	 * @param File &$file
 	 *
 	 * @return bool|void
 	 */
@@ -54,7 +54,7 @@ class StabilizeSearchIndex implements BSExtendedSearchWikipageFetchRevisionHook,
 
 	/**
 	 * @param Title $title
-	 * @param RevisionRecord $revision
+	 * @param RevisionRecord &$revision
 	 *
 	 * @return bool|void
 	 */
