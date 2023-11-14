@@ -12,7 +12,7 @@
 	"action-contentstabilization-stabilize": "odobri stran",
 	"action-contentstabilization-admin": "upravljanje odobritev",
 	"contentstabilization": "Pregled ravnanja s kakovostjo",
-	"contentstabilization-global-action-overview": "Pregled ravnanja s kakovostjo",
+	"contentstabilization-global-action-overview": "Ravnanje s kakovostjo",
 	"contentstabilization-global-action-overview-desc": "Pregled strani v postopku odobritve",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "ima različico osnutek",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "ima odobreno redakcijo",
