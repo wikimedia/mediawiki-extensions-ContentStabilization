@@ -12,7 +12,7 @@
 	"action-contentstabilization-stabilize": "approbar un pagina",
 	"action-contentstabilization-admin": "gerer approbationes",
 	"contentstabilization": "Vista general del gestion de qualitate",
-	"contentstabilization-global-action-overview": "Vista general del gestion de qualitate",
+	"contentstabilization-global-action-overview": "Gestion de qualitate",
 	"contentstabilization-global-action-overview-desc": "Vista general de paginas in le processo de approbation",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "ha un version provisori",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "ha un version approbate",

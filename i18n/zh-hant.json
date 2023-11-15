@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
+			"LowensteinYang",
 			"Winston Sung"
 		]
 	},
@@ -13,7 +14,7 @@
 	"action-contentstabilization-stabilize": "核准頁面",
 	"action-contentstabilization-admin": "管理核准",
 	"contentstabilization": "品質管理概要",
-	"contentstabilization-global-action-overview": "品質管理概要",
+	"contentstabilization-global-action-overview": "品質管理",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "有草稿版本",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "有一個批准版本",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-title": "顯示草稿版本",
