@@ -63,6 +63,7 @@ class StabilizeImgAuth implements ImgAuthBeforeStreamHook {
 		if ( $stable ) {
 			return true;
 		}
+
 		$result = [ 'img-auth-accessdenied', 'img-auth-badtitle', $name ];
 		return false;
 	}

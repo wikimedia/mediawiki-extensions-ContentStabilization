@@ -18,7 +18,9 @@ interface InclusionMode {
 	/**
 	 * Whether the inclusion mode can be out of sync with the current revision
 	 *
+	 * @param RevisionRecord|null $revisionToCheckFor
+	 *
 	 * @return bool
 	 */
-	public function canBeOutOfSync(): bool;
+	public function canBeOutOfSync( ?RevisionRecord $revisionToCheckFor = null ): bool;
 }
