@@ -195,9 +195,13 @@ class StabilizeContent implements
 		array_shift( $bits );
 		$filename = implode( ':', $bits );
 		$filename = str_replace( ' ', '_', $filename );
-
 		foreach ( $this->view->getInclusions()['images'] as $image ) {
 			if ( $image['name'] === $filename ) {
+				if ( !$image['timestamp'] ) {
+					// No version to show found
+					$options['broken'] = true;
+					return;
+				}
 				$options['sha1'] = $image['sha1'];
 				$options['time'] = $image['timestamp'];
 				return;

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\InclusionMode;
 
 use Config;
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
+use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\Revision\RevisionLookup;
@@ -42,11 +43,14 @@ class Stable implements InclusionMode {
 	}
 
 	/**
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function canBeOutOfSync(): bool {
-		// If ContentStabilization is disabled, default back to "none" (freeze)
-		return true;
+	public function canBeOutOfSync( ?RevisionRecord $revisionToCheckFor = null ): bool {
+		if ( !$revisionToCheckFor ) {
+			return true;
+		}
+		// If CS is not enabled on a NS, it behaves like FREEZE, so can be out of sync then
+		return !in_array( $revisionToCheckFor->getPage()->getNamespace(), $this->enabledNamespaces );
 	}
 
 	/**
@@ -69,7 +73,6 @@ class Stable implements InclusionMode {
 				if ( !in_array( $page->getNamespace(), $this->enabledNamespaces ) ) {
 					continue;
 				}
-
 				// In case user is viewing the latest revision of the page, or latest stable revision,
 				// show the latest stable version of includes.
 				// Otherwise, limit to the last stable version before the freezing point
@@ -99,14 +102,20 @@ class Stable implements InclusionMode {
 					if ( !in_array( NS_FILE, $this->enabledNamespaces ) ) {
 						continue;
 					}
-					// Get the file at the time of this revision
-					$file = $this->repoGroup->findFile(
-						$inclusion['name'], [ 'time' => $revisionRecord->getTimestamp() ]
-					);
+					if ( $stableInclusion instanceof StableFilePoint ) {
+						$file = $stableInclusion->getFile();
+					} else {
+						// Get the file at the time of this revision
+						$file = $this->repoGroup->findFile(
+							$inclusion['name'], [ 'time' => $revisionRecord->getTimestamp() ]
+						);
+					}
 
 					if ( !$file ) {
 						// Do not show file at all
 						$inclusion['revision'] = 0;
+						$inclusion['timestamp'] = 0;
+						$inclusion['sha1'] = '';
 						continue;
 					}
 					$inclusion['timestamp'] = $file->getTimestamp();
