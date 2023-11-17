@@ -15,7 +15,8 @@ $( function () {
 				filter: {
 					type: 'text'
 				},
-				urlProperty: 'page_link'
+				urlProperty: 'page_link',
+				autoClosePopup: true
 			},
 			status: {
 				headerText: mw.message( 'contentstabilization-overview-header-status' ).text(),
@@ -28,7 +29,8 @@ $( function () {
 						{ data: 'stable', label: mw.message( 'contentstabilization-status-stable' ).text() },
 						{ data: 'first-unstable', label: mw.message( 'contentstabilization-status-first-unstable' ).text() }
 					]
-				}
+				},
+				autoClosePopup: true
 			},
 			has_changed_inclusions: {
 				headerText: mw.message( 'contentstabilization-overview-header-is-in-sync' ).text(),
@@ -41,7 +43,8 @@ $( function () {
 				headerText: mw.message( 'contentstabilization-overview-header-has-changed-last-approver' ).text(),
 				type: 'user',
 				sortable: true,
-				filter: { type: 'text' }
+				filter: { type: 'text' },
+				autoClosePopup: true
 			},
 			last_stable_ts: {
 				headerText: mw.message( 'contentstabilization-overview-header-has-changed-last-stable-ts' ).text(),
