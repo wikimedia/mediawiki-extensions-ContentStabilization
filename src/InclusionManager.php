@@ -339,7 +339,7 @@ class InclusionManager {
 	 * @return array
 	 */
 	public function getSyncDifference( StablePoint $point ): array {
-		if ( $this->getInclusionMode() && !$this->getInclusionMode()->canBeOutOfSync() ) {
+		if ( $this->getInclusionMode() && !$this->getInclusionMode()->canBeOutOfSync( $point->getRevision() ) ) {
 			return [];
 		}
 		$stableInclusions = $point->getInclusions();

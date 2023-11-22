@@ -30,9 +30,9 @@ class Current implements InclusionMode {
 	}
 
 	/**
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function canBeOutOfSync(): bool {
+	public function canBeOutOfSync( ?RevisionRecord $revisionToCheckFor = null ): bool {
 		// Always latest
 		return false;
 	}
