@@ -1,10 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
+			"Robby",
 			"Volvox"
 		]
 	},
 	"contentstabilization-ui-approve-cancel": "Ofbriechen",
 	"contentstabilization-overview-header-title": "Säit",
-	"contentstabilization-stabilizationhistory-title": "Säit"
+	"contentstabilization-stabilizationhistory-title": "Säit",
+	"right-contentstabilization-stabilize": "Säiten akzeptéieren",
+	"action-contentstabilization-stabilize": "eng Säit akzeptéieren",
+	"contentstabilization-global-action-overview": "Qualitéitsmanagement",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "huet eng akzeptéiert Versioun",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "Ënnerscheed weisen",
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Ënnerscheed weisen",
+	"contentstabilization-pageinfoelement-pagestatus-accept": "Säit akzeptéieren",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "akzeptéiert",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Akzeptéiert Versioun",
+	"contentstabilization-ui-approve-title": "Säit akzeptéieren",
+	"contentstabilization-ui-approve-approve": "Akzeptéieren",
+	"contentstabilization-ui-approve-comment": "Bemierkung",
+	"contentstabilization-export-no-stable-date": "Net akzeptéiert",
+	"contentstabilization-export-laststable-tag-text": "Akzeptéiert:",
+	"contentstabilization-status-stable": "Akzeptéiert",
+	"contentstabilization-column-last-stable": "Akzeptéiert",
+	"contentstabilization-no-stable": "net akzeptéiert",
+	"contentstabilization-stabilizationhistory-comment": "Bemierkung",
+	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Akzeptéiert Säiten",
+	"contentstabilization-versionhistory-grid-header-state": "Status"
 }

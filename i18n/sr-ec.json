@@ -19,5 +19,11 @@
 	"contentstabilization-column-last-stable": "Одобрено",
 	"contentstabilization-stabilizationhistory-title": "Страница",
 	"contentstabilization-stabilizationhistory-comment": "Коментар",
-	"content-stabilization-stable-diff": "чека проверу"
+	"content-stabilization-stable-diff": "чека проверу",
+	"contentstabilization-export-laststable-tag-text": "Одобрено:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Измена: $1",
+	"contentstabilization-ui-switch-to-draft-title": "Пребаци на нацрт",
+	"contentstabilization-ui-switch-to-stable-title": "Пребаци на стабилну верзију",
+	"contentstabilization-versionhistory-grid-header-approver": "Одобрено од",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Датум одобравања"
 }
