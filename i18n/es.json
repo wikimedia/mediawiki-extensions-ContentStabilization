@@ -23,5 +23,6 @@
 	"contentstabilization-overview-header-status": "Estado",
 	"contentstabilization-no-stable": "no aprobada",
 	"contentstabilization-stabilizationhistory-title": "Página",
-	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Páginas aprobadas"
+	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Páginas aprobadas",
+	"contentstabilization-pref-handleinclude-current": "Versiones actuales de las páginas incluidas"
 }

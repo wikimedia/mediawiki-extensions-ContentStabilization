@@ -56,8 +56,8 @@
 	"contentstabilization-stablepoint-added-message-passive": "Има нова одобрена верзија на страницата",
 	"contentstabilization-stablepoint-added-message": "додадена нова одобрена верзија на страницата",
 	"contentstabilization-export-no-stable-date": "Неодобрено",
-	"contentstabilization-export-laststable-tag-text": "Одобрено",
-	"contentstabilization-export-stablerevisiondate-tag-text": "Преработка",
+	"contentstabilization-export-laststable-tag-text": "Одобрено:",
+	"contentstabilization-export-stablerevisiondate-tag-text": "Преработка: $1",
 	"contentstabilization-state-draft-resources-desc": "Страницата е нацрт поради промените во вклучените ресурси",
 	"contentstabilization-state-draft-info-btn-title": "Информации за изменетите ресурси",
 	"contentstabilization-state-draft-info-btn-popup-title": "Изменети ресурси:",
@@ -102,5 +102,16 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Неодобрени страници",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Одобрувањето не е овозможено",
 	"content-stabilization-stable-diff": "чека на проверка",
-	"contentstabilization-pref-handleinclude-current": "Тековни верзии на вклучените страници"
+	"contentstabilization-pref-handleinclude-current": "Тековни верзии на вклучените страници",
+	"contentstabilization-overview-header-page-id": "Назнака на страницата",
+	"contentstabilization-overview-header-page-namespace": "Именски простори на страниците",
+	"contentstabilization-ui-switch-to-draft-title": "Прејди на нацрт-верзија",
+	"contentstabilization-ui-switch-to-stable-title": "Прејди на устојчива верзија",
+	"contentstabilization-wikiexplorer-state": "Одобрено",
+	"contentstabilization-wikiexplorer-date": "Состојба на одобреност",
+	"contentstabilization-wikiexplorer-is-new-available": "Се чека на одобрување",
+	"contentstabilization-versionhistory-grid-header-state": "Состојба",
+	"contentstabilization-versionhistory-grid-header-approver": "Одобрено од",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Одобрено на",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Коментар при одобрување"
 }
