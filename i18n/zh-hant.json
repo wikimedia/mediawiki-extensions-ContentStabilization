@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung",
 			"Kly",
-			"LowensteinYang"
+			"LowensteinYang",
+			"Winston Sung"
 		]
 	},
 	"contentstabilization-desc": "允許使用者將頁面標記為「已批准」或「草稿」，並查看頁面的最新批准版本。",

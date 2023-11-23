@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin",
 			"HanV",
-			"McDutchie"
+			"McDutchie",
+			"Sjoerddebruin"
 		]
 	},
 	"contentstabilization-desc": "Hiermee kunnen gebruikers pagina’s markeren als “goedgekeurd” of “concept” en de meest recente goedgekeurde versie van een pagina bekijken.",

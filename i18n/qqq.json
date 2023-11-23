@@ -2,9 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Dejan Savuljesku",
+			"Raymond",
 			"Robert Vogel",
-			"Verdy p",
-			"Raymond"
+			"Verdy p"
 		]
 	},
 	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",

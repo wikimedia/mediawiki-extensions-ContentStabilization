@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Stjn"
 		]
 	},
 	"contentstabilization-ui-approve-cancel": "Отмена",
