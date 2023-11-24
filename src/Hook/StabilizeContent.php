@@ -24,6 +24,7 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\RevisionRenderer;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
@@ -62,6 +63,9 @@ class StabilizeContent implements
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var RevisionRenderer */
+	private $revisionRenderer;
+
 	/** @var StableView|null */
 	private $view = null;
 
@@ -72,10 +76,11 @@ class StabilizeContent implements
 	 * @param ContentStabilizer $stabilizer
 	 * @param HookContainer $hookContainer
 	 * @param TitleFactory $titleFactory
+	 * @param RevisionRenderer $revisionRenderer
 	 */
 	public function __construct(
 		StabilizationLookup $lookup, Parser $parser, RevisionLookup $revisionLookup, ContentStabilizer $stabilizer,
-		HookContainer $hookContainer, TitleFactory $titleFactory
+		HookContainer $hookContainer, TitleFactory $titleFactory, RevisionRenderer $revisionRenderer
 	) {
 		$this->lookup = $lookup;
 		$this->parser = $parser;
@@ -83,6 +88,7 @@ class StabilizeContent implements
 		$this->stabilizer = $stabilizer;
 		$this->hookContainer = $hookContainer;
 		$this->titleFactory = $titleFactory;
+		$this->revisionRenderer = $revisionRenderer;
 	}
 
 	/**
@@ -127,9 +133,7 @@ class StabilizeContent implements
 			$this->outputStableViewInfo( $article->getContext()->getOutput() );
 		}
 
-		// TODO: This only considers MAIN slot (as does FR)
 		$revision = $this->view->getRevision();
-		$content = $revision->getContent( SlotRecord::MAIN );
 		$options = $this->parser->getOptions() ?? ParserOptions::newFromContext( $article->getContext() );
 		$options->setCurrentRevisionRecordCallback(
 			static function ( LinkTarget $link, $parser = null ) use ( $revision ) {
@@ -148,13 +152,11 @@ class StabilizeContent implements
 					->getRevisionLookup()
 					->getKnownCurrentRevision( $page );
 			} );
-		$parserOutput = $this->parser->parse(
-			$content->getText(), $article->getTitle(), $options, true, true, $revision->getId()
+
+		$renderedRev = $this->revisionRenderer->getRenderedRevision(
+			$revision, $options, $this->view->getTargetUser()
 		);
-		$parserOutput->setExtensionData( 'contentstabilization', [
-			'rev' => $this->view->getRevision()->getId(),
-			'status' => $this->view->getStatus(),
-		] );
+		$parserOutput = $renderedRev->getRevisionParserOutput();
 		$outputDone = $parserOutput;
 		$parserOutput->setRevisionTimestampUsed( $this->view->getRevision()->getTimestamp() );
 		$parserOutput->setCacheRevisionId( $this->view->getRevision()->getId() );
@@ -162,7 +164,7 @@ class StabilizeContent implements
 
 		$pageTitle = $this->titleFactory->castFromPageIdentity( $this->view->getRevision()->getPage() );
 		$this->hookContainer->run(
-			'ContentAlterParserOutput', [ $content, $pageTitle, &$parserOutput ]
+			'ContentAlterParserOutput', [ $revision->getContent( SlotRecord::MAIN ), $pageTitle, &$parserOutput ]
 		);
 		$article->getContext()->getOutput()->addParserOutput( $parserOutput );
 		$article->getContext()->getOutput()->setRevisionId( $this->view->getRevision()->getId() );
