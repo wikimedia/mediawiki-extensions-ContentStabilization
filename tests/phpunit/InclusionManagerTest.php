@@ -117,12 +117,18 @@ class InclusionManagerTest extends TestCase {
 		$connection = $lb->getConnectionRef( DB_PRIMARY );
 
 		// Expect to clear out old data before settings new data
+		$expectedDeleteArgs = [
+			[ 'stable_transclusions', [ 'st_revision' => 1 ], InclusionManager::class . '::storeTransclusions' ],
+			[ 'stable_file_transclusions', [ 'sft_revision' => 1 ], InclusionManager::class . '::storeImages' ]
+		];
 		$connection->expects( $this->exactly( 2 ) )
 			->method( 'delete' )
-			->withConsecutive(
-				[ 'stable_transclusions', [ 'st_revision' => 1 ], InclusionManager::class . '::storeTransclusions' ],
-				[ 'stable_file_transclusions', [ 'sft_revision' => 1 ], InclusionManager::class . '::storeImages' ]
-			);
+			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
+				$curExpectedArgs = array_shift( $expectedDeleteArgs );
+				$this->assertSame( $curExpectedArgs[0], $table );
+				$this->assertSame( $curExpectedArgs[1], $conds );
+				$this->assertSame( $curExpectedArgs[2], $fname );
+			} );
 
 		$dataExpectedToInsert = [
 			[
@@ -162,21 +168,27 @@ class InclusionManagerTest extends TestCase {
 		];
 
 		// Inserting current state
+		$expectedInsertArgs = [
+			[
+				$dataExpectedToInsert[0]['table'],
+				$dataExpectedToInsert[0]['records'],
+				InclusionManager::class . '::storeTransclusions',
+			],
+			[
+				$dataExpectedToInsert[1]['table'],
+				$dataExpectedToInsert[1]['records'],
+				InclusionManager::class . '::storeImages',
+				[ 'IGNORE' ]
+			]
+		];
 		$connection->expects( $this->exactly( 2 ) )
 			->method( 'insert' )
-			->withConsecutive(
-				[
-					$dataExpectedToInsert[0]['table'],
-					$dataExpectedToInsert[0]['records'],
-					InclusionManager::class . '::storeTransclusions',
-				],
-				[
-					$dataExpectedToInsert[1]['table'],
-					$dataExpectedToInsert[1]['records'],
-					InclusionManager::class . '::storeImages',
-					[ 'IGNORE' ]
-				]
-			);
+			->willReturnCallback( function ( $table, $rows, $fname ) use ( &$expectedInsertArgs ) {
+				$curExpectedArgs = array_shift( $expectedInsertArgs );
+				$this->assertSame( $curExpectedArgs[0], $table );
+				$this->assertSame( $curExpectedArgs[1], $rows );
+				$this->assertSame( $curExpectedArgs[2], $fname );
+			} );
 
 		$connection->method( 'select' )->willReturnCallback( static function ( $table ) use ( $dataExpectedToInsert ) {
 			foreach ( $dataExpectedToInsert as $data ) {
@@ -231,20 +243,26 @@ class InclusionManagerTest extends TestCase {
 		$connection = $lb->getConnectionRef( DB_PRIMARY );
 
 		// Expect to clear out old data before settings new data
+		$expectedDeleteArgs = [
+			[
+				'stable_transclusions',
+				[ 'st_revision' => 1 ],
+				InclusionManager::class . '::removeStableInclusionsForRevision'
+			],
+			[
+				'stable_file_transclusions',
+				[ 'sft_revision' => 1 ],
+				InclusionManager::class . '::removeStableInclusionsForRevision'
+			]
+		];
 		$connection->expects( $this->exactly( 2 ) )
 			->method( 'delete' )
-			->withConsecutive(
-				[
-					'stable_transclusions',
-					[ 'st_revision' => 1 ],
-					InclusionManager::class . '::removeStableInclusionsForRevision'
-				],
-				[
-					'stable_file_transclusions',
-					[ 'sft_revision' => 1 ],
-					InclusionManager::class . '::removeStableInclusionsForRevision'
-				]
-			);
+			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
+				$curExpectedArgs = array_shift( $expectedDeleteArgs );
+				$this->assertSame( $curExpectedArgs[0], $table );
+				$this->assertSame( $curExpectedArgs[1], $conds );
+				$this->assertSame( $curExpectedArgs[2], $fname );
+			} );
 
 		$inclusionManager = $this->getInclusionManager( $lb );
 		$inclusionManager->removeStableInclusionsForRevision( $revision );
@@ -261,20 +279,26 @@ class InclusionManagerTest extends TestCase {
 		$connection = $lb->getConnectionRef( DB_PRIMARY );
 
 		// Expect to clear out old data before settings new data
+		$expectedDeleteArgs = [
+			[
+				'stable_transclusions',
+				[ 'st_page' => 2 ],
+				InclusionManager::class . '::removeStableInclusionsForPage'
+			],
+			[
+				'stable_file_transclusions',
+				[ 'sft_page' => 2 ],
+				InclusionManager::class . '::removeStableInclusionsForPage'
+			]
+		];
 		$connection->expects( $this->exactly( 2 ) )
 			->method( 'delete' )
-			->withConsecutive(
-				[
-					'stable_transclusions',
-					[ 'st_page' => 2 ],
-					InclusionManager::class . '::removeStableInclusionsForPage'
-				],
-				[
-					'stable_file_transclusions',
-					[ 'sft_page' => 2 ],
-					InclusionManager::class . '::removeStableInclusionsForPage'
-				]
-			);
+			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
+				$curExpectedArgs = array_shift( $expectedDeleteArgs );
+				$this->assertSame( $curExpectedArgs[0], $table );
+				$this->assertSame( $curExpectedArgs[1], $conds );
+				$this->assertSame( $curExpectedArgs[2], $fname );
+			} );
 
 		$inclusionManager = $this->getInclusionManager( $lb );
 		$inclusionManager->removeStableInclusionsForPage( $page );
