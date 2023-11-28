@@ -297,7 +297,7 @@
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\StabilizeContent",
 			"services": [
 				"ContentStabilization.Lookup", "Parser", "RevisionLookup", "ContentStabilization.Stabilizer",
-				"HookContainer", "TitleFactory"
+				"HookContainer", "TitleFactory", "RevisionRenderer"
 			]
 		},
 		"registerGlobalAction": {
