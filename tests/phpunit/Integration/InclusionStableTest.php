@@ -42,7 +42,7 @@ class InclusionStableTest extends FullIntegrationBase {
 	 * @inheritDoc
 	 */
 	protected function shouldAllowFirstUnstable(): bool {
-		return false;
+		return true;
 	}
 
 	/**
@@ -161,14 +161,22 @@ class InclusionStableTest extends FullIntegrationBase {
 		$this->editPage( $this->notEnabledPage, 'H2' );
 
 		$this->assertOutputContains(
-			$this->testUser, "V1H2", [ 'stable' => 0 ],
+			$this->testUser, "V1H1", [ 'stable' => 0 ],
 			'Permitted user should see draft of the current page, ' .
-			'and latest version of the inclusion when stabilization is not enabled'
+			'and frozen version of the inclusion when stabilization is not enabled'
 		);
 		$this->assertOutputContains(
 			new User(), "V1H1", [],
 			'Anon user should see draft of the current page, ' .
-			'and latest version of the inclusion when stabilization is not enabled'
+			'and frozen version of the inclusion when stabilization is not enabled'
+		);
+
+		$this->editPage( $this->pageToTest, 'V2{{Help:Inclusion}}' );
+
+		$this->assertOutputContains(
+			$this->testUser, "V2H2", [ 'stable' => 0 ],
+			'Permitted user should see draft of the current page, ' .
+			'and updated version of the inclusion when stabilization is not enabled'
 		);
 	}
 }
