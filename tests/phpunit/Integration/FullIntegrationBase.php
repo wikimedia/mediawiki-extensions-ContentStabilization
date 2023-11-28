@@ -28,6 +28,10 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
+		// Allow anons to read (let CS stabilize the content instead of the read permission)
+		$GLOBALS['wgGroupPermissions']['*']['read'] = true;
+		$GLOBALS['bsgGroupRoles']['*']['reader'] = true;
+
 		$this->setMwGlobals( 'wgContLang', 'en' );
 		$this->setMwGlobals( 'wgParserCacheType', CACHE_NONE );
 		$this->setMwGlobals( 'wgContentStabilizationEnabledNamespaces', $this->getEnabledNamespaces() );

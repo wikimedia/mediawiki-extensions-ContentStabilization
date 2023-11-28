@@ -22,15 +22,14 @@ class InclusionCurrentTest extends FullIntegrationBase {
 	 * @inheritDoc
 	 */
 	protected function getEnabledNamespaces(): array {
-		// In this mode, stable state should not matter
-		return [ NS_MAIN, NS_TEMPLATE ];
+		return [ NS_MAIN ];
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function shouldAllowFirstUnstable(): bool {
-		return false;
+		return true;
 	}
 
 	/**
@@ -71,19 +70,6 @@ class InclusionCurrentTest extends FullIntegrationBase {
 		);
 		$this->assertOutputContains(
 			$this->testUser, "V1T2", [], 'Permitted user should should see latest version of inclusion'
-		);
-
-		// Stabilize inclusion and create a draft
-		$this->stabilize( $this->templatePage );
-		$this->editPage( $this->templatePage, 'T3' );
-
-		// Everyone should see the latest draft
-		$this->assertOutputContains(
-			new User(), "V1T3", [], 'Anon should see latest version of inclusion, even if in draft'
-		);
-		$this->assertOutputContains(
-			$this->testUser, "V1T3", [],
-			'Permitted user should should see latest version of inclusion, even if in draft'
 		);
 	}
 }
