@@ -57,7 +57,8 @@ class ApprovePageActivityTest extends MediaWikiIntegrationTestCase {
 		$services = MediaWikiServices::getInstance();
 		$activity = new ApprovePageActivity(
 			$services->getTitleFactory(),
-			$services->get( 'ContentStabilization.Stabilizer' ),
+			$services->getService( 'ContentStabilization.Stabilizer' ),
+			$services->getService( 'ContentStabilization.Lookup' ),
 			$services->getRevisionStore(),
 			$services->getUserFactory(),
 			$task
