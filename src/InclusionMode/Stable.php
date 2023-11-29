@@ -77,37 +77,38 @@ class Stable implements InclusionMode {
 				// show the latest stable version of includes.
 				// Otherwise, limit to the last stable version before the freezing point
 				// (if user is viewing old version of the page, show transclusions as they were at that time)
+
 				$revLimit = !$viewingLatest ? $inclusion['revision'] : 0;
 				$conds = [
 					'sp_page' => $page->getArticleID()
 				];
-				if ( $revLimit ) {
+				if ( $revLimit > 0 ) {
 					$conds[] = 'sp_revision <= ' . $revLimit;
 				}
 				$stableInclusion = $this->store->getLatestMatchingPoint( $conds );
 				// If there is no stable version,
 				// use revision that was current at the time of $mainRevision's stabilization
-				if ( $stableInclusion instanceof StablePoint ) {
-					$revisionRecord = $stableInclusion->getRevision();
-				} else {
-					$revisionRecord = $this->revisionLookup->getRevisionById( $inclusion['revision'] );
-				}
-				if ( !$revisionRecord ) {
-					continue;
-				}
-				// Set stabilized revision to the inclusion
-				$inclusion['revision'] = $revisionRecord->getId();
-
-				if ( $type === 'images' ) {
-					if ( !in_array( NS_FILE, $this->enabledNamespaces ) ) {
+				if ( $type === 'transclusions' ) {
+					if ( $stableInclusion instanceof StablePoint ) {
+						$revisionRecord = $stableInclusion->getRevision();
+					} else {
+						$revisionRecord = $this->revisionLookup->getRevisionById( $inclusion['revision'] );
+					}
+					if ( !$revisionRecord ) {
 						continue;
 					}
+
+					// Set stabilized revision to the inclusion
+					$inclusion['revision'] = $revisionRecord->getId();
+				}
+
+				if ( $type === 'images' ) {
 					if ( $stableInclusion instanceof StableFilePoint ) {
 						$file = $stableInclusion->getFile();
 					} else {
 						// Get the file at the time of this revision
 						$file = $this->repoGroup->findFile(
-							$inclusion['name'], [ 'time' => $revisionRecord->getTimestamp() ]
+							$inclusion['name'], [ 'time' => $inclusion['timestamp'] ]
 						);
 					}
 

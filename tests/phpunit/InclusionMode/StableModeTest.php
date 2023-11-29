@@ -36,14 +36,9 @@ class StableModeTest extends TestCase {
 	) {
 		$revisionLookup = $this->createMock( RevisionLookup::class );
 		$revisionLookup->method( 'getRevisionById' )->willReturnCallback(
-			function ( $id ) use ( $image ) {
+			function ( $id ) {
 				$revisionRecord = $this->createMock( RevisionRecord::class );
 				$revisionRecord->method( 'getId' )->willReturn( $id );
-
-				if ( isset( $image['revisions'][$id] ) ) {
-					$revisionRecord->method( 'getTimestamp' )
-						->willReturn( $image['revisions'][$id]['timestamp'] );
-				}
 				return $revisionRecord;
 			}
 		);
@@ -78,7 +73,7 @@ class StableModeTest extends TestCase {
 			'transclusions' => [
 				[ 'revision' => $revsAtTimeOfStablization['page'], 'namespace' => NS_TEMPLATE, 'title' => 'Foo' ]
 			],
-			'images' => [ [ 'revision' => $revsAtTimeOfStablization['image'], 'name' => 'Bar' ] ],
+			'images' => [ [ 'revision' => -1, 'timestamp' => $revsAtTimeOfStablization['image'], 'name' => 'Bar' ] ],
 		], $mainPageRevision );
 
 		$this->assertSame(
@@ -108,13 +103,13 @@ class StableModeTest extends TestCase {
 					],
 					'stable' => [ 5, 7 ],
 				],
-				'revs_at_time_of_stablization' => [ 'page' => 2, 'image' => 5 ],
+				'revs_at_time_of_stablization' => [ 'page' => 2, 'image' => '20220101000000' ],
 				'expected' => [
 					'page' => 2,
 					'image' => [
-						'revision' => 5,
-						'name' => 'Bar',
+						'revision' => -1,
 						'timestamp' => '20220101000000',
+						'name' => 'Bar',
 						'sha1' => '12345',
 					]
 				]
@@ -134,13 +129,13 @@ class StableModeTest extends TestCase {
 					],
 					'stable' => [ 5, 7 ],
 				],
-				'revs_at_time_of_stablization' => [ 'page' => 4, 'image' => 7 ],
+				'revs_at_time_of_stablization' => [ 'page' => 4, 'image' => '20220101000002' ],
 				'expected' => [
 					'page' => 4,
 					'image' => [
-						'revision' => 7,
-						'name' => 'Bar',
+						'revision' => -1,
 						'timestamp' => '20220101000002',
+						'name' => 'Bar',
 						'sha1' => '12347',
 					]
 				]
@@ -160,13 +155,13 @@ class StableModeTest extends TestCase {
 					],
 					'stable' => [ 7 ],
 				],
-				'revs_at_time_of_stablization' => [ 'page' => 3, 'image' => 6 ],
+				'revs_at_time_of_stablization' => [ 'page' => 3, 'image' => '20220101000001' ],
 				'expected' => [
 					'page' => 3,
 					'image' => [
-						'revision' => 6,
-						'name' => 'Bar',
+						'revision' => -1,
 						'timestamp' => '20220101000001',
+						'name' => 'Bar',
 						'sha1' => '12346',
 					]
 				]
@@ -186,13 +181,13 @@ class StableModeTest extends TestCase {
 					],
 					'stable' => [],
 				],
-				'revs_at_time_of_stablization' => [ 'page' => 4, 'image' => 7 ],
+				'revs_at_time_of_stablization' => [ 'page' => 4, 'image' => '20220101000002' ],
 				'expected' => [
 					'page' => 4,
 					'image' => [
-						'revision' => 7,
-						'name' => 'Bar',
+						'revision' => -1,
 						'timestamp' => '20220101000002',
+						'name' => 'Bar',
 						'sha1' => '12347',
 					]
 				]
@@ -221,10 +216,8 @@ class StableModeTest extends TestCase {
 				$stableIds = [];
 				if ( $pageId === $page['page_id'] ) {
 					$stableIds = $page['stable'];
-					$type = 'page';
 				} elseif ( $pageId === $image['page_id'] ) {
 					$stableIds = $image['stable'];
-					$type = 'image';
 				}
 				$selectedStable = array_filter(
 					$stableIds,
@@ -238,14 +231,6 @@ class StableModeTest extends TestCase {
 				}
 				$revisionRecord = $this->createMock( RevisionRecord::class );
 				$revisionRecord->method( 'getId' )->willReturn( $selectedRev );
-				if ( $type === 'image' ) {
-					$revisionRecord->method( 'getSha1' )->willReturn(
-						$image['revisions'][$selectedRev]['sha1']
-					);
-					$revisionRecord->method( 'getTimestamp' )->willReturn(
-						$image['revisions'][$selectedRev]['timestamp']
-					);
-				}
 
 				$sp = $this->createMock( StablePoint::class );
 				$sp->method( 'getRevision' )->willReturn( $revisionRecord );
