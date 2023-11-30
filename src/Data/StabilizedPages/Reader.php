@@ -66,6 +66,6 @@ class Reader extends \MWStake\MediaWiki\Component\DataStore\Reader {
 	 * @inheritDoc
 	 */
 	public function makeSecondaryDataProvider() {
-		return new SecondaryDataProvider( $this->lookup );
+		return new SecondaryDataProvider( $this->lookup, $this->language );
 	}
 }
