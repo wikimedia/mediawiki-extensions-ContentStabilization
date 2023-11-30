@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
-use DateTime;
+use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationBot;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
@@ -18,10 +18,17 @@ class SecondaryDataProvider implements ISecondaryDataProvider {
 	private $lookup;
 
 	/**
-	 * @param StabilizationLookup $lookup
+	 * @var Language
 	 */
-	public function __construct( StabilizationLookup $lookup ) {
+	private $language;
+
+	/**
+	 * @param StabilizationLookup $lookup
+	 * @param Language $language
+	 */
+	public function __construct( StabilizationLookup $lookup, Language $language ) {
 		$this->lookup = $lookup;
+		$this->language = $language;
 	}
 
 	/**
@@ -41,12 +48,6 @@ class SecondaryDataProvider implements ISecondaryDataProvider {
 			$msg = Message::newFromKey( 'contentstabilization-status-' . $state );
 			$dataSet->set( Record::STATUS, $msg->text() );
 
-			$stableTs = $dataSet->get( Record::LAST_STABLE_TS );
-			if ( $stableTs ) {
-				$stableTime = DateTime::createFromFormat( 'YmdHis', $stableTs );
-				$dataSet->set( Record::LAST_STABLE_TS, $stableTime->format( 'Y/m/d H:i' ) );
-			}
-
 			// This is very expensive, maybe even for an SDP, but there is no way to determine implicit draft otherwise
 			$currentView = $this->lookup->getStableView( $title );
 			if ( !$currentView ) {
@@ -55,7 +56,7 @@ class SecondaryDataProvider implements ISecondaryDataProvider {
 			$hasChangedInclusions = $state === StableView::STATE_STABLE && $currentView->doesNeedStabilization();
 			$dataSet->set( Record::HAS_CHANGED_INCLUSIONS, $hasChangedInclusions );
 
-			$lastStable = $currentView->getLastStablePoint();
+			$lastStable = $this->lookup->getLastStablePoint( $title );
 			if ( $lastStable ) {
 				$approver = $lastStable->getApprover();
 				$bot = new StabilizationBot();
@@ -64,7 +65,15 @@ class SecondaryDataProvider implements ISecondaryDataProvider {
 						Record::LAST_APPROVER,
 						Message::newFromKey( 'contentstabilization-overview-approver-bot' )->text()
 					);
+				} else {
+					$dataSet->set( Record::LAST_APPROVER, $approver->getUser()->getName() );
 				}
+				$dataSet->set( Record::LAST_COMMENT, $lastStable->getComment() );
+				$dataSet->set(
+					Record::LAST_STABLE_TS,
+					$this->language->timeanddate( $lastStable->getTime()->format( 'YmdHis' ), true )
+				);
+
 			}
 		}
 
