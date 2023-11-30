@@ -58,7 +58,7 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 			[ 'page', 'stable_points', 'user' ],
 			[
 				'page_id', 'page_title', 'page_namespace', 'page_latest',
-				'sp_page', 'sp_comment', 'MAX( sp_revision ) as last_stable',
+				'sp_page', 'MAX( sp_revision ) as last_stable',
 				'MAX( sp_time ) as last_stable_ts', 'COUNT( sp_revision ) as stable_count',
 				'user_name as last_approver'
 			],
@@ -148,7 +148,7 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 			Record::LAST_STABLE_TS => $row->last_stable_ts,
 			Record::LAST_STABLE => (int)$row->last_stable,
 			Record::LAST_APPROVER => $row->last_approver,
-			Record::LAST_COMMENT => $row->sp_comment,
+			Record::LAST_COMMENT => null,
 			Record::PAGE_DISPLAY_TEXT => $this->getDisplayText( $row ),
 			Record::STATUS => $state,
 		] );
