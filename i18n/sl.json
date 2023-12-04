@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"contentstabilization-desc": "Uporabnikom omogoča, da označijo strani kot »odobrena« ali »osnutek« in da si ogledajo zadnjo odobreno različico strani.",
@@ -39,7 +40,7 @@
 	"contentstabilization-pref-handleinclude-none": "Redakcije, ki so bile prikazane ob času odobritve",
 	"contentstabilization-pref-handleinclude-stable": "Odobrene različice vključenih strani",
 	"contentstabilization-pref-handleincludes-help": "Določa, katera različica vključenih virov naj bo prikazana uporabniku pri upodabljanju odobrene redakcije strani",
-	"content-stabilization-stable-data": "{{GENDER:$1|Odobril [[User:$1|$1]]|Odobrila [[User:$1|$1]]|Odobril_a [[User:$1|$1]]}} na $2. Komentar: $3",
+	"content-stabilization-stable-data": "{{GENDER:$1|Odobril [[User:$1|$1]]|Odobrila [[User:$1|$1]]|Odobril/a [[User:$1|$1]]}} na $2. Komentar: $3",
 	"contentstabilization-label-stabilize-ns": "Odobritev",
 	"content-stabilization-integration-activity-error-context-data-missing": "manjka »pageId«",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Iz podanega »pageId« ni mogoče ustvariti veljavnega naslova",
@@ -62,9 +63,9 @@
 	"contentstabilization-state-draft-info-btn-popup-title": "Spremenjeni viri:",
 	"log-name-stabilization": "Dnevnik stabilizacije vsebine",
 	"log-description-stabilization": "Dnevnik sprememb stabilizacije strani",
-	"logentry-stabilization-add": "$1 je {{GENDER:$2|odobril|odobrila|odobril_a}} stran $3",
+	"logentry-stabilization-add": "$1 je {{GENDER:$2|odobril|odobrila|odobril/a}} stran $3",
 	"logentry-stabilization-remove": "$1 je {{GENDER:$2|odstranil|odstranila|odstranil_a}} odobritev strani $3",
-	"logentry-stabilization-update": "$1 je {{GENDER:$2|odobril|odobrila|odobril_a}} spremembe virov na strani $3",
+	"logentry-stabilization-update": "$1 je {{GENDER:$2|odobril|odobrila|odobril/a}} spremembe virov na strani $3",
 	"contentstabilization-status-stable": "Odobreno",
 	"contentstabilization-status-unstable": "Osnutek",
 	"contentstabilization-status-first-unstable": "Prvi osnutek",
@@ -108,5 +109,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "Preklop na stabilno različico",
 	"contentstabilization-wikiexplorer-state": "Odobreno",
 	"contentstabilization-wikiexplorer-date": "Datum odobritve",
-	"contentstabilization-wikiexplorer-is-new-available": "Odobritev v teku"
+	"contentstabilization-wikiexplorer-is-new-available": "Odobritev v teku",
+	"contentstabilization-versionhistory-grid-header-state": "Stanje",
+	"contentstabilization-versionhistory-grid-header-approver": "Odobril",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Datum odobritve",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Komentar odobritve"
 }
