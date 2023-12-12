@@ -180,7 +180,10 @@ class InclusionManager {
 	private function getCurrentInclusions( LinkTarget $target ): array {
 		$page = $this->wikiPageFactory->newFromLinkTarget( $target );
 		$parserOptions = $page->makeParserOptions( 'canonical' );
-		$parser = $this->parserFactory->create();
+		$parser = $this->parserFactory->getMainInstance();
+		if ( !$parser ) {
+			return [];
+		}
 		$parserOutput = $parser->parse(
 			$page->getContent()->getWikitextForTransclusion(), $page->getTitle(), $parserOptions,
 			true, true, $page->getTitle()->getLatestRevID()
