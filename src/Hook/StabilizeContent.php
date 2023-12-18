@@ -366,20 +366,33 @@ class StabilizeContent implements
 	 * @inheritDoc
 	 */
 	public function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $mediaWiki ) {
-		$action = $request->getText( 'veaction', $request->getText( 'action', 'view' ) );
-		if ( $action !== 'edit' ) {
-			return;
-		}
 		if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
-			return;
+			return true;
 		}
 		$this->setViewFromArticle( $article );
-		if ( !$this->shouldSwitchToLatestForEdit( $title, $user ) ) {
-			return;
+
+		$action = $request->getText( 'veaction', $request->getText( 'action', 'view' ) );
+		if ( $action === 'edit' ) {
+			if ( !$this->shouldSwitchToLatestForEdit( $title, $user ) ) {
+				return true;
+			}
+			// Replace revision to edit, if needed
+			$request->setVal( 'stable', 0 );
+			$request->unsetVal( 'oldid' );
 		}
-		// Replace revision to edit, if needed
-		$request->setVal( 'stable', 0 );
-		$request->unsetVal( 'oldid' );
+
+		if ( $action === 'raw' ) {
+			if (
+				$this->view && $this->view->getRevision() &&
+				( $this->view->getStatus() === StableView::STATE_STABLE || $this->lookup->canUserSeeUnstable( $user ) )
+			) {
+				$request->setVal( 'oldid', $this->view->getRevision()->getId() );
+			} else {
+				$output->showPermissionsErrorPage( [ 'badaccess-group0' ] );
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
