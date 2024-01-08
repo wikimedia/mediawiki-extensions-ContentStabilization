@@ -10,7 +10,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.39.0",
 		"extensions": {
-			"OOJSPlus": "*"
+			"OOJSPlus": ">= 2.0.0"
 		}
 	},
 	"attributes": {
