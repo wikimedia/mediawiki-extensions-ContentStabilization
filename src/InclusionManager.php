@@ -184,9 +184,11 @@ class InclusionManager {
 		if ( !$parser ) {
 			return [];
 		}
+		// Only clear state if the Parser is not in the middle of parsing already (called recursively)
+		$clearState = $parser->getOutput() === null;
 		$parserOutput = $parser->parse(
 			$page->getContent()->getWikitextForTransclusion(), $page->getTitle(), $parserOptions,
-			true, true, $page->getTitle()->getLatestRevID()
+			true, $clearState, $page->getTitle()->getLatestRevID()
 		);
 		$transclusions = $parserOutput->getTemplates();
 		$images = $parserOutput->getImages();
