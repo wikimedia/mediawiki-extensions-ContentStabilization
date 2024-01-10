@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
+			"Iketsi",
 			"Verdy p",
 			"Wladek92"
 		]
@@ -111,5 +112,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "Basculer vers la version stable",
 	"contentstabilization-wikiexplorer-state": "Approuvé",
 	"contentstabilization-wikiexplorer-date": "Date d’approbation",
-	"contentstabilization-wikiexplorer-is-new-available": "Approbation en attente"
+	"contentstabilization-wikiexplorer-is-new-available": "Approbation en attente",
+	"contentstabilization-versionhistory-grid-header-state": "État",
+	"contentstabilization-versionhistory-grid-header-approver": "Approuvé par",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Date d’approbation",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Commentaire d'approbation"
 }
