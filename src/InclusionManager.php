@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization;
 
 use Config;
 use GlobalVarConfig;
+use HashBagOStuff;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
@@ -40,6 +41,9 @@ class InclusionManager {
 	/** @var array */
 	private $inclusionModes;
 
+	/** @var HashBagOStuff */
+	private $cache;
+
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param WikiPageFactory $wikiPageFactory
@@ -61,6 +65,7 @@ class InclusionManager {
 		$this->config = $config;
 		$this->parserFactory = $parserFactory;
 		$this->inclusionModes = $inclusionModes;
+		$this->cache = new HashBagOStuff();
 	}
 
 	/**
@@ -148,11 +153,24 @@ class InclusionManager {
 	 * @return array|array[]
 	 */
 	public function getCurrentStabilizedInclusions( RevisionRecord $revisionRecord ) {
+		$cacheKey = __METHOD__ . $revisionRecord->getId();
+		$inclusionMode = $this->getInclusionMode();
+		if ( $inclusionMode instanceof InclusionMode ) {
+			$cacheKey .= get_class( $inclusionMode );
+		}
+
+		if ( $this->cache->hasKey( $cacheKey ) ) {
+			return $this->cache->get( $cacheKey );
+		}
 		$current = $this->getCurrentInclusions( $revisionRecord->getPageAsLinkTarget() );
-		if ( $this->getInclusionMode() === null ) {
+		if ( $inclusionMode === null ) {
+			$this->cache->set( $cacheKey, $current );
 			return $current;
 		}
-		return $this->getInclusionMode()->stabilizeInclusions( $current, $revisionRecord );
+
+		$stabilized = $inclusionMode->stabilizeInclusions( $current, $revisionRecord );
+		$this->cache->set( $cacheKey, $stabilized );
+		return $stabilized;
 	}
 
 	/**
@@ -254,7 +272,7 @@ class InclusionManager {
 		$dbw->insert( 'stable_transclusions', $data, __METHOD__, [ 'IGNORE' ] );
 
 		// Additional query, yes, but retrieves the actual data, and its formatted
-		return $this->retrieveTransclusions( $main );
+		return $this->retrieveTransclusions( $main, true );
 	}
 
 	/**
@@ -282,15 +300,21 @@ class InclusionManager {
 		$dbw->insert( 'stable_file_transclusions', $data, __METHOD__, [ 'IGNORE' ] );
 
 		// Additional query, yes, but retrieves the actual data, and its formatted
-		return $this->retrieveImages( $main );
+		return $this->retrieveImages( $main, true );
 	}
 
 	/**
 	 * @param RevisionRecord $revisionRecord
+	 * @param bool $recache
 	 *
 	 * @return array
 	 */
-	private function retrieveTransclusions( RevisionRecord $revisionRecord ): array {
+	private function retrieveTransclusions( RevisionRecord $revisionRecord, bool $recache = false ): array {
+		$cacheKey = __METHOD__ . $revisionRecord->getId();
+		if ( !$recache && $this->cache->hasKey( $cacheKey ) ) {
+			return $this->cache->get( $cacheKey );
+		}
+
 		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
 		$res = $db->select(
 			'stable_transclusions',
@@ -307,15 +331,21 @@ class InclusionManager {
 				'title' => $row->st_transclusion_title,
 			];
 		}
+		$this->cache->set( $cacheKey, $transclusions );
 		return $transclusions;
 	}
 
 	/**
 	 * @param RevisionRecord $main
+	 * @param bool $recache
 	 *
 	 * @return array
 	 */
-	private function retrieveImages( RevisionRecord $main ): array {
+	private function retrieveImages( RevisionRecord $main, bool $recache = true ): array {
+		$cacheKey = __METHOD__ . $main->getId();
+		if ( !$recache && $this->cache->hasKey( $cacheKey ) ) {
+			return $this->cache->get( $cacheKey );
+		}
 		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
 		$res = $db->select(
 			'stable_file_transclusions',
@@ -333,6 +363,8 @@ class InclusionManager {
 				'sha1' => $row->sft_file_sha1,
 			];
 		}
+
+		$this->cache->set( $cacheKey, $images );
 		return $images;
 	}
 
@@ -346,6 +378,10 @@ class InclusionManager {
 	public function getSyncDifference( StablePoint $point ): array {
 		if ( $this->getInclusionMode() && !$this->getInclusionMode()->canBeOutOfSync( $point->getRevision() ) ) {
 			return [];
+		}
+		$cacheKey = __METHOD__ . $point->getRevision()->getId();
+		if ( $this->cache->hasKey( $cacheKey ) ) {
+			return $this->cache->get( $cacheKey );
 		}
 		$stableInclusions = $point->getInclusions();
 		$latestInclusions = $this->getCurrentStabilizedInclusions( $point->getRevision() );
@@ -363,6 +399,7 @@ class InclusionManager {
 		if ( !empty( $untracked ) ) {
 			$res['untracked'] = $untracked;
 		}
+		$this->cache->set( $cacheKey, $res );
 		return $res;
 	}
 
