@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\ContentStabilization\Storage;
 use DateTime;
 use Exception;
 use File;
+use HashBagOStuff;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Page\PageIdentity;
@@ -32,6 +33,8 @@ class StablePointStore {
 
 	/** @var RepoGroup */
 	private $repoGroup;
+	/** @var HashBagOStuff */
+	private $queryCache;
 
 	/**
 	 * @param ILoadBalancer $loadBalancer
@@ -47,6 +50,7 @@ class StablePointStore {
 		$this->userFactory = $userFactory;
 		$this->revisionStore = $revisionStore;
 		$this->repoGroup = $repoGroup;
+		$this->queryCache = new HashBagOStuff();
 	}
 
 	/**
@@ -70,6 +74,10 @@ class StablePointStore {
 	 * @return array
 	 */
 	public function getStableRevisionIds( PageIdentity $page ): array {
+		$cacheKey = __METHOD__ . $page->getId();
+		if ( $this->queryCache->hasKey( $cacheKey ) ) {
+			return $this->queryCache->get( $cacheKey );
+		}
 		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
 		$res = $db->select(
 			'stable_points',
@@ -83,6 +91,7 @@ class StablePointStore {
 		foreach ( $res as $row ) {
 			$revisions[] = (int)$row->sp_revision;
 		}
+		$this->queryCache->set( $cacheKey, $revisions );
 		return $revisions;
 	}
 
@@ -235,8 +244,12 @@ class StablePointStore {
 	 * @return ResultWrapper
 	 */
 	private function rawQuery( ?array $conds ): ResultWrapper {
+		$cacheKey = __METHOD__ . md5( json_encode( $conds ) );
+		if ( $this->queryCache->hasKey( $cacheKey ) ) {
+			return $this->queryCache->get( $cacheKey );
+		}
 		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
-		return $db->select(
+		$res = $db->select(
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],
 			$conds,
@@ -244,6 +257,9 @@ class StablePointStore {
 			[ 'ORDER BY' => 'sp_revision DESC' ],
 			[ 'stable_file_points' => [ 'LEFT JOIN', 'sfp_revision = sp_revision' ] ],
 		);
+
+		$this->queryCache->set( $cacheKey, $res );
+		return $res;
 	}
 
 	/**
