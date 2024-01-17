@@ -102,7 +102,11 @@ class StablePointStore {
 	 */
 	public function getLatestMatchingPoint( $conds = [] ): ?StablePoint {
 		$res = $this->rawQuery( $conds );
-		$row = $res->fetchRow();
+		if ( !$res->numRows() ) {
+			return null;
+		}
+		$res->seek( 0 );
+		$row = $res->fetchObject();
 		if ( !$row ) {
 			return null;
 		}
