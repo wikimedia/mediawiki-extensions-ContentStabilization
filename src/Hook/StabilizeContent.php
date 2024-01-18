@@ -289,7 +289,7 @@ class StabilizeContent implements
 	 * @inheritDoc
 	 */
 	public function onImagePageFindFile( $page, &$file, &$displayFile ) {
-		if ( !$this->lookup->isStabilizationEnabled( $page->getTitle() ) ) {
+		if ( !$this->lookup->isStabilizationEnabled( $page->getContext()->getTitle() ) ) {
 			return;
 		}
 
