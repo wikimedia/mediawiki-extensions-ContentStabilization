@@ -90,8 +90,12 @@ class StabilizePDFExport implements
 			$oldId = $title->getLatestRevID();
 		}
 
-		if ( !isset( $params['article-id'] ) && $title instanceof Title && $title->exists() ) {
+		if ( !isset( $params['article-id'] ) && $title->exists() ) {
 			$params['article-id'] = $title->getArticleID();
+		}
+		if ( !$title->canExist() ) {
+			// Virtual namespace
+			return;
 		}
 		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
 			return;
@@ -122,7 +126,7 @@ class StabilizePDFExport implements
 		if ( !$this->config->get( 'BlueSpiceUEModulePDFShowStabilizationTag' ) ) {
 			return;
 		}
-		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
+		if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
 			return;
 		}
 		if ( !$this->view || !$this->view->getRevision() ) {
