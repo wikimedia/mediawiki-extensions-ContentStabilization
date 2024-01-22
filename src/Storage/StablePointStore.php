@@ -243,6 +243,13 @@ class StablePointStore {
 	}
 
 	/**
+	 * @return void
+	 */
+	public function clearCache() {
+		$this->queryCache->clear();
+	}
+
+	/**
 	 * @param array|null $conds
 	 *
 	 * @return ResultWrapper
