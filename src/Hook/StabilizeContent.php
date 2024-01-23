@@ -69,6 +69,9 @@ class StabilizeContent implements
 	/** @var StableView|null */
 	private $view = null;
 
+	/** @var array To avoid re-processing of inclusions */
+	private $processedInclusions = [];
+
 	/**
 	 * @param StabilizationLookup $lookup
 	 * @param Parser $parser
@@ -158,16 +161,18 @@ class StabilizeContent implements
 		);
 		$parserOutput = $renderedRev->getRevisionParserOutput();
 		$outputDone = $parserOutput;
-		$parserOutput->setRevisionTimestampUsed( $this->view->getRevision()->getTimestamp() );
-		$parserOutput->setCacheRevisionId( $this->view->getRevision()->getId() );
-		$parserOutput->setRevisionUsedSha1Base36( $this->view->getRevision()->getSha1() );
+		$revisionUsed = $this->view->getRevision();
 
-		$pageTitle = $this->titleFactory->castFromPageIdentity( $this->view->getRevision()->getPage() );
+		$parserOutput->setRevisionTimestampUsed( $revisionUsed->getTimestamp() );
+		$parserOutput->setCacheRevisionId( $revisionUsed->getId() );
+		$parserOutput->setRevisionUsedSha1Base36( $revisionUsed->getSha1() );
+
+		$pageTitle = $this->titleFactory->castFromPageIdentity( $revisionUsed->getPage() );
 		$this->hookContainer->run(
 			'ContentAlterParserOutput', [ $revision->getContent( SlotRecord::MAIN ), $pageTitle, &$parserOutput ]
 		);
 		$article->getContext()->getOutput()->addParserOutput( $parserOutput );
-		$article->getContext()->getOutput()->setRevisionId( $this->view->getRevision()->getId() );
+		$article->getContext()->getOutput()->setRevisionId( $revisionUsed->getId() );
 	}
 
 	/**
@@ -227,6 +232,17 @@ class StabilizeContent implements
 
 		if ( !$this->pageEquals( $contextTitle, $this->view->getPage() ) ) {
 			// Not checking for the page we are expecting, don't do anything
+			return;
+		}
+
+		$key = $title->getNamespace() . $title->getDBkey();
+		if ( $revRecord ) {
+			$key .= ':' . $revRecord->getId();
+		}
+		if ( !in_array( $key, $this->processedInclusions ) ) {
+			$this->processedInclusions[] = $key;
+		} else {
+			// Already processed this one
 			return;
 		}
 

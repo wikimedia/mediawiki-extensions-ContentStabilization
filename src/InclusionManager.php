@@ -198,10 +198,7 @@ class InclusionManager {
 	private function getCurrentInclusions( LinkTarget $target ): array {
 		$page = $this->wikiPageFactory->newFromLinkTarget( $target );
 		$parserOptions = $page->makeParserOptions( 'canonical' );
-		$parser = $this->parserFactory->getMainInstance();
-		if ( !$parser ) {
-			return [];
-		}
+		$parser = $this->parserFactory->create();
 		// Only clear state if the Parser is not in the middle of parsing already (called recursively)
 		$clearState = $parser->getOutput() === null;
 		$parserOutput = $parser->parse(
