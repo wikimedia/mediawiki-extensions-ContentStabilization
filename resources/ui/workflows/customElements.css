@@ -1,0 +1,3 @@
+.activity-icon.activity-approve-page::before {
+	background-image: url( ./../../images/activity-approve-icon.svg );
+}
