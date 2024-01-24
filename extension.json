@@ -91,7 +91,10 @@
 					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Workflows\\PropertyValidator\\ValidReviewer",
 					"services": [ "UserFactory", "PermissionManager" ]
 				}
-			}
+			},
+			"EditorPluginModules": [
+				"ext.contentStabilization.workflows.editor.customElements"
+			]
 		},
 		"BlueSpiceSMWConnector": {
 			"ExtraPropertyRegistry": {
@@ -223,6 +226,25 @@
 				"contentstabilization-versionhistory-grid-header-approver",
 				"contentstabilization-versionhistory-grid-header-approval-date",
 				"contentstabilization-versionhistory-grid-header-approval-comment"
+			]
+		},
+		"ext.contentStabilization.workflows.editor.customElements": {
+			"scripts": [
+				"ui/workflows/inspector/ApprovePageInspector.js",
+				"ui/workflows/registerCustomElements.js"
+			],
+			"styles": [
+				"ui/workflows/customElements.css"
+			],
+			"messages": [
+				"contentstabilization-ui-workflows-inspector-activity-approve-page-title",
+				"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user",
+				"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help",
+				"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment"
+			],
+			"dependencies": [
+				"ext.workflows.editor.inspector.bootstrap",
+				"ext.workflows.editor.customElements.bootstrap"
 			]
 		}
 	},

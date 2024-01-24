@@ -113,5 +113,9 @@
 	"contentstabilization-versionhistory-grid-header-state": "State",
 	"contentstabilization-versionhistory-grid-header-approver": "Approved by",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Approval date",
-	"contentstabilization-versionhistory-grid-header-approval-comment": "Approval comment"
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Approval comment",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Approve page activity",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "User",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "User for page approving",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Comment"
 }
