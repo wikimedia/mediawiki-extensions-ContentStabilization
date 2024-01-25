@@ -129,6 +129,12 @@
 	"MessagesDirs": {
 		"ContentStabilization": "i18n"
 	},
+	"DefaultUserOptions": {
+		"history-show-sp_state": 1,
+		"history-show-sp_approver": 1,
+		"history-show-sp_approve_ts": 0,
+		"history-show-sp_approve_comment": 0
+	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
@@ -284,7 +290,8 @@
 		"BSPageAssignmentsOverview": "addStabilizationInfoToPageAssignments",
 		"MediaWikiPerformAction": "stabilizeContent",
 		"SkinTemplateNavigation::Universal": "addApproveAction",
-		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery"
+		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery",
+		"GetPreferences": "userpreference"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -366,6 +373,9 @@
 		},
 		"addApproveActionDiscovery": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddApproveActionDiscovery"
+		},
+		"userpreference": {
+			"class": "\\MediaWiki\\Extension\\ContentStabilization\\Hook\\UserPreference"
 		}
 	},
 	"SpecialPages": {
