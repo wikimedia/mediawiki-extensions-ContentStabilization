@@ -398,7 +398,7 @@ class InclusionManagerTest extends TestCase {
 		$mock = $this->getMockBuilder( ParserFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$mock->method( 'create' )->willReturn( $parserMock );
+		$mock->method( 'getMainInstance' )->willReturn( $parserMock );
 
 		return $mock;
 	}
