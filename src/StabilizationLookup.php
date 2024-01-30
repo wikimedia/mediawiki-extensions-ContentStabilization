@@ -133,7 +133,7 @@ class StabilizationLookup {
 	 * @return StableView|null
 	 */
 	public function getStableViewFromContext( IContextSource $context ): ?StableView {
-		if ( $context->getTitle() === null ) {
+		if ( $context->getTitle() === null || !$context->getTitle()->canExist() ) {
 			return null;
 		}
 		$oldId = $context->getRequest()->getInt( 'oldid' );
@@ -297,19 +297,19 @@ class StabilizationLookup {
 	}
 
 	/**
-	 * @param PageIdentity $page
+	 * @param PageIdentity|null $page
 	 *
 	 * @return bool
 	 */
-	public function isStabilizationEnabled( PageIdentity $page ): bool {
-		$namespace = $page->getNamespace();
-		if ( $namespace === NS_MEDIA ) {
-			$namespace = NS_FILE;
-		}
-		if ( $namespace === NS_MEDIAWIKI || $namespace === NS_SPECIAL ) {
+	public function isStabilizationEnabled( ?PageIdentity $page ): bool {
+		if ( $page === null || !$page->canExist() ) {
 			return false;
 		}
-		if ( $namespace !== NS_FILE ) {
+
+		if ( $page->getNamespace() === NS_MEDIAWIKI ) {
+			return false;
+		}
+		if ( $page->getNamespace() !== NS_FILE ) {
 			$rev = $this->revisionStore->getRevisionByPageId( $page->getId() );
 			if ( !$rev ) {
 				return false;
