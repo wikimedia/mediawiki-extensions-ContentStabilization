@@ -116,10 +116,14 @@ class StablePointStore {
 	/**
 	 * @param stdClass $row
 	 *
-	 * @return StablePoint
+	 * @return StablePoint|null
 	 */
-	private function stablePointFromRow( $row ): StablePoint {
+	private function stablePointFromRow( $row ): ?StablePoint {
 		$revision = $this->revisionStore->getRevisionById( $row->sp_revision );
+		if ( $revision instanceof RevisionRecord === false ) {
+			return null;
+		}
+
 		$actor = $this->userFactory->newFromId( $row->sp_user );
 		$time = DateTime::createFromFormat( 'YmdHis', $row->sp_time );
 		$file = $this->maybeGetFile( $revision, $row );
