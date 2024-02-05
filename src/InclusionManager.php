@@ -185,7 +185,7 @@ class InclusionManager {
 			return [];
 		}
 		// Only clear state if the Parser is not in the middle of parsing already (called recursively)
-		$clearState = $parser->getOutput() === null;
+		$clearState = $parser->getOutput() === null || $parser->getStripState() === null;
 		$parserOutput = $parser->parse(
 			$page->getContent()->getWikitextForTransclusion(), $page->getTitle(), $parserOptions,
 			true, $clearState, $page->getTitle()->getLatestRevID()
