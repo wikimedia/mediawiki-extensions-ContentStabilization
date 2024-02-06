@@ -6,6 +6,7 @@ use Config;
 use File;
 use IContextSource;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
@@ -39,22 +40,27 @@ class StabilizationLookup {
 	/** @var bool */
 	private $useCache = true;
 
+	/** @var HookContainer */
+	private $hookContainer;
+
 	/**
 	 * @param StablePointStore $store
 	 * @param InclusionManager $inclusionManager
 	 * @param RevisionStore $revisionStore
 	 * @param UserGroupManager $userGroupManager
 	 * @param Config $config
+	 * @param HookContainer $hookContainer
 	 */
 	public function __construct(
 		StablePointStore $store, InclusionManager $inclusionManager, RevisionStore $revisionStore,
-		UserGroupManager $userGroupManager, Config $config
+		UserGroupManager $userGroupManager, Config $config, HookContainer $hookContainer
 	) {
 		$this->store = $store;
 		$this->inclusionManager = $inclusionManager;
 		$this->revisionStore = $revisionStore;
 		$this->userGroupManager = $userGroupManager;
 		$this->config = $config;
+		$this->hookContainer = $hookContainer;
 	}
 
 	/**
@@ -305,21 +311,25 @@ class StabilizationLookup {
 		if ( $page === null || !$page->canExist() ) {
 			return false;
 		}
-
-		if ( $page->getNamespace() === NS_MEDIAWIKI ) {
-			return false;
+		$namespace = $page->getNamespace();
+		if ( $namespace === NS_MEDIA ) {
+			$namespace = NS_FILE;
 		}
-		if ( $page->getNamespace() !== NS_FILE ) {
+
+		$result = in_array( $page->getNamespace(), $this->config->get( 'EnabledNamespaces' ) );
+		if ( $namespace === NS_MEDIAWIKI || $namespace === NS_SPECIAL ) {
+			$result = false;
+		} elseif ( $namespace !== NS_FILE ) {
 			$rev = $this->revisionStore->getRevisionByPageId( $page->getId() );
 			if ( !$rev ) {
-				return false;
-			}
-			if ( !( $rev->getContent( SlotRecord::MAIN ) instanceof WikitextContent ) ) {
-				return false;
+				$result = false;
+			} elseif ( !( $rev->getContent( SlotRecord::MAIN ) instanceof WikitextContent ) ) {
+				$result = false;
 			}
 		}
+		$this->hookContainer->run( 'ContentStabilizationIsStabilizationEnabled', [ $page, &$result ] );
 
-		return in_array( $page->getNamespace(), $this->config->get( 'EnabledNamespaces' ) );
+		return $result;
 	}
 
 	/**

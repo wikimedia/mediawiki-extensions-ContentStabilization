@@ -73,7 +73,8 @@ return [
 			$services->getService( 'ContentStabilization._InclusionManager' ),
 			$services->getRevisionStore(),
 			$services->getUserGroupManager(),
-			$config
+			$config,
+			$services->getHookContainer()
 		);
 	}
 ];
