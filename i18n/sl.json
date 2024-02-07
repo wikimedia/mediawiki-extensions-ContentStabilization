@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"contentstabilization-desc": "Uporabnikom omogoča, da označijo strani kot »odobrena« ali »osnutek« in da si ogledajo zadnjo odobreno različico strani.",
@@ -108,5 +109,9 @@
 	"contentstabilization-ui-switch-to-stable-title": "Preklop na stabilno različico",
 	"contentstabilization-wikiexplorer-state": "Odobreno",
 	"contentstabilization-wikiexplorer-date": "Datum odobritve",
-	"contentstabilization-wikiexplorer-is-new-available": "Odobritev v teku"
+	"contentstabilization-wikiexplorer-is-new-available": "Odobritev v teku",
+	"contentstabilization-versionhistory-grid-header-state": "Stanje",
+	"contentstabilization-versionhistory-grid-header-approver": "Odobril",
+	"contentstabilization-versionhistory-grid-header-approval-date": "Datum odobritve",
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Komentar odobritve"
 }
