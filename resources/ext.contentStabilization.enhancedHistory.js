@@ -1,7 +1,7 @@
 ( function ( mw ) {
 
 	mw.hook( 'enhanced.versionhistory' ).add( function ( gridCfg ) {
-		gridCfg.style = "";
+		gridCfg.style = '';
 
 		gridCfg.columns.sp_state = {
 			headerText: mw.message( 'contentstabilization-versionhistory-grid-header-state' ).text(),

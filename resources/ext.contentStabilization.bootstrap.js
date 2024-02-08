@@ -31,7 +31,7 @@ window.ext.contentStabilization = {
 		_requests: {},
 		_ajax: function ( path, data, method ) {
 			data = data || {};
-			var dfd = $.Deferred(),
+			let dfd = $.Deferred(),
 				finalPath = mw.util.wikiScript( 'rest' ) + '/content_stabilization';
 
 			if ( path ) {
@@ -71,10 +71,10 @@ window.ext.contentStabilization = {
 
 // Handle approval link
 $( function () {
-	$( document ).on( 'click', '#contentstabilization-stabilize-link,#ca-cs-approve', function( e ) {
+	$( document ).on( 'click', '#contentstabilization-stabilize-link,#ca-cs-approve', function ( e ) {
 		mw.loader.using( 'ext.contentStabilization.approve' ).then( function () {
 			e.preventDefault();
-			var dialog = new ext.contentStabilization.ui.ApproveDialog( {
+			const dialog = new ext.contentStabilization.ui.ApproveDialog( {
 					page: mw.config.get( 'wgPageName' )
 				} ),
 				manager = new OO.ui.WindowManager();

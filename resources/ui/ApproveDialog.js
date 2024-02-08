@@ -14,7 +14,7 @@ ext.contentStabilization.ui.ApproveDialog.static.actions = [
 
 ext.contentStabilization.ui.ApproveDialog.prototype.initialize = function () {
 	ext.contentStabilization.ui.ApproveDialog.parent.prototype.initialize.call( this );
-	var panel = new OO.ui.PanelLayout( { padded: true, expanded: false } );
+	const panel = new OO.ui.PanelLayout( { padded: true, expanded: false } );
 	this.$body.append( panel.$element );
 
 	this.comment = new OO.ui.MultilineTextInputWidget( { rows: 3 } );
@@ -28,21 +28,21 @@ ext.contentStabilization.ui.ApproveDialog.prototype.initialize = function () {
 ext.contentStabilization.ui.ApproveDialog.prototype.getActionProcess = function ( action ) {
 	if ( action === 'approve' ) {
 		return new OO.ui.Process( function () {
-			var dfd = $.Deferred();
+			const dfd = $.Deferred();
 			this.pushPending();
 			ext.contentStabilization.setStablePoint(
 				this.page,
 				this.comment.getValue()
 			)
-			.done( function () {
-				this.close( { action: action } );
-			}.bind( this ) )
-			.fail( function () {
-				this.popPending();
-				dfd.reject( new OO.ui.Error(
-					mw.msg( 'contentstabilization-ui-approve-error' ) ), { recoverable: false }
-				);
-			}.bind( this ) );
+				.done( function () {
+					this.close( { action: action } );
+				}.bind( this ) )
+				.fail( function () {
+					this.popPending();
+					dfd.reject( new OO.ui.Error(
+						mw.msg( 'contentstabilization-ui-approve-error' ) ), { recoverable: false }
+					);
+				}.bind( this ) );
 			return dfd.promise();
 		}, this );
 	}

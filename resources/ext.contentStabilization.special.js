@@ -1,9 +1,9 @@
 $( function () {
-	var $cnt = $( '#contentstabilization' );
+	const $cnt = $( '#contentstabilization' );
 	if ( $cnt.length === 0 ) {
 		return;
 	}
-	var panel = new OOJSPlus.ui.data.GridWidget( {
+	const panel = new OOJSPlus.ui.data.GridWidget( {
 		deletable: false,
 		style: 'differentiate-rows',
 		exportable: true,
@@ -65,19 +65,19 @@ $( function () {
 				}
 			}
 		} ),
-		provideExportData: function() {
-			var dfd = $.Deferred(),
+		provideExportData: function () {
+			const dfd = $.Deferred(),
 				store = new OOJSPlus.ui.data.store.RemoteRestStore( {
-				path: 'content_stabilization/list',
-				pageSize: -1,
-				sorter: {
-					page_title: {
-						direction: 'ASC'
+					path: 'content_stabilization/list',
+					pageSize: -1,
+					sorter: {
+						page_title: {
+							direction: 'ASC'
+						}
 					}
-				}
-			} );
-			store.load().done( function( response ) {
-				var $table = $( '<table>' ),
+				} );
+			store.load().done( function ( response ) {
+				let $table = $( '<table>' ),
 					$row = $( '<tr>' ),
 					$cell = $( '<td>' );
 				$cell.append(
@@ -111,12 +111,12 @@ $( function () {
 
 				$table.append( $row );
 
-				var namespaces = mw.config.get( 'wgFormattedNamespaces' );
-				for ( var id in response ) {
+				const namespaces = mw.config.get( 'wgFormattedNamespaces' );
+				for ( const id in response ) {
 					if ( !response.hasOwnProperty( id ) ) {
 						continue;
 					}
-					var record =response[id];
+					const record = response[ id ];
 					$row = $( '<tr>' );
 
 					$cell = $( '<td>' );
@@ -128,10 +128,10 @@ $( function () {
 					$row.append( $cell );
 
 					$cell = $( '<td>' );
-					if ( record.page_namespace === 0  ) {
+					if ( record.page_namespace === 0 ) {
 						$cell.append( mw.message( 'blanknamespace' ).text() );
 					} else {
-						$cell.append( namespaces[record.page_namespace] );
+						$cell.append( namespaces[ record.page_namespace ] );
 					}
 
 					$row.append( $cell );
@@ -149,7 +149,7 @@ $( function () {
 				}
 
 				dfd.resolve( '<table>' + $table.html() + '</table>' );
-			} ).fail( function() {
+			} ).fail( function () {
 				dfd.reject( 'Failed to load data' );
 			} );
 

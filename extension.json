@@ -24,7 +24,7 @@
 				},
 				"current": {
 					"class": "MediaWiki\\Extension\\ContentStabilization\\InclusionMode\\Current",
-					"services": ["RevisionLookup", "RepoGroup", "TitleFactory"]
+					"services": [ "RevisionLookup", "RepoGroup", "TitleFactory" ]
 				}
 			}
 		},
@@ -245,12 +245,12 @@
 		"reviewer": {
 			"contentstabilization-admin": false,
 			"contentstabilization-oversight": true,
-			"contentstabilization-stabilize":  true
+			"contentstabilization-stabilize": true
 		},
 		"sysop": {
 			"contentstabilization-admin": true,
 			"contentstabilization-oversight": true,
-			"contentstabilization-stabilize":  true
+			"contentstabilization-stabilize": true
 		}
 	},
 	"Hooks": {
@@ -270,7 +270,7 @@
 		"BSApiNamespaceStoreMakeData": "integrateIntoNamespaceManager",
 		"NamespaceManager::editNamespace": "integrateIntoNamespaceManager",
 		"NamespaceManagerBeforePersistSettings": "integrateIntoNamespaceManager",
-		"SMW::RevisionGuard::ChangeRevisionID":  "stabilizeSMWProperties",
+		"SMW::RevisionGuard::ChangeRevisionID": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::ChangeRevision": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::ChangeFile": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::IsApprovedRevision": "stabilizeSMWProperties",
@@ -390,19 +390,19 @@
 		{
 			"path": "/content_stabilization",
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\ListStablePointsHandler",
-			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup" ]
+			"services": [ "TitleFactory", "ContentStabilization.Stabilizer", "ContentStabilization.Lookup" ]
 		},
 		{
 			"method": "POST",
 			"path": "/content_stabilization",
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\SetStablePointHandler",
-			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup", "RevisionStore" ]
+			"services": [ "TitleFactory", "ContentStabilization.Stabilizer", "ContentStabilization.Lookup", "RevisionStore" ]
 		},
 		{
 			"method": "DELETE",
 			"path": "/content_stabilization/{rev_id}",
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Rest\\RemoveStablePointHandler",
-			"services": [ "TitleFactory", "ContentStabilization.Stabilizer" ,"ContentStabilization.Lookup", "RevisionStore" ]
+			"services": [ "TitleFactory", "ContentStabilization.Stabilizer", "ContentStabilization.Lookup", "RevisionStore" ]
 		},
 		{
 			"path": "/content_stabilization/list",

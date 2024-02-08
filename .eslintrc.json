@@ -60,7 +60,8 @@
 		"new-cap": "warn",
 		"semi-style": "warn",
 		"no-jquery/no-global-selector": "warn",
-		"no-jquery/no-class-state": "warn"
+		"no-jquery/no-class-state": "warn",
+		"prefer-const": "warn"
 	},
 	"globals": {
 		"ext": true,
