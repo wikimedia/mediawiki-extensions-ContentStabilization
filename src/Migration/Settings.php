@@ -60,7 +60,7 @@ class Settings {
 					$value = 'stable';
 				}
 			}
-			$r = $db->upsert(
+			$db->upsert(
 				'bs_settings3',
 				[
 					's_name' => $newVar,
@@ -72,9 +72,6 @@ class Settings {
 				],
 				__METHOD__
 			);
-			if ( !$r ) {
-				return Status::newFatal( 'Failed to migrate settings' );
-			}
 			$newValues[$newVar] = $value;
 		}
 
