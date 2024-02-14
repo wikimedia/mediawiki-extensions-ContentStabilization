@@ -12,7 +12,7 @@
 	"action-contentstabilization-stabilize": "одобрување на страница",
 	"action-contentstabilization-admin": "управување со одобренија",
 	"contentstabilization": "Преглед на управувањето со квалитетот",
-	"contentstabilization-global-action-overview": "Преглед на управувањето со квалитетот",
+	"contentstabilization-global-action-overview": "Управување со квалитетот",
 	"contentstabilization-global-action-overview-desc": "Преглед на страници во процесот на одобрување",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "има нацрт-верзија",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "има одобрена верзија",
@@ -112,5 +112,9 @@
 	"contentstabilization-versionhistory-grid-header-state": "Состојба",
 	"contentstabilization-versionhistory-grid-header-approver": "Одобрено од",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Одобрено на",
-	"contentstabilization-versionhistory-grid-header-approval-comment": "Коментар при одобрување"
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Коментар при одобрување",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Одобрување на активност на страница",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Корисник",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Корисничка страница за одобрување",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Коментар"
 }

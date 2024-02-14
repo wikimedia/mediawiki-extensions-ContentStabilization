@@ -25,5 +25,6 @@
 	"contentstabilization-ui-switch-to-draft-title": "Пребаци на нацрт",
 	"contentstabilization-ui-switch-to-stable-title": "Пребаци на стабилну верзију",
 	"contentstabilization-versionhistory-grid-header-approver": "Одобрено од",
-	"contentstabilization-versionhistory-grid-header-approval-date": "Датум одобравања"
+	"contentstabilization-versionhistory-grid-header-approval-date": "Датум одобравања",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Корисник"
 }
