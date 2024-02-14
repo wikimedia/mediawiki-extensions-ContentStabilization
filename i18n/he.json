@@ -112,5 +112,9 @@
 	"contentstabilization-versionhistory-grid-header-state": "מצב",
 	"contentstabilization-versionhistory-grid-header-approver": "אושר על־ידי",
 	"contentstabilization-versionhistory-grid-header-approval-date": "תאריך האישור",
-	"contentstabilization-versionhistory-grid-header-approval-comment": "הערת אישור"
+	"contentstabilization-versionhistory-grid-header-approval-comment": "הערת אישור",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "אישור פעילות דף",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "משתמש",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "משתמש לאישור דף",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "הערה"
 }

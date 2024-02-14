@@ -22,5 +22,6 @@
 	"contentstabilization-wikiexplorer-is-new-available": "In attesa di approvazione",
 	"contentstabilization-versionhistory-grid-header-state": "Stato",
 	"contentstabilization-versionhistory-grid-header-approver": "Approvato da",
-	"contentstabilization-versionhistory-grid-header-approval-date": "Data approvazione"
+	"contentstabilization-versionhistory-grid-header-approval-date": "Data approvazione",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utente"
 }
