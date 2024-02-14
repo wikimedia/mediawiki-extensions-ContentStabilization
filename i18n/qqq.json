@@ -116,9 +116,5 @@
 	"contentstabilization-versionhistory-grid-header-state": "Header of a column in version history grid",
 	"contentstabilization-versionhistory-grid-header-approver": "Header of a column in version history grid",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Header of a column in version history grid",
-	"contentstabilization-versionhistory-grid-header-approval-comment": "Header of a column in version history grid",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Inspector title",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Field label",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Field help message",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Field label"
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Header of a column in version history grid"
 }
