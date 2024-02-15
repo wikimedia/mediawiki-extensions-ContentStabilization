@@ -26,5 +26,6 @@
 	"contentstabilization-ui-switch-to-stable-title": "Пребаци на стабилну верзију",
 	"contentstabilization-versionhistory-grid-header-approver": "Одобрено од",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Датум одобравања",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Корисник"
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Корисник",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Коментар"
 }
