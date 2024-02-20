@@ -3,6 +3,7 @@
 		"authors": [
 			"HanV",
 			"McDutchie",
+			"Reedy",
 			"Sjoerddebruin"
 		]
 	},
@@ -53,7 +54,7 @@
 	"contentstabilization-pref-allowfirstunstable": "Het bekijken van de eerste conceptversie toestaan voor gebruikers die normaal gesproken geen concepten kunnen zien",
 	"contentstabilization-pref-stabilize-smw": "Semantische eigenschappen alleen bijwerken vanuit goedgekeurde versies",
 	"contentstabilization-pref-allowfirstunstable-help": "Indien ingeschakeld wordt de eerste conceptversie van een pagina getoond aan gebruikers die anders geen conceptversies zouden kunnen zien",
-	"contentstabilization-pref-stabilize-smw-help": "Indien ingeschakeld worden Semantic Mediawiki-eigenschappen alleen bijgewerkt op stabiele versies van pagina's",
+	"contentstabilization-pref-stabilize-smw-help": "Indien ingeschakeld worden Semantic MediaWiki-eigenschappen alleen bijgewerkt op stabiele versies van pagina's",
 	"contentstabilization-stablepoint-added-message-passive": "Nieuwe goedgekeurde versie van de pagina beschikbaar",
 	"contentstabilization-stablepoint-added-message": "heeft een nieuwe goedgekeurde versie van de pagina toegevoegd",
 	"contentstabilization-export-no-stable-date": "Niet goedgekeurd",

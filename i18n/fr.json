@@ -3,6 +3,7 @@
 		"authors": [
 			"Gomoko",
 			"Iketsi",
+			"Reedy",
 			"SleaY",
 			"Verdy p",
 			"Wladek92"
@@ -55,7 +56,7 @@
 	"contentstabilization-pref-allowfirstunstable": "Autoriser l’affichage de la première version ébauchée pour les utilisateurs qui ne peuvent normalement pas voir les brouillons",
 	"contentstabilization-pref-stabilize-smw": "Mettre à jour les propriétés sémantiques des versions approuvées uniquement",
 	"contentstabilization-pref-allowfirstunstable-help": "Si cette option est activée, la première version ébauchée d’une page sera présentée aux utilisateurs qui autrement ne pourraient voir aucune version brouillon.",
-	"contentstabilization-pref-stabilize-smw-help": "Si cette option est activée, la mise à jour des propriétés Mediawiki Sémantique sera déclenchée uniquement sur les versions stables des pages.",
+	"contentstabilization-pref-stabilize-smw-help": "Si cette option est activée, la mise à jour des propriétés MediaWiki Sémantique sera déclenchée uniquement sur les versions stables des pages.",
 	"contentstabilization-stablepoint-added-message-passive": "Nouvelle version approuvée de la page disponible",
 	"contentstabilization-stablepoint-added-message": "une nouvelle version approuvée de la page a été ajoutée",
 	"contentstabilization-export-no-stable-date": "Non approuvé",
