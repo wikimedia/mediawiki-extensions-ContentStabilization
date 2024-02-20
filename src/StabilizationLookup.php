@@ -184,32 +184,33 @@ class StabilizationLookup {
 		if ( !$this->isStabilizationEnabled( $page ) ) {
 			return null;
 		}
-
-		$upToRevision = $options['upToRevision'] ?? null;
-		$forceStable = true;
-		if ( isset( $options['forceUnstable'] ) && $options['forceUnstable'] ) {
-			$forceStable = false;
-		}
-		if ( !$this->hasStable( $page ) ) {
-			// No sense in forcing the stable version if there isnt any
-			$forceStable = false;
-		}
-
-		// Get revision we are requested to show
-		$selected = $this->providedRevisionOrLatest( $page, $upToRevision );
-		$lastStable  = $selected ? $this->getLastStablePoint( $page, $selected ) : null;
-		if ( $forceStable ) {
-			$selected = $lastStable ? $lastStable->getRevision() : null;
-		}
-		if ( !$selected ) {
-			return null;
-		}
-		// At this point, we know there is a revision to possibly show, in requested version
-
 		$userId = $forUser ? $forUser->getId() : -1;
-		$cacheKey = "{$page->getId()}:$userId:{$selected->getId()}:{$forceStable}";
+		$optionsJson = json_encode( $options );
+		$optionsHash = md5( $optionsJson );
+		$cacheKey = "{$page->getId()}:$userId:{$optionsHash}";
 
 		if ( !$this->useCache || !isset( $this->stableViewCache[$cacheKey] ) ) {
+			$upToRevision = $options['upToRevision'] ?? null;
+			$forceStable = true;
+			if ( isset( $options['forceUnstable'] ) && $options['forceUnstable'] ) {
+				$forceStable = false;
+			}
+			if ( !$this->hasStable( $page ) ) {
+				// No sense in forcing the stable version if there isnt any
+				$forceStable = false;
+			}
+
+			// Get revision we are requested to show
+			$selected = $this->providedRevisionOrLatest( $page, $upToRevision );
+			$lastStable  = $selected ? $this->getLastStablePoint( $page, $selected ) : null;
+			if ( $forceStable ) {
+				$selected = $lastStable ? $lastStable->getRevision() : null;
+			}
+			if ( !$selected ) {
+				$this->stableViewCache[$cacheKey] = null;
+				return null;
+			}
+			// At this point, we know there is a revision to possibly show, in requested version
 			$stableRevIds = $this->store->getStableRevisionIds( $page );
 			$isRequestedStable = $forceStable || in_array( $selected->getId(), $stableRevIds );
 			$hasStable = $stableRevIds !== [];

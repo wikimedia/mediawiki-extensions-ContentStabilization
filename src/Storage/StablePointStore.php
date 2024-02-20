@@ -119,6 +119,10 @@ class StablePointStore {
 	 * @return StablePoint|null
 	 */
 	private function stablePointFromRow( $row ): ?StablePoint {
+		$rowHash = 'row:' . md5( serialize( $row ) );
+		if ( $this->queryCache->hasKey( $rowHash ) ) {
+			return $this->queryCache->get( $rowHash );
+		}
 		$revision = $this->revisionStore->getRevisionById( $row->sp_revision );
 		if ( $revision instanceof RevisionRecord === false ) {
 			return null;
@@ -128,9 +132,16 @@ class StablePointStore {
 		$time = DateTime::createFromFormat( 'YmdHis', $row->sp_time );
 		$file = $this->maybeGetFile( $revision, $row );
 		if ( $file ) {
-			return new StableFilePoint( $file, $revision, $actor, $time, $row->sp_comment ?? '' );
+			$this->queryCache->set( $rowHash, new StableFilePoint(
+				$file, $revision, $actor, $time, $row->sp_comment ?? ''
+			) );
+			$stablePoint = new StableFilePoint( $file, $revision, $actor, $time, $row->sp_comment ?? '' );
+		} else {
+			$stablePoint = new StablePoint( $revision, $actor, $time, $row->sp_comment ?? '' );
 		}
-		return new StablePoint( $revision, $actor, $time, $row->sp_comment ?? '' );
+
+		$this->queryCache->set( $rowHash, $stablePoint );
+		return $stablePoint;
 	}
 
 	/**
