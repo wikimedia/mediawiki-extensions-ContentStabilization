@@ -5,6 +5,7 @@
 			"Dejan Savuljesku",
 			"Justman10000",
 			"McDutchie",
+			"Reedy",
 			"Robert Vogel",
 			"Vhoesl"
 		]
@@ -56,7 +57,7 @@
 	"contentstabilization-pref-allowfirstunstable": "Den Erstentwurf für Benutzer anzeigen, die sonst keine Entwurfsversionen einsehen können",
 	"contentstabilization-pref-stabilize-smw": "Werte von semantischen Attributen nur von freigegebenen Seiten verwenden",
 	"contentstabilization-pref-allowfirstunstable-help": "Wenn aktiviert, wird die erste Entwurfsversion einer Seite für Benutzer angezeigt, die sonst keine Entwurfsversionen einsehen können",
-	"contentstabilization-pref-stabilize-smw-help": "Wenn aktiviert, werden die Werte von Semantic-Mediawiki-Attributen nur von freigegebenen Versionen übernommen",
+	"contentstabilization-pref-stabilize-smw-help": "Wenn aktiviert, werden die Werte von Semantic-MediaWiki-Attributen nur von freigegebenen Versionen übernommen",
 	"contentstabilization-stablepoint-added-message-passive": "Es ist eine neue freigegebene Version der Seite hinzugefügt worden",
 	"contentstabilization-stablepoint-added-message": "Es wurde eine neue freigegebene Version der Seite hinzugefügt",
 	"contentstabilization-export-no-stable-date": "Nicht freigegeben",

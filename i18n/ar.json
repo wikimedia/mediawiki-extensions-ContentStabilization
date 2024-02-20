@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alshamiri1",
-			"Asma"
+			"Asma",
+			"Reedy"
 		]
 	},
 	"contentstabilization-desc": "يسمح للمستخدمين بوضع علامة على الصفحات على أنها \"موافق عليها\" أو \"مسودة\" وعرض أحدث نسخة تمت الموافقة عليها من الصفحة.",
@@ -53,7 +54,7 @@
 	"contentstabilization-pref-allowfirstunstable": "السماح بعرض أول نسخة مسودة للمستخدمين الذين لا يمكنهم عادة رؤية المسودات",
 	"contentstabilization-pref-stabilize-smw": "تحديث الخصائص الدلالية من الإصدارات المعتمدة فقط",
 	"contentstabilization-pref-allowfirstunstable-help": "في حالة التمكين ، سيتم عرض أول نسخة مسودة من الصفحة للمستخدمين الذين لن يتمكنوا من رؤية إصدارات المسودة بخلاف ذلك",
-	"contentstabilization-pref-stabilize-smw-help": "في حالة التمكين ، سيتم تشغيل تحديث خصائص Semantic Mediawiki فقط على الإصدارات الثابتة من الصفحات",
+	"contentstabilization-pref-stabilize-smw-help": "في حالة التمكين ، سيتم تشغيل تحديث خصائص Semantic MediaWiki فقط على الإصدارات الثابتة من الصفحات",
 	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة",
 	"contentstabilization-stablepoint-added-message": "أضاف نسخة جديدة معتمدة من الصفحة",
 	"contentstabilization-export-no-stable-date": "غير مقبول",
