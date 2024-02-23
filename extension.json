@@ -334,7 +334,7 @@
 		"runUpdatesOnStabilizationChange": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\ReactToStabilizationChanges",
 			"services": [
-				"WikiPageFactory", "MWStake.Notifier", "ContentStabilization._SpecialLogLogger"
+				"WikiPageFactory", "MWStake.Notifier", "ContentStabilization._SpecialLogLogger", "MWStakeNotificationsNotifier"
 			]
 		},
 		"stabilizeDrawioFile": {
@@ -466,7 +466,8 @@
 		"stabilization/*": "LogFormatter"
 	},
 	"ExtensionFunctions": [
-		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateWikiExplorer::register"
+		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateWikiExplorer::register",
+		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Echo\\Registration::registerNotifications"
 	],
 	"manifest_version": 2
 }

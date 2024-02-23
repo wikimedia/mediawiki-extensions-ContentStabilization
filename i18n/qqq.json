@@ -119,5 +119,10 @@
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Inspector title",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Field label",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Field help message",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Field label"
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Field label",
+	"echo-category-title-content-stabilization-cat": "Label for the Echo notification category",
+	"content-stabilization-echo-cat-tooltip": "Tooltip for the Echo notification category",
+	"content-stabilization-approval-notification-summary": "Summary message for Echo notification when page is approved.\n$1 - page name\n$2 - agent username\n$3 - agent display name",
+	"content-stabilization-approval-notification-subject": "Email subject for Echo notification when page is approved.\n$1 - page name",
+	"content-stabilization-approval-notification-email-body": "Email body for Echo notification when page is approved.\n$1 - page name\n$2 - agent username\n$3 - agent display name"
 }

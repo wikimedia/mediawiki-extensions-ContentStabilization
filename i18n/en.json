@@ -117,5 +117,10 @@
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Approve page activity",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "User",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "User for page approving",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Comment"
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Comment",
+	"echo-category-title-content-stabilization-cat": "Approval",
+	"content-stabilization-echo-cat-tooltip": "Notify me when page is approved",
+	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|approved}} page $1",
+	"content-stabilization-approval-notification-subject": "Page $1 approved",
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|approved}} page $1"
 }
