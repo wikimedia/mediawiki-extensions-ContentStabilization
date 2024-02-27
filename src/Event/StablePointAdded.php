@@ -3,6 +3,8 @@
 namespace MediaWiki\Extension\ContentStabilization\Event;
 
 use MediaWiki\Extension\ContentStabilization\StablePoint;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use Message;
 use MWStake\MediaWiki\Component\Events\TitleEvent;
 
@@ -30,5 +32,14 @@ class StablePointAdded extends TitleEvent {
 			return Message::newFromKey( 'contentstabilization-stablepoint-added-message-passive' );
 		}
 		return Message::newFromKey( 'contentstabilization-stablepoint-added-message' );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getArgsForTesting(
+		UserIdentity $agent, MediaWikiServices $services, array $extra = []
+	): array {
+		return [];
 	}
 }
