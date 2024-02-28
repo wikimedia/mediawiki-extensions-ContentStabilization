@@ -150,7 +150,7 @@ class StablePointStoreTest extends TestCase {
 		$lb = $this->mockLoadBalancer();
 
 		$lb->getConnectionRef( DB_REPLICA )->method( 'delete' )->willReturn( true );
-		$lb->getConnectionRef( DB_REPLICA )->expects( $this->exactly( 2 ) )->method( 'delete' )->withConsecutive(
+		$expectedDeleteArgs = [
 			[
 				'stable_points',
 				[
@@ -166,8 +166,14 @@ class StablePointStoreTest extends TestCase {
 				],
 				StablePointStore::class . '::removeStablePoint'
 			]
-
-		);
+		];
+		$lb->getConnectionRef( DB_REPLICA )->expects( $this->exactly( 2 ) )->method( 'delete' )
+			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
+				$curExpectedArgs = array_shift( $expectedDeleteArgs );
+				$this->assertSame( $curExpectedArgs[0], $table );
+				$this->assertSame( $curExpectedArgs[1], $conds );
+				$this->assertSame( $curExpectedArgs[2], $fname );
+			} );
 
 		$revision = $this->getMockBuilder( RevisionRecord::class )
 			->disableOriginalConstructor()
