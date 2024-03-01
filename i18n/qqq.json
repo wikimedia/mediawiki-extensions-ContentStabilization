@@ -133,5 +133,8 @@
 	"contentstabilization-ui-editor-approve-title": "Checkbox title message in editor to approve one change when page is saved",
 	"contentstabilization-ui-editor-approve-with-pending": "Checkbox label in editor to approve multiple changes when page is saved.\n$1 - number of pending changes",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Checkbox title message in editor to approve multiple changes when page is saved",
-	"contentstabilization-edit-notice-approval-needed": "Notice about editing a page with approval enabled"
+	"contentstabilization-edit-notice-approval-needed": "Notice about editing a page with approval enabled",
+	"contentstabilization-stablepoint-added-key-desc": "Description of the notification event type",
+	"contentstabilization-stablepoint-added-links-intro": "Description of the links in the notification mail",
+	"contentstabilization-stablepoint-added-links-view-changes": "Label for the notification mail button to see changes between approved versions of the page"
 }

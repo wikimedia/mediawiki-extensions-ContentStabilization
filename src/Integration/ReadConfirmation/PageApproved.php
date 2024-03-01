@@ -3,10 +3,11 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration\ReadConfirmation;
 
 use BlueSpice\PageAssignments\AssignmentFactory;
+use BlueSpice\ReadConfirmation\Event\ConfirmationRemindEvent;
 use BlueSpice\ReadConfirmation\IMechanism;
-use BlueSpice\ReadConfirmation\Notifications\DailyRemind;
-use BlueSpice\ReadConfirmation\Notifications\Remind;
 use Config;
+use DateInterval;
+use DateTime;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Logger\LoggerFactory;
@@ -14,7 +15,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MWException;
-use MWStake\MediaWiki\Component\Notifications\INotifier;
+use MWStake\MediaWiki\Component\Events\Notifier;
 use Psr\Log\LoggerInterface;
 use Title;
 use TitleFactory;
@@ -50,7 +51,7 @@ class PageApproved implements IMechanism {
 	private $recentMustReadRevisions = [];
 	/** @var AssignmentFactory */
 	protected $assignmentFactory;
-	/** @var INotifier */
+	/** @var Notifier */
 	private $notifier;
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -70,9 +71,9 @@ class PageApproved implements IMechanism {
 			$services->getRevisionLookup(),
 			LoggerFactory::getInstance( 'stabilization' ),
 			$services->getService( 'BSPageAssignmentsAssignmentFactory' ),
-			$services->getService( 'MWStakeNotificationsNotifier' ),
 			$services->getTitleFactory(),
-			$services->getService( 'ContentStabilization.Lookup' )
+			$services->getService( 'ContentStabilization.Lookup' ),
+			$services->getService( 'MWStake.Notifier' )
 		);
 	}
 
@@ -84,9 +85,9 @@ class PageApproved implements IMechanism {
 	 * @param RevisionLookup $revisionLookup
 	 * @param LoggerInterface $logger
 	 * @param AssignmentFactory $assignmentFactory
-	 * @param INotifier $notifier
 	 * @param TitleFactory $titleFactory
 	 * @param StabilizationLookup $stabilizationLookup
+	 * @param Notifier $notifier
 	 */
 	protected function __construct(
 		ILoadBalancer $dbLoadBalancer,
@@ -94,9 +95,9 @@ class PageApproved implements IMechanism {
 		RevisionLookup $revisionLookup,
 		LoggerInterface $logger,
 		AssignmentFactory $assignmentFactory,
-		INotifier $notifier,
 		TitleFactory $titleFactory,
-		StabilizationLookup $stabilizationLookup
+		StabilizationLookup $stabilizationLookup,
+		Notifier $notifier
 	) {
 		$this->dbLoadBalancer = $dbLoadBalancer;
 		$this->config = $config;
@@ -130,8 +131,8 @@ class PageApproved implements IMechanism {
 			return false;
 		}
 		$notifyUsers = $this->getNotifyUsers( $title->getArticleID() );
-		$notification = new DailyRemind( $userAgent, $title, [], $notifyUsers );
-		$this->notifier->notify( $notification );
+		$event = new ConfirmationRemindEvent( $title, $notifyUsers );
+		$this->notifier->emit( $event );
 		return true;
 	}
 
@@ -151,8 +152,8 @@ class PageApproved implements IMechanism {
 			return false;
 		}
 		$notifyUsers = $this->getNotifyUsers( $title->getArticleID() );
-		$notification = new Remind( $userAgent, $title, [], $notifyUsers );
-		$this->notifier->notify( $notification );
+		$event = new ConfirmationRemindEvent( $title, $notifyUsers );
+		$this->notifier->emit( $event );
 		return true;
 	}
 
