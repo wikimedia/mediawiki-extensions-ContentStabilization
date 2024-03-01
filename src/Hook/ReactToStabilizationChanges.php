@@ -8,13 +8,12 @@ use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizatio
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointMovedHook;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointRemovedHook;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointUpdatedHook;
-use MediaWiki\Extension\ContentStabilization\Integration\EchoNotifications\StablePointAddedNotification;
 use MediaWiki\Extension\ContentStabilization\StabilizationLog;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
+use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
 use MWStake\MediaWiki\Component\Events\Notifier;
-use MWStake\MediaWiki\Component\Notifications\INotifier as EchoNotifier;
 
 class ReactToStabilizationChanges implements
 	ContentStabilizationStablePointRemovedHook,
@@ -32,22 +31,23 @@ class ReactToStabilizationChanges implements
 	/** @var StabilizationLog */
 	private $specialLogLogger;
 
-	/** @var EchoNotifier */
-	private $echoNotifier;
+	/** @var StablePointStore */
+	private $stablePointStore;
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param Notifier $notifier
 	 * @param StabilizationLog $spLogger
-	 * @param EchoNotifier $echoNotifier
+	 * @param StablePointStore $stablePointStore
 	 */
 	public function __construct(
-		WikiPageFactory $wikiPageFactory, Notifier $notifier, StabilizationLog $spLogger, EchoNotifier $echoNotifier
+		WikiPageFactory $wikiPageFactory, Notifier $notifier,
+		StabilizationLog $spLogger, StablePointStore $stablePointStore
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->notifier = $notifier;
 		$this->specialLogLogger = $spLogger;
-		$this->echoNotifier = $echoNotifier;
+		$this->stablePointStore = $stablePointStore;
 	}
 
 	/**
@@ -57,8 +57,7 @@ class ReactToStabilizationChanges implements
 		$this->runUpdates( $oldPoint );
 		$this->runUpdates( $newPoint );
 
-		$this->notifier->emit( new StablePointAdded( $newPoint ) );
-		$this->echoNotifier->notify( new StablePointAddedNotification( $newPoint ) );
+		$this->notifier->emit( new StablePointAdded( $this->stablePointStore, $newPoint ) );
 	}
 
 	/**
@@ -75,8 +74,7 @@ class ReactToStabilizationChanges implements
 	public function onContentStabilizationStablePointAdded( StablePoint $stablePoint ): void {
 		$this->runUpdates( $stablePoint );
 
-		$this->echoNotifier->notify( new StablePointAddedNotification( $stablePoint ) );
-		$this->notifier->emit( new StablePointAdded( $stablePoint ) );
+		$this->notifier->emit( new StablePointAdded( $this->stablePointStore, $stablePoint ) );
 		$this->specialLogLogger->stablePointAdded( $stablePoint );
 	}
 
@@ -85,9 +83,7 @@ class ReactToStabilizationChanges implements
 	 */
 	public function onContentStabilizationStablePointUpdated( StablePoint $updatedPoint ): void {
 		$this->runUpdates( $updatedPoint );
-
-		$this->echoNotifier->notify( new StablePointAddedNotification( $updatedPoint ) );
-		$this->notifier->emit( new StablePointAdded( $updatedPoint ) );
+		$this->notifier->emit( new StablePointAdded( $this->stablePointStore, $updatedPoint ) );
 		$this->specialLogLogger->stablePointUpdated( $updatedPoint );
 	}
 

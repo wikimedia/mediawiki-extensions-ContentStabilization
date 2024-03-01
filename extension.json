@@ -37,6 +37,10 @@
 		"Notifications": {
 			"Events": {
 				"stable-point-added": {
+					"spec": {
+						"class": "MediaWiki\\Extension\\ContentStabilization\\Event\\StablePointAdded",
+						"services": [ "ContentStabilization._Store" ]
+					},
 					"buckets": [ "qm" ]
 				}
 			}
@@ -360,7 +364,7 @@
 		"runUpdatesOnStabilizationChange": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\ReactToStabilizationChanges",
 			"services": [
-				"WikiPageFactory", "MWStake.Notifier", "ContentStabilization._SpecialLogLogger", "MWStakeNotificationsNotifier"
+				"WikiPageFactory", "MWStake.Notifier", "ContentStabilization._SpecialLogLogger", "ContentStabilization._Store"
 			]
 		},
 		"stabilizeDrawioFile": {
@@ -496,8 +500,7 @@
 		"stabilization/*": "LogFormatter"
 	},
 	"ExtensionFunctions": [
-		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateWikiExplorer::register",
-		"MediaWiki\\Extension\\ContentStabilization\\Integration\\EchoNotifications\\Registration::registerNotifications"
+		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateWikiExplorer::register"
 	],
 	"manifest_version": 2
 }
