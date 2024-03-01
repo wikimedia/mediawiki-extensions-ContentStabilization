@@ -171,7 +171,12 @@ class StabilizeContent implements
 		$this->hookContainer->run(
 			'ContentAlterParserOutput', [ $revision->getContent( SlotRecord::MAIN ), $pageTitle, &$parserOutput ]
 		);
-		$article->getContext()->getOutput()->addParserOutput( $parserOutput );
+		$poOptions = [];
+		$authority = $article->getContext()->getUser();
+		if ( !$authority->probablyCan( 'edit', $pageTitle ) ) {
+			$poOptions['enableSectionEditLinks'] = false;
+		}
+		$article->getContext()->getOutput()->addParserOutput( $parserOutput, $poOptions );
 		$article->getContext()->getOutput()->setRevisionId( $revisionUsed->getId() );
 	}
 
