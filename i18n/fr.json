@@ -3,6 +3,7 @@
 		"authors": [
 			"Gomoko",
 			"Iketsi",
+			"MacOS Weed",
 			"Reedy",
 			"SleaY",
 			"Verdy p",
@@ -17,7 +18,7 @@
 	"action-contentstabilization-stabilize": "approuver une page",
 	"action-contentstabilization-admin": "gérer les approbations",
 	"contentstabilization": "Vue générale de la gestion de la qualité",
-	"contentstabilization-global-action-overview": "Vue générale de la gestion de la qualité",
+	"contentstabilization-global-action-overview": "Gestion de la qualité",
 	"contentstabilization-global-action-overview-desc": "Vue générale des pages en processus d’approbation",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "a une version brouillon",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "a une version approuvée",
@@ -118,5 +119,9 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Approuvé par",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Date d’approbation",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "Commentaire d'approbation",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utilisateur"
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utilisateur",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Commentaire",
+	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|a approuvé}} la page $1",
+	"content-stabilization-approval-notification-subject": "Page $1 approuvée",
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|a approuvé}} la page $1"
 }
