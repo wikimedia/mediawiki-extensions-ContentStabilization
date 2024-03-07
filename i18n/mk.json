@@ -116,5 +116,10 @@
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Одобрување на активност на страница",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Корисник",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Корисничка страница за одобрување",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Коментар"
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Коментар",
+	"echo-category-title-content-stabilization-cat": "Одобрение",
+	"content-stabilization-echo-cat-tooltip": "Извести ме кога ќе се одобри страница",
+	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|ја одобри}} страницата $1",
+	"content-stabilization-approval-notification-subject": "Страницата $1 е одобрена",
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|ја одобри}} страницата $1"
 }

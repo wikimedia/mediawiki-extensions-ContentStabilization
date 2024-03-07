@@ -18,5 +18,7 @@
 	"contentstabilization-pref-handleinclude-current": "포함된 문서의 현재 판",
 	"contentstabilization-overview-header-page-id": "문서 ID",
 	"contentstabilization-overview-header-page-namespace": "문서 이름공간",
-	"contentstabilization-versionhistory-grid-header-approval-date": "승인 날짜"
+	"contentstabilization-versionhistory-grid-header-approval-date": "승인 날짜",
+	"echo-category-title-content-stabilization-cat": "승인",
+	"content-stabilization-echo-cat-tooltip": "문서가 승인되면 내게 알립니다"
 }
