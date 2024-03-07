@@ -116,5 +116,10 @@
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "אישור פעילות דף",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "משתמש",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "משתמש לאישור דף",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "הערה"
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "הערה",
+	"echo-category-title-content-stabilization-cat": "אישור",
+	"content-stabilization-echo-cat-tooltip": "להודיע לי כאשר דף אושר",
+	"content-stabilization-approval-notification-summary": "$1 {{GENDER:$2|אישר|אישרה}} את הדף $3",
+	"content-stabilization-approval-notification-subject": "הדף $1 אושר",
+	"content-stabilization-approval-notification-email-body": "$1 {{GENDER:$2|אישר|אישרה}} את הדף $3"
 }
