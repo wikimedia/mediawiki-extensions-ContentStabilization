@@ -27,5 +27,9 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Одобрено од",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Датум одобравања",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Корисник",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Коментар"
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Коментар",
+	"content-stabilization-echo-cat-tooltip": "Обавештава Вас када је страница одобрена",
+	"content-stabilization-approval-notification-summary": "$3 је {{GENDER:$2|одобрио|одобрила}} страницу $1",
+	"content-stabilization-approval-notification-subject": "Страница $1 је одобрена",
+	"content-stabilization-approval-notification-email-body": "$3 је {{GENDER:$2|одобрио|одобрила}} страницу $1"
 }
