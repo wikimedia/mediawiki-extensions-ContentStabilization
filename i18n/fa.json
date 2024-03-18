@@ -21,5 +21,5 @@
 	"content-stabilization-echo-cat-tooltip": "هرگاه صفحه تأیید شد به من اطلاع بده",
 	"content-stabilization-approval-notification-summary": "$3 صفحهٔ $1 را {{GENDER:$2|تأیید کرد}}",
 	"content-stabilization-approval-notification-subject": "صفحهٔ $1 تأیید شد",
-	"content-stabilization-approval-notification-email-body": "$3 صفحهٔ $3 را {{GENDER:$2|تأیید کرد}}"
+	"content-stabilization-approval-notification-email-body": "$3 صفحهٔ $1 را {{GENDER:$2|تأیید کرد}}"
 }
