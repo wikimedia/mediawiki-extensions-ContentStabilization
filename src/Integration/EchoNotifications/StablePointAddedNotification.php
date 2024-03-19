@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\ContentStabilization\Integration\Echo;
+namespace MediaWiki\Extension\ContentStabilization\Integration\EchoNotifications;
 
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MWStake\MediaWiki\Component\Notifications\BaseNotification;
