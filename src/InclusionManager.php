@@ -89,7 +89,7 @@ class InclusionManager {
 	 * @return bool
 	 */
 	public function removeStableInclusionsForRevision( RevisionRecord $revisionRecord ): bool {
-		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$r1 = $dbw->delete(
 			'stable_transclusions',
 			[ 'st_revision' => $revisionRecord->getId() ],
@@ -109,7 +109,7 @@ class InclusionManager {
 	 * @return bool
 	 */
 	public function removeStableInclusionsForPage( PageIdentity $page ): bool {
-		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$r1 = $dbw->delete(
 			'stable_transclusions',
 			[ 'st_page' => $page->getId() ],
@@ -262,7 +262,7 @@ class InclusionManager {
 				'st_transclusion_title' => $item['title'],
 			];
 		}
-		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		// Avoid complex comparisons, just delete and re-insert
 		$dbw->delete( 'stable_transclusions', [ 'st_revision' => $main->getId() ], __METHOD__ );
 		// Ignore errors, as final data returned will be what is actually inserted
@@ -290,7 +290,7 @@ class InclusionManager {
 				'sft_file_sha1' => $image['sha1'],
 			];
 		}
-		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		// Avoid complex comparisons, just delete and re-insert
 		$dbw->delete( 'stable_file_transclusions', [ 'sft_revision' => $main->getId() ], __METHOD__ );
 		// Ignore errors, as final data returned will be what is actually inserted
@@ -312,7 +312,7 @@ class InclusionManager {
 			return $this->cache->get( $cacheKey );
 		}
 
-		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+		$db = $this->loadBalancer->getConnection( DB_REPLICA );
 		$res = $db->select(
 			'stable_transclusions',
 			[ 'st_transclusion_revision', 'st_transclusion_namespace', 'st_transclusion_title' ],
@@ -343,7 +343,7 @@ class InclusionManager {
 		if ( !$recache && $this->cache->hasKey( $cacheKey ) ) {
 			return $this->cache->get( $cacheKey );
 		}
-		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+		$db = $this->loadBalancer->getConnection( DB_REPLICA );
 		$res = $db->select(
 			'stable_file_transclusions',
 			[ 'sft_file_revision', 'sft_file_name', 'sft_file_timestamp', 'sft_file_sha1' ],
