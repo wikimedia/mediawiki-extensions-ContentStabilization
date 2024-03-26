@@ -114,7 +114,7 @@ class InclusionManagerTest extends TestCase {
 		// Based on current inclusions, we expect DB to be called with certain parameters
 		// and that it returns certain data
 		$lb = $this->mockLoadBalancer();
-		$connection = $lb->getConnectionRef( DB_PRIMARY );
+		$connection = $lb->getConnection( DB_PRIMARY );
 
 		// Expect to clear out old data before settings new data
 		$connection->expects( $this->exactly( 2 ) )
@@ -228,7 +228,7 @@ class InclusionManagerTest extends TestCase {
 		$revision->method( 'getId' )->willReturn( 1 );
 
 		$lb = $this->mockLoadBalancer();
-		$connection = $lb->getConnectionRef( DB_PRIMARY );
+		$connection = $lb->getConnection( DB_PRIMARY );
 
 		// Expect to clear out old data before settings new data
 		$connection->expects( $this->exactly( 2 ) )
@@ -258,7 +258,7 @@ class InclusionManagerTest extends TestCase {
 		$page->method( 'getId' )->willReturn( 2 );
 
 		$lb = $this->mockLoadBalancer();
-		$connection = $lb->getConnectionRef( DB_PRIMARY );
+		$connection = $lb->getConnection( DB_PRIMARY );
 
 		// Expect to clear out old data before settings new data
 		$connection->expects( $this->exactly( 2 ) )

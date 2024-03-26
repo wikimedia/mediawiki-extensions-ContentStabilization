@@ -103,7 +103,7 @@ class BatchStabilize extends Maintenance {
 			if ( $namespace === false ) {
 				$this->fatalError( "Invalid namespace" );
 			}
-			return MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnectionRef( DB_REPLICA )
+			return $this->getDB( DB_REPLICA )
 				->select( 'page', [ 'page_id', 'page_title' ], [ 'page_namespace' => $namespace ] );
 		}
 		return [];
