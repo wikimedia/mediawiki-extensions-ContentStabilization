@@ -14,9 +14,9 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\User\UserFactory;
 use RepoGroup;
-use ResultWrapper;
 use stdClass;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\ResultWrapper;
 
 /**
  * @private to ContentStabilization
@@ -78,7 +78,7 @@ class StablePointStore {
 		if ( $this->queryCache->hasKey( $cacheKey ) ) {
 			return $this->queryCache->get( $cacheKey );
 		}
-		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+		$db = $this->loadBalancer->getConnection( DB_REPLICA );
 		$res = $db->select(
 			'stable_points',
 			[ 'sp_revision' ],
@@ -152,7 +152,7 @@ class StablePointStore {
 	 * @return void
 	 */
 	public function insertStablePoint( RevisionRecord $revisionRecord, Authority $approver, string $comment ) {
-		$db = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$res = $db->insert(
 			'stable_points',
 			[
@@ -177,7 +177,7 @@ class StablePointStore {
 	 * @return void
 	 */
 	public function removeStablePoint( StablePoint $point ) {
-		$db = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$res = $db->delete(
 			'stable_points',
 			[
@@ -208,7 +208,7 @@ class StablePointStore {
 	public function updateStablePoint(
 		StablePoint $point, RevisionRecord $revisionRecord, Authority $approver, string $comment
 	) {
-		$db = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$res = $db->update(
 			'stable_points',
 			[
@@ -236,7 +236,7 @@ class StablePointStore {
 	 * @return void
 	 */
 	public function removeStablePointsForPage( PageIdentity $page ) {
-		$db = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$res = $db->delete(
 			'stable_points',
 			[
@@ -274,7 +274,7 @@ class StablePointStore {
 		if ( $this->queryCache->hasKey( $cacheKey ) ) {
 			return $this->queryCache->get( $cacheKey );
 		}
-		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+		$db = $this->loadBalancer->getConnection( DB_REPLICA );
 		$res = $db->select(
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],

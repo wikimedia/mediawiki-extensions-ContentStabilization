@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests;
 
-use FakeResultWrapper;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\Page\PageIdentity;
@@ -12,6 +11,8 @@ use MediaWiki\User\UserFactory;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
 use User;
+use Wikimedia\Rdbms\FakeResultWrapper;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -25,7 +26,7 @@ class StablePointStoreTest extends TestCase {
 	public function testQuery() {
 		$lb = $this->mockLoadBalancer();
 
-		$lb->getConnectionRef( DB_REPLICA )->method( 'select' )->willReturn(
+		$lb->getConnection( DB_REPLICA )->method( 'select' )->willReturn(
 			new FakeResultWrapper( [
 				(object)[
 					'sp_revision' => '1',
@@ -41,7 +42,7 @@ class StablePointStoreTest extends TestCase {
 				],
 			] )
 		);
-		$lb->getConnectionRef( DB_REPLICA )->expects( $this->once() )->method( 'select' )->with(
+		$lb->getConnection( DB_REPLICA )->expects( $this->once() )->method( 'select' )->with(
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],
 			[ 'sp_page' => 1 ],
@@ -70,7 +71,7 @@ class StablePointStoreTest extends TestCase {
 	public function testGetLatestMatchingPoint() {
 		$lb = $this->mockLoadBalancer();
 
-		$lb->getConnectionRef( DB_REPLICA )->method( 'select' )->willReturn(
+		$lb->getConnection( DB_REPLICA )->method( 'select' )->willReturn(
 			new FakeResultWrapper( [
 				(object)[
 					'sp_revision' => '1',
@@ -80,7 +81,7 @@ class StablePointStoreTest extends TestCase {
 				]
 			] )
 		);
-		$lb->getConnectionRef( DB_REPLICA )->expects( $this->once() )->method( 'select' )->with(
+		$lb->getConnection( DB_REPLICA )->expects( $this->once() )->method( 'select' )->with(
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],
 			[ 'sp_page' => 1 ],
@@ -106,9 +107,9 @@ class StablePointStoreTest extends TestCase {
 	public function testInsertStablePoint() {
 		$lb = $this->mockLoadBalancer();
 
-		$lb->getConnectionRef( DB_REPLICA )->method( 'timestamp' )->willReturn( '20190101000000' );
-		$lb->getConnectionRef( DB_REPLICA )->method( 'insert' )->willReturn( true );
-		$lb->getConnectionRef( DB_REPLICA )->expects( $this->once() )->method( 'insert' )->with(
+		$lb->getConnection( DB_REPLICA )->method( 'timestamp' )->willReturn( '20190101000000' );
+		$lb->getConnection( DB_REPLICA )->method( 'insert' )->willReturn( true );
+		$lb->getConnection( DB_REPLICA )->expects( $this->once() )->method( 'insert' )->with(
 			'stable_points',
 			[
 				'sp_page' => 1,
@@ -149,7 +150,7 @@ class StablePointStoreTest extends TestCase {
 	public function testRemoveStablePoint() {
 		$lb = $this->mockLoadBalancer();
 
-		$lb->getConnectionRef( DB_REPLICA )->method( 'delete' )->willReturn( true );
+		$lb->getConnection( DB_REPLICA )->method( 'delete' )->willReturn( true );
 		$expectedDeleteArgs = [
 			[
 				'stable_points',
@@ -202,9 +203,9 @@ class StablePointStoreTest extends TestCase {
 	public function testUpdateStablePoint() {
 		$lb = $this->mockLoadBalancer();
 
-		$lb->getConnectionRef( DB_REPLICA )->method( 'timestamp' )->willReturn( '20190101000000' );
-		$lb->getConnectionRef( DB_REPLICA )->method( 'update' )->willReturn( true );
-		$lb->getConnectionRef( DB_REPLICA )->expects( $this->once() )->method( 'update' )->with(
+		$lb->getConnection( DB_REPLICA )->method( 'timestamp' )->willReturn( '20190101000000' );
+		$lb->getConnection( DB_REPLICA )->method( 'update' )->willReturn( true );
+		$lb->getConnection( DB_REPLICA )->expects( $this->once() )->method( 'update' )->with(
 			'stable_points',
 			[
 				'sp_revision' => 2,
@@ -279,7 +280,7 @@ class StablePointStoreTest extends TestCase {
 		$lb = $this->getMockBuilder( ILoadBalancer::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$conn = $this->getMockBuilder( \IDatabase::class )
+		$conn = $this->getMockBuilder( IDatabase::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$lb->method( 'getConnectionRef' )->willReturn( $conn );
