@@ -313,7 +313,8 @@
 		"MediaWikiPerformAction": "stabilizeContent",
 		"SkinTemplateNavigation::Universal": "addApproveAction",
 		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery",
-		"GetPreferences": "userpreference"
+		"GetPreferences": "userpreference",
+		"TitleGetEditNotices": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
