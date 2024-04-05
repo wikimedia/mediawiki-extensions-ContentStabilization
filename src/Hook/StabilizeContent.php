@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Hook;
 
 use Article;
 use ManualLogEntry;
+use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
@@ -46,7 +47,8 @@ class StabilizeContent implements
 	ImagePageFindFileHook,
 	BeforePageDisplayHook,
 	MediaWikiPerformActionHook,
-	TitleGetEditNoticesHook
+	TitleGetEditNoticesHook,
+	ContentAlterParserOutputHook
 {
 
 	/** @var StabilizationLookup */
@@ -75,6 +77,9 @@ class StabilizeContent implements
 
 	/** @var array To avoid re-processing of inclusions */
 	private $processedInclusions = [];
+
+	/** @var bool */
+	private $allowParserOutputAlteration = true;
 
 	/**
 	 * @param StabilizationLookup $lookup
@@ -448,6 +453,44 @@ class StabilizeContent implements
 			);
 
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onContentAlterParserOutput( $content, $title, $parserOutput ) {
+		if ( !$this->allowParserOutputAlteration ) {
+			return;
+		}
+		// Stabilize action=parse (called namely by TextExtracts)
+		if ( !defined( 'MW_API' ) ) {
+			return;
+		}
+		$context = RequestContext::getMain();
+		$view = $this->lookup->getStableView( $title->toPageIdentity(), $context->getUser() );
+		if ( !$view ) {
+			return;
+		}
+
+		if ( $view->getRevision() ) {
+			if ( $view->getRevision()->isCurrent() ) {
+				return;
+			}
+			// Do not re-trigger this hook while we re-parse
+			$this->allowParserOutputAlteration = false;
+			$options = ParserOptions::newFromContext( $context );
+			$renderedRev = $this->revisionRenderer->getRenderedRevision( $view->getRevision(), $options );
+			if ( $renderedRev ) {
+				$text = $renderedRev->getRevisionParserOutput()->getText();
+				// Remove wrapping in <div class="mw-parser-output">...</div>
+				$text = preg_replace( '/^<div class="mw-parser-output">(.*)<\/div>$/s', '$1', $text );
+				$parserOutput->setText( $text );
+			}
+			$this->allowParserOutputAlteration = true;
+			return;
+		}
+
+		$parserOutput->setText( '' );
 	}
 
 	/**
