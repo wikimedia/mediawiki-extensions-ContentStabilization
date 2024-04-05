@@ -13,6 +13,7 @@ use MediaWiki\Hook\BeforeParserFetchFileAndTitleHook;
 use MediaWiki\Hook\BeforeParserFetchTemplateRevisionRecordHook;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
+use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
@@ -27,10 +28,12 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionRenderer;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
+use Message;
 use OutputPage;
 use Parser;
 use ParserOptions;
 use PermissionsError;
+use RequestContext;
 use Title;
 use TitleFactory;
 
@@ -42,7 +45,8 @@ class StabilizeContent implements
 	PageMoveCompleteHook,
 	ImagePageFindFileHook,
 	BeforePageDisplayHook,
-	MediaWikiPerformActionHook
+	MediaWikiPerformActionHook,
+	TitleGetEditNoticesHook
 {
 
 	/** @var StabilizationLookup */
@@ -414,6 +418,32 @@ class StabilizeContent implements
 			}
 		}
 		return true;
+	}
+
+	/**
+	 *
+	 * @inheritDoc
+	 */
+	public function onTitleGetEditNotices( $title, $oldid, &$notices ) {
+		if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
+			return;
+		}
+		$context = RequestContext::getMain();
+		$request = $context->getRequest();
+		$reqRevId = $request->getVal( 'oldid' );
+		if ( !$reqRevId ) {
+			return;
+		}
+		$latestRevId = $title->getLatestRevID();
+		if ( $latestRevId > $reqRevId ) {
+			$lastStable = $this->lookup->getLastStablePoint( $title );
+			if ( !$lastStable ) {
+				return;
+			}
+			$stableTime = $context->getLanguage()->userDate( $lastStable->getTime(), $context->getUser() );
+			$notices['contentstabilization-editnotice'] = Message::newfromKey( 'contentstabilization-edit-notice-old-version', $title->getPrefixedDBkey(), $stableTime );
+
+		}
 	}
 
 	/**
