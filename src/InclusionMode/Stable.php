@@ -46,11 +46,7 @@ class Stable implements InclusionMode {
 	 * @inheritDoc
 	 */
 	public function canBeOutOfSync( ?RevisionRecord $revisionToCheckFor = null ): bool {
-		if ( !$revisionToCheckFor ) {
-			return true;
-		}
-		// If CS is not enabled on a NS, it behaves like FREEZE, so can be out of sync then
-		return !in_array( $revisionToCheckFor->getPage()->getNamespace(), $this->enabledNamespaces );
+		return true;
 	}
 
 	/**
