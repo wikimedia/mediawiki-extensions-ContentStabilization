@@ -292,7 +292,8 @@
 		"SkinTemplateNavigation::Universal": "addApproveAction",
 		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery",
 		"GetPreferences": "userpreference",
-		"TitleGetEditNotices": "stabilizeContent"
+		"TitleGetEditNotices": "stabilizeContent",
+		"ContentAlterParserOutput": [ "stabilizeContent" ]
 	},
 	"HookHandlers": {
 		"addBootstrap": {
