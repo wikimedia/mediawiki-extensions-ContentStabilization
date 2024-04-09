@@ -489,7 +489,7 @@
 	},
 	"ExtensionFunctions": [
 		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\IntegrateWikiExplorer::register",
-		"MediaWiki\\Extension\\ContentStabilization\\Integration\\Echo\\Registration::registerNotifications"
+		"MediaWiki\\Extension\\ContentStabilization\\Integration\\EchoNotifications\\Registration::registerNotifications"
 	],
 	"manifest_version": 2
 }
