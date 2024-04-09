@@ -8,7 +8,7 @@ use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizatio
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointMovedHook;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointRemovedHook;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointUpdatedHook;
-use MediaWiki\Extension\ContentStabilization\Integration\Echo\StablePointAddedNotification;
+use MediaWiki\Extension\ContentStabilization\Integration\EchoNotifications\StablePointAddedNotification;
 use MediaWiki\Extension\ContentStabilization\StabilizationLog;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Page\WikiPageFactory;
