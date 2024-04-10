@@ -288,6 +288,11 @@ class StabilizationLookup {
 	 * @return bool
 	 */
 	public function canUserSeeUnstable( UserIdentity $user ): bool {
+		$bot = new StabilizationBot();
+		if ( $user->getName() === $bot->getUser()->getName() ) {
+			// Bot can always see unstable
+			return true;
+		}
 		$draftGroups = $this->config->get( 'DraftGroups' ) ?? [];
 		// Sysop hardcoded
 		$draftGroups[] = 'sysop';
