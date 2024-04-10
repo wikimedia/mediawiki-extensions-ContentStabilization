@@ -1,0 +1,59 @@
+[
+	{
+		"name": "stable_file_transclusions",
+		"columns": [
+			{
+				"name": "sft_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sft_page",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sft_file_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sft_file_name",
+				"type": "binary",
+				"options": {
+					"length": 255,
+					"notnull": true
+				}
+			},
+			{
+				"name": "sft_file_timestamp",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sft_file_sha1",
+				"type": "binary",
+				"options": {
+					"length": 32,
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "sft_revision_file_name_timestamp",
+				"columns": [ "sft_revision", "sft_file_name", "sft_file_timestamp" ],
+				"unique": true
+			}
+		],
+		"pk": []
+	}
+]
