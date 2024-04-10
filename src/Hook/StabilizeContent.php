@@ -441,7 +441,11 @@ class StabilizeContent implements
 				return;
 			}
 			$stableTime = $context->getLanguage()->userDate( $lastStable->getTime(), $context->getUser() );
-			$notices['contentstabilization-editnotice'] = Message::newfromKey( 'contentstabilization-edit-notice-old-version', $title->getPrefixedDBkey(), $stableTime );
+			$notices['contentstabilization-editnotice'] = Message::newfromKey(
+				'contentstabilization-edit-notice-old-version',
+				$title->getPrefixedDBkey(),
+				$stableTime
+			);
 
 		}
 	}
