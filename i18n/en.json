@@ -122,5 +122,6 @@
 	"content-stabilization-echo-cat-tooltip": "Notify me when page is approved",
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|approved}} page $1",
 	"content-stabilization-approval-notification-subject": "Page $1 approved",
-	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|approved}} page $1"
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|approved}} page $1",
+	"contentstabilization-edit-notice-old-version": "The [{{fullurl:$1|stable=1}} stable version] was [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} approved] on <i>$2</i>. There is already a draft version."
 }
