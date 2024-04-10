@@ -10,21 +10,24 @@ class RunDatabaseUpdates implements LoadExtensionSchemaUpdatesHook {
 	 * @inheritDoc
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
+		$dbType = $updater->getDB()->getType();
+		$dir = dirname( __DIR__, 2 );
+
 		$updater->addExtensionTable(
 			'stable_points',
-			__DIR__ . '/../../db/stable_points.sql'
+			"$dir/db/$dbType/stable_points.sql"
 		);
 		$updater->addExtensionTable(
 			'stable_file_points',
-			__DIR__ . '/../../db/stable_file_points.sql'
+			"$dir/db/$dbType/stable_file_points.sql"
 		);
 		$updater->addExtensionTable(
 			'stable_transclusions',
-			__DIR__ . '/../../db/stable_transclusions.sql'
+			"$dir/db/$dbType/stable_transclusions.sql"
 		);
 		$updater->addExtensionTable(
 			'stable_file_transclusions',
-			__DIR__ . '/../../db/stable_file_transclusions.sql'
+			"$dir/db/$dbType/stable_file_transclusions.sql"
 		);
 
 		$updater->addExtensionIndex(
