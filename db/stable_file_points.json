@@ -1,0 +1,38 @@
+[
+	{
+		"name": "stable_file_points",
+		"columns": [
+			{
+				"name": "sfp_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sfp_page",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sfp_file_timestamp",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sfp_file_sha1",
+				"type": "binary",
+				"options": {
+					"length": 32,
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [],
+		"pk": [ "sfp_revision" ]
+	}
+]
