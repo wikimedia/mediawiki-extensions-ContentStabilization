@@ -1,0 +1,44 @@
+[
+	{
+		"name": "stable_points",
+		"columns": [
+			{
+				"name": "sp_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_page",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_time",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_user",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_comment",
+				"type": "text",
+				"options": {
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [],
+		"pk": [ "sp_revision" ]
+	}
+]
