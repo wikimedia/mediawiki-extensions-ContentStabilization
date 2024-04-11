@@ -134,6 +134,28 @@ class StabilizationLookup {
 	}
 
 	/**
+	 * @param PageIdentity $page
+	 * @return array
+	 */
+	public function getPendingUnstableRevisions( PageIdentity $page ): array {
+		$unstable = [];
+		if ( $this->hasStable( $page ) ) {
+			$rev = $this->getLastStablePoint( $page )->getRevision();
+		} else {
+			$rev = $this->revisionStore->getFirstRevision( $page );
+			$unstable[] = $rev;
+		}
+		while ( $rev ) {
+			$rev = $this->revisionStore->getNextRevision( $rev );
+			if ( !$rev || $this->isStableRevision( $rev ) ) {
+				break;
+			}
+			$unstable[] = $rev;
+		}
+		return $unstable;
+	}
+
+	/**
 	 * @param IContextSource $context
 	 *
 	 * @return StableView|null

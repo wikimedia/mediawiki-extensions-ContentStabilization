@@ -123,5 +123,9 @@
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|approved}} page $1",
 	"content-stabilization-approval-notification-subject": "Page $1 approved",
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|approved}} page $1",
-	"contentstabilization-edit-notice-old-version": "The [{{fullurl:$1|stable=1}} stable version] was [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} approved] on <i>$2</i>. There is already a draft version."
+	"contentstabilization-edit-notice-old-version": "The [{{fullurl:$1|stable=1}} stable version] was [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} approved] on <i>$2</i>. There is already a draft version.",
+	"contentstabilization-ui-editor-approve": "Approve my changes",
+	"contentstabilization-ui-editor-approve-title": "Automatically approve your changes upon saving",
+	"contentstabilization-ui-editor-approve-with-pending": "Approve this version (including {{PLURAL:$1|one pending change|$1 pending changes}})",
+	"contentstabilization-ui-editor-approve-with-pending-title": "Automatically approve all of the pending changes upon saving. Make sure you have reviewed all of the changes before saving"
 }
