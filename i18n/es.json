@@ -30,5 +30,6 @@
 	"content-stabilization-echo-cat-tooltip": "Notificarme cuando se apruebe la página",
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2| aprobado}} página $1",
 	"content-stabilization-approval-notification-subject": "Página $1 aprobada",
-	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2| aprobado}} página $1"
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2| aprobado}} página $1",
+	"contentstabilization-edit-notice-old-version": "La [{{fullurl:$1|stable=1}} versión estable] fue [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} aprobada] en <i>$2</i>. Ya existe una versión borrador."
 }
