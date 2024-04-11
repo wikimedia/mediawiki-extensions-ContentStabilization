@@ -4,13 +4,16 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
+use EditPage;
 use IContextSource;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use MediaWiki\Hook\EditPageGetCheckboxesDefinitionHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Permissions\PermissionManager;
+use Message;
 
-class AddApproveAction implements SkinTemplateNavigation__UniversalHook {
+class AddApproveAction implements SkinTemplateNavigation__UniversalHook, EditPageGetCheckboxesDefinitionHook {
 
 	/** @var StabilizationLookup */
 	private $lookup;
@@ -44,7 +47,7 @@ class AddApproveAction implements SkinTemplateNavigation__UniversalHook {
 		if ( !$sktemplate->getTitle()->exists() ) {
 			return;
 		}
-		if ( $this->canApprove( $view, $sktemplate->getContext() ) ) {
+		if ( $this->canApproveFromViewMode( $view, $sktemplate->getContext() ) ) {
 			$links['actions']['cs-approve'] = [
 				'text' => $sktemplate->getContext()->msg( 'contentstabilization-ui-approve-title' )->text(),
 				'href' => '#',
@@ -74,17 +77,54 @@ class AddApproveAction implements SkinTemplateNavigation__UniversalHook {
 	}
 
 	/**
+	 * @param EditPage $editpage
+	 * @param array &$checkboxes
+	 * @return void
+	 */
+	public function onEditPageGetCheckboxesDefinition( $editpage, &$checkboxes ) {
+		if ( !$this->lookup->isStabilizationEnabled( $editpage->getTitle() ) ) {
+			return;
+		}
+		if ( !$this->hasPermission( 'contentstabilization-stabilize', $editpage->getContext() ) ) {
+			return;
+		}
+
+		$pending = $this->lookup->getPendingUnstableRevisions( $editpage->getTitle() );
+		if ( !empty( $pending ) ) {
+			$label = Message::newFromKey( 'contentstabilization-ui-editor-approve-with-pending', count( $pending ) );
+			$titleMsg = 'contentstabilization-ui-editor-approve-with-pending-title';
+		} else {
+			$label = Message::newFromKey( 'contentstabilization-ui-editor-approve' );
+			$titleMsg = 'contentstabilization-ui-editor-approve-title';
+		}
+		$checkboxes['wpStabilize'] = [
+			'label-message' => $label,
+			'id' => 'wpStabilize',
+			'default' => false,
+			'title-message' => $titleMsg
+		];
+	}
+
+	/**
 	 * @param StableView $view
 	 * @param IContextSource $context
-	 *
 	 * @return bool
 	 */
-	private function canApprove( StableView $view, IContextSource $context ): bool {
+	private function canApproveFromViewMode( StableView $view, IContextSource $context ): bool {
 		if ( $view->isStable() || !$view->doesNeedStabilization() ) {
 			return false;
 		}
+		return $this->hasPermission( 'contentstabilization-stabilize', $context );
+	}
+
+	/**
+	 * @param string $permission
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	private function hasPermission( string $permission, IContextSource $context ): bool {
 		return $this->permissionManager->userCan(
-			'contentstabilization-stabilize',
+			$permission,
 			$context->getUser(),
 			$context->getTitle()
 		);

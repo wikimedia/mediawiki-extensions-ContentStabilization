@@ -291,9 +291,11 @@
 		"MediaWikiPerformAction": "stabilizeContent",
 		"SkinTemplateNavigation::Universal": "addApproveAction",
 		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery",
+		"EditPageGetCheckboxesDefinition": "addApproveAction",
 		"GetPreferences": "userpreference",
 		"TitleGetEditNotices": "stabilizeContent",
-		"ContentAlterParserOutput": [ "stabilizeContent" ]
+		"ContentAlterParserOutput": [ "stabilizeContent" ],
+		"PageSaveComplete": "autoStabilize"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -378,6 +380,10 @@
 		},
 		"userpreference": {
 			"class": "\\MediaWiki\\Extension\\ContentStabilization\\Hook\\UserPreference"
+		},
+		"autoStabilize": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AutoStabilize",
+			"services": [ "ContentStabilization.Stabilizer", "ContentStabilization.Lookup", "ContentStabilization._DebugLogger" ]
 		}
 	},
 	"SpecialPages": {

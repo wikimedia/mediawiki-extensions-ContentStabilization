@@ -12,6 +12,9 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
 
 final class ContentStabilizer {
+
+	public const VALIDATION_IGNORE_CURRENT = 1;
+
 	/** @var StablePointStore */
 	private $store;
 
@@ -48,14 +51,16 @@ final class ContentStabilizer {
 	 * @param RevisionRecord $revisionRecord
 	 * @param Authority $approver
 	 * @param string $comment
-	 *
+	 * @param int $flags
 	 * @return StablePoint|null
 	 */
 	public function addStablePoint(
-		RevisionRecord $revisionRecord, Authority $approver, string $comment
+		RevisionRecord $revisionRecord, Authority $approver, string $comment, int $flags = 0
 	): ?StablePoint {
 		$this->assertEligible( $revisionRecord );
-		$this->assertCurrent( $revisionRecord );
+		if ( ( $flags & self::VALIDATION_IGNORE_CURRENT ) === 0 ) {
+			$this->assertCurrent( $revisionRecord );
+		}
 		$this->assertNotStable( $revisionRecord );
 		$this->assertUserIsAllowed(
 			$approver, $revisionRecord->getPageAsLinkTarget(),
