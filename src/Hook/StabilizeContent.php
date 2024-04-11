@@ -181,7 +181,7 @@ class StabilizeContent implements
 			$poOptions['enableSectionEditLinks'] = false;
 		}
 		$article->getContext()->getOutput()->addParserOutput( $parserOutput, $poOptions );
-		$article->getContext()->getOutput()->setRevisionId( $revisionUsed->getId() );
+		$article->getContext()->getOutput()->setRevisionId( $pageTitle->getLatestRevID() );
 	}
 
 	/**
