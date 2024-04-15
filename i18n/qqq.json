@@ -4,7 +4,8 @@
 			"Dejan Savuljesku",
 			"Raymond",
 			"Robert Vogel",
-			"Verdy p"
+			"Verdy p",
+			"McDutchie"
 		]
 	},
 	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
@@ -125,5 +126,5 @@
 	"content-stabilization-approval-notification-summary": "Summary message for Echo notification when page is approved.\n$1 - page name\n$2 - agent username\n$3 - agent display name",
 	"content-stabilization-approval-notification-subject": "Email subject for Echo notification when page is approved.\n$1 - page name",
 	"content-stabilization-approval-notification-email-body": "Email body for Echo notification when page is approved.\n$1 - page name\n$2 - agent username\n$3 - agent display name",
-	"contentstabilization-edit-notice-old-version": "Notice for editing old version if there is already a newer draft version.\n$1 - page name\n $2- date of approved version"
+	"contentstabilization-edit-notice-old-version": "Notice for editing old version if there is already a newer draft version.\n* $1 - page name\n* $2 - date of approved version"
 }

@@ -121,5 +121,6 @@
 	"content-stabilization-echo-cat-tooltip": "להודיע לי כאשר דף אושר",
 	"content-stabilization-approval-notification-summary": "$1 {{GENDER:$2|אישר|אישרה}} את הדף $3",
 	"content-stabilization-approval-notification-subject": "הדף $1 אושר",
-	"content-stabilization-approval-notification-email-body": "$1 {{GENDER:$2|אישר|אישרה}} את הדף $3"
+	"content-stabilization-approval-notification-email-body": "$1 {{GENDER:$2|אישר|אישרה}} את הדף $3",
+	"contentstabilization-edit-notice-old-version": "הגרסה [{{fullurl:$1|stable=1}} היציבה] [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} אושרה] ב־<i>$2</i>. יש כבר גרסת טיוטה."
 }
