@@ -113,6 +113,5 @@
 	"contentstabilization-versionhistory-grid-header-state": "Status",
 	"contentstabilization-versionhistory-grid-header-approver": "Freigegeben von",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Freigabedatum",
-	"contentstabilization-versionhistory-grid-header-approval-comment": "Freigabekommentar",
-	"contentstabilization-edit-notice-old-version": "Die [{{fullurl:$1|stable=1}} freigegebene Version] wurde am <i>$2</i> [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} freigegeben]. Es gibt bereits eine Entwurfsversion."
+	"contentstabilization-versionhistory-grid-header-approval-comment": "Freigabekommentar"
 }

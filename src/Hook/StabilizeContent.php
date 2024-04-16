@@ -8,6 +8,7 @@ use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
+use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\BeforeParserFetchFileAndTitleHook;
@@ -434,25 +435,55 @@ class StabilizeContent implements
 			return;
 		}
 		$context = RequestContext::getMain();
-		$request = $context->getRequest();
-		$reqRevId = $request->getVal( 'oldid' );
-		if ( !$reqRevId ) {
+		$this->addApprovalRequiredNotice( $notices );
+		$latestRev = $this->revisionLookup->getRevisionByTitle( $title );
+		if ( !$latestRev ) {
 			return;
 		}
-		$latestRevId = $title->getLatestRevID();
-		if ( $latestRevId > $reqRevId ) {
+		if ( !$this->lookup->isStableRevision( $latestRev ) ) {
 			$lastStable = $this->lookup->getLastStablePoint( $title );
 			if ( !$lastStable ) {
 				return;
 			}
-			$stableTime = $context->getLanguage()->userDate( $lastStable->getTime(), $context->getUser() );
-			$notices['contentstabilization-editnotice'] = Message::newfromKey(
-				'contentstabilization-edit-notice-old-version',
-				$title->getPrefixedDBkey(),
-				$stableTime
-			);
-
+			$pending = $this->lookup->getPendingUnstableRevisions( $title );
+			$this->addPendingDraftsNotice( $title, $lastStable, $pending, $context, $notices );
 		}
+	}
+
+	/**
+	 * @param array &$notices
+	 * @return void
+	 */
+	private function addApprovalRequiredNotice( array &$notices ) {
+		$msg = Message::newFromKey(
+			'contentstabilization-edit-notice-approval-needed'
+		);
+		$notices['contentstabilization-approvalnotice'] = \Html::rawElement( 'b', [], $msg->text() );
+	}
+
+	/**
+	 * @param Title $title
+	 * @param StablePoint $lastStable
+	 * @param array $pending
+	 * @param RequestContext $context
+	 * @param array &$notices
+	 * @return void
+	 */
+	private function addPendingDraftsNotice(
+		Title $title, StablePoint $lastStable, array $pending, RequestContext $context, array &$notices
+	) {
+		$pendingCount = count( $pending );
+		if ( $pendingCount === 0 ) {
+			return;
+		}
+		$stableTime = $context->getLanguage()->userDate( $lastStable->getTime(), $context->getUser() );
+		$notices['contentstabilization-editnotice'] = Message::newfromKey(
+			'contentstabilization-edit-notice-old-version',
+			$title->getPrefixedDBkey(),
+			$stableTime,
+			count( $pending ),
+			$lastStable->getRevision()->getId()
+		);
 	}
 
 	/**
