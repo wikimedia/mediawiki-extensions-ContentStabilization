@@ -126,9 +126,11 @@
 	"content-stabilization-approval-notification-summary": "Summary message for Echo notification when page is approved.\n$1 - page name\n$2 - agent username\n$3 - agent display name",
 	"content-stabilization-approval-notification-subject": "Email subject for Echo notification when page is approved.\n$1 - page name",
 	"content-stabilization-approval-notification-email-body": "Email body for Echo notification when page is approved.\n$1 - page name\n$2 - agent username\n$3 - agent display name",
-	"contentstabilization-edit-notice-old-version": "Notice for editing old version if there is already a newer draft version.\n* $1 - page name\n* $2 - date of approved version",
+	"contentstabilization-edit-notice-old-version": "Notice for editing old version if there is already a newer draft version.\n* $1 - page name\n* $2 - date of approved version\n* $3 - number of pending draft revisions\n* $4 - ID of last stable revision",
 	"contentstabilization-ui-editor-approve": "Checkbox label in editor to approve one change when page is saved",
 	"contentstabilization-ui-editor-approve-title": "Checkbox title message in editor to approve one change when page is saved",
 	"contentstabilization-ui-editor-approve-with-pending": "Checkbox label in editor to approve multiple changes when page is saved.\n$1 - number of pending changes",
-	"contentstabilization-ui-editor-approve-with-pending-title": "Checkbox title message in editor to approve multiple changes when page is saved"
+	"contentstabilization-ui-editor-approve-with-pending-title": "Checkbox title message in editor to approve multiple changes when page is saved",
+	"contentstabilization-edit-notice-approval-needed": "Notice about editing a page with approval enabled"
+
 }
