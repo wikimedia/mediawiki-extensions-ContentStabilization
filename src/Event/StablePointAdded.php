@@ -6,6 +6,7 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use Message;
+use MWStake\MediaWiki\Component\Events\Delivery\IChannel;
 use MWStake\MediaWiki\Component\Events\TitleEvent;
 
 class StablePointAdded extends TitleEvent {
@@ -25,9 +26,9 @@ class StablePointAdded extends TitleEvent {
 	}
 
 	/**
-	 * @return Message
+	 * @inheritDoc
 	 */
-	public function getMessage(): Message {
+	public function getMessage( IChannel $forChannel ): Message {
 		if ( $this->getAgent()->isSystemUser() ) {
 			return Message::newFromKey( 'contentstabilization-stablepoint-added-message-passive' );
 		}
