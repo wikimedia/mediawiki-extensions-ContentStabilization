@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dirruw'o",
 			"Kareyac",
 			"Stjn"
 		]
@@ -9,5 +10,7 @@
 	"contentstabilization-ui-approve-comment": "Комментарий",
 	"contentstabilization-overview-header-title": "Страница",
 	"contentstabilization-stabilizationhistory-title": "Страница",
-	"contentstabilization-overview-header-page-id": "Идентификатор страницы"
+	"contentstabilization-overview-header-page-id": "Идентификатор страницы",
+	"contentstabilization-ui-editor-approve": "Одобрить мои изменения",
+	"contentstabilization-ui-editor-approve-title": "Автоматическое одобрение Ваших записи для изменений"
 }
