@@ -31,5 +31,11 @@
 	"content-stabilization-echo-cat-tooltip": "Обавештава Вас када је страница одобрена",
 	"content-stabilization-approval-notification-summary": "$3 је {{GENDER:$2|одобрио|одобрила}} страницу $1",
 	"content-stabilization-approval-notification-subject": "Страница $1 је одобрена",
-	"content-stabilization-approval-notification-email-body": "$3 је {{GENDER:$2|одобрио|одобрила}} страницу $1"
+	"content-stabilization-approval-notification-email-body": "$3 је {{GENDER:$2|одобрио|одобрила}} страницу $1",
+	"contentstabilization-edit-notice-old-version": "[{{fullurl:$1|stable=1}} Стабилна верзија] је [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} одобрена] <i>$2</i>. Тренутно {{PLURAL:$3|једна измена чека|$3 измене чекају}} одобрење ([{{fullurl:$1|oldid=$4&diff=cur}} прикажи {{PLURAL:$3|измену|измене}}]).",
+	"contentstabilization-ui-editor-approve": "Одобри моје измене",
+	"contentstabilization-ui-editor-approve-title": "Аутоматски одобри моје измене по чувању",
+	"contentstabilization-ui-editor-approve-with-pending": "Одобри ову верзију (укључујући {{PLURAL:$1|једну измену на чекању|измена на чекању: $1}})",
+	"contentstabilization-ui-editor-approve-with-pending-title": "Аутоматски одобри све измене на чекању по чувању. Обавезно прегледајте све измене пре чувања",
+	"contentstabilization-edit-notice-approval-needed": "Ваше измене ће бити видљиве читаоцима након што их овлашћени корисник одобри"
 }
