@@ -172,6 +172,9 @@ class StabilizationLookup {
 		$explicitlyStable = $this->getStableParamFromRequest( $context->getRequest() );
 		if ( $explicitlyStable !== null ) {
 			$params['forceUnstable'] = !$explicitlyStable;
+		} else {
+			// Unless oldid is provided, then prefer that particular revision, even if unstable
+			$params['forceUnstable'] = $oldId > 0;
 		}
 
 		return $this->getStableView( $context->getTitle()->toPageIdentity(), $context->getUser(), $params );
