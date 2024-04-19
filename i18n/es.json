@@ -31,9 +31,10 @@
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2| aprobado}} página $1",
 	"content-stabilization-approval-notification-subject": "Página $1 aprobada",
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2| aprobado}} página $1",
-	"contentstabilization-edit-notice-old-version": "La [{{fullurl:$1|stable=1}} versión estable] fue [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} aprobada] en <i>$2</i>. Ya existe una versión borrador.",
+	"contentstabilization-edit-notice-old-version": "La [{{fullurl:$1|stable=1}} versión estable] fue [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} aprobada] en <i>$2</i>. Se {{PLURAL:$3| es un cambio|son cambios de $3 }} espera aprobación ([{{fullurl:$1|oldid=$4&diff=cur}} show {{PLURAL:$3| este cambio|estos cambios}}]).",
 	"contentstabilization-ui-editor-approve": "Aprobar mis cambios",
 	"contentstabilization-ui-editor-approve-title": "Aprobar automáticamente los cambios al guardar",
 	"contentstabilization-ui-editor-approve-with-pending": "Aprobar esta versión (incluyendo {{PLURAL:$1| un cambio pendiente| $1 cambios pendientes}})",
-	"contentstabilization-ui-editor-approve-with-pending-title": "Aprobar automáticamente todos los cambios pendientes al guardarlos. Asegurarse de haber revisado todos los cambios antes de guardar"
+	"contentstabilization-ui-editor-approve-with-pending-title": "Aprobar automáticamente todos los cambios pendientes al guardarlos. Asegurarse de haber revisado todos los cambios antes de guardar",
+	"contentstabilization-edit-notice-approval-needed": "Sus cambios se mostrarán a los lectores cuando un usuario autorizado los apruebe."
 }
