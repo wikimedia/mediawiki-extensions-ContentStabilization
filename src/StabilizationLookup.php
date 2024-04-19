@@ -159,16 +159,14 @@ class StabilizationLookup {
 			return null;
 		}
 		$oldId = $context->getRequest()->getInt( 'oldid' );
-		$revId = $context->getTitle()->getLatestRevID();
-		$requestedRev = $oldId > 0 ? $oldId : $revId;
-		$params = [ 'upToRevision' => $requestedRev ];
+		if ( $oldId > 0 ) {
+			$params = [ 'upToRevision' => $oldId ];
+		}
+
 		// Default true to force stable view by default
 		$explicitlyStable = $this->getStableParamFromRequest( $context->getRequest() );
 		if ( $explicitlyStable !== null ) {
 			$params['forceUnstable'] = !$explicitlyStable;
-		} else {
-			// Unless oldid is provided, then prefer that particular revision, even if unstable
-			$params['forceUnstable'] = $oldId > 0;
 		}
 
 		return $this->getStableView( $context->getTitle()->toPageIdentity(), $context->getUser(), $params );
@@ -213,9 +211,14 @@ class StabilizationLookup {
 		$optionsJson = json_encode( $options );
 		$optionsHash = md5( $optionsJson );
 		$cacheKey = "{$page->getId()}:$userId:{$optionsHash}";
+		$showingOld = false;
+		$explicitlyRequestedRev = false;
 
 		if ( !$this->useCache || !isset( $this->stableViewCache[$cacheKey] ) ) {
 			$upToRevision = $options['upToRevision'] ?? null;
+			if ( $upToRevision ) {
+				$explicitlyRequestedRev = true;
+			}
 			$forceStable = true;
 			if ( isset( $options['forceUnstable'] ) && $options['forceUnstable'] ) {
 				$forceStable = false;
@@ -227,14 +230,20 @@ class StabilizationLookup {
 
 			// Get revision we are requested to show
 			$selected = $this->providedRevisionOrLatest( $page, $upToRevision );
-			$lastStable  = $selected ? $this->getLastStablePoint( $page, $selected ) : null;
-			if ( $forceStable ) {
-				$selected = $lastStable ? $lastStable->getRevision() : null;
-			}
 			if ( !$selected ) {
 				$this->stableViewCache[$cacheKey] = null;
 				return null;
 			}
+			if ( !$selected->isCurrent() || $explicitlyRequestedRev ) {
+				// Requesting old revision, show that if possible
+				$forceStable = false;
+				$showingOld = true;
+			}
+			$lastStable = $this->getLastStablePoint( $page, $selected );
+			if ( $forceStable ) {
+				$selected = $lastStable ? $lastStable->getRevision() : null;
+			}
+
 			// At this point, we know there is a revision to possibly show, in requested version
 			$stableRevIds = $this->store->getStableRevisionIds( $page );
 			$isRequestedStable = $forceStable || in_array( $selected->getId(), $stableRevIds );
@@ -253,6 +262,13 @@ class StabilizationLookup {
 			}
 			if ( $state !== StableView::STATE_STABLE && !$canSeeDrafts ) {
 				// Page is a draft, but user cannot see it, so we show the last stable version
+				if ( $showingOld ) {
+					// unless specific old revision is requested, show nothing if user cannot see that revision
+					$this->stableViewCache[$cacheKey] = new StableView(
+						null, $forUser, [], null, StableView::STATE_UNSTABLE, false, []
+					);
+					return $this->stableViewCache[$cacheKey];
+				}
 				$selected = $lastStable ? $lastStable->getRevision() : null;
 				$isRequestedStable = true;
 				$state = StableView::STATE_STABLE;
