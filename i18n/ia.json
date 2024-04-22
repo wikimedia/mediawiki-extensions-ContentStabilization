@@ -122,5 +122,10 @@
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|ha approbate}} le pagina $1",
 	"content-stabilization-approval-notification-subject": "Pagina $1 approbate",
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|ha approbate}} le pagina $1",
-	"contentstabilization-edit-notice-old-version": "Le [{{fullurl:$1|stable=1}} version stabile] ha essite [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} approbate] le <i>$2</i>. Existe ja un version provisori."
+	"contentstabilization-edit-notice-old-version": "Le [{{fullurl:$1|stable=1}} version stabile] ha essite [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} approbate] le <i>$2</i>. Il ha {{PLURAL:$3|un cambiamento|$3 cambiamentos}} que attende approbation ([{{fullurl:$1|oldid=$4&diff=cur}} monstrar iste cambiamento{{PLURAL:$3||s}}]).",
+	"contentstabilization-ui-editor-approve": "Approbar mi cambiamentos",
+	"contentstabilization-ui-editor-approve-title": "Approbar automaticamente tu cambiamentos al salveguardar",
+	"contentstabilization-ui-editor-approve-with-pending": "Approbar iste version (incluse {{PLURAL:$1|un cambiamento|$1 cambiamentos}} pendente)",
+	"contentstabilization-ui-editor-approve-with-pending-title": "Approbar automaticamente tote le cambiamentos pendente al salveguardar. Assecura te de haber revidite tote le cambiamentos ante de salveguardar.",
+	"contentstabilization-edit-notice-approval-needed": "Tu cambiamentos essera monstrate al lectores quando un usator autorisate los accepta."
 }

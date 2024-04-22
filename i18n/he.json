@@ -122,5 +122,10 @@
 	"content-stabilization-approval-notification-summary": "$1 {{GENDER:$2|אישר|אישרה}} את הדף $3",
 	"content-stabilization-approval-notification-subject": "הדף $1 אושר",
 	"content-stabilization-approval-notification-email-body": "$1 {{GENDER:$2|אישר|אישרה}} את הדף $3",
-	"contentstabilization-edit-notice-old-version": "הגרסה [{{fullurl:$1|stable=1}} היציבה] [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} אושרה] ב־<i>$2</i>. יש כבר גרסת טיוטה."
+	"contentstabilization-edit-notice-old-version": "הגרסה [{{fullurl:$1|stable=1}} היציבה] [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} אושרה] ב־<i>$2</i>.  יש {{PLURAL:$3| שינוי אחד|$3 שינויים}} שממתינים לאישור ([{{fullurl: $1 |oldid= $4 &diff=cur}} להציג את {{PLURAL:$3|השינוי הזה|השינויים האלה}}]).",
+	"contentstabilization-ui-editor-approve": "לאשר את השינויים שלי",
+	"contentstabilization-ui-editor-approve-title": "אשר את השינויים שלך באופן אוטומטי לאחר השמירה",
+	"contentstabilization-ui-editor-approve-with-pending": "לאשר את הגרסה הזאת (כולל {{PLURAL:$1|שינוי ממתין אחד|$1 שינויים ממתינים}})",
+	"contentstabilization-ui-editor-approve-with-pending-title": "לאשר אוטומטית את כל השינויים הממתינים לאחר השמירה. נא לוודא שבדקת את כל השינויים לפני השמירה",
+	"contentstabilization-edit-notice-approval-needed": "השינוי שלך יוצג לקוראים ברגע שמשתמש מורשה יאשר אותם."
 }

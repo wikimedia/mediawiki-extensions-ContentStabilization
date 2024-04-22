@@ -122,5 +122,10 @@
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|ја одобри}} страницата $1",
 	"content-stabilization-approval-notification-subject": "Страницата $1 е одобрена",
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|ја одобри}} страницата $1",
-	"contentstabilization-edit-notice-old-version": "[{{fullurl:$1|stable=1}} Устојчивата верзија] беше [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} одобрена] на <i>$2</i>. Веќе има нацрт-верзија."
+	"contentstabilization-edit-notice-old-version": "[{{fullurl:$1|stable=1}} Устојчивата верзија] беше [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} одобрена] на <i>$2</i>. {{PLURAL:$3|Има една промена што чека|Има $3 промени кои чекаат}} на одобрение ([{{fullurl:$1|oldid=$4&diff=cur}} прикажи {{PLURAL:$3|ја оваа промена|ги овие промени}}]).",
+	"contentstabilization-ui-editor-approve": "Одобри ги моите промени",
+	"contentstabilization-ui-editor-approve-title": "Автоматски одобрувајте ги вашите промени при зачувување",
+	"contentstabilization-ui-editor-approve-with-pending": "Одобри ја оваа верзија (вкл. {{PLURAL:$1|една промена на чекање|$1 промени на чекање}})",
+	"contentstabilization-ui-editor-approve-with-pending-title": "Автоматски одобрувајте ги сите промени на чекање при зачувување. Не заборавајте да ги прегледате сите промени пред да зачувате",
+	"contentstabilization-edit-notice-approval-needed": "Вашите промени ќе им се прикажат на читателите штом ќе бидат прифатени од овластен корисник."
 }

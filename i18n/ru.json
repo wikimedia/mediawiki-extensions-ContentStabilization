@@ -2,12 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
-			"Stjn"
+			"Stjn",
+			"Dirruw'o"
 		]
 	},
 	"contentstabilization-ui-approve-cancel": "Отмена",
 	"contentstabilization-ui-approve-comment": "Комментарий",
 	"contentstabilization-overview-header-title": "Страница",
 	"contentstabilization-stabilizationhistory-title": "Страница",
-	"contentstabilization-overview-header-page-id": "Идентификатор страницы"
+	"contentstabilization-overview-header-page-id": "Идентификатор страницы",
+	"contentstabilization-edit-notice-old-version": "[{{fullurl: $1 |stable=1}} стабильная версия] была [{{fullurl:{{#Special:Log}}|type=stabilization&page= $1 }} одобрена] на <i>$2</i> . Там {{PLURAL:$3| одно изменение|изменений $3 }}, ожидающих одобрения ([{{fullurl: $1 |oldid= $4 &diff=cur}} show {{PLURAL:$3| это изменение|эти изменения}}]).",
+	"contentstabilization-ui-editor-approve": "Одобрить мои изменения",
+	"contentstabilization-ui-editor-approve-title": "Автоматическое одобрение Ваших записи для изменений",
+	"contentstabilization-ui-editor-approve-with-pending": "Утвердить эту версию (включая {{PLURAL:$1| одно ожидающее изменение| ожидающее изменение $1 }})",
+	"contentstabilization-ui-editor-approve-with-pending-title": "Автоматически утверждать все ожидающие изменения при сохранении. Перед сохранением убедитесь, что вы просмотрели все изменения.",
+	"contentstabilization-edit-notice-approval-needed": "Ваши изменения будут отображаться для читателей после того, как авторизованный пользователь одобрит их."
 }
