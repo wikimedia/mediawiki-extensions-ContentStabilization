@@ -150,7 +150,7 @@ class StabilizePDFExport implements
 			'span',
 			\Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )
 				->text()
-		);
+		) . ' ';
 
 		$stableTag->setAttribute( 'class', 'contentstabilization-export-laststable-tag' );
 		if ( !$lastStableTime ) {
