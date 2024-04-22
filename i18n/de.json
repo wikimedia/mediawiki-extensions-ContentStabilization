@@ -7,6 +7,7 @@
 			"McDutchie",
 			"Reedy",
 			"Robert Vogel",
+			"TomatoCake",
 			"Vhoesl"
 		]
 	},
@@ -45,7 +46,7 @@
 	"contentstabilization-pref-handleinclude-none": "Versionen, die zum Zeitpunkt der Freigabe aktuell waren, verwenden",
 	"contentstabilization-pref-handleinclude-stable": "Letzte freigegebene Version verwenden",
 	"contentstabilization-pref-handleincludes-help": "Gibt an, welche Version einer eingebetteten Ressource verwendet werden soll, wenn die freigegebene Version einer Seite ausgegeben wird",
-	"content-stabilization-stable-data": "Am $2 von {{GENDER:$1|[[$1]]}} freigeben. Kommentar: $3",
+	"content-stabilization-stable-data": "Am $2 von {{GENDER:$1|[[User:$1]]}} freigegeben. Kommentar: $3",
 	"contentstabilization-label-stabilize-ns": "Freigabe",
 	"content-stabilization-integration-activity-error-context-data-missing": "Parameter \"pageId\" fehlt",
 	"content-stabilization-integration-activity-error-context-invalid-title": "Es konnte keine Seite aus der angegebenen \"pageId\" erzeugt werden",
@@ -106,7 +107,9 @@
 	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Freigegebene Seiten",
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Nicht freigegebene Seiten",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "Seiten ohne Freigabemechanismus",
+	"content-stabilization-stable-diff": "Überprüfung ausstehend",
 	"contentstabilization-pref-handleinclude-current": "Aktuelle Versionen der enthaltenen Seiten",
+	"contentstabilization-overview-header-page-namespace": "Seitennamensräume",
 	"contentstabilization-wikiexplorer-state": "Freigegeben",
 	"contentstabilization-wikiexplorer-date": "Freigabedatum",
 	"contentstabilization-wikiexplorer-is-new-available": "Neuere Version steht zur Freigabe an",
@@ -114,5 +117,14 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Freigegeben von",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Freigabedatum",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "Freigabekommentar",
-	"contentstabilization-edit-notice-old-version": "Die [{{fullurl:$1|stable=1}} freigegebene Version] wurde am <i>$2</i> [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} freigegeben]. Es gibt bereits eine Entwurfsversion."
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Benutzer",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Kommentar",
+	"echo-category-title-content-stabilization-cat": "Freigabe",
+	"content-stabilization-echo-cat-tooltip": "Benachrichtige mich, wenn die Seite freigegeben wurde",
+	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|gab}} Seite $1 frei",
+	"content-stabilization-approval-notification-subject": "Seite $1 freigegeben",
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|gab}} Seite $1 frei",
+	"contentstabilization-edit-notice-old-version": "Die [{{fullurl:$1|stable=1}} freigegebene Version] wurde am <i>$2</i> [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} freigegeben]. Es gibt {{PLURAL:$3|eine Änderung|$3 Änderungen}}, welche freigegeben werden muss ([{{fullurl:$1|oldid=$4&diff=cur}} {{PLURAL:$3|Änderung|Änderungen}} anzeigen]).",
+	"contentstabilization-ui-editor-approve": "Meine Änderungen freigeben",
+	"contentstabilization-ui-editor-approve-title": "Änderungen beim Speichern automatisch freigeben"
 }
