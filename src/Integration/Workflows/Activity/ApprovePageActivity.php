@@ -96,7 +96,7 @@ class ApprovePageActivity extends GenericActivity {
 			throw new WorkflowExecutionException(
 				Message::newFromKey(
 					'content-stabilization-integration-activity-error-context-data-missing'
-				)->text(),  $this->getTask()
+				)->text(), $this->getTask()
 			);
 		}
 
@@ -109,7 +109,7 @@ class ApprovePageActivity extends GenericActivity {
 			throw new WorkflowExecutionException(
 				Message::newFromKey(
 					'content-stabilization-integration-activity-error-context-invalid-title'
-				)->text(),  $this->getTask()
+				)->text(), $this->getTask()
 			);
 		}
 		$this->title = $title;
@@ -122,7 +122,7 @@ class ApprovePageActivity extends GenericActivity {
 			throw new WorkflowExecutionException(
 				Message::newFromKey(
 					'content-stabilization-integration-activity-error-title-rev-mismatch'
-				)->text(),  $this->getTask()
+				)->text(), $this->getTask()
 			);
 		}
 		$this->revision = $revision;
@@ -135,7 +135,7 @@ class ApprovePageActivity extends GenericActivity {
 				throw new WorkflowExecutionException(
 					Message::newFromKey(
 						'content-stabilization-integration-activity-error-provided-user', $data['user']
-					)->text(),  $this->getTask()
+					)->text(), $this->getTask()
 				);
 			}
 		} elseif ( $context->isRunningAsBot() ) {
@@ -147,7 +147,7 @@ class ApprovePageActivity extends GenericActivity {
 			throw new WorkflowExecutionException(
 				Message::newFromKey(
 					'content-stabilization-integration-activity-error-no-user'
-				)->text(),  $this->getTask()
+				)->text(), $this->getTask()
 			);
 		}
 	}
