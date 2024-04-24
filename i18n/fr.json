@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alien333",
 			"Gomoko",
 			"Iketsi",
 			"MacOS Weed",
@@ -119,9 +120,16 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Approuvé par",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Date d’approbation",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "Commentaire d'approbation",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Approuver l'activité de la page",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utilisateur",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Utilisateur pour l'approbation de la page",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Commentaire",
+	"echo-category-title-content-stabilization-cat": "Approbation",
+	"content-stabilization-echo-cat-tooltip": "M'avertir lorsque la page est approuvée",
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|a approuvé}} la page $1",
 	"content-stabilization-approval-notification-subject": "Page $1 approuvée",
-	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|a approuvé}} la page $1"
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|a approuvé}} la page $1",
+	"contentstabilization-ui-editor-approve": "Approuver mes modifications",
+	"contentstabilization-ui-editor-approve-title": "Approuver automatiquement vos modifications lors de l'enregistrement",
+	"contentstabilization-ui-editor-approve-with-pending": "Approuver cette version (y compris {{PLURAL:$1|une modification en attente |$1 modifications en attente}})"
 }
