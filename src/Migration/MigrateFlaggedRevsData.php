@@ -45,6 +45,15 @@ class MigrateFlaggedRevsData extends LoggedUpdateMaintenance {
 		$value['database'] = $dStatus->getValue();
 		$this->output( "Migrated database\n" );
 
+		// Log comments - FR stores approval comments in log only
+		$logComments = new LogComments( $this->services->getDBLoadBalancer() );
+		$lcStatus = $logComments->migrate();
+		if ( !$lcStatus->isOK() ) {
+			return false;
+		}
+		$value['comments'] = $lcStatus->getValue();
+		$this->output( "Migrated approval comments\n" );
+
 		// Log
 		$log = new Log( $this->services->getDBLoadBalancer() );
 		$lStatus = $log->migrate();
