@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Dejan Savuljesku",
+			"McDutchie",
 			"Raymond",
 			"Robert Vogel",
+			"Umherirrender",
 			"Verdy p"
 		]
 	},
@@ -50,7 +52,7 @@
 	"content-stabilization-integration-activity-error-provided-user": "Error message in an API call",
 	"content-stabilization-integration-activity-error-no-user": "Error message in an API call",
 	"content-stabilization-integration-activity-error-cannot-approve": "Error message in an API call",
-	"content-stabilization-integration-workflows-property-validator-valid-reviewer-error": "",
+	"content-stabilization-integration-workflows-property-validator-valid-reviewer-error": "Used as error message",
 	"contentstabilization-pref-allowfirstunstable": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-stabilize-smw": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-allowfirstunstable-help": "This is the label of an option on [[Special:ConfigManager]]",
@@ -80,14 +82,14 @@
 	"contentstabilization-overview-header-has-changed-last-approver": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-header-has-changed-last-stable-ts": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-header-has-changed-last-comment": "Header of a column on [[Special:ContentStabilization]]",
-	"contentstabilization-document-state-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-date-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-user-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-document-version-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-document-state-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-date-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-user-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-document-version-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
+	"contentstabilization-document-state-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-date-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-user-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-document-version-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-document-state-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-date-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-user-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-document-version-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
 	"contentstabilization-pref-index-stable": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-pdf-show-tag": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-export-list-stable": "This is the label of an option on [[Special:ConfigManager]]",
@@ -131,5 +133,4 @@
 	"contentstabilization-ui-editor-approve-with-pending": "Checkbox label in editor to approve multiple changes when page is saved.\n$1 - number of pending changes",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Checkbox title message in editor to approve multiple changes when page is saved",
 	"contentstabilization-edit-notice-approval-needed": "Notice about editing a page with approval enabled"
-
 }
