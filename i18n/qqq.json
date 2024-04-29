@@ -5,7 +5,8 @@
 			"Raymond",
 			"Robert Vogel",
 			"Verdy p",
-			"McDutchie"
+			"McDutchie",
+			"Umherirrender"
 		]
 	},
 	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
@@ -51,7 +52,7 @@
 	"content-stabilization-integration-activity-error-provided-user": "Error message in an API call",
 	"content-stabilization-integration-activity-error-no-user": "Error message in an API call",
 	"content-stabilization-integration-activity-error-cannot-approve": "Error message in an API call",
-	"content-stabilization-integration-workflows-property-validator-valid-reviewer-error": "",
+	"content-stabilization-integration-workflows-property-validator-valid-reviewer-error": "Used as error message",
 	"contentstabilization-pref-allowfirstunstable": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-stabilize-smw": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-allowfirstunstable-help": "This is the label of an option on [[Special:ConfigManager]]",

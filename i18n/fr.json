@@ -7,7 +7,8 @@
 			"Reedy",
 			"SleaY",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Alien333"
 		]
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
@@ -58,7 +59,6 @@
 	"contentstabilization-pref-stabilize-smw": "Mettre à jour les propriétés sémantiques des versions approuvées uniquement",
 	"contentstabilization-pref-allowfirstunstable-help": "Si cette option est activée, la première version ébauchée d’une page sera présentée aux utilisateurs qui autrement ne pourraient voir aucune version brouillon.",
 	"contentstabilization-pref-stabilize-smw-help": "Si cette option est activée, la mise à jour des propriétés MediaWiki Sémantique sera déclenchée uniquement sur les versions stables des pages.",
-	"contentstabilization-stablepoint-added-message-passive": "Nouvelle version approuvée de la page disponible",
 	"contentstabilization-stablepoint-added-message": "une nouvelle version approuvée de la page a été ajoutée",
 	"contentstabilization-export-no-stable-date": "Non approuvé",
 	"contentstabilization-export-laststable-tag-text": "Approuvé :",
@@ -119,9 +119,16 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Approuvé par",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Date d’approbation",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "Commentaire d'approbation",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Approuver l'activité de la page",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utilisateur",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Utilisateur pour l'approbation de la page",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Commentaire",
+	"echo-category-title-content-stabilization-cat": "Approbation",
+	"content-stabilization-echo-cat-tooltip": "M'avertir lorsque la page est approuvée",
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|a approuvé}} la page $1",
 	"content-stabilization-approval-notification-subject": "Page $1 approuvée",
-	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|a approuvé}} la page $1"
+	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|a approuvé}} la page $1",
+	"contentstabilization-ui-editor-approve": "Approuver mes modifications",
+	"contentstabilization-ui-editor-approve-title": "Approuver automatiquement vos modifications lors de l'enregistrement",
+	"contentstabilization-ui-editor-approve-with-pending": "Approuver cette version (y compris {{PLURAL:$1|une modification en attente |$1 modifications en attente}})"
 }
