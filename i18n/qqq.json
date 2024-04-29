@@ -2,11 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Dejan Savuljesku",
+			"McDutchie",
 			"Raymond",
 			"Robert Vogel",
-			"Verdy p",
-			"McDutchie",
-			"Umherirrender"
+			"Umherirrender",
+			"Verdy p"
 		]
 	},
 	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
@@ -58,7 +58,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-stabilize-smw-help": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-stablepoint-added-message-bot": "Message displayed to the user when a page is approved\n$1 - page anchor",
-	"contentstabilization-stablepoint-added-message": "Message displayed to the user when a page is approved\n$1 - agent\n$2 - page anchor",
+	"contentstabilization-stablepoint-added-message": "Message displayed to the user when a page is approved",
 	"contentstabilization-export-no-stable-date": "Part of a status information box displayed after the title within the export of a page",
 	"contentstabilization-export-laststable-tag-text": "Part of a status information box displayed after the title within the export of a page",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Part of a status information box displayed after the title within the export of a page.\n$1 - revision timestamp",
@@ -82,14 +82,14 @@
 	"contentstabilization-overview-header-has-changed-last-approver": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-header-has-changed-last-stable-ts": "Header of a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-header-has-changed-last-comment": "Header of a column on [[Special:ContentStabilization]]",
-	"contentstabilization-document-state-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-date-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-user-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-document-version-sesp-alias": "Name of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-document-state-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-date-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-approval-user-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
-	"contentstabilization-document-version-sesp-desc": "Description of a [https://www.semantic-mediawiki.org/ Semantic MediaWiki] property",
+	"contentstabilization-document-state-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-date-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-user-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-document-version-sesp-alias": "Name of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-document-state-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-date-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-approval-user-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
+	"contentstabilization-document-version-sesp-desc": "Description of a [https:\/\/www.semantic-mediawiki.org\/ Semantic MediaWiki] property",
 	"contentstabilization-pref-index-stable": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-pdf-show-tag": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-export-list-stable": "This is the label of an option on [[Special:ConfigManager]]",
@@ -135,5 +135,6 @@
 	"contentstabilization-edit-notice-approval-needed": "Notice about editing a page with approval enabled",
 	"contentstabilization-stablepoint-added-key-desc": "Description of the notification event type",
 	"contentstabilization-stablepoint-added-links-intro": "Description of the links in the notification mail",
-	"contentstabilization-stablepoint-added-links-view-changes": "Label for the notification mail button to see changes between approved versions of the page"
+	"contentstabilization-stablepoint-added-links-view-changes": "Label for the notification mail button to see changes between approved versions of the page",
+	"contentstabilization-stablepoint-added-message-passive": "Message displayed to the user when a page is approved"
 }
