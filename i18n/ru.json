@@ -6,15 +6,15 @@
 			"Stjn"
 		]
 	},
-	"contentstabilization-ui-approve-cancel": "\u041e\u0442\u043c\u0435\u043d\u0430",
-	"contentstabilization-ui-approve-comment": "\u041a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0439",
-	"contentstabilization-overview-header-title": "\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430",
-	"contentstabilization-stabilizationhistory-title": "\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430",
-	"contentstabilization-overview-header-page-id": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b",
-	"contentstabilization-edit-notice-old-version": "[{{fullurl: $1 |stable=1}} \u0441\u0442\u0430\u0431\u0438\u043b\u044c\u043d\u0430\u044f \u0432\u0435\u0440\u0441\u0438\u044f] \u0431\u044b\u043b\u0430 [{{fullurl:{{#Special:Log}}|type=stabilization&page= $1 }} \u043e\u0434\u043e\u0431\u0440\u0435\u043d\u0430] \u043d\u0430 <i>$2<\/i> . \u0422\u0430\u043c {{PLURAL:$3| \u043e\u0434\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435|\u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0439 $3 }}, \u043e\u0436\u0438\u0434\u0430\u044e\u0449\u0438\u0445 \u043e\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u044f ([{{fullurl: $1 |oldid= $4 &diff=cur}} show {{PLURAL:$3| \u044d\u0442\u043e \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435|\u044d\u0442\u0438 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f}}]).",
-	"contentstabilization-ui-editor-approve": "\u041e\u0434\u043e\u0431\u0440\u0438\u0442\u044c \u043c\u043e\u0438 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f",
-	"contentstabilization-ui-editor-approve-title": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043e\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u0435 \u0412\u0430\u0448\u0438\u0445 \u0437\u0430\u043f\u0438\u0441\u0438 \u0434\u043b\u044f \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0439",
-	"contentstabilization-ui-editor-approve-with-pending": "\u0423\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u044d\u0442\u0443 \u0432\u0435\u0440\u0441\u0438\u044e (\u0432\u043a\u043b\u044e\u0447\u0430\u044f {{PLURAL:$1| \u043e\u0434\u043d\u043e \u043e\u0436\u0438\u0434\u0430\u044e\u0449\u0435\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435| \u043e\u0436\u0438\u0434\u0430\u044e\u0449\u0435\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 $1 }})",
-	"contentstabilization-ui-editor-approve-with-pending-title": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0443\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u0442\u044c \u0432\u0441\u0435 \u043e\u0436\u0438\u0434\u0430\u044e\u0449\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u043f\u0440\u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0438. \u041f\u0435\u0440\u0435\u0434 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435\u043c \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u044b \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u043b\u0438 \u0432\u0441\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f.",
-	"contentstabilization-edit-notice-approval-needed": "\u0412\u0430\u0448\u0438 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0447\u0438\u0442\u0430\u0442\u0435\u043b\u0435\u0439 \u043f\u043e\u0441\u043b\u0435 \u0442\u043e\u0433\u043e, \u043a\u0430\u043a \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043e\u0434\u043e\u0431\u0440\u0438\u0442 \u0438\u0445."
+	"contentstabilization-ui-approve-cancel": "Отмена",
+	"contentstabilization-ui-approve-comment": "Комментарий",
+	"contentstabilization-overview-header-title": "Страница",
+	"contentstabilization-stabilizationhistory-title": "Страница",
+	"contentstabilization-overview-header-page-id": "Идентификатор страницы",
+	"contentstabilization-edit-notice-old-version": "[{{fullurl: $1 |stable=1}} стабильная версия] была [{{fullurl:{{#Special:Log}}|type=stabilization&page= $1 }} одобрена] на <i>$2</i> . Там {{PLURAL:$3| одно изменение|изменений $3 }}, ожидающих одобрения ([{{fullurl: $1 |oldid= $4 &diff=cur}} show {{PLURAL:$3| это изменение|эти изменения}}]).",
+	"contentstabilization-ui-editor-approve": "Одобрить мои изменения",
+	"contentstabilization-ui-editor-approve-title": "Автоматическое одобрение Ваших записи для изменений",
+	"contentstabilization-ui-editor-approve-with-pending": "Утвердить эту версию (включая {{PLURAL:$1| одно ожидающее изменение| ожидающее изменение $1 }})",
+	"contentstabilization-ui-editor-approve-with-pending-title": "Автоматически утверждать все ожидающие изменения при сохранении. Перед сохранением убедитесь, что вы просмотрели все изменения.",
+	"contentstabilization-edit-notice-approval-needed": "Ваши изменения будут отображаться для читателей после того, как авторизованный пользователь одобрит их."
 }
