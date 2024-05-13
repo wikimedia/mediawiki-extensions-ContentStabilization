@@ -498,6 +498,11 @@ class StabilizeContent implements
 			return;
 		}
 		$context = RequestContext::getMain();
+		if ( $context->getRequest()->getBool( 'text' ) ) {
+			// If text is explicitly requested, don't do anything
+			return;
+		}
+
 		$view = $this->lookup->getStableView( $title->toPageIdentity(), $context->getUser() );
 		if ( !$view ) {
 			return;
