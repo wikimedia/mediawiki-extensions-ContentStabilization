@@ -187,7 +187,25 @@ class StabilizeContent implements
 			$poOptions['enableSectionEditLinks'] = false;
 		}
 		$article->getContext()->getOutput()->addParserOutput( $parserOutput, $poOptions );
-		$article->getContext()->getOutput()->setRevisionId( $pageTitle->getLatestRevID() );
+		if ( $this->explicitlyRequestedOldId( $article ) ) {
+			// If user explicitly requested oldid, use that for editing (or whatever stabilized version user can see)
+			// Exception: if the oldid is the latest stable but there is a draft
+			// or there is no stable version after requested oldid, always set latest version for editing
+			$article->getContext()->getOutput()->setRevisionId( $revisionUsed->getId() );
+		} else {
+			// Otherwise always edit the latest version
+			$article->getContext()->getOutput()->setRevisionId( $pageTitle->getLatestRevID() );
+		}
+	}
+
+	/**
+	 * @param Article $article
+	 * @return bool
+	 */
+	private function explicitlyRequestedOldId( Article $article ): bool {
+		$request = $article->getContext()->getRequest();
+		$oldid = $request->getInt( 'oldid' );
+		return $oldid && $oldid !== $article->getTitle()->getLatestRevID();
 	}
 
 	/**
