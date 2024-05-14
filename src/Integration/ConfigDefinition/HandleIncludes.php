@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\ConfigDefinition;
 
 use BlueSpice\ConfigDefinition\ArraySetting;
 use BlueSpice\ConfigDefinition\IOverwriteGlobal;
+use ExtensionRegistry;
 use HTMLFormField;
 use HTMLSelectField;
 
@@ -42,12 +43,16 @@ class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 	 * @return array
 	 */
 	protected function getOptions() {
-		return [
+		$options = [
 			// NONE - Default behaviour is "freeze"
 			$this->msg( 'contentstabilization-pref-handleinclude-none' )->plain() => null,
-			$this->msg( 'contentstabilization-pref-handleinclude-stable' )->plain() => 'stable',
-			$this->msg( 'contentstabilization-pref-handleinclude-current' )->plain() => 'current',
 		];
+		$attribute = ExtensionRegistry::getInstance()->getAttribute( 'ContentStabilizationInclusionModes' );
+		foreach ( array_keys( $attribute ) as $inclusionModeKey ) {
+			$label = $this->msg( "contentstabilization-pref-handleinclude-$inclusionModeKey" )->plain();
+			$options[$label] = $inclusionModeKey;
+		}
+		return $options;
 	}
 
 	/**

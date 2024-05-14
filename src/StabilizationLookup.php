@@ -159,8 +159,9 @@ class StabilizationLookup {
 			return null;
 		}
 		$oldId = $context->getRequest()->getInt( 'oldid' );
+		$params = [];
 		if ( $oldId > 0 ) {
-			$params = [ 'upToRevision' => $oldId ];
+			$params['upToRevision'] = $oldId;
 		}
 
 		// Default true to force stable view by default
