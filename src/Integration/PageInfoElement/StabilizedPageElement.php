@@ -34,7 +34,11 @@ abstract class StabilizedPageElement extends PageInfo {
 		if ( $this->context->getRequest()->getText( 'action', 'view' ) !== 'view' ) {
 			return false;
 		}
-		if ( !$this->lookup->isStabilizationEnabled( $context->getTitle()->toPageIdentity() ) ) {
+		$title = $context->getTitle();
+		if ( !$title ) {
+			return false;
+		}
+		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
 			return false;
 		}
 		if ( !$this->lookup->canUserSeeUnstable( $context->getUser() ) ) {
