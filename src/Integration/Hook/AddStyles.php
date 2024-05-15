@@ -12,7 +12,10 @@ class AddStyles implements BeforePageDisplayHook {
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$out->addModuleStyles( [ 'ext.contentStabilization.view.styles' ] );
 		$isHistory = $out->getRequest()->getText( 'action', 'view' ) === 'history';
-		if ( $isHistory || $out->getTitle()->getNamespace() === NS_FILE ) {
+		$title = $out->getTitle();
+		if ( $isHistory ||
+			( $title && $title->getNamespace() === NS_FILE )
+		) {
 			$out->addModuleStyles( [ 'ext.contentStabilization.history.styles' ] );
 		}
 	}
