@@ -36,6 +36,9 @@ class SearchIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal {
 		return "wgBlueSpiceExtendedSearchIndexOnlyStable";
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function isHidden() {
 		return !ExtensionRegistry::getInstance()->isLoaded( 'BlueSpiceExtendedSearch' );
 	}

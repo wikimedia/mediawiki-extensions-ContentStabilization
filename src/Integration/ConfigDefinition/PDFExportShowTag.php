@@ -36,6 +36,9 @@ class PDFExportShowTag extends BooleanSetting implements IOverwriteGlobal {
 		return "wgBlueSpiceUEModulePDFShowStabilizationTag";
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function isHidden() {
 		return !ExtensionRegistry::getInstance()->isLoaded( 'BlueSpiceUEModulePDF' );
 	}
