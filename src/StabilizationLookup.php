@@ -289,6 +289,11 @@ class StabilizationLookup {
 				return $this->stableViewCache[$cacheKey];
 			}
 
+			if ( isset( $options['transclusionCheck'] ) && $options['transclusionCheck'] ) {
+				$this->stableViewCache[$cacheKey] = new StableView( $selected, null, [], null, 'undefined', false, [] );
+				return $this->stableViewCache[$cacheKey];
+			}
+
 			// If is it the latest stable version, check if inclusions are in sync with current
 			$outOfSyncInclusions = [];
 			if ( !( $isRequestedStable && !$hasNewerStable ) ) {

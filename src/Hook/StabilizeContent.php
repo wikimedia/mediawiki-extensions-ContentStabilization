@@ -133,6 +133,7 @@ class StabilizeContent implements
 	 * @inheritDoc
 	 */
 	public function onArticleViewHeader( $article, &$outputDone, &$pcache ) {
+		$start = microtime( true );
 		$this->setViewFromArticle( $article );
 		if ( !$this->view ) {
 			return;
@@ -196,6 +197,8 @@ class StabilizeContent implements
 			// Otherwise always edit the latest version
 			$article->getContext()->getOutput()->setRevisionId( $pageTitle->getLatestRevID() );
 		}
+		$end = microtime( true );
+		$article->getContext()->getOutput()->addHTML( '<!-- StabilizeContent: ' . ( $end - $start ) . ' -->' );
 	}
 
 	/**
@@ -272,49 +275,45 @@ class StabilizeContent implements
 		if ( $revRecord ) {
 			$key .= ':' . $revRecord->getId();
 		}
-		if ( !in_array( $key, $this->processedInclusions ) ) {
-			$this->processedInclusions[] = $key;
+
+		$selectedRevision = null;
+		if ( isset( $this->processedInclusions[$key] ) ) {
+			$selectedRevision = $this->processedInclusions[$key];
 		} else {
-			// Already processed this one
-			return;
-		}
-
-		foreach ( $this->view->getInclusions()['transclusions'] as $transclusion ) {
-			if (
-				$transclusion['namespace'] === $title->getNamespace() &&
-				$transclusion['title'] === $title->getDBkey()
-			) {
-				$selectedRevision = $revRecord;
-				if ( !$selectedRevision || $selectedRevision->getId() !== $transclusion['revision'] ) {
-					$replacement = $this->revisionLookup->getRevisionById( $transclusion['revision'] );
-					if ( $replacement ) {
-						$selectedRevision = $replacement;
+			foreach ( $this->view->getInclusions()['transclusions'] as $transclusion ) {
+				if (
+					$transclusion['namespace'] === $title->getNamespace() &&
+					$transclusion['title'] === $title->getDBkey()
+				) {
+					$selectedRevision = $revRecord;
+					if ( !$selectedRevision || $selectedRevision->getId() !== $transclusion['revision'] ) {
+						// Direct transclusion
+						$replacement = $this->revisionLookup->getRevisionById( $transclusion['revision'] );
+						if ( $replacement ) {
+							$selectedRevision = $replacement;
+						}
 					}
+					if ( $selectedRevision ) {
+						// Get stable view for transclusion
+						$view = $this->lookup->getStableView(
+							Title::newFromLinkTarget( $title )->toPageIdentity(),
+							$this->view->getTargetUser(), [
+							'upToRevision' => $selectedRevision->getId(),
+							// With this flag, we can limit what is being stabilized, to same time
+							'transclusionCheck' => true
+						] );
+						if ( $view ) {
+							// Resource stabilized
+							$selectedRevision = $view->getRevision();
+						}
+					}
+					break;
 				}
-				if ( !$selectedRevision ) {
-					// NO revision to show
-					$skip = true;
-					return;
-				}
-				// Get stable view for transclusion
-				$view = $this->lookup->getStableView(
-					Title::newFromLinkTarget( $title )->toPageIdentity(),
-					$this->view->getTargetUser(), [
-						'upToRevision' => $selectedRevision->getId(),
-						// Add marker for customized third-party code to know about the context
-						'transclusionCheck' => true
-					]
-				);
-				if ( $view ) {
-					// Resource stabilized
-					$selectedRevision = $view->getRevision();
-				}
-
-				$revRecord = $selectedRevision;
-				$skip = $selectedRevision === null;
-				return;
 			}
 		}
+		$this->processedInclusions[$key] = $selectedRevision;
+		$revRecord = $selectedRevision;
+		$skip = $selectedRevision === null;
 	}
 
 	/**
