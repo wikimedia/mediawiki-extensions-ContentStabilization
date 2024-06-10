@@ -276,15 +276,18 @@ class StabilizeContent implements
 			$key .= ':' . $revRecord->getId();
 		}
 
+		$stabilized = false;
 		$selectedRevision = null;
 		if ( isset( $this->processedInclusions[$key] ) ) {
 			$selectedRevision = $this->processedInclusions[$key];
+			$stabilized = true;
 		} else {
 			foreach ( $this->view->getInclusions()['transclusions'] as $transclusion ) {
 				if (
 					$transclusion['namespace'] === $title->getNamespace() &&
 					$transclusion['title'] === $title->getDBkey()
 				) {
+					$stabilized = true;
 					$selectedRevision = $revRecord;
 					if ( !$selectedRevision || $selectedRevision->getId() !== $transclusion['revision'] ) {
 						// Direct transclusion
@@ -311,9 +314,14 @@ class StabilizeContent implements
 				}
 			}
 		}
-		$this->processedInclusions[$key] = $selectedRevision;
-		$revRecord = $selectedRevision;
-		$skip = $selectedRevision === null;
+
+		if ( $stabilized ) {
+			// Only intervene if transclusion is registered in stabilization data,
+			// otherwise let the parser handle it (ie. for self-transclusions)
+			$this->processedInclusions[$key] = $selectedRevision;
+			$revRecord = $selectedRevision;
+			$skip = $selectedRevision === null;
+		}
 	}
 
 	/**
