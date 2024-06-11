@@ -81,7 +81,8 @@ class StabilizePDFExport implements
 			// if not set, get from request
 			$oldId = $this->request->getInt( 'oldid', null );
 		}
-		$title = $this->titleFactory->newFromText( $params['title'] ?? '' );
+		$title = $this->titleFactory->newFromID( $params['article-id'] ?? 0 );
+
 		if ( !( $title instanceof Title ) ) {
 			return;
 		}
@@ -90,9 +91,6 @@ class StabilizePDFExport implements
 			$oldId = $title->getLatestRevID();
 		}
 
-		if ( !isset( $params['article-id'] ) && $title->exists() ) {
-			$params['article-id'] = $title->getArticleID();
-		}
 		if ( !$title->canExist() ) {
 			// Virtual namespace
 			return;
