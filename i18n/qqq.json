@@ -58,7 +58,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-stabilize-smw-help": "This is the label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-stablepoint-added-message-passive": "Message displayed to the user when a page is approved",
-	"contentstabilization-stablepoint-added-message": "Message displayed to the user when a page is approved",
+	"contentstabilization-stablepoint-added-message": "Message displayed to the user when a page is approved\n$1 - agent username\n$2 - page anchor",
 	"contentstabilization-export-no-stable-date": "Part of a status information box displayed after the title within the export of a page",
 	"contentstabilization-export-laststable-tag-text": "Part of a status information box displayed after the title within the export of a page",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Part of a status information box displayed after the title within the export of a page.\n$1 - revision timestamp",
