@@ -53,7 +53,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "אם זה מופעל, גרסת הטיוטה הראשונה של דף תוצג למשתמשים שאחרת לא היו יכולים לראות גרסאות טיוטה",
 	"contentstabilization-pref-stabilize-smw-help": "אם זה מופעל, עדכון של מאפייני מדיה־ויקי סמנטית יופעל רק בגרסאות יציבות של דפים",
 	"contentstabilization-stablepoint-added-message-passive": "זמינה גרסה חדשה מאושרת של הדף",
-	"contentstabilization-stablepoint-added-message": "נוספה גרסה מאושרת חדשה של הדף",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|הוסיף|הוסיפה}} גרסה מאושרת חדשה של הדף $2",
 	"contentstabilization-export-no-stable-date": "לא מאושרת",
 	"contentstabilization-export-laststable-tag-text": "מאושר:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "גרסה: $1",
