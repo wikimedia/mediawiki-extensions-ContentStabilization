@@ -1,6 +1,6 @@
 ( function ( mw ) {
 
-	mw.hook( 'enhanced.versionhistory' ).add( function ( gridCfg ) {
+	mw.hook( 'enhanced.versionhistory' ).add( ( gridCfg ) => {
 		gridCfg.style = '';
 
 		gridCfg.columns.sp_state = {

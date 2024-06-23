@@ -1,6 +1,6 @@
 ( function ( mw, $ ) {
 
-	$( function () {
+	$( () => {
 		const $alert = $( '.alert.alert-warning' );
 
 		if ( $alert.length < 1 ) {

@@ -34,15 +34,15 @@ ext.contentStabilization.ui.ApproveDialog.prototype.getActionProcess = function 
 				this.page,
 				this.comment.getValue()
 			)
-				.done( function () {
+				.done( () => {
 					this.close( { action: action } );
-				}.bind( this ) )
-				.fail( function () {
+				} )
+				.fail( () => {
 					this.popPending();
 					dfd.reject( new OO.ui.Error(
 						mw.msg( 'contentstabilization-ui-approve-error' ) ), { recoverable: false }
 					);
-				}.bind( this ) );
+				} );
 			return dfd.promise();
 		}, this );
 	}

@@ -1,4 +1,4 @@
-$( function () {
+$( () => {
 	const $cnt = $( '#contentstabilization' );
 	if ( $cnt.length === 0 ) {
 		return;
@@ -76,7 +76,7 @@ $( function () {
 						}
 					}
 				} );
-			store.load().done( function ( response ) {
+			store.load().done( ( response ) => {
 				const $table = $( '<table>' );
 				let $row = $( '<tr>' ),
 					$cell = $( '<td>' );
@@ -149,7 +149,7 @@ $( function () {
 				}
 
 				dfd.resolve( '<table>' + $table.html() + '</table>' );
-			} ).fail( function () {
+			} ).fail( () => {
 				dfd.reject( 'Failed to load data' );
 			} );
 
