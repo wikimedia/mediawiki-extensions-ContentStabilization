@@ -300,11 +300,13 @@ class StabilizeContent implements
 						// Get stable view for transclusion
 						$view = $this->lookup->getStableView(
 							Title::newFromLinkTarget( $title )->toPageIdentity(),
-							$this->view->getTargetUser(), [
-							'upToRevision' => $selectedRevision->getId(),
-							// With this flag, we can limit what is being stabilized, to same time
-							'transclusionCheck' => true
-						] );
+							$this->view->getTargetUser(),
+							[
+								'upToRevision' => $selectedRevision->getId(),
+								// With this flag, we can limit what is being stabilized, to same time
+								'transclusionCheck' => true
+							]
+						);
 						if ( $view ) {
 							// Resource stabilized
 							$selectedRevision = $view->getRevision();
