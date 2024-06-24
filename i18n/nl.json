@@ -55,7 +55,7 @@
 	"contentstabilization-pref-stabilize-smw": "Semantische eigenschappen alleen bijwerken vanuit goedgekeurde versies",
 	"contentstabilization-pref-allowfirstunstable-help": "Indien ingeschakeld wordt de eerste conceptversie van een pagina getoond aan gebruikers die anders geen conceptversies zouden kunnen zien",
 	"contentstabilization-pref-stabilize-smw-help": "Indien ingeschakeld worden Semantic MediaWiki-eigenschappen alleen bijgewerkt op stabiele versies van pagina's",
-	"contentstabilization-stablepoint-added-message": "heeft een nieuwe goedgekeurde versie van de pagina toegevoegd",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|heeft}} een nieuwe goedgekeurde versie van de pagina $2 toegevoegd",
 	"contentstabilization-export-no-stable-date": "Niet goedgekeurd",
 	"contentstabilization-export-laststable-tag-text": "Goedgekeurd:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Versie: $1",

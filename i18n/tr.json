@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Asma",
-			"Hedda"
+			"Hedda",
+			"İmmortalance"
 		]
 	},
 	"contentstabilization-desc": "Kullanıcıların, sayfaları \"onaylandı\" veya \"taslak\" olarak işaretlemesine ve bir sayfanın en son onaylanmış sürümünü görüntülemesine olanak tanır.",
@@ -50,8 +51,7 @@
 	"content-stabilization-integration-workflows-property-validator-valid-reviewer-error": "Belirtilen kullanıcı geçersiz veya bir sayfayı onaylamasına izin verilmiyor",
 	"contentstabilization-pref-allowfirstunstable": "Normalde taslakları göremeyen kullanıcılar için ilk taslak sürümün görüntülenmesine izin ver",
 	"contentstabilization-pref-stabilize-smw": "Anlamsal özellikleri yalnızca onaylı sürümlerden güncelle",
-	"contentstabilization-stablepoint-added-message-passive": "Sayfanın yeni onaylı sürümü mevcut",
-	"contentstabilization-stablepoint-added-message": "sayfanın yeni onaylı bir sürümünü ekledi",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|}} sayfanın yeni onaylı bir sürümünü ekledi $2",
 	"contentstabilization-export-no-stable-date": "Onaylanmadı",
 	"contentstabilization-export-laststable-tag-text": "Onaylandı:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Değişiklik: $1",
@@ -95,5 +95,6 @@
 	"content-stabilization-stable-diff": "bekleyen inceleme",
 	"contentstabilization-pref-handleinclude-current": "Dahil edilen sayfaların güncel sürümleri",
 	"contentstabilization-overview-header-page-id": "Sayfa kimliği",
-	"contentstabilization-overview-header-page-namespace": "Sayfa ad alanları"
+	"contentstabilization-overview-header-page-namespace": "Sayfa ad alanları",
+	"contentstabilization-stablepoint-added-message-passive": "Sayfanın yeni onaylı sürümü mevcut"
 }

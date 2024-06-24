@@ -52,8 +52,7 @@
 	"contentstabilization-pref-stabilize-smw": "Actualisar proprietates semantic a partir de versiones approbate solmente",
 	"contentstabilization-pref-allowfirstunstable-help": "Si es activate, le prime version provisori de un pagina essera monstrate a usatores qui alteremente non esserea autorisate a vider versiones provisori",
 	"contentstabilization-pref-stabilize-smw-help": "Si es activate, le actualisation del proprietates de Semantic MediaWiki essera activate solmente sur versiones stabile de paginas",
-	"contentstabilization-stablepoint-added-message-passive": "Un nove version approbate del pagina es disponibile",
-	"contentstabilization-stablepoint-added-message": "un nove version approbate del pagina ha essite addite",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|ha addite}} un nove version approbate del pagina $2",
 	"contentstabilization-export-no-stable-date": "Non approbate",
 	"contentstabilization-export-laststable-tag-text": "Approbate:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Version: $1",
@@ -127,5 +126,6 @@
 	"contentstabilization-ui-editor-approve-title": "Approbar automaticamente tu cambiamentos al salveguardar",
 	"contentstabilization-ui-editor-approve-with-pending": "Approbar iste version (incluse {{PLURAL:$1|un cambiamento|$1 cambiamentos}} pendente)",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Approbar automaticamente tote le cambiamentos pendente al salveguardar. Assecura te de haber revidite tote le cambiamentos ante de salveguardar.",
-	"contentstabilization-edit-notice-approval-needed": "Tu cambiamentos essera monstrate al lectores quando un usator autorisate los accepta."
+	"contentstabilization-edit-notice-approval-needed": "Tu cambiamentos essera monstrate al lectores quando un usator autorisate los accepta.",
+	"contentstabilization-stablepoint-added-message-passive": "Un nove version approbate del pagina es disponibile"
 }
