@@ -93,7 +93,7 @@ class DocumentStatePropertyValueProvider extends PropertyValueProvider {
 			return;
 		}
 		$state = $view->getStatus();
-		$msg = Message::newFromKey( "contentstabilization-status-$state" );
+		$msg = Message::newFromKey( "contentstabilization-status-$state" )->inContentLanguage();
 		if ( !$msg->exists() ) {
 			return;
 		}
