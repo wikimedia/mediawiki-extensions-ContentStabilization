@@ -68,6 +68,7 @@
 	"logentry-stabilization-update": "$1 {{GENDER:$2|approved}} changes in resources on page $3",
 	"contentstabilization-status-stable": "Approved",
 	"contentstabilization-status-unstable": "Draft",
+	"contentstabilization-status-implicit-unstable": "Implicit draft",
 	"contentstabilization-status-first-unstable": "First draft",
 	"contentstabilization-overview-no-enabled": "Approval is not enabled on any namespace",
 	"contentstabilization-overview-enabled": "Approval is currently enabled for the following namespaces: $1",
