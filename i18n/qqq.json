@@ -72,6 +72,7 @@
 	"logentry-stabilization-update": "Log entry message on [[Special:Log]]",
 	"contentstabilization-status-stable": "Value in a column on [[Special:ContentStabilization]]",
 	"contentstabilization-status-unstable": "Value in a column on [[Special:ContentStabilization]]",
+	"contentstabilization-status-implicit-unstable": "Value in a column on [[Special:ContentStabilization]]",
 	"contentstabilization-status-first-unstable": "Value in a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-no-enabled": "Value in a column on [[Special:ContentStabilization]]",
 	"contentstabilization-overview-enabled": "Value in a column on [[Special:ContentStabilization]]",

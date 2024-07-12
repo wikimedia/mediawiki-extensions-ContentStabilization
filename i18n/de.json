@@ -74,6 +74,7 @@
 	"logentry-stabilization-update": "$1 {{GENDER:$2|gab}} Änderungen an eingebetteten Ressourcen auf Seite $3 frei",
 	"contentstabilization-status-stable": "Freigegeben",
 	"contentstabilization-status-unstable": "Entwurf",
+	"contentstabilization-status-implicit-unstable": "Impliziter Entwurf",
 	"contentstabilization-status-first-unstable": "Erstentwurf",
 	"contentstabilization-overview-no-enabled": "Der Freigabemechanismus ist derzeit in keinem Namensraum aktiviert.",
 	"contentstabilization-overview-enabled": "Der Freigabemechanismus ist derzeit in folgenden Namensräumen aktiviert: $1",
