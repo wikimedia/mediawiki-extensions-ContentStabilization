@@ -67,6 +67,7 @@
 	"logentry-stabilization-update": "$1 {{GENDER:$2|אישר|אישרה}} שינויים במשאבים בדף $3",
 	"contentstabilization-status-stable": "מאושר",
 	"contentstabilization-status-unstable": "טיוטה",
+	"contentstabilization-status-implicit-unstable": "טיוטה משתמעת",
 	"contentstabilization-status-first-unstable": "טיוטה ראשונה",
 	"contentstabilization-overview-no-enabled": "האישור אינו מופעל בשום מרחב שם",
 	"contentstabilization-overview-enabled": "האישור מופעל כעת עבור מרחבי השם הבאים: $1",

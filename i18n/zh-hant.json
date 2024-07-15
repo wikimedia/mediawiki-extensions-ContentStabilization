@@ -48,6 +48,7 @@
 	"logentry-stabilization-add": "$1{{GENDER:$2|已批准}}頁面$3",
 	"contentstabilization-status-stable": "已批准",
 	"contentstabilization-status-unstable": "草稿",
+	"contentstabilization-status-implicit-unstable": "隱式草稿",
 	"contentstabilization-status-first-unstable": "初稿",
 	"contentstabilization-overview-no-enabled": "批准未啟用在任何命名空間裡",
 	"contentstabilization-overview-approver-bot": "由機器人做出的批准",
