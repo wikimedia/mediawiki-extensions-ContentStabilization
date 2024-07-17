@@ -53,7 +53,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "Ако е овозможено, првата нацрт-верзија на странцата ќе им се покаже на корисниците кои инаку не можат да гледаат нацрт-верзии",
 	"contentstabilization-pref-stabilize-smw-help": "Ако е овозможено, подновата на својства за Семантички МедијаВики ќе се покрева само на устојливи устојчиви верзии на страниците",
 	"contentstabilization-stablepoint-added-message-passive": "Има нова одобрена верзија на страницата",
-	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|додаде}} нова одобрена верзија на страницата",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|додаде}} нова одобрена верзија на страницата $2",
 	"contentstabilization-export-no-stable-date": "Неодобрено",
 	"contentstabilization-export-laststable-tag-text": "Одобрено:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Преработка: $1",
