@@ -127,5 +127,6 @@
 	"contentstabilization-ui-editor-approve-with-pending": "לאשר את הגרסה הזאת (כולל {{PLURAL:$1|שינוי ממתין אחד|$1 שינויים ממתינים}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "לאשר אוטומטית את כל השינויים הממתינים לאחר השמירה. נא לוודא שבדקת את כל השינויים לפני השמירה",
 	"contentstabilization-edit-notice-approval-needed": "השינוי שלך יוצג לקוראים ברגע שמשתמש מורשה יאשר אותם.",
-	"contentstabilization-stablepoint-added-message-passive": "זמינה גרסה חדשה מאושרת של הדף"
+	"contentstabilization-stablepoint-added-message-passive": "זמינה גרסה חדשה מאושרת של הדף",
+	"contentstabilization-status-implicit-unstable": "טיוטה משתמעת"
 }

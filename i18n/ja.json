@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hideki Yoshida",
 			"Kokage si",
 			"MathXplore"
 		]
@@ -22,5 +23,6 @@
 	"contentstabilization-column-last-stable": "承認済",
 	"contentstabilization-stabilizationhistory-title": "ページ",
 	"contentstabilization-stabilizationhistory-comment": "コメント",
-	"contentstabilization-overview-header-page-id": "ページ ID"
+	"contentstabilization-overview-header-page-id": "ページ ID",
+	"contentstabilization-status-implicit-unstable": "暗黙のドラフト"
 }
