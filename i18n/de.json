@@ -127,5 +127,5 @@
 	"contentstabilization-edit-notice-old-version": "Die [{{fullurl:$1|stable=1}} freigegebene Version] wurde am <i>$2</i> [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} freigegeben]. Es gibt {{PLURAL:$3|eine Änderung, die freigegeben werden muss|$3 Änderungen, die freigegeben werden müssen}}, ([{{fullurl:$1|oldid=$4&diff=cur}} {{PLURAL:$3|Änderung|Änderungen}} anzeigen]).",
 	"contentstabilization-ui-editor-approve": "Meine Änderungen freigeben",
 	"contentstabilization-ui-editor-approve-title": "Änderungen beim Speichern automatisch freigeben",
-	"contentstabilization-stablepoint-added-message-passive": "Es ist eine neue freigegebene Version der Seite hinzugefügt worden"
+	"contentstabilization-stablepoint-added-message-passive": "{{GENDER:$1|hat}} eine neue freigegebene Version der Seite $2 hinzugefügt"
 }

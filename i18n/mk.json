@@ -53,7 +53,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "Ако е овозможено, првата нацрт-верзија на странцата ќе им се покаже на корисниците кои инаку не можат да гледаат нацрт-верзии",
 	"contentstabilization-pref-stabilize-smw-help": "Ако е овозможено, подновата на својства за Семантички МедијаВики ќе се покрева само на устојливи устојчиви верзии на страниците",
 	"contentstabilization-stablepoint-added-message-passive": "Има нова одобрена верзија на страницата",
-	"contentstabilization-stablepoint-added-message": "додадена нова одобрена верзија на страницата",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|додаде}} нова одобрена верзија на страницата",
 	"contentstabilization-export-no-stable-date": "Неодобрено",
 	"contentstabilization-export-laststable-tag-text": "Одобрено:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Преработка: $1",
@@ -127,5 +127,6 @@
 	"contentstabilization-ui-editor-approve-title": "Автоматски одобрувајте ги вашите промени при зачувување",
 	"contentstabilization-ui-editor-approve-with-pending": "Одобри ја оваа верзија (вкл. {{PLURAL:$1|една промена на чекање|$1 промени на чекање}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Автоматски одобрувајте ги сите промени на чекање при зачувување. Не заборавајте да ги прегледате сите промени пред да зачувате",
-	"contentstabilization-edit-notice-approval-needed": "Вашите промени ќе им се прикажат на читателите штом ќе бидат прифатени од овластен корисник."
+	"contentstabilization-edit-notice-approval-needed": "Вашите промени ќе им се прикажат на читателите штом ќе бидат прифатени од овластен корисник.",
+	"contentstabilization-status-implicit-unstable": "Подразбран нацрт"
 }
