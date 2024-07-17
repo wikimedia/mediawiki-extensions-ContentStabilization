@@ -53,7 +53,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "Si es activate, le prime version provisori de un pagina essera monstrate a usatores qui alteremente non esserea autorisate a vider versiones provisori",
 	"contentstabilization-pref-stabilize-smw-help": "Si es activate, le actualisation del proprietates de Semantic MediaWiki essera activate solmente sur versiones stabile de paginas",
 	"contentstabilization-stablepoint-added-message-passive": "Un nove version approbate del pagina es disponibile",
-	"contentstabilization-stablepoint-added-message": "un nove version approbate del pagina ha essite addite",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|ha addite}} un nove version approbate del pagina $2",
 	"contentstabilization-export-no-stable-date": "Non approbate",
 	"contentstabilization-export-laststable-tag-text": "Approbate:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Version: $1",

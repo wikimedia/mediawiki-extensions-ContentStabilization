@@ -59,7 +59,7 @@
 	"contentstabilization-pref-stabilize-smw": "Werte von semantischen Attributen nur von freigegebenen Seiten verwenden",
 	"contentstabilization-pref-allowfirstunstable-help": "Wenn aktiviert, wird die erste Entwurfsversion einer Seite für Benutzer angezeigt, die sonst keine Entwurfsversionen einsehen können",
 	"contentstabilization-pref-stabilize-smw-help": "Wenn aktiviert, werden die Werte von Semantic-MediaWiki-Attributen nur von freigegebenen Versionen übernommen",
-	"contentstabilization-stablepoint-added-message-passive": "Es ist eine neue freigegebene Version der Seite hinzugefügt worden",
+	"contentstabilization-stablepoint-added-message-passive": "{{GENDER:$1|hat}} eine neue freigegebene Version der Seite $2 hinzugefügt",
 	"contentstabilization-stablepoint-added-message": "Es wurde eine neue freigegebene Version der Seite hinzugefügt",
 	"contentstabilization-export-no-stable-date": "Nicht freigegeben",
 	"contentstabilization-export-laststable-tag-text": "Freigegeben:",
@@ -126,5 +126,6 @@
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|gab}} Seite $1 frei",
 	"contentstabilization-edit-notice-old-version": "Die [{{fullurl:$1|stable=1}} freigegebene Version] wurde am <i>$2</i> [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} freigegeben]. Es gibt {{PLURAL:$3|eine Änderung, die freigegeben werden muss|$3 Änderungen, die freigegeben werden müssen}}, ([{{fullurl:$1|oldid=$4&diff=cur}} {{PLURAL:$3|Änderung|Änderungen}} anzeigen]).",
 	"contentstabilization-ui-editor-approve": "Meine Änderungen freigeben",
-	"contentstabilization-ui-editor-approve-title": "Änderungen beim Speichern automatisch freigeben"
+	"contentstabilization-ui-editor-approve-title": "Änderungen beim Speichern automatisch freigeben",
+	"contentstabilization-status-implicit-unstable": "Impliziter Entwurf"
 }

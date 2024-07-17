@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Asma",
-			"Hedda"
+			"Hedda",
+			"İmmortalance"
 		]
 	},
 	"contentstabilization-desc": "Kullanıcıların, sayfaları \"onaylandı\" veya \"taslak\" olarak işaretlemesine ve bir sayfanın en son onaylanmış sürümünü görüntülemesine olanak tanır.",
@@ -51,7 +52,7 @@
 	"contentstabilization-pref-allowfirstunstable": "Normalde taslakları göremeyen kullanıcılar için ilk taslak sürümün görüntülenmesine izin ver",
 	"contentstabilization-pref-stabilize-smw": "Anlamsal özellikleri yalnızca onaylı sürümlerden güncelle",
 	"contentstabilization-stablepoint-added-message-passive": "Sayfanın yeni onaylı sürümü mevcut",
-	"contentstabilization-stablepoint-added-message": "sayfanın yeni onaylı bir sürümünü ekledi",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|}} sayfanın yeni onaylı bir sürümünü ekledi $2",
 	"contentstabilization-export-no-stable-date": "Onaylanmadı",
 	"contentstabilization-export-laststable-tag-text": "Onaylandı:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Değişiklik: $1",

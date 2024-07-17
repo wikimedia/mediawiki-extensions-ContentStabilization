@@ -54,7 +54,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "If enabled, the first draft version of a page will be shown to users who would otherwise not be able to see draft versions",
 	"contentstabilization-pref-stabilize-smw-help": "If enabled, update of Semantic Mediawiki properties will be triggered only on stable versions of pages",
 	"contentstabilization-stablepoint-added-message-passive": "New approved version of the page available",
-	"contentstabilization-stablepoint-added-message": "added a new approved version of the page",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|added}} a new approved version of the page $2",
 	"contentstabilization-export-no-stable-date": "Not approved",
 	"contentstabilization-export-laststable-tag-text": "Approved:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Revision: $1",
@@ -128,5 +128,6 @@
 	"contentstabilization-ui-editor-approve-title": "Automatically approve your changes upon saving",
 	"contentstabilization-ui-editor-approve-with-pending": "Approve this version (including {{PLURAL:$1|one pending change|$1 pending changes}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Automatically approve all of the pending changes upon saving. Make sure you have reviewed all of the changes before saving",
-	"contentstabilization-edit-notice-approval-needed": "Your change will be displayed to readers once an authorized user accepts them"
+	"contentstabilization-edit-notice-approval-needed": "Your change will be displayed to readers once an authorized user accepts them",
+	"contentstabilization-status-implicit-unstable": "Implicit draft"
 }

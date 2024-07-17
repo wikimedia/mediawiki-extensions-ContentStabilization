@@ -66,5 +66,6 @@
 	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "未核准的頁面",
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "未啟用批准",
 	"contentstabilization-overview-header-page-id": "頁面ID",
-	"contentstabilization-overview-header-page-namespace": "頁面命名空間"
+	"contentstabilization-overview-header-page-namespace": "頁面命名空間",
+	"contentstabilization-status-implicit-unstable": "隱式草稿"
 }
