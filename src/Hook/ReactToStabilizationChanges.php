@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
 use DeferredUpdates;
+use Exception;
 use MediaWiki\Extension\ContentStabilization\Event\StablePointAdded;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointAddedHook;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointMovedHook;
@@ -57,7 +58,7 @@ class ReactToStabilizationChanges implements
 		$this->runUpdates( $oldPoint );
 		$this->runUpdates( $newPoint );
 
-		$this->notifier->emit( new StablePointAdded( $this->stablePointStore, $newPoint ) );
+		$this->emitEvent( $newPoint );
 	}
 
 	/**
@@ -73,8 +74,7 @@ class ReactToStabilizationChanges implements
 	 */
 	public function onContentStabilizationStablePointAdded( StablePoint $stablePoint ): void {
 		$this->runUpdates( $stablePoint );
-
-		$this->notifier->emit( new StablePointAdded( $this->stablePointStore, $stablePoint ) );
+		$this->emitEvent( $stablePoint );
 		$this->specialLogLogger->stablePointAdded( $stablePoint );
 	}
 
@@ -83,7 +83,7 @@ class ReactToStabilizationChanges implements
 	 */
 	public function onContentStabilizationStablePointUpdated( StablePoint $updatedPoint ): void {
 		$this->runUpdates( $updatedPoint );
-		$this->notifier->emit( new StablePointAdded( $this->stablePointStore, $updatedPoint ) );
+		$this->emitEvent( $updatedPoint );
 		$this->specialLogLogger->stablePointUpdated( $updatedPoint );
 	}
 
@@ -98,5 +98,20 @@ class ReactToStabilizationChanges implements
 			'triggeringUser' => $point->getApprover()->getUser(),
 			'defer' => DeferredUpdates::POSTSEND
 		] );
+	}
+
+	/**
+	 * @param StablePoint $stablePoint
+	 * @return void
+	 *
+	 * @throws Exception
+	 */
+	private function emitEvent( StablePoint $stablePoint ) {
+		$this->notifier->emit( new StablePointAdded(
+			$this->stablePointStore,
+			$stablePoint->getApprover()->getUser(),
+			$stablePoint->getRevision()->getId(),
+			$stablePoint->getPage()
+		) );
 	}
 }
