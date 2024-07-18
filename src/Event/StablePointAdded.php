@@ -2,10 +2,9 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Event;
 
-use DateTime;
-use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\User\UserIdentity;
 use Message;
 use MWStake\MediaWiki\Component\Events\Delivery\IChannel;
@@ -21,15 +20,22 @@ class StablePointAdded extends TitleEvent {
 
 	/**
 	 * @param StablePointStore $stablePointStore
-	 * @param StablePoint $point
+	 * @param UserIdentity $approver
+	 * @param int $newStableRevisionId
+	 * @param PageIdentity $page
 	 */
-	public function __construct( StablePointStore $stablePointStore, StablePoint $point ) {
-		parent::__construct( $point->getApprover()->getUser(), $point->getPage() );
-		$this->newStableRevision = $point->getRevision()->getId();
-		$stableIds = $stablePointStore->getStableRevisionIds( $point->getPage() );
+	public function __construct(
+		StablePointStore $stablePointStore,
+		UserIdentity $approver,
+		int $newStableRevisionId,
+		PageIdentity $page
+	) {
+		parent::__construct( $approver, $page );
+		$this->newStableRevision = $newStableRevisionId;
+		$stableIds = $stablePointStore->getStableRevisionIds( $page );
 		$lastStableId = null;
 		foreach ( $stableIds as $stableId ) {
-			if ( $stableId < $point->getRevision()->getId() ) {
+			if ( $stableId < $newStableRevisionId ) {
 				$lastStableId = $stableId;
 			}
 		}
@@ -93,12 +99,9 @@ class StablePointAdded extends TitleEvent {
 	): array {
 		$title = $extra['title'];
 		return [
-			new StablePoint(
-				$services->getRevisionLookup()->getFirstRevision( $title ),
-				$services->getUserFactory()->newFromUserIdentity( $agent ),
-				new DateTime(),
-				'Demo approval comment'
-			),
+			$services->getUserFactory()->newFromUserIdentity( $agent ),
+			$services->getRevisionLookup()->getFirstRevision( $title )->getId(),
+			$title,
 			1
 		];
 	}
