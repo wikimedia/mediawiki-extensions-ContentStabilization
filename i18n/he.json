@@ -128,5 +128,8 @@
 	"contentstabilization-ui-editor-approve-title": "אשר את השינויים שלך באופן אוטומטי לאחר השמירה",
 	"contentstabilization-ui-editor-approve-with-pending": "לאשר את הגרסה הזאת (כולל {{PLURAL:$1|שינוי ממתין אחד|$1 שינויים ממתינים}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "לאשר אוטומטית את כל השינויים הממתינים לאחר השמירה. נא לוודא שבדקת את כל השינויים לפני השמירה",
-	"contentstabilization-edit-notice-approval-needed": "השינוי שלך יוצג לקוראים ברגע שמשתמש מורשה יאשר אותם."
+	"contentstabilization-edit-notice-approval-needed": "השינוי שלך יוצג לקוראים ברגע שמשתמש מורשה יאשר אותם.",
+	"contentstabilization-stablepoint-added-key-desc": "זמינה גרסה חדשה מאושרת של הדף",
+	"contentstabilization-stablepoint-added-links-intro": "נא לבקר בדף בקישור הבא כדי לראות את השינויים",
+	"contentstabilization-stablepoint-added-links-view-changes": "הצגת שינויים"
 }
