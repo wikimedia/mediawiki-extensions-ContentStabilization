@@ -131,5 +131,6 @@
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|a approuvé}} la page $1",
 	"contentstabilization-ui-editor-approve": "Approuver mes modifications",
 	"contentstabilization-ui-editor-approve-title": "Approuver automatiquement vos modifications lors de l'enregistrement",
-	"contentstabilization-ui-editor-approve-with-pending": "Approuver cette version (y compris {{PLURAL:$1|une modification en attente |$1 modifications en attente}})"
+	"contentstabilization-ui-editor-approve-with-pending": "Approuver cette version (y compris {{PLURAL:$1|une modification en attente |$1 modifications en attente}})",
+	"contentstabilization-stablepoint-added-links-view-changes": "Afficher les modifications"
 }
