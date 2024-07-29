@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hehua"
+			"Hehua",
+			"Huajing"
 		]
 	},
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "有草稿版本",
-	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "草稿版本"
+	"contentstabilization-pageinfoelement-pagestatus-is-unstable-title": "草稿版本",
+	"contentstabilization-stablepoint-added-key-desc": "页面有经核准的新版本",
+	"contentstabilization-stablepoint-added-links-view-changes": "显示更改"
 }

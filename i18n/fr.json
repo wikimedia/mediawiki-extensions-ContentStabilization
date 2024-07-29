@@ -131,5 +131,6 @@
 	"contentstabilization-ui-editor-approve": "Approuver mes modifications",
 	"contentstabilization-ui-editor-approve-title": "Approuver automatiquement vos modifications lors de l'enregistrement",
 	"contentstabilization-ui-editor-approve-with-pending": "Approuver cette version (y compris {{PLURAL:$1|une modification en attente |$1 modifications en attente}})",
+	"contentstabilization-stablepoint-added-links-view-changes": "Afficher les modifications",
 	"contentstabilization-stablepoint-added-message-passive": "Nouvelle version approuvée de la page disponible"
 }

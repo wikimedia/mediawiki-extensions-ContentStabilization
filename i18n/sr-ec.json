@@ -37,5 +37,6 @@
 	"contentstabilization-ui-editor-approve-title": "Аутоматски одобри моје измене по чувању",
 	"contentstabilization-ui-editor-approve-with-pending": "Одобри ову верзију (укључујући {{PLURAL:$1|једну измену на чекању|измена на чекању: $1}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Аутоматски одобри све измене на чекању по чувању. Обавезно прегледајте све измене пре чувања",
-	"contentstabilization-edit-notice-approval-needed": "Ваше измене ће бити видљиве читаоцима након што их овлашћени корисник одобри"
+	"contentstabilization-edit-notice-approval-needed": "Ваше измене ће бити видљиве читаоцима након што их овлашћени корисник одобри",
+	"contentstabilization-stablepoint-added-links-view-changes": "Прикажи измене"
 }
