@@ -7,6 +7,8 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;
+use MediaWiki\Rest\Validator\BodyValidator;
+use MediaWiki\Rest\Validator\JsonBodyValidator;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use TitleFactory;
@@ -67,16 +69,21 @@ class SetStablePointHandler extends StabilizerHandler {
 		return $this->getValidatedBody()['page'];
 	}
 
-	public function getBodyParamSettings(): array {
-		return [
-			'comment' => [
-				self::PARAM_SOURCE => 'body',
-				ParamValidator::PARAM_REQUIRED => false,
-			],
-			'page' => [
-				self::PARAM_SOURCE => 'body',
-				ParamValidator::PARAM_REQUIRED => true,
-			],
-		];
+	/**
+	 * @param string $contentType
+	 * @return BodyValidator
+	 */
+	public function getBodyValidator( $contentType ) {
+		if ( $contentType === 'application/json' ) {
+			return new JsonBodyValidator( [
+				'comment' => [
+					ParamValidator::PARAM_REQUIRED => false,
+				],
+				'page' => [
+					ParamValidator::PARAM_REQUIRED => true,
+				],
+			] );
+		}
+		return parent::getBodyValidator( $contentType );
 	}
 }
