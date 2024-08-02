@@ -6,6 +6,7 @@ use Article;
 use FauxRequest;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
+use MediaWiki\MainConfigNames;
 use MediaWikiIntegrationTestCase;
 use MWException;
 use OutputPage;
@@ -29,14 +30,16 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		// Allow anons to read (let CS stabilize the content instead of the read permission)
-		$GLOBALS['wgGroupPermissions']['*']['read'] = true;
+		$this->setGroupPermissions( '*', 'read', true );
 		$GLOBALS['bsgGroupRoles']['*']['reader'] = true;
 
-		$this->setMwGlobals( 'wgParserCacheType', CACHE_NONE );
-		$this->setMwGlobals( 'wgContentStabilizationEnabledNamespaces', $this->getEnabledNamespaces() );
-		$this->setMwGlobals( 'wgContentStabilizationAllowFirstUnstable', $this->shouldAllowFirstUnstable() );
-		// Default - freeze
-		$this->setMwGlobals( 'wgContentStabilizationInclusionMode', $this->getInclusionMode() );
+		$this->overrideConfigValues( [
+			MainConfigNames::ParserCacheType => CACHE_NONE,
+			'ContentStabilizationEnabledNamespaces' => $this->getEnabledNamespaces(),
+			'ContentStabilizationAllowFirstUnstable' => $this->shouldAllowFirstUnstable(),
+			// Default - freeze
+			'ContentStabilizationInclusionMode' => $this->getInclusionMode(),
+		] );
 
 		$res = $this->insertPage( 'Template:TestStabilization', 'T1', NS_TEMPLATE );
 		$this->templatePage = $res['title'];
