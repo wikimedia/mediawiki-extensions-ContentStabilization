@@ -34,8 +34,8 @@ class ApprovePageActivityTest extends MediaWikiIntegrationTestCase {
 		$this->user = $this->getTestUser( 'sysop' )->getUser();
 
 		// Broken: this does not actually set the global
-		$this->setMwGlobals( [
-			'wgContentStabilizationEnabledNamespaces' => [ NS_MAIN ]
+		$this->overrideConfigValues( [
+			'ContentStabilizationEnabledNamespaces' => [ NS_MAIN ]
 		] );
 		$this->lookup = MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' );
 	}
