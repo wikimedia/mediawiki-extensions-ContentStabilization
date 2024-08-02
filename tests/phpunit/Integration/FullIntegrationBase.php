@@ -32,7 +32,6 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 		$GLOBALS['wgGroupPermissions']['*']['read'] = true;
 		$GLOBALS['bsgGroupRoles']['*']['reader'] = true;
 
-		$this->setMwGlobals( 'wgContLang', 'en' );
 		$this->setMwGlobals( 'wgParserCacheType', CACHE_NONE );
 		$this->setMwGlobals( 'wgContentStabilizationEnabledNamespaces', $this->getEnabledNamespaces() );
 		$this->setMwGlobals( 'wgContentStabilizationAllowFirstUnstable', $this->shouldAllowFirstUnstable() );
