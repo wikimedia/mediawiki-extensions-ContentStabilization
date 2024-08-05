@@ -5,6 +5,7 @@
 			"Gomoko",
 			"Iketsi",
 			"MacOS Weed",
+			"Méthodes Bulebe Hangi",
 			"Reedy",
 			"SleaY",
 			"Verdy p",
@@ -132,5 +133,7 @@
 	"contentstabilization-ui-editor-approve": "Approuver mes modifications",
 	"contentstabilization-ui-editor-approve-title": "Approuver automatiquement vos modifications lors de l'enregistrement",
 	"contentstabilization-ui-editor-approve-with-pending": "Approuver cette version (y compris {{PLURAL:$1|une modification en attente |$1 modifications en attente}})",
+	"contentstabilization-stablepoint-added-key-desc": "Nouvelle version approuvée de la page disponible",
+	"contentstabilization-stablepoint-added-links-intro": "Veuillez visiter la page au lien suivant pour voir vos tâches",
 	"contentstabilization-stablepoint-added-links-view-changes": "Afficher les modifications"
 }
