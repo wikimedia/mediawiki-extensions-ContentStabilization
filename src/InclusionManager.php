@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\ContentStabilization;
 use Config;
 use GlobalVarConfig;
 use HashBagOStuff;
+use IDBAccessObject;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
@@ -12,7 +13,6 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use ParserFactory;
 use RepoGroup;
-use Title;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class InclusionManager {
@@ -235,7 +235,7 @@ class InclusionManager {
 				continue;
 			}
 			$res['images'][] = [
-				'revision' => $image->getTitle()->getLatestRevID( Title::READ_LATEST ),
+				'revision' => $image->getTitle()->getLatestRevID( IDBAccessObject::READ_LATEST ),
 				'name' => $image->getName(),
 				'timestamp' => $image->getTimestamp(),
 				'sha1' => $image->getSha1(),

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization;
 
+use IDBAccessObject;
 use MediaWiki\Block\Block;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Authority;
@@ -30,7 +31,7 @@ class StabilizationBot implements Authority {
 	/**
 	 * @inheritDoc
 	 */
-	public function getBlock( int $freshness = self::READ_NORMAL ): ?Block {
+	public function getBlock( int $freshness = IDBAccessObject::READ_NORMAL ): ?Block {
 		return null;
 	}
 
