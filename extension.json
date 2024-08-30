@@ -34,7 +34,7 @@
 				"contentstabilization-pagestatus-dropdown": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\PageStatusDropdown::factory"
 			}
 		},
-		"Notifications": {
+		"NotifyMe": {
 			"Events": {
 				"stable-point-added": {
 					"spec": {
