@@ -321,7 +321,8 @@
 		"GetPreferences": "userpreference",
 		"TitleGetEditNotices": "stabilizeContent",
 		"ContentAlterParserOutput": [ "stabilizeContent" ],
-		"PageSaveComplete": "autoStabilize"
+		"PageSaveComplete": "autoStabilize",
+		"ParserFirstCallInit": "addDocumentStateTag"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -410,6 +411,13 @@
 		"autoStabilize": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AutoStabilize",
 			"services": [ "ContentStabilization.Stabilizer", "ContentStabilization.Lookup", "ContentStabilization._DebugLogger" ]
+		},
+		"addDocumentStateTag": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddDocumentStateTag",
+			"services": [
+				"DBLoadBalancer", "TitleFactory", "RevisionStore",
+				"ContentStabilization.Lookup", "ContentStabilization._InclusionManager"
+			]
 		}
 	},
 	"SpecialPages": {
