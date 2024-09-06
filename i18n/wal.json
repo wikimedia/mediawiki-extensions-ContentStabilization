@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ella Lachow"
+			"Ella Lachow",
+			"Malaalaa"
 		]
 	},
 	"right-contentstabilization-stabilize": "Sinttata boxooxissa",
@@ -25,5 +26,6 @@
 	"contentstabilization-overview-header-title": "Sinttaa",
 	"contentstabilization-overview-header-has-changed-last-approver": "Wurssetta boxooxissidaagaa",
 	"contentstabilization-overview-header-has-changed-last-comment": "Wurssetta boxooxidaagan qofaa imma",
-	"contentstabilization-stabilizationhistory-title": "Sinttaa"
+	"contentstabilization-stabilizationhistory-title": "Sinttaa",
+	"contentstabilization-stablepoint-added-links-view-changes": "Laameta bessa"
 }

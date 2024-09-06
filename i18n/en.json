@@ -129,5 +129,8 @@
 	"contentstabilization-ui-editor-approve-with-pending": "Approve this version (including {{PLURAL:$1|one pending change|$1 pending changes}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Automatically approve all of the pending changes upon saving. Make sure you have reviewed all of the changes before saving",
 	"contentstabilization-edit-notice-approval-needed": "Your change will be displayed to readers once an authorized user accepts them",
-	"contentstabilization-status-implicit-unstable": "Implicit draft"
+	"contentstabilization-status-implicit-unstable": "Implicit draft",
+	"contentstabilization-stablepoint-added-key-desc": "New approved version of the page available",
+	"contentstabilization-stablepoint-added-links-intro": "Please visit the page at the following link to see the changes",
+	"contentstabilization-stablepoint-added-links-view-changes": "Show changes"
 }
