@@ -16,5 +16,6 @@
 	"contentstabilization-ui-editor-approve-title": "Автоматическое одобрение Ваших записи для изменений",
 	"contentstabilization-ui-editor-approve-with-pending": "Утвердить эту версию (включая {{PLURAL:$1| одно ожидающее изменение| ожидающее изменение $1 }})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Автоматически утверждать все ожидающие изменения при сохранении. Перед сохранением убедитесь, что вы просмотрели все изменения.",
-	"contentstabilization-edit-notice-approval-needed": "Ваши изменения будут отображаться для читателей после того, как авторизованный пользователь одобрит их."
+	"contentstabilization-edit-notice-approval-needed": "Ваши изменения будут отображаться для читателей после того, как авторизованный пользователь одобрит их.",
+	"contentstabilization-stablepoint-added-links-view-changes": "Показать изменения"
 }
