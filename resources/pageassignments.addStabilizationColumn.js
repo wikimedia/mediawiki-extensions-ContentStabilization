@@ -15,7 +15,7 @@ $( document ).on( 'BSPageAssignmentsOverviewPanelInit', function ( e, sender, co
 				return '<em>' + mw.message( 'contentstabilization-no-stable' ).plain() + '</em>';
 			}
 
-			var date = Ext.Date.parse( value, 'YmdHis' ),
+			const date = Ext.Date.parse( value, 'YmdHis' ),
 				renderer = Ext.util.Format.dateRenderer( 'Y-m-d, H:i' );
 
 			return renderer( date );

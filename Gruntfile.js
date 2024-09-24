@@ -2,7 +2,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 
-	var conf = grunt.file.readJSON( 'extension.json' );
+	const conf = grunt.file.readJSON( 'extension.json' );
 	grunt.initConfig( {
 		eslint: {
 			options: {
@@ -15,7 +15,7 @@ module.exports = function ( grunt ) {
 				'!vendor/**'
 			]
 		},
-		banana: Object.assign(
+		banana: Object.assign( // eslint-disable-line compat/compat
 			conf.MessagesDirs,
 			{
 				options: {
