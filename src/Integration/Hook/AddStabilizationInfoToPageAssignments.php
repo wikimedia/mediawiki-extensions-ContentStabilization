@@ -3,12 +3,12 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
 use ApiMain;
+use BlueSpice\PageAssignments\Hook\BSPageAssignmentsOverviewHook;
 use BSApiMyPageAssignmentStore;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
-use SpecialPageAssignments;
 use TitleFactory;
 
-class AddStabilizationInfoToPageAssignments {
+class AddStabilizationInfoToPageAssignments implements BSPageAssignmentsOverviewHook {
 
 	/**
 	 *
@@ -68,13 +68,9 @@ class AddStabilizationInfoToPageAssignments {
 	}
 
 	/**
-	 *
-	 * @param SpecialPageAssignments $sender
-	 * @param array &$deps
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function onBSPageAssignmentsOverview( $sender, array &$deps ) {
+	public function onBSPageAssignmentsOverview( array &$deps ): void {
 		$deps[] = 'ext.contentStabilization.pageassignments.stabilization';
-		return true;
 	}
 }
