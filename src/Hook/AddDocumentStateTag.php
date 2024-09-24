@@ -90,6 +90,10 @@ class AddDocumentStateTag implements ParserFirstCallInitHook {
 			$title = $this->titleFactory->newFromText( $pageName );
 			if ( $title ) {
 				$pageId = $title->getId();
+
+				if ( !$revisionId ) {
+					$revisionId = $title->getLatestRevID();
+				}
 			}
 		} else {
 			// We need page ID to collect all approved revisions
@@ -138,8 +142,11 @@ class AddDocumentStateTag implements ParserFirstCallInitHook {
 			}
 		}
 
+		$request = RequestContext::getMain()->getRequest();
+
 		if (
 			$state === StableView::STATE_STABLE &&
+			$request->getVal( 'stable' ) === '0' &&
 			$this->checkImplicitDraft( $pageId, $revisionId )
 		) {
 			$state = StableView::STATE_IMPLICIT_UNSTABLE;
