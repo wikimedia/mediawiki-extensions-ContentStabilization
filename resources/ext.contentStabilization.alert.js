@@ -1,14 +1,14 @@
 ( function ( mw, $ ) {
 
 	$( function () {
-		var $alert = $( '.alert.alert-warning' );
+		const $alert = $( '.alert.alert-warning' );
 
 		if ( $alert.length < 1 ) {
 			return;
 		}
-		var btn = OO.ui.infuse( '#content-stabilization-banner-info-btn' ),
+		const btn = OO.ui.infuse( '#content-stabilization-banner-info-btn' ),
 
-		 infoBtn = new OO.ui.PopupButtonWidget( {
+			infoBtn = new OO.ui.PopupButtonWidget( {
 				framed: false,
 				icon: 'infoFilled',
 				title: mw.message( 'contentstabilization-state-draft-info-btn-title' ).text(),
@@ -23,7 +23,7 @@
 	} );
 
 	function getPopupContent( data ) {
-		var layout = new OO.ui.PanelLayout( {
+		const layout = new OO.ui.PanelLayout( {
 			classes: [ 'contentstabilization-state-draft-info-popup' ],
 			padded: true,
 			expanded: false
@@ -35,8 +35,8 @@
 			} ).$element
 		);
 
-		var $list = $( '<ul>' ).addClass( 'contentstabilization-file-list' );
-		for ( var text in data ) {
+		const $list = $( '<ul>' ).addClass( 'contentstabilization-file-list' );
+		for ( const text in data ) {
 			if ( !data.hasOwnProperty( text ) ) {
 				continue;
 			}
