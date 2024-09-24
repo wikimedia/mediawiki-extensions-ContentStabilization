@@ -5,7 +5,7 @@ ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector = function 
 	ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector.parent.call( this, element, dialog );
 };
 
-OO.inheritClass( ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector, workflows.editor.inspector.ActivityInspector );
+OO.inheritClass( ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector, workflows.editor.inspector.ActivityInspector ); // eslint-disable-line no-undef
 
 ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector.prototype.getDialogTitle = function () {
 	return mw.message( 'contentstabilization-ui-workflows-inspector-activity-approve-page-title' ).text();
@@ -37,4 +37,4 @@ ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector.prototype.g
 	];
 };
 
-workflows.editor.inspector.Registry.register( 'approve_revision', ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector );
+workflows.editor.inspector.Registry.register( 'approve_revision', ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector ); // eslint-disable-line no-undef

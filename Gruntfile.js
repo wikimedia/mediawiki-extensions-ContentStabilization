@@ -14,7 +14,7 @@ module.exports = function ( grunt ) {
 				'!vendor/**'
 			]
 		},
-		banana: Object.assign(
+		banana: Object.assign( // eslint-disable-line compat/compat
 			conf.MessagesDirs,
 			{
 				options: {

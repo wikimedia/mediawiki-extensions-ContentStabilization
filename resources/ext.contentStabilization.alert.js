@@ -8,7 +8,7 @@
 		}
 		const btn = OO.ui.infuse( '#content-stabilization-banner-info-btn' ),
 
-		 infoBtn = new OO.ui.PopupButtonWidget( {
+			infoBtn = new OO.ui.PopupButtonWidget( {
 				framed: false,
 				icon: 'infoFilled',
 				title: mw.message( 'contentstabilization-state-draft-info-btn-title' ).text(),

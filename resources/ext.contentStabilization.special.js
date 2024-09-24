@@ -77,8 +77,8 @@ $( function () {
 					}
 				} );
 			store.load().done( function ( response ) {
-				let $table = $( '<table>' ),
-					$row = $( '<tr>' ),
+				const $table = $( '<table>' );
+				let $row = $( '<tr>' ),
 					$cell = $( '<td>' );
 				$cell.append(
 					mw.message( 'contentstabilization-overview-header-page-id' ).text()

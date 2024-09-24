@@ -31,8 +31,8 @@ window.ext.contentStabilization = {
 		_requests: {},
 		_ajax: function ( path, data, method ) {
 			data = data || {};
-			let dfd = $.Deferred(),
-				finalPath = mw.util.wikiScript( 'rest' ) + '/content_stabilization';
+			const dfd = $.Deferred();
+			let finalPath = mw.util.wikiScript( 'rest' ) + '/content_stabilization';
 
 			if ( path ) {
 				finalPath = '/' + path;
