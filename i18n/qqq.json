@@ -136,5 +136,7 @@
 	"contentstabilization-edit-notice-approval-needed": "Notice about editing a page with approval enabled",
 	"contentstabilization-stablepoint-added-key-desc": "Description of the notification event type",
 	"contentstabilization-stablepoint-added-links-intro": "Description of the links in the notification mail",
-	"contentstabilization-stablepoint-added-links-view-changes": "Label for the notification mail button to see changes between approved versions of the page"
+	"contentstabilization-stablepoint-added-links-view-changes": "Label for the notification mail button to see changes between approved versions of the page",
+	"contentstabilization-documentstate-no-valid-args": "Error message in case of missing or invalid arguments",
+	"contentstabilization-documentstate-no-valid-page-id": "Error message in case of missing or invalid page ID"
 }
