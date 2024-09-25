@@ -131,5 +131,7 @@
 	"contentstabilization-edit-notice-approval-needed": "השינוי שלך יוצג לקוראים ברגע שמשתמש מורשה יאשר אותם.",
 	"contentstabilization-stablepoint-added-key-desc": "זמינה גרסה חדשה מאושרת של הדף",
 	"contentstabilization-stablepoint-added-links-intro": "נא לבקר בדף בקישור הבא כדי לראות את השינויים",
-	"contentstabilization-stablepoint-added-links-view-changes": "הצגת שינויים"
+	"contentstabilization-stablepoint-added-links-view-changes": "הצגת שינויים",
+	"contentstabilization-documentstate-no-valid-args": "שגיאה: לא סופק שם דף או מזהה גרסה תקין.",
+	"contentstabilization-documentstate-no-valid-page-id": "שגיאה: לא היה ניתן להשיג מזהה דף מארגומנטים שסופקו."
 }
