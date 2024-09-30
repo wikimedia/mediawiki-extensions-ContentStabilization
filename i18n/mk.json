@@ -131,5 +131,7 @@
 	"contentstabilization-stablepoint-added-key-desc": "Има нова одобрена верзија на страницата",
 	"contentstabilization-stablepoint-added-links-intro": "Појдете на следнава врска за да ги видите промените",
 	"contentstabilization-stablepoint-added-links-view-changes": "Прикажи промени",
-	"contentstabilization-stablepoint-added-message-passive": "Има нова одобрена верзија на страницата"
+	"contentstabilization-stablepoint-added-message-passive": "Има нова одобрена верзија на страницата",
+	"contentstabilization-documentstate-no-valid-args": "Грешка: нема укажано важечко име на страница или назнака на преработка.",
+	"contentstabilization-documentstate-no-valid-page-id": "Грешка: не можев да добијам назнака на страница од укажаните аргументи."
 }
