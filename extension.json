@@ -322,7 +322,8 @@
 		"TitleGetEditNotices": "stabilizeContent",
 		"ContentAlterParserOutput": [ "stabilizeContent" ],
 		"PageSaveComplete": "autoStabilize",
-		"ParserFirstCallInit": "addDocumentStateTag"
+		"ParserFirstCallInit": "addDocumentStateTag",
+		"DifferenceEngineViewHeader": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
