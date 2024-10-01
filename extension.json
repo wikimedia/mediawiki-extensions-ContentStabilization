@@ -295,7 +295,8 @@
 		"GetPreferences": "userpreference",
 		"TitleGetEditNotices": "stabilizeContent",
 		"ContentAlterParserOutput": [ "stabilizeContent" ],
-		"PageSaveComplete": "autoStabilize"
+		"PageSaveComplete": "autoStabilize",
+		"DifferenceEngineViewHeader": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
