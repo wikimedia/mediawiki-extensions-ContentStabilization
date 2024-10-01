@@ -3,8 +3,10 @@
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
 use Article;
+use DifferenceEngine;
 use ManualLogEntry;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
+use MediaWiki\Diff\Hook\DifferenceEngineViewHeaderHook;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
@@ -49,7 +51,8 @@ class StabilizeContent implements
 	BeforePageDisplayHook,
 	MediaWikiPerformActionHook,
 	TitleGetEditNoticesHook,
-	ContentAlterParserOutputHook
+	ContentAlterParserOutputHook,
+	DifferenceEngineViewHeaderHook
 {
 
 	/** @var StabilizationLookup */
@@ -199,6 +202,26 @@ class StabilizeContent implements
 		}
 		$end = microtime( true );
 		$article->getContext()->getOutput()->addHTML( '<!-- StabilizeContent: ' . ( $end - $start ) . ' -->' );
+	}
+
+	/**
+	 * @param DifferenceEngine $differenceEngine
+	 * @return void
+	 * @throws PermissionsError
+	 */
+	public function onDifferenceEngineViewHeader( $differenceEngine ) {
+		if ( !$this->lookup->isStabilizationEnabled( $differenceEngine->getTitle() ) ) {
+			return;
+		}
+		$new = $differenceEngine->getNewRevision();
+		$old = $differenceEngine->getOldRevision();
+
+		if ( $this->lookup->canUserSeeUnstable( $differenceEngine->getUser() ) ) {
+			return;
+		}
+		if ( !$this->lookup->isStableRevision( $new ) || !$this->lookup->isStableRevision( $old ) ) {
+			throw new PermissionsError( 'badaccess-group0' );
+		}
 	}
 
 	/**
