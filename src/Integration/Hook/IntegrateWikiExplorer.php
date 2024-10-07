@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 use DateTime;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\MediaWikiServices;
-use Message;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -23,10 +22,6 @@ class IntegrateWikiExplorer {
 			MediaWikiServices::getInstance()->getDBLoadBalancer()
 		);
 
-		$GLOBALS['wgHooks']['WikiExplorer::getFieldDefinitions'][] =
-			[ $handler, 'onWikiExplorer__getFieldDefinitions' ];
-		$GLOBALS['wgHooks']['WikiExplorer::getColumnDefinitions'][] =
-			[ $handler, 'onWikiExplorer__getColumnDefinitions' ];
 		$GLOBALS['wgHooks']['WikiExplorer::queryPagesWithFilter'][] =
 			[ $handler, 'onWikiExplorer__queryPagesWithFilter' ];
 		$GLOBALS['wgHooks']['WikiExplorer::buildDataSets'][] =
@@ -50,57 +45,6 @@ class IntegrateWikiExplorer {
 	public function __construct( StabilizationLookup $lookup, ILoadBalancer $lb ) {
 		$this->lookup = $lookup;
 		$this->lb = $lb;
-	}
-
-	/**
-	 * @param array &$fields
-	 */
-	public function onWikiExplorer__getFieldDefinitions( &$fields ) {
-		$fields[] = [
-			'name' => 'is_contentstabilization_enabled',
-			'type' => 'boolean',
-		];
-		$fields[] = [
-			'name' => 'contentstabilization_state',
-			'type' => 'boolean',
-		];
-		$fields[] = [
-			'name' => 'contentstabilization_date',
-			// 'type' => 'date',
-		];
-		$fields[] = [
-			'name' => 'contentstabilization_is_new_available',
-			'type' => 'boolean',
-		];
-	}
-
-	/**
-	 * @param array &$columns
-	 */
-	public function onWikiExplorer__getColumnDefinitions( &$columns ) {
-		$columns[] = [
-			'header' => Message::newFromKey( 'contentstabilization-wikiexplorer-state' )->plain(),
-			'dataIndex' => 'contentstabilization_state',
-			'render' => 'boolean',
-			'filter' => [
-				'type' => 'boolean'
-			],
-		];
-		$columns[] = [
-			'header' => Message::newFromKey( 'contentstabilization-wikiexplorer-date' )->plain(),
-			'dataIndex' => 'contentstabilization_date',
-			'render' => 'date',
-			'hidden' => true,
-			'filter' => [
-				'type' => 'date',
-				'dataFormat' => 'Y-m-d',
-			],
-		];
-		$columns[] = [
-			'header' => Message::newFromKey( 'contentstabilization-wikiexplorer-is-new-available' )->plain(),
-			'dataIndex' => 'contentstabilization_is_new_available',
-			'render' => 'boolean'
-		];
 	}
 
 	/**
