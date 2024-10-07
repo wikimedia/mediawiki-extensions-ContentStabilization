@@ -128,6 +128,11 @@
 					]
 				}
 			}
+		},
+		"BlueSpiceWikiExplorer": {
+			"PluginModules": [
+				"ext.contentStabilization.wikiExplorer.columns"
+			]
 		}
 	},
 	"ExtensionMessagesFiles": {
@@ -255,6 +260,16 @@
 			"dependencies": [
 				"ext.workflows.editor.inspector.bootstrap",
 				"ext.workflows.editor.customElements.bootstrap"
+			]
+		},
+		"ext.contentStabilization.wikiExplorer.columns": {
+			"scripts": [
+				"ext.contentStabilization.wikiExplorer.columns.js"
+			],
+			"messages": [
+				"contentstabilization-wikiexplorer-state",
+				"contentstabilization-wikiexplorer-date",
+				"contentstabilization-wikiexplorer-is-new-available"
 			]
 		}
 	},
