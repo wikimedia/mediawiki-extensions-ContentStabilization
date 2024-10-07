@@ -67,6 +67,7 @@
 	"logentry-stabilization-update": "$1 {{GENDER:$2|ha approbate}} cambiamentos de ressources sur le pagina $3",
 	"contentstabilization-status-stable": "Approbate",
 	"contentstabilization-status-unstable": "Version provisori",
+	"contentstabilization-status-implicit-unstable": "Version provisori implicite",
 	"contentstabilization-status-first-unstable": "Prime version provisori",
 	"contentstabilization-overview-no-enabled": "Le approbation non es activate sur alcun spatio de nomines",
 	"contentstabilization-overview-enabled": "Le approbation es actualmente activate pro le sequente spatios de nomines: $1",
@@ -127,5 +128,10 @@
 	"contentstabilization-ui-editor-approve-title": "Approbar automaticamente tu cambiamentos al salveguardar",
 	"contentstabilization-ui-editor-approve-with-pending": "Approbar iste version (incluse {{PLURAL:$1|un cambiamento|$1 cambiamentos}} pendente)",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Approbar automaticamente tote le cambiamentos pendente al salveguardar. Assecura te de haber revidite tote le cambiamentos ante de salveguardar.",
-	"contentstabilization-edit-notice-approval-needed": "Tu cambiamentos essera monstrate al lectores quando un usator autorisate los accepta."
+	"contentstabilization-edit-notice-approval-needed": "Tu cambiamentos essera monstrate al lectores quando un usator autorisate los accepta.",
+	"contentstabilization-stablepoint-added-key-desc": "Un nove version approbate del pagina es disponibile",
+	"contentstabilization-stablepoint-added-links-intro": "Per favor visita le pagina per le ligamine sequente pro vider le cambiamentos",
+	"contentstabilization-stablepoint-added-links-view-changes": "Monstrar cambiamentos",
+	"contentstabilization-documentstate-no-valid-args": "Error: necun nomine de pagina o ID de version valide ha essite fornite.",
+	"contentstabilization-documentstate-no-valid-page-id": "Error: non poteva obtener le ID de pagina desde le argumentos fornite."
 }
