@@ -13,7 +13,9 @@ mw.hook( 'bs.wikiexplorer.oojs.columns' ).add( function ( columns ) {
 			return val;
 		},
 		filter: {
-			type: 'boolean'
+			type: 'boolean',
+			trueLabel: mw.msg( 'contentstabilization-wikiexplorer-filter-approved' ),
+			falseLabel: mw.msg( 'contentstabilization-wikiexplorer-filter-not-approved' )
 		},
 		sortable: true
 	};
@@ -66,7 +68,9 @@ mw.hook( 'bs.wikiexplorer.oojs.columns' ).add( function ( columns ) {
 			return val;
 		},
 		filter: {
-			type: 'boolean'
+			type: 'boolean',
+			trueLabel: mw.msg( 'contentstabilization-wikiexplorer-filter-has-draft' ),
+			falseLabel: mw.msg( 'contentstabilization-wikiexplorer-filter-no-draft' )
 		},
 		sortable: true
 	};
