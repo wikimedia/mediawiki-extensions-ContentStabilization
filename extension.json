@@ -269,7 +269,11 @@
 			"messages": [
 				"contentstabilization-wikiexplorer-state",
 				"contentstabilization-wikiexplorer-date",
-				"contentstabilization-wikiexplorer-is-new-available"
+				"contentstabilization-wikiexplorer-is-new-available",
+				"contentstabilization-wikiexplorer-filter-approved",
+				"contentstabilization-wikiexplorer-filter-not-approved",
+				"contentstabilization-wikiexplorer-filter-has-draft",
+				"contentstabilization-wikiexplorer-filter-no-draft"
 			]
 		}
 	},
