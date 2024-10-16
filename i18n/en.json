@@ -134,5 +134,9 @@
 	"contentstabilization-stablepoint-added-links-intro": "Please visit the page at the following link to see the changes",
 	"contentstabilization-stablepoint-added-links-view-changes": "Show changes",
 	"contentstabilization-documentstate-no-valid-args": "Error: no valid page name or revision ID was provided.",
-	"contentstabilization-documentstate-no-valid-page-id": "Error: failed to obtain page ID from provided arguments."
+	"contentstabilization-documentstate-no-valid-page-id": "Error: failed to obtain page ID from provided arguments.",
+	"contentstabilization-wikiexplorer-filter-approved": "Approved",
+	"contentstabilization-wikiexplorer-filter-not-approved": "Not approved",
+	"contentstabilization-wikiexplorer-filter-has-draft": "Has draft version",
+	"contentstabilization-wikiexplorer-filter-no-draft": "Has no draft version"
 }
