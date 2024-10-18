@@ -133,5 +133,9 @@
 	"contentstabilization-stablepoint-added-links-intro": "Појдете на следнава врска за да ги видите промените",
 	"contentstabilization-stablepoint-added-links-view-changes": "Прикажи промени",
 	"contentstabilization-documentstate-no-valid-args": "Грешка: нема укажано важечко име на страница или назнака на преработка.",
-	"contentstabilization-documentstate-no-valid-page-id": "Грешка: не можев да добијам назнака на страница од укажаните аргументи."
+	"contentstabilization-documentstate-no-valid-page-id": "Грешка: не можев да добијам назнака на страница од укажаните аргументи.",
+	"contentstabilization-wikiexplorer-filter-approved": "Одобрено",
+	"contentstabilization-wikiexplorer-filter-not-approved": "Неодобрено",
+	"contentstabilization-wikiexplorer-filter-has-draft": "Има нацрт-верзија",
+	"contentstabilization-wikiexplorer-filter-no-draft": "Нема нацрт-верзија"
 }
