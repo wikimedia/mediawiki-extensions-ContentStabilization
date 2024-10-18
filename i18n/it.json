@@ -29,5 +29,9 @@
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|ha approvato}} la pagina $1",
 	"content-stabilization-approval-notification-subject": "Pagina $1 approvata",
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|ha approvato}} la pagina $1",
-	"contentstabilization-stablepoint-added-links-view-changes": "Mostra modifiche"
+	"contentstabilization-stablepoint-added-links-view-changes": "Mostra modifiche",
+	"contentstabilization-wikiexplorer-filter-approved": "Approvato",
+	"contentstabilization-wikiexplorer-filter-not-approved": "Non approvato",
+	"contentstabilization-wikiexplorer-filter-has-draft": "Ha una versione bozza",
+	"contentstabilization-wikiexplorer-filter-no-draft": "Non ha una versione bozza"
 }
