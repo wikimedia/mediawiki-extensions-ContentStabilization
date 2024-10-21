@@ -16,6 +16,6 @@
 	"contentstabilization-versionhistory-grid-header-state": "অবস্থা",
 	"contentstabilization-versionhistory-grid-header-approver": "অনুমোদন করেছেন",
 	"contentstabilization-versionhistory-grid-header-approval-date": "অনুমোদনের তারিখ",
-	"contentstabilization-documentstate-no-valid-args": "ত্রুটিঃ কোনও বৈধ পৃষ্ঠার নাম বা সংশোধন আইডি প্রদান করা হয়নি।",
-	"contentstabilization-documentstate-no-valid-page-id": "ত্রুটি: প্রদত্ত আর্গুমেন্ট থেকে পৃষ্ঠা আইডি পেতে ব্যর্থ হয়েছে৷"
+	"contentstabilization-documentstate-no-valid-args": "ত্রুটি: কোনও বৈধ পৃষ্ঠার নাম বা সংশোধন আইডি প্রদান করা হয়নি।",
+	"contentstabilization-documentstate-no-valid-page-id": "ত্রুটি: প্রদত্ত আর্গুমেন্ট থেকে পৃষ্ঠা আইডি পাওয়া ব্যর্থ হয়েছে।"
 }
