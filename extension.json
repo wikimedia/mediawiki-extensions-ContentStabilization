@@ -342,7 +342,8 @@
 		"ContentAlterParserOutput": [ "stabilizeContent" ],
 		"PageSaveComplete": "autoStabilize",
 		"ParserFirstCallInit": "addDocumentStateTag",
-		"DifferenceEngineViewHeader": "stabilizeContent"
+		"DifferenceEngineViewHeader": "stabilizeContent",
+		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -438,6 +439,10 @@
 				"DBLoadBalancer", "TitleFactory", "RevisionStore",
 				"ContentStabilization.Lookup", "ContentStabilization._InclusionManager"
 			]
+		},
+		"stabilizeNotifications": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeNotifications",
+			"services": [ "ContentStabilization.Lookup" ]
 		}
 	},
 	"SpecialPages": {
