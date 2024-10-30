@@ -43,8 +43,7 @@ $( () => {
 				headerText: mw.message( 'contentstabilization-overview-header-has-changed-last-approver' ).text(),
 				type: 'user',
 				sortable: true,
-				filter: { type: 'text' },
-				autoClosePopup: true
+				filter: { type: 'user' }
 			},
 			last_stable_ts: {
 				headerText: mw.message( 'contentstabilization-overview-header-has-changed-last-stable-ts' ).text(),
