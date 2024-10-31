@@ -72,8 +72,9 @@ class StabilizeDrawioFiles implements DrawioGetFileHook {
 					$isNotApproved = true;
 					return;
 				}
-				$file = $this->repoGroup->findFile( $file->getTitle(), [ 'time' => $image['timestamp'] ] );
-				$displayFile = $file;
+				// Apply "freeze" concept only for "display file"
+				// Still, in diagram "Edit" mode user should still always see and edit the latest diagram version
+				$displayFile = $this->repoGroup->findFile( $file->getTitle(), [ 'time' => $image['timestamp'] ] );
 				return;
 			}
 		}
