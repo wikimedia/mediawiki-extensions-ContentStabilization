@@ -53,7 +53,6 @@
 	"contentstabilization-pref-stabilize-smw": "Posodobi semantične lastnosti samo pri odobrenih redakcijah",
 	"contentstabilization-pref-allowfirstunstable-help": "Če je omogočeno, bo prvi osnutek strani prikazan uporabnikom, ki sicer ne bi mogli videti redakcij osnutkov",
 	"contentstabilization-pref-stabilize-smw-help": "Če je omogočeno, se bo posodobitev lastnosti Semantičnega MediaWikija sprožila samo pri stabilnih redakcijah strani",
-	"contentstabilization-stablepoint-added-message-passive": "Na voljo je nova odobrena redakcija strani",
 	"contentstabilization-stablepoint-added-message": "dodana nova odobrena redakcija strani",
 	"contentstabilization-export-no-stable-date": "Ni odobreno",
 	"contentstabilization-export-laststable-tag-text": "Odobreno:",
@@ -120,6 +119,7 @@
 	"content-stabilization-approval-notification-subject": "Stran $1 je odobrena",
 	"content-stabilization-approval-notification-email-body": "$3 je {{GENDER:$2|odobril|odobrila|odobril_a}} stran $1",
 	"contentstabilization-edit-notice-old-version": "[{{fullurl: $1 |stable=1}} Stabilna različica] je bila [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} odobrena] dne <i>$2</i>. Različica osnutka že obstaja.",
+	"contentstabilization-stablepoint-added-message-passive": "Na voljo je nova odobrena redakcija strani",
 	"contentstabilization-documentstate-no-valid-args": "Napaka: Navedeno ni nobeno veljavno ime strani ali ID redakcije.",
 	"contentstabilization-documentstate-no-valid-page-id": "Napaka: Iz navedenih argumentov ni bilo mogoče pridobiti ID-ja strani."
 }

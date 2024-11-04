@@ -30,7 +30,6 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "أول نسخة مسودة",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "مقبول",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "النسخة المعتمدة",
-	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text": "مسودة ، بسبب التغييرات في الموارد المدرجة",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "مسودة بسبب التغييرات في الموارد المدرجة",
 	"contentstabilization-ui-approve-title": "وافق على الصفحة",
 	"contentstabilization-ui-approve-approve": "موافقة",
@@ -55,7 +54,6 @@
 	"contentstabilization-pref-stabilize-smw": "تحديث الخصائص الدلالية من الإصدارات المعتمدة فقط",
 	"contentstabilization-pref-allowfirstunstable-help": "في حالة التمكين ، سيتم عرض أول نسخة مسودة من الصفحة للمستخدمين الذين لن يتمكنوا من رؤية إصدارات المسودة بخلاف ذلك",
 	"contentstabilization-pref-stabilize-smw-help": "في حالة التمكين ، سيتم تشغيل تحديث خصائص Semantic MediaWiki فقط على الإصدارات الثابتة من الصفحات",
-	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة",
 	"contentstabilization-stablepoint-added-message": "أضاف نسخة جديدة معتمدة من الصفحة",
 	"contentstabilization-export-no-stable-date": "غير مقبول",
 	"contentstabilization-export-laststable-tag-text": "مقبول:",
@@ -106,5 +104,6 @@
 	"content-stabilization-stable-diff": "في انتظار المراجعة",
 	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
-	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة"
+	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
+	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة"
 }

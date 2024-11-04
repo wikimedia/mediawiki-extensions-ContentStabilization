@@ -10,7 +10,8 @@
 			"SleaY",
 			"Terio legale",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Mahabarata"
 		]
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
@@ -61,7 +62,7 @@
 	"contentstabilization-pref-stabilize-smw": "Mettre à jour les propriétés sémantiques des versions approuvées uniquement",
 	"contentstabilization-pref-allowfirstunstable-help": "Si cette option est activée, la première version ébauchée d’une page sera présentée aux utilisateurs qui autrement ne pourraient voir aucune version brouillon.",
 	"contentstabilization-pref-stabilize-smw-help": "Si cette option est activée, la mise à jour des propriétés MediaWiki Sémantique sera déclenchée uniquement sur les versions stables des pages.",
-	"contentstabilization-stablepoint-added-message": "une nouvelle version approuvée de la page a été ajoutée",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|a ajouté}} une nouvelle version approuvée de la page $2",
 	"contentstabilization-export-no-stable-date": "Non approuvé",
 	"contentstabilization-export-laststable-tag-text": "Approuvé :",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Version : $1",

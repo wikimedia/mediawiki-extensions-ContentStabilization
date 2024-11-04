@@ -48,6 +48,7 @@
 	"logentry-stabilization-add": "$1{{GENDER:$2|已批准}}頁面$3",
 	"contentstabilization-status-stable": "已批准",
 	"contentstabilization-status-unstable": "草稿",
+	"contentstabilization-status-implicit-unstable": "隱式草稿",
 	"contentstabilization-status-first-unstable": "初稿",
 	"contentstabilization-overview-no-enabled": "批准未啟用在任何命名空間裡",
 	"contentstabilization-overview-approver-bot": "由機器人做出的批准",
@@ -67,6 +68,5 @@
 	"contentstabilization-stabilizationhistory-noflaggedrevstitle": "未啟用批准",
 	"contentstabilization-overview-header-page-id": "頁面ID",
 	"contentstabilization-overview-header-page-namespace": "頁面命名空間",
-	"contentstabilization-status-implicit-unstable": "隱式草稿",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "使用者"
 }
