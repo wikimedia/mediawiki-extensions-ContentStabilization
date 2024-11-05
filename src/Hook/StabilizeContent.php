@@ -220,7 +220,7 @@ class StabilizeContent implements
 			return;
 		}
 		if ( !$this->lookup->isStableRevision( $new ) || !$this->lookup->isStableRevision( $old ) ) {
-			throw new PermissionsError( 'badaccess-group0' );
+			throw new PermissionsError( 'read' );
 		}
 	}
 
