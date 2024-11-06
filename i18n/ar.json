@@ -3,6 +3,7 @@
 		"authors": [
 			"Alshamiri1",
 			"Asma",
+			"Meno25",
 			"Reedy"
 		]
 	},
@@ -14,7 +15,7 @@
 	"action-contentstabilization-stabilize": "الموافقة على الصفحة",
 	"action-contentstabilization-admin": "إدارة الموافقات",
 	"contentstabilization": "نظرة عامة على إدارة الجودة",
-	"contentstabilization-global-action-overview": "نظرة عامة على إدارة الجودة",
+	"contentstabilization-global-action-overview": "إدارة الجودة",
 	"contentstabilization-global-action-overview-desc": "نظرة عامة على الصفحات في عملية الموافقة",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "لديه نسخة مسودة",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "لديه نسخة معتمدة",
