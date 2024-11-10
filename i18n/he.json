@@ -133,5 +133,9 @@
 	"contentstabilization-stablepoint-added-links-view-changes": "הצגת שינויים",
 	"contentstabilization-stablepoint-added-message-passive": "זמינה גרסה חדשה מאושרת של הדף",
 	"contentstabilization-documentstate-no-valid-args": "שגיאה: לא סופק שם דף או מזהה גרסה תקין.",
-	"contentstabilization-documentstate-no-valid-page-id": "שגיאה: לא היה ניתן להשיג מזהה דף מארגומנטים שסופקו."
+	"contentstabilization-documentstate-no-valid-page-id": "שגיאה: לא היה ניתן להשיג מזהה דף מארגומנטים שסופקו.",
+	"contentstabilization-wikiexplorer-filter-approved": "מאושרים",
+	"contentstabilization-wikiexplorer-filter-not-approved": "לא מאושרים",
+	"contentstabilization-wikiexplorer-filter-has-draft": "עם גרסת טיוטה",
+	"contentstabilization-wikiexplorer-filter-no-draft": "בלי גרסת טיוטה"
 }
