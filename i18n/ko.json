@@ -20,5 +20,9 @@
 	"contentstabilization-overview-header-page-namespace": "문서 이름공간",
 	"contentstabilization-versionhistory-grid-header-approval-date": "승인 날짜",
 	"echo-category-title-content-stabilization-cat": "승인",
-	"content-stabilization-echo-cat-tooltip": "문서가 승인되면 내게 알립니다"
+	"content-stabilization-echo-cat-tooltip": "문서가 승인되면 내게 알립니다",
+	"contentstabilization-wikiexplorer-filter-approved": "승인됨",
+	"contentstabilization-wikiexplorer-filter-not-approved": "승인되지 않음",
+	"contentstabilization-wikiexplorer-filter-has-draft": "초안 판이 있습니다",
+	"contentstabilization-wikiexplorer-filter-no-draft": "초안 판이 없습니다"
 }

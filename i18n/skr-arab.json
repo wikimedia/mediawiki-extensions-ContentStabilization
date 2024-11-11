@@ -37,5 +37,7 @@
 	"contentstabilization-versionhistory-grid-header-approver": "ولوں منظور تھیا",
 	"contentstabilization-versionhistory-grid-header-approval-date": "منظوری دی تریخ",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "منظوری تبصرہ",
-	"contentstabilization-stablepoint-added-links-view-changes": "تبدیلیاں ݙکھاؤ"
+	"contentstabilization-stablepoint-added-links-view-changes": "تبدیلیاں ݙکھاؤ",
+	"contentstabilization-wikiexplorer-filter-approved": "منظور تھی ڳیا",
+	"contentstabilization-wikiexplorer-filter-not-approved": "منظور کائنی تھیا"
 }
