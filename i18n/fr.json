@@ -10,7 +10,8 @@
 			"SleaY",
 			"Terio legale",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Mahabarata"
 		]
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
@@ -62,7 +63,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "Si cette option est activée, la première version ébauchée d’une page sera présentée aux utilisateurs qui autrement ne pourraient voir aucune version brouillon.",
 	"contentstabilization-pref-stabilize-smw-help": "Si cette option est activée, la mise à jour des propriétés MediaWiki Sémantique sera déclenchée uniquement sur les versions stables des pages.",
 	"contentstabilization-stablepoint-added-message-passive": "Nouvelle version approuvée de la page disponible",
-	"contentstabilization-stablepoint-added-message": "une nouvelle version approuvée de la page a été ajoutée",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|a ajouté}} une nouvelle version approuvée de la page $2",
 	"contentstabilization-export-no-stable-date": "Non approuvé",
 	"contentstabilization-export-laststable-tag-text": "Approuvé :",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Version : $1",
@@ -76,6 +77,7 @@
 	"logentry-stabilization-update": "$1{{GENDER:$2|}} a approuvé les modifications des ressources sur la page $3",
 	"contentstabilization-status-stable": "Approuvé",
 	"contentstabilization-status-unstable": "Brouillon",
+	"contentstabilization-status-implicit-unstable": "Brouillon implicite",
 	"contentstabilization-status-first-unstable": "Première ébauche",
 	"contentstabilization-overview-no-enabled": "L’approbation n’est activée sur aucun espace de noms",
 	"contentstabilization-overview-enabled": "L’approbation est actuellement activée pour les espaces de noms suivants : $1",
@@ -131,12 +133,19 @@
 	"content-stabilization-approval-notification-summary": "$3 {{GENDER:$2|a approuvé}} la page $1",
 	"content-stabilization-approval-notification-subject": "Page $1 approuvée",
 	"content-stabilization-approval-notification-email-body": "$3 {{GENDER:$2|a approuvé}} la page $1",
+	"contentstabilization-edit-notice-old-version": "La [{{fullurl:$1|stable=1}} version stable] a été [{{fullurl:{{#Special:Log}}|type=stabilization&page=$1}} approuvée] le <i>$2</i>. Il y a {{PLURAL:$3|un changement|$3 changements}} en attente d'approbation ([{{fullurl:$1|oldid=$4&diff=cur}} afficher {{PLURAL:$3| ce changement|ces changements}}]).",
 	"contentstabilization-ui-editor-approve": "Approuver mes modifications",
 	"contentstabilization-ui-editor-approve-title": "Approuver automatiquement vos modifications lors de l'enregistrement",
 	"contentstabilization-ui-editor-approve-with-pending": "Approuver cette version (y compris {{PLURAL:$1|une modification en attente |$1 modifications en attente}})",
+	"contentstabilization-ui-editor-approve-with-pending-title": "Approuvez automatiquement toutes les modifications en attente lors de l'enregistrement. Assurez-vous d'avoir vérifié toutes les modifications avant de sauvegarder",
+	"contentstabilization-edit-notice-approval-needed": "Vos modifications seront affichées aux lecteurs une fois qu'un utilisateur autorisé les aura approuvées",
 	"contentstabilization-stablepoint-added-key-desc": "Nouvelle version approuvée de la page disponible",
 	"contentstabilization-stablepoint-added-links-intro": "Veuillez visiter la page au lien suivant pour voir vos tâches",
 	"contentstabilization-stablepoint-added-links-view-changes": "Afficher les modifications",
 	"contentstabilization-documentstate-no-valid-args": "Erreur : aucun nom de page ou ID de révision valide n'a été fourni.",
-	"contentstabilization-documentstate-no-valid-page-id": "Erreur : échec d'obtention de l'ID de page à partir des arguments fournis."
+	"contentstabilization-documentstate-no-valid-page-id": "Erreur : échec d'obtention de l'ID de page à partir des arguments fournis.",
+	"contentstabilization-wikiexplorer-filter-approved": "Approuvé",
+	"contentstabilization-wikiexplorer-filter-not-approved": "Non approuvé",
+	"contentstabilization-wikiexplorer-filter-has-draft": "A une version brouillon",
+	"contentstabilization-wikiexplorer-filter-no-draft": "N'a pas de version brouillon"
 }
