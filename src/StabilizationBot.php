@@ -75,28 +75,28 @@ class StabilizationBot implements Authority {
 	/**
 	 * @inheritDoc
 	 */
-	public function probablyCan( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
+	public function probablyCan( string $action, PageIdentity $target, ?PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function definitelyCan( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
+	public function definitelyCan( string $action, PageIdentity $target, ?PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function authorizeRead( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
+	public function authorizeRead( string $action, PageIdentity $target, ?PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function authorizeWrite( string $action, PageIdentity $target, PermissionStatus $status = null ): bool {
+	public function authorizeWrite( string $action, PageIdentity $target, ?PermissionStatus $status = null ): bool {
 		return $this->isAllowed( $action );
 	}
 
