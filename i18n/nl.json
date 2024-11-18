@@ -70,6 +70,7 @@
 	"logentry-stabilization-update": "$1 {{GENDER:$2|heeft}} wijzigingen van hulpbronnen op de pagina $3 goedgekeurd",
 	"contentstabilization-status-stable": "Goedgekeurd",
 	"contentstabilization-status-unstable": "Concept",
+	"contentstabilization-status-implicit-unstable": "Impliciet concept",
 	"contentstabilization-status-first-unstable": "Eerste concept",
 	"contentstabilization-overview-no-enabled": "Goedkeuring is voor geen enkele naamruimte ingeschakeld",
 	"contentstabilization-overview-enabled": "Goedkeuring is momenteel ingeschakeld voor de volgende naamruimten: $1",
@@ -131,5 +132,14 @@
 	"contentstabilization-ui-editor-approve-with-pending": "Deze versie goedkeuren (waaronder {{PLURAL:$1|één openstaande wijziging|$1 openstaande wijzigingen}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Automatisch alle openstaande wijzigingen goedkeuren bij het opslaan. Zorg ervoor dat u alle wijzigingen hebt gecontroleerd voordat u ze opslaat",
 	"contentstabilization-edit-notice-approval-needed": "Uw wijziging wordt aan de lezers getoond zodra een geautoriseerde gebruiker deze accepteert",
-	"contentstabilization-stablepoint-added-message-passive": "Nieuwe goedgekeurde versie van de pagina beschikbaar"
+	"contentstabilization-stablepoint-added-key-desc": "Nieuwe goedgekeurde versie van de pagina beschikbaar",
+	"contentstabilization-stablepoint-added-links-intro": "Bezoek de pagina via de volgende koppeling om de wijzigingen te zien",
+	"contentstabilization-stablepoint-added-links-view-changes": "Wijzigingen bekijken",
+	"contentstabilization-stablepoint-added-message-passive": "Nieuwe goedgekeurde versie van de pagina beschikbaar",
+	"contentstabilization-documentstate-no-valid-args": "Fout: er is geen geldige paginanaam of versie-ID opgegeven.",
+	"contentstabilization-documentstate-no-valid-page-id": "Fout: de pagina-ID kon niet worden niet verkregen uit de opgegeven argumenten.",
+	"contentstabilization-wikiexplorer-filter-approved": "Goedgekeurd",
+	"contentstabilization-wikiexplorer-filter-not-approved": "Niet goedgekeurd",
+	"contentstabilization-wikiexplorer-filter-has-draft": "Heeft een conceptversie",
+	"contentstabilization-wikiexplorer-filter-no-draft": "Heeft geen conceptversie"
 }
