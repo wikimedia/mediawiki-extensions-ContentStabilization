@@ -36,9 +36,11 @@ class StabilizationBot implements Authority {
 	}
 
 	/**
+	 * @param string $permission
+	 * @param PermissionStatus|null $status
 	 * @inheritDoc
 	 */
-	public function isAllowed( string $permission ): bool {
+	public function isAllowed( string $permission, ?PermissionStatus $status = null ): bool {
 		return in_array( $permission, $this->permissions );
 	}
 
@@ -119,5 +121,23 @@ class StabilizationBot implements Authority {
 	 */
 	public function isNamed(): bool {
 		return true;
+	}
+
+	/**
+	 * @param string $action
+	 * @param PermissionStatus|null $status
+	 * @return bool
+	 */
+	public function isDefinitelyAllowed( string $action, ?PermissionStatus $status = null ): bool {
+		return $this->isAllowed( $action, $status );
+	}
+
+	/**
+	 * @param string $action
+	 * @param PermissionStatus|null $status
+	 * @return bool
+	 */
+	public function authorizeAction( string $action, ?PermissionStatus $status = null ): bool {
+		return $this->isAllowed( $action, $status );
 	}
 }
