@@ -19,6 +19,7 @@
 	"contentstabilization-overview-header-page-id": "문서 ID",
 	"contentstabilization-overview-header-page-namespace": "문서 이름공간",
 	"contentstabilization-versionhistory-grid-header-approval-date": "승인 날짜",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "사용자",
 	"echo-category-title-content-stabilization-cat": "승인",
 	"content-stabilization-echo-cat-tooltip": "문서가 승인되면 내게 알립니다",
 	"contentstabilization-wikiexplorer-filter-approved": "승인됨",
