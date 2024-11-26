@@ -60,6 +60,7 @@ class StablePagesHistoryPlugin implements IHistoryPlugin {
 		}
 		$user = RequestContext::getMain()->getUser();
 		if ( !$point ) {
+			$entry['sp_approved'] = false;
 			$classes[] = 'content-stabilization-not-stable';
 			$title = $historyAction->getTitle();
 			if ( !$title ) {
@@ -94,6 +95,7 @@ class StablePagesHistoryPlugin implements IHistoryPlugin {
 			$comment = '-';
 		}
 
+		$entry['sp_approved'] = true;
 		$entry['sp_state'] = Message::newFromKey( 'contentstabilization-status-stable' )->parse();
 		$entry['sp_approver'] = $actorName;
 		$entry['sp_approve_ts'] = $timestamp;
