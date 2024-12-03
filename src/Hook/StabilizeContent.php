@@ -405,6 +405,10 @@ class StabilizeContent implements
 	 * @return void
 	 */
 	private function setViewFromArticle( Article $article ) {
+		if ( $article->getContext()->getRequest()->getBool( 'nostabilize' ) ) {
+			$this->view = null;
+			return;
+		}
 		$this->view = $this->lookup->getStableViewFromContext( $article->getContext() );
 	}
 
@@ -452,8 +456,8 @@ class StabilizeContent implements
 		$this->setViewFromArticle( $article );
 
 		$action = $request->getText( 'veaction', $request->getText( 'action', 'view' ) );
-		if ( $action === 'edit' ) {
-			if ( !$this->shouldSwitchToLatestForEdit( $title, $user ) ) {
+		if ( $action === 'edit' || $action === 'editsource' ) {
+			if ( $request->getBool( 'nostabilize' ) || !$this->shouldSwitchToLatestForEdit( $title, $user ) ) {
 				return true;
 			}
 			// Replace revision to edit, if needed
