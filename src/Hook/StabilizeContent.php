@@ -200,6 +200,9 @@ class StabilizeContent implements
 			// Otherwise always edit the latest version
 			$article->getContext()->getOutput()->setRevisionId( $pageTitle->getLatestRevID() );
 		}
+		$article->getContext()->getOutput()->addJsConfigVars(
+			[ 'wgStabilizedRevisionId' => $revisionUsed->getId() ]
+		);
 		$end = microtime( true );
 		$article->getContext()->getOutput()->addHTML( '<!-- StabilizeContent: ' . ( $end - $start ) . ' -->' );
 	}
