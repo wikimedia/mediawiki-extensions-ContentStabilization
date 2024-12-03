@@ -200,13 +200,22 @@ class PageApproved implements IMechanism {
 	 * @throws MWException
 	 */
 	public function canConfirm( Title $title, User $user, $revId = null ) {
-		if ( !$revId ) {
+		if ( !$this->stabilizationLookup->isStabilizationEnabled( $title ) ) {
+			return false;
+		}
+		if ( !in_array( $user->getId(), $this->getAssignedUsers( $title->getArticleID() ) ) ) {
 			return false;
 		}
 
-		if ( !$this->isRevisionStable( $revId ) ) {
+		$stable = $this->stabilizationLookup->getLastStablePoint( $title );
+		if ( !( $stable instanceof StablePoint ) ) {
+			// first draft
 			return false;
 		}
+		if ( $revId && $revId !== $stable->getRevision()->getId() ) {
+			return false;
+		}
+		$revId = $title->getLatestRevID();
 
 		if ( $this->isMinorRevision( $revId ) ) {
 			if ( $this->hasNoPreviousMajorRevisionDrafts( $revId ) ) {
@@ -221,10 +230,6 @@ class PageApproved implements IMechanism {
 			$revId = $this->getRecentMustReadRevision( $title->getArticleID() );
 		}
 
-		if ( !in_array( $user->getId(), $this->getAssignedUsers( $title->getArticleID() ) ) ) {
-			return false;
-		}
-
 		$arrayWithThisUsersIdIfAlreadyReadTheRevision =
 			$this->usersAlreadyReadRevision( $revId, [ $user->getId() ] );
 		if ( !empty( $arrayWithThisUsersIdIfAlreadyReadTheRevision ) ) {
@@ -232,7 +237,6 @@ class PageApproved implements IMechanism {
 		}
 
 		$this->revisionId = $revId;
-
 		return true;
 	}
 
@@ -321,7 +325,8 @@ class PageApproved implements IMechanism {
 			return false;
 		}
 
-		if ( !$this->getRecentMustReadRevision( $title->getArticleID() ) ) {
+		$revPending = $this->getRecentMustReadRevision( $title->getArticleID() );
+		if ( !$revPending ) {
 			return false;
 		}
 
