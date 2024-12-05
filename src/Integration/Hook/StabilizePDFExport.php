@@ -86,10 +86,6 @@ class StabilizePDFExport implements
 		if ( !( $title instanceof Title ) ) {
 			return;
 		}
-		if ( !$oldId ) {
-			// If not set anywhere, use latest
-			$oldId = $title->getLatestRevID();
-		}
 
 		if ( !$title->canExist() ) {
 			// Virtual namespace
@@ -98,10 +94,13 @@ class StabilizePDFExport implements
 		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
 			return;
 		}
-		$this->view = $this->lookup->getStableView( $title, $this->user, [
+		$stabilizationOptions = [
 			'forceUnstable' => $forceUnstable,
-			'upToRevision' => $oldId
-		] );
+		];
+		if ( $oldId ) {
+			$stabilizationOptions['upToRevision'] = $oldId;
+		}
+		$this->view = $this->lookup->getStableView( $title, $this->user, $stabilizationOptions );
 
 		if ( !$this->view ) {
 			return;
@@ -131,11 +130,15 @@ class StabilizePDFExport implements
 			return;
 		}
 
+		$lastStable = null;
+		if ( $this->view->getStatus() === StableView::STATE_STABLE ) {
+			$lastStable = $this->view->getLastStablePoint();
+		}
+
 		// Timestamp when stable point was added (time of approval)
 		$lastStableTime = '';
 		// Timestamp when the revision was created
 		$lastStableRevisionTime = '';
-		$lastStable = $this->view->getLastStablePoint();
 		if ( $lastStable ) {
 			$lastStableTime = $lastStable->getTime()->format( 'YmdHis' );
 			$lastStableRevisionTime = $lastStable->getRevision()->getTimestamp();
