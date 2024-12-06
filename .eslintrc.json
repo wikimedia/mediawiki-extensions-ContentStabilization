@@ -16,7 +16,6 @@
 	},
 	"globals": {
 		"ext": "readonly",
-		"Ext": "readonly",
 		"jQuery": "readonly",
 		"mediaWiki": "readonly",
 		"OOJSPlus": "readonly"
