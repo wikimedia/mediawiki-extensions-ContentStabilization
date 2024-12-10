@@ -88,3 +88,10 @@ $( function () {
 		} );
 	} );
 } );
+
+mw.hook( 'readconfirmation.check.request.before' ).add( function ( data ) {
+	const stabilized = mw.config.get( 'wgStabilizedRevisionId' );
+	if ( stabilized ) {
+		data.stabilizedRevId = stabilized;
+	}
+} );
