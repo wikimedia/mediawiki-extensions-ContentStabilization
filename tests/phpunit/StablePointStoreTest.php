@@ -278,6 +278,7 @@ class StablePointStoreTest extends TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 		$lb->method( 'getConnectionRef' )->willReturn( $conn );
+		$lb->method( 'getConnection' )->willReturn( $conn );
 
 		return $lb;
 	}
