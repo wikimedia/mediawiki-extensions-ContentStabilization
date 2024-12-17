@@ -1,4 +1,4 @@
-mw.hook( 'bs.wikiexplorer.oojs.columns' ).add( function ( columns ) {
+mw.hook( 'bs.wikiexplorer.oojs.columns' ).add( ( columns ) => {
 	columns.contentstabilization_state = {
 		headerText: mw.message( 'contentstabilization-wikiexplorer-state' ).text(),
 		type: 'boolean',

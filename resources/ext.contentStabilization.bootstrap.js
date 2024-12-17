@@ -89,7 +89,7 @@ $( () => {
 	} );
 } );
 
-mw.hook( 'readconfirmation.check.request.before' ).add( function ( data ) {
+mw.hook( 'readconfirmation.check.request.before' ).add( ( data ) => {
 	const stabilized = mw.config.get( 'wgStabilizedRevisionId' );
 	if ( stabilized ) {
 		data.stabilizedRevId = stabilized;
