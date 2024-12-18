@@ -215,7 +215,7 @@ class PageApproved implements IMechanism {
 		if ( $revId && $revId !== $stable->getRevision()->getId() ) {
 			return false;
 		}
-		$revId = $title->getLatestRevID();
+		$revId = $stable->getRevision()->getId();
 
 		if ( $this->isMinorRevision( $revId ) ) {
 			if ( $this->hasNoPreviousMajorRevisionDrafts( $revId ) ) {
