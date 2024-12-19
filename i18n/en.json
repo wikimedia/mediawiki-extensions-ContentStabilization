@@ -139,5 +139,7 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Approved",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Not approved",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Has draft version",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Has no draft version"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Has no draft version",
+	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Remove approval",
+	"contentstabilization-versionhistory-remove-approval-confirm": "Are you sure you want to remove the approval of this revision?"
 }
