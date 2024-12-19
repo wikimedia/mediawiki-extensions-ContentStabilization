@@ -143,5 +143,7 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Filter option label for WikiExplorer",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Filter option label for WikiExplorer",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Filter option label for WikiExplorer",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Filter option label for WikiExplorer"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Filter option label for WikiExplorer",
+	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Title attribute value for history grid action",
+	"contentstabilization-versionhistory-remove-approval-confirm": "Confirmation message for removing approval"
 }

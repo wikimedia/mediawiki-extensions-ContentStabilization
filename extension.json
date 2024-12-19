@@ -235,12 +235,21 @@
 			]
 		},
 		"ext.contentStabilization.enhanced.history": {
-			"scripts": "ext.contentStabilization.enhancedHistory.js",
+			"scripts": [
+				"ui/RemoveApprovalColumn.js",
+				"ext.contentStabilization.enhancedHistory.js"
+			],
 			"messages": [
 				"contentstabilization-versionhistory-grid-header-state",
 				"contentstabilization-versionhistory-grid-header-approver",
 				"contentstabilization-versionhistory-grid-header-approval-date",
-				"contentstabilization-versionhistory-grid-header-approval-comment"
+				"contentstabilization-versionhistory-grid-header-approval-comment",
+				"contentstabilization-versionhistory-grid-header-remove-approval-title",
+				"contentstabilization-versionhistory-remove-approval-confirm"
+			],
+			"dependencies": [
+				"ext.oOJSPlus.data",
+				"oojs-ui.styles.icons-moderation"
 			]
 		},
 		"ext.contentStabilization.workflows.editor.customElements": {
