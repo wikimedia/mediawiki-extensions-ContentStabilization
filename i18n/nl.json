@@ -141,5 +141,7 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Goedgekeurd",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Niet goedgekeurd",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Heeft een conceptversie",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Heeft geen conceptversie"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Heeft geen conceptversie",
+	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Goedkeuring intrekken",
+	"contentstabilization-versionhistory-remove-approval-confirm": "Weet u zeker dat u de goedkeuring van deze versie wilt intrekken?"
 }

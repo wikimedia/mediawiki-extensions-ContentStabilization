@@ -137,5 +137,7 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Одобрено",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Неодобрено",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Има нацрт-верзија",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Нема нацрт-верзија"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Нема нацрт-верзија",
+	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Одземи одобрение",
+	"contentstabilization-versionhistory-remove-approval-confirm": "Дали сигурно сакате да го одземете одобрението на оваа преработка?"
 }
