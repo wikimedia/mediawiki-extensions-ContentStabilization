@@ -4,7 +4,7 @@ ext.contentStabilization.ui.RemoveApprovalColumn = function ( cfg ) {
 
 OO.inheritClass( ext.contentStabilization.ui.RemoveApprovalColumn, OOJSPlus.ui.data.column.Action );
 
-ext.contentStabilization.ui.RemoveApprovalColumn.prototype.getViewControls = function( value, row ) {
+ext.contentStabilization.ui.RemoveApprovalColumn.prototype.getViewControls = function ( value, row ) {
 	if ( !row.sp_approved ) {
 		return '';
 	}

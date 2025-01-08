@@ -39,10 +39,12 @@
 		};
 	} );
 
-	mw.hook( 'enhanced.versionhistory.rowAction' ).add( function( action, row ) {
+	// eslint-disable-next-line prefer-arrow-callback
+	mw.hook( 'enhanced.versionhistory.rowAction' ).add( function ( action, row ) {
 		if ( action === 'removeApproval' && row.sp_approved ) {
-			var revId = parseInt( row.id );
+			const revId = parseInt( row.id );
 			OO.ui.confirm( mw.message( 'contentstabilization-versionhistory-remove-approval-confirm' ).text() ).done(
+				// eslint-disable-next-line prefer-arrow-callback
 				function ( confirmed ) {
 					if ( !confirmed ) {
 						return;
