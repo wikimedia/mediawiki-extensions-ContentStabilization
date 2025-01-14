@@ -22,10 +22,13 @@ class IntegrateWikiExplorer {
 			MediaWikiServices::getInstance()->getDBLoadBalancer()
 		);
 
-		$GLOBALS['wgHooks']['WikiExplorer::queryPagesWithFilter'][] =
-			[ $handler, 'onWikiExplorer__queryPagesWithFilter' ];
-		$GLOBALS['wgHooks']['WikiExplorer::buildDataSets'][] =
-			[ $handler, 'onWikiExplorer__buildDataSets' ];
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+		$hookContainer->register(
+			'WikiExplorer::queryPagesWithFilter', [ $handler, 'onWikiExplorer__queryPagesWithFilter' ]
+		);
+		$hookContainer->register(
+			'WikiExplorer::buildDataSets', [ $handler, 'onWikiExplorer__buildDataSets' ]
+		);
 	}
 
 	/**
