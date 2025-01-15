@@ -137,5 +137,7 @@
 	"contentstabilization-wikiexplorer-filter-approved": "מאושרים",
 	"contentstabilization-wikiexplorer-filter-not-approved": "לא מאושרים",
 	"contentstabilization-wikiexplorer-filter-has-draft": "עם גרסת טיוטה",
-	"contentstabilization-wikiexplorer-filter-no-draft": "בלי גרסת טיוטה"
+	"contentstabilization-wikiexplorer-filter-no-draft": "בלי גרסת טיוטה",
+	"contentstabilization-versionhistory-grid-header-remove-approval-title": "הסרת אישור",
+	"contentstabilization-versionhistory-remove-approval-confirm": "האם באמת להסיר את האישור של הגרסה הזאת?"
 }

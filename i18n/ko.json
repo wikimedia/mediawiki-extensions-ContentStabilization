@@ -24,5 +24,8 @@
 	"contentstabilization-wikiexplorer-filter-approved": "승인됨",
 	"contentstabilization-wikiexplorer-filter-not-approved": "승인되지 않음",
 	"contentstabilization-wikiexplorer-filter-has-draft": "초안 판이 있습니다",
-	"contentstabilization-wikiexplorer-filter-no-draft": "초안 판이 없습니다"
+	"contentstabilization-wikiexplorer-filter-no-draft": "초안 판이 없습니다",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "사용자",
+	"contentstabilization-versionhistory-grid-header-remove-approval-title": "승인 취소",
+	"contentstabilization-versionhistory-remove-approval-confirm": "이 판의 승인을 제거하시겠습니까?"
 }
