@@ -13,10 +13,10 @@ use MediaWiki\Extension\Workflows\Exception\WorkflowExecutionException;
 use MediaWiki\Extension\Workflows\WorkflowContext;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use Message;
 use MWTimestamp;
-use Title;
 use TitleFactory;
 use User;
 

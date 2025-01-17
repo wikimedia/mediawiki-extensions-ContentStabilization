@@ -9,9 +9,9 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
-use Title;
 
 /**
  * @covers \MediaWiki\Extension\ContentStabilization\InclusionMode\Stable

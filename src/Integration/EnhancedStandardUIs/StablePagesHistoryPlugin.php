@@ -5,10 +5,10 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\EnhancedStandardU
 use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\EnhancedStandardUIs\IHistoryPlugin;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use Message;
 use RequestContext;
-use Title;
 
 class StablePagesHistoryPlugin implements IHistoryPlugin {
 

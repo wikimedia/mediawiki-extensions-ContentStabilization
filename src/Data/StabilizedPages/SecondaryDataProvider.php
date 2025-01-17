@@ -6,9 +6,9 @@ use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationBot;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use MediaWiki\Title\Title;
 use Message;
 use MWStake\MediaWiki\Component\DataStore\ISecondaryDataProvider;
-use Title;
 
 class SecondaryDataProvider implements ISecondaryDataProvider {
 
