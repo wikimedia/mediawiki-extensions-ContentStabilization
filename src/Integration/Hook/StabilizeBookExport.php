@@ -12,9 +12,9 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use PageProps;
 use RequestContext;
-use Title;
 use TitleFactory;
 use User;
 

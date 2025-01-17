@@ -7,8 +7,8 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
+use MediaWiki\Title\Title;
 use RequestContext;
-use Title;
 use TitleFactory;
 use User;
 

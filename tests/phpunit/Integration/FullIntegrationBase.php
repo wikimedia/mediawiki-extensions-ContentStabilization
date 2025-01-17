@@ -7,12 +7,12 @@ use FauxRequest;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use MWException;
 use OutputPage;
 use PermissionsError;
 use RequestContext;
-use Title;
 use User;
 
 abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {

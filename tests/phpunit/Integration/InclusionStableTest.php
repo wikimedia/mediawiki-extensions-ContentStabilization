@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
+use MediaWiki\Title\Title;
 use MWException;
 use PermissionsError;
-use Title;
 use User;
 
 /**

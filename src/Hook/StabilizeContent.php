@@ -31,6 +31,7 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionRenderer;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use Message;
 use OutputPage;
@@ -38,7 +39,6 @@ use Parser;
 use ParserOptions;
 use PermissionsError;
 use RequestContext;
-use Title;
 use TitleFactory;
 
 class StabilizeContent implements
