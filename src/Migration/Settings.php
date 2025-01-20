@@ -14,7 +14,7 @@ class Settings {
 		'FlaggedRevsConnectorBookshelfShowStable' => 'BlueSpiceBookshelfExportListStable',
 		'FlaggedRevsConnectorFlaggedRevsHandleIncludes' => 'ContentStabilizationInclusionMode',
 		'FlaggedRevsConnectorIndexStableOnly' => 'BlueSpiceExtendedSearchIndexOnlyStable',
-		'FlaggedRevsConnectorUEModulePDFShowFRTag' => 'BlueSpiceUEModulePDFShowStabilizationTag',
+		'FlaggedRevsConnectorUEModulePDFShowFRTag' => 'IntegrationPDFCreatorShowStabilizationTag',
 		'FlaggedRevsConnectorDraftGroups' => 'ContentStabilizationDraftGroups',
 	];
 

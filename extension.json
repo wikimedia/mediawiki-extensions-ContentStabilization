@@ -66,10 +66,7 @@
 				"ContentStabilizationAllowFirstUnstable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\AllowFirstUnstable::getInstance",
 				"ContentStabilizationStabilizeSMWProperties": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\StabilizeSMWProperties::getInstance",
 				"BlueSpiceExtendedSearchIndexOnlyStable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\SearchIndexOnlyStable::getInstance",
-				"BlueSpiceUEModulePDFShowStabilizationTag": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\PDFExportShowTag::getInstance",
-				"BlueSpiceBookshelfExportListStable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\BookshelfExportListStable::getInstance",
-				"BlueSpiceBookshelfExportListUnstable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\BookshelfExportListUnstable::getInstance",
-				"BlueSpiceBookshelfExportListDisabled": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\BookshelfExportListDisabled::getInstance"
+				"ContentStabilizationPDFCreatorShowStabilizationTag": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\PDFExportShowTag::getInstance"
 			},
 			"AlertProviderRegistry": {
 				"contentstabilization-revisionstate": "MediaWiki\\Extension\\ContentStabilization\\Integration\\AlertProvider\\RevisionState::factory"
@@ -133,6 +130,16 @@
 			"PluginModules": [
 				"ext.contentStabilization.wikiExplorer.columns"
 			]
+		},
+		"PDFCreator": {
+			"ExportPluginModules": [
+				"ext.contentStabilization.exportmode.pdf"
+			],
+			"StyleBlocksProvider": {
+				"content-stabilization": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PDFCreator\\StyleBlockProvider\\CSStyleBlocks"
+				}
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
@@ -284,6 +291,11 @@
 				"contentstabilization-wikiexplorer-filter-has-draft",
 				"contentstabilization-wikiexplorer-filter-no-draft"
 			]
+		},
+		"ext.contentStabilization.exportmode.pdf": {
+			"scripts": [
+				"ext.contentStabilization.export.plugin.js"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -313,6 +325,9 @@
 		"ArticleViewHeader": [ "stabilizeContent" ],
 		"BeforeParserFetchTemplateRevisionRecord": "stabilizeContent",
 		"BeforeParserFetchFileAndTitle": "stabilizeContent",
+		"PDFCreatorAfterSetRevision": "stabilizePDFExport",
+		"PDFCreatorAfterGetDOMDocument": "stabilizePDFExport",
+		"PDFCreatorContextBeforeGetPage": "stabilizeContent",
 		"PageDeleteComplete": "stabilizeContent",
 		"PageMoveComplete": "stabilizeContent",
 		"ImagePageFindFile": "stabilizeContent",
@@ -336,9 +351,6 @@
 		"ImgAuthBeforeStream": "stabilizeImgAuthFile",
 		"BSExtendedSearchWikipageFetchRevision": "stabilizeExtendedSearch",
 		"BSExtendedSearchRepoFileGetFile": "stabilizeExtendedSearch",
-		"BSUEModulePDFgetPage": "stabilizePDFExport",
-		"BSUEModulePDFBeforeAddingStyleBlocks": [ "stabilizePDFExport", "stabilizeBookExport" ],
-		"BSUEModulePDFbeforeGetPage": "stabilizePDFExport",
 		"BSBookshelfExportBeforeArticles": "stabilizeBookExport",
 		"BSApiExtJSStoreBaseBeforePostProcessData": "addStabilizationInfoToPageAssignments",
 		"BSPageAssignmentsOverview": "addStabilizationInfoToPageAssignments",
@@ -416,7 +428,7 @@
 		},
 		"stabilizePDFExport": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizePDFExport",
-			"services": [ "ContentStabilization.Lookup", "TitleFactory", "ContentLanguage", "MainConfig" ]
+			"services": [ "ContentStabilization.Lookup", "ContentLanguage", "MainConfig" ]
 		},
 		"stabilizeBookExport": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeBookExport",
@@ -514,23 +526,8 @@
 			"description": "Whether to only index stable content in the search index",
 			"value": false
 		},
-		"BlueSpiceUEModulePDFShowStabilizationTag": {
+		"ContentStabilizationPDFCreatorShowStabilizationTag": {
 			"value": true
-		},
-		"BlueSpiceBookshelfExportListStable": {
-			"value": true,
-			"description": "List approved revisions log",
-			"public": true
-		},
-		"BlueSpiceBookshelfExportListUnstable": {
-			"value": true,
-			"description": "List pages without stable revision",
-			"public": true
-		},
-		"BlueSpiceBookshelfExportListDisabled": {
-			"value": true,
-			"description": "List pages that do not have stabilization enabled",
-			"public": true
 		},
 		"BlueSpicePageApprovedReminderDelay": {
 			"public": false,

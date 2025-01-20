@@ -2,40 +2,24 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use BlueSpice\UEModulePDF\Hook\BSUEModulePDFBeforeAddingStyleBlocksHook;
-use BlueSpice\UEModulePDF\Hook\BSUEModulePDFbeforeGetPageHook;
-use BlueSpice\UEModulePDF\Hook\BSUEModulePDFgetPageHook;
-use DOMXPath;
-use Language;
+use DOMDocument;
+use DOMElement;
 use MediaWiki\Config\Config;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use MediaWiki\Extension\PDFCreator\Utility\PageContext;
+use MediaWiki\Language\Language;
 use MediaWiki\Message\Message;
-use MediaWiki\Request\WebRequest;
-use MediaWiki\Title\Title;
-use MediaWiki\Title\TitleFactory;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 
-class StabilizePDFExport implements
-	BSUEModulePDFgetPageHook,
-	BSUEModulePDFBeforeAddingStyleBlocksHook,
-	BSUEModulePDFbeforeGetPageHook
-{
+class StabilizePDFExport {
 	/** @var StabilizationLookup */
 	private $lookup;
 
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var WebRequest */
-	private $request;
-
 	/** @var Config */
 	private $config;
-
-	/** @var User */
-	private $user;
 
 	/** @var StableView|null */
 	private $view = null;
@@ -43,88 +27,60 @@ class StabilizePDFExport implements
 	/** @var Language */
 	private $language;
 
+	/** @var array */
+	private $params;
+
 	/**
 	 * @param StabilizationLookup $stabilizationLookup
-	 * @param TitleFactory $titleFactory
 	 * @param Language $language
 	 * @param Config $config
 	 */
 	public function __construct(
-		StabilizationLookup $stabilizationLookup, TitleFactory $titleFactory,
-		Language $language, Config $config
+		StabilizationLookup $stabilizationLookup, Language $language, Config $config
 	) {
 		$this->lookup = $stabilizationLookup;
-		$this->titleFactory = $titleFactory;
-
 		$this->language = $language;
 		$this->config = $config;
-
-		$this->request = RequestContext::getMain()->getRequest();
-		$this->user = RequestContext::getMain()->getUser();
 	}
 
 	/**
-	 * @inheritDoc
+	 * @param RevisionRecord &$revisionRecord
+	 * @param UserIdentity $userIdentity
+	 * @param array $params
+	 * @return void
 	 */
-	public function onBSUEModulePDFBeforeAddingStyleBlocks( array &$template, array &$styleBlocks ): void {
-		$base = dirname( __DIR__, 3 ) . '/resources';
-		$styleBlocks[ 'ContentStabilization' ] = file_get_contents( "$base/stabilized-export.css" );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function onBSUEModulePDFbeforeGetPage( &$params ): void {
-		$forceUnstable = $this->request->getBool( 'stable', true ) === false;
-		// Get oldid from params
-		$oldId = isset( $params['oldid'] ) ? (int)$params['oldid'] : null;
-		if ( !$oldId ) {
-			// if not set, get from request
-			$oldId = $this->request->getInt( 'oldid', null );
+	public function onPDFCreatorAfterSetRevision(
+		RevisionRecord &$revisionRecord, UserIdentity $userIdentity, array $params
+	): void {
+		$this->params = $params;
+		if ( isset( $this->params['stable'] ) ) {
+			$stable = $this->params['stable'];
 		}
-		$title = $this->titleFactory->newFromID( $params['article-id'] ?? 0 );
+		if ( !in_array( $stable, [ 0, false, 'false' ] ) ) {
+			return;
+		}
+		$this->params['forceUnstable'] = false;
 
-		if ( !( $title instanceof Title ) ) {
+		$this->view = $this->lookup->getStableView( $revisionRecord->getPage(), $userIdentity, $this->params );
+		$revisionRecord = $this->view->getRevision();
+	}
+
+	/**
+	 * @param DOMDocument $dom
+	 * @param PageContext $context
+	 * @return void
+	 */
+	public function onPDFCreatorAfterGetDOMDocument( DOMDocument $dom, PageContext $context ): void {
+		if ( !$this->config->get( 'ContentStabilizationPDFCreatorShowStabilizationTag' ) ) {
 			return;
 		}
 
-		if ( !$title->canExist() ) {
+		if ( !$context->getTitle()->canExist() ) {
 			// Virtual namespace
 			return;
 		}
-		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
-			return;
-		}
-		$stabilizationOptions = [
-			'forceUnstable' => $forceUnstable,
-		];
-		if ( $oldId ) {
-			$stabilizationOptions['upToRevision'] = $oldId;
-		}
-		$this->view = $this->lookup->getStableView( $title, $this->user, $stabilizationOptions );
 
-		if ( !$this->view ) {
-			return;
-		}
-		if ( !$this->view->getRevision() ) {
-			// Cannot show anything
-			$oldId = 0;
-		} else {
-			$oldId = $this->view->getRevision()->getId();
-		}
-
-		$params['oldid'] = $oldId;
-		$params['stabilized'] = true;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function onBSUEModulePDFgetPage( Title $title, array &$page, array &$params, DOMXPath $DOMXPath ): void {
-		if ( !$this->config->get( 'BlueSpiceUEModulePDFShowStabilizationTag' ) ) {
-			return;
-		}
-		if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
+		if ( !$this->lookup->isStabilizationEnabled( $context->getTitle() ) ) {
 			return;
 		}
 		if ( !$this->view || !$this->view->getRevision() ) {
@@ -145,52 +101,72 @@ class StabilizePDFExport implements
 			$lastStableRevisionTime = $lastStable->getRevision()->getTimestamp();
 		}
 
-		$page['meta']['laststabledate'] = $this->formatTs( $lastStableTime );
-		$page['meta']['stablerevisiondate'] = $this->formatTs( $lastStableRevisionTime );
-
-		$stableTag = $page['dom']->createElement(
+		$stableTag = $dom->createElement(
 			'span',
 			Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )
-				->text()
-		) . ' ';
+				->text() . ' '
+		);
 
 		$stableTag->setAttribute( 'class', 'contentstabilization-export-laststable-tag' );
 		if ( !$lastStableTime ) {
-			$dateNode = $page['dom']->createElement(
+			$dateNode = $dom->createElement(
 				'span',
 				Message::newFromKey( 'contentstabilization-export-no-stable-date' )
 					->plain()
 			);
 			$dateNode->setAttribute( 'class', 'nostable' );
 		} else {
-			$dateNode = $page['dom']->createTextNode( $page['meta']['laststabledate'] );
+			$dateNode = $dom->createTextNode( $this->formatTs( $lastStableTime, $context->getUser() ) );
 		}
 
 		$stableTag->appendChild( $dateNode );
 
-		$stableRevDateTag = $page['dom']->createElement(
+		$stableRevDateTag = $dom->createElement(
 			'span',
 			' / ' . Message::newFromKey( 'contentstabilization-export-stablerevisiondate-tag-text' )
-				->params( $page['meta']['stablerevisiondate'] )
+				->params( $this->formatTs( $lastStableRevisionTime, $context->getUser() ) )
 				->text()
 		);
 		$stableRevDateTag->setAttribute( 'class', 'contentstabilization-export' );
 
-		$page['firstheading-element']->parentNode->insertBefore(
-			$stableRevDateTag, $page['firstheading-element']->nextSibling
-		);
+		$headings = $dom->getElementsByTagName( 'h1' );
+		$firstHeading = null;
+		foreach ( $headings as $heading ) {
+			if ( $heading instanceof DOMElement === false ) {
+				continue;
+			}
+			if ( !$heading->hasAttribute( 'class' ) ) {
+				continue;
+			}
+			$classes = $heading->getAttribute( 'class' );
+			if ( strpos( $classes, 'firstHeading' ) === false ) {
+				continue;
+			}
+			$firstHeading = $heading;
+			break;
+		}
+		if ( $heading === null ) {
+			return;
+		}
 
-		$page['firstheading-element']->parentNode->insertBefore(
-			$stableTag, $page['firstheading-element']->nextSibling
-		);
+		$firstHeading->parentNode->insertBefore( $stableRevDateTag, $firstHeading->nextSibling );
+		$firstHeading->parentNode->insertBefore( $stableTag, $firstHeading->nextSibling );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onBSUEModulePDFBeforeAddingStyleBlocks( array &$template, array &$styleBlocks ): void {
+		$base = dirname( __DIR__, 3 ) . '/resources';
+		$styleBlocks[ 'ContentStabilization' ] = file_get_contents( "$base/stabilized-export.css" );
 	}
 
 	/**
 	 * @param string $lastStableRevisionTime
-	 *
+	 * @param User $user
 	 * @return string
 	 */
-	private function formatTs( string $lastStableRevisionTime ): string {
-		return $this->language->userTimeAndDate( $lastStableRevisionTime, $this->user );
+	private function formatTs( string $lastStableRevisionTime, User $user ): string {
+		return $this->language->userTimeAndDate( $lastStableRevisionTime, $user );
 	}
 }
