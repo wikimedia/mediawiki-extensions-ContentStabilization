@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MWException;
 use PermissionsError;
-use User;
 
 /**
  * @group Database

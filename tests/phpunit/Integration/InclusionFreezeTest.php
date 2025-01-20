@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
-use User;
+use MediaWiki\User\User;
 
 /**
  * @group Database
