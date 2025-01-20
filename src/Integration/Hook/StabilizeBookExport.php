@@ -13,10 +13,10 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use PageProps;
 use RequestContext;
 use TitleFactory;
-use User;
 
 class StabilizeBookExport implements
 	BSBookshelfExportBeforeArticlesHook,

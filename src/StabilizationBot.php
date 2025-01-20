@@ -7,6 +7,7 @@ use MediaWiki\Block\Block;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionStatus;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -25,7 +26,7 @@ class StabilizationBot implements Authority {
 	 * @inheritDoc
 	 */
 	public function getUser(): UserIdentity {
-		return \User::newSystemUser( "ContentStabilizationBot", [ "steal" => true ] );
+		return User::newSystemUser( "ContentStabilizationBot", [ "steal" => true ] );
 	}
 
 	/**

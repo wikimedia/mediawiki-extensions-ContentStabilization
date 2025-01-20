@@ -12,6 +12,7 @@ use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\User\User;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -55,7 +56,7 @@ class ContentStabilizerTest extends TestCase {
 		$revision->method( 'isCurrent' )->willReturn( $isCurrent );
 		$revision->method( 'getPageAsLinkTarget' )->willReturn( $this->createMock( LinkTarget::class ) );
 
-		$user = $this->getMockBuilder( \User::class )
+		$user = $this->getMockBuilder( User::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$user->method( 'getName' )->willReturn( $username );
@@ -107,7 +108,7 @@ class ContentStabilizerTest extends TestCase {
 			$this->createMock( HookContainer::class )
 		);
 
-		$user = $this->getMockBuilder( \User::class )
+		$user = $this->getMockBuilder( User::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$user->method( 'getName' )->willReturn( $username );

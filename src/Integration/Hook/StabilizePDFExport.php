@@ -11,9 +11,9 @@ use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use RequestContext;
 use TitleFactory;
-use User;
 use WebRequest;
 
 class StabilizePDFExport implements

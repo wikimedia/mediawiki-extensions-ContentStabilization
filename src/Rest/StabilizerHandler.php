@@ -8,9 +8,9 @@ use MediaWiki\Page\PageIdentity;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use RequestContext;
 use TitleFactory;
-use User;
 
 abstract class StabilizerHandler extends SimpleHandler {
 

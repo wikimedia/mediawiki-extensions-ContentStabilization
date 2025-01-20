@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
+use MediaWiki\User\User;
 use MWException;
 use PermissionsError;
-use User;
 
 /**
  * @group Database

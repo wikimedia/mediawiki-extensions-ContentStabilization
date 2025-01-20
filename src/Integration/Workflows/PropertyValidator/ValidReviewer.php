@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\Workflows\Propert
 use MediaWiki\Extension\Workflows\IActivity;
 use MediaWiki\Extension\Workflows\PropertyValidator\ExistingUser;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use Message;
 
@@ -45,7 +46,7 @@ class ValidReviewer extends ExistingUser {
 	 */
 	public function getError( $value ): Message {
 		$user = $this->userFactory->newFromName( $value );
-		if ( !$user instanceof \User ) {
+		if ( !$user instanceof User ) {
 			return parent::getError( $value );
 		}
 		return Message::newFromKey(

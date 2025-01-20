@@ -8,12 +8,12 @@ use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use MWException;
 use OutputPage;
 use PermissionsError;
 use RequestContext;
-use User;
 
 abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	/** @var User */
