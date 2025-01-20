@@ -6,6 +6,7 @@ use Article;
 use DifferenceEngine;
 use ManualLogEntry;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Diff\Hook\DifferenceEngineViewHeaderHook;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
@@ -277,6 +278,14 @@ class StabilizeContent implements
 				return;
 			}
 		}
+	}
+
+	/**
+	 *
+	 * @inheritDoc
+	 */
+	public function onPDFCreatorContextBeforeGetPage( IContextSource $contextSource ): void {
+		$this->view = $this->lookup->getStableViewFromContext( $contextSource );
 	}
 
 	/**

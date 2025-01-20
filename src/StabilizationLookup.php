@@ -227,7 +227,9 @@ class StabilizationLookup {
 				$explicitlyRequestedRev = true;
 			}
 			$forceStable = true;
-			if ( isset( $options['forceUnstable'] ) && $options['forceUnstable'] ) {
+			// Check if stable or draft is explicitly requested
+			$explicitStableState = isset( $options['forceUnstable'] );
+			if ( $explicitStableState && $options['forceUnstable'] ) {
 				$forceStable = false;
 			}
 			if ( !$this->hasStable( $page ) ) {
@@ -241,9 +243,10 @@ class StabilizationLookup {
 				$this->stableViewCache[$cacheKey] = null;
 				return null;
 			}
+
 			if ( !$selected->isCurrent() || $explicitlyRequestedRev ) {
 				// Requesting old revision, show that if possible
-				$forceStable = false;
+				$forceStable = $explicitStableState ? $forceStable : false;
 				$showingOld = true;
 			}
 			$lastStable = $this->getLastStablePoint( $page, $selected );

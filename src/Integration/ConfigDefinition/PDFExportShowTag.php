@@ -33,13 +33,13 @@ class PDFExportShowTag extends BooleanSetting implements IOverwriteGlobal {
 	 * @return string
 	 */
 	public function getGlobalName() {
-		return "wgBlueSpiceUEModulePDFShowStabilizationTag";
+		return "wgContentStabilizationPDFCreatorShowStabilizationTag";
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isHidden() {
-		return !ExtensionRegistry::getInstance()->isLoaded( 'BlueSpiceUEModulePDF' );
+		return !ExtensionRegistry::getInstance()->isLoaded( 'PDFCreator' );
 	}
 }
