@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Rest;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Page\PageIdentity;
@@ -9,7 +10,6 @@ use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use RequestContext;
 use TitleFactory;
 
 abstract class StabilizerHandler extends SimpleHandler {

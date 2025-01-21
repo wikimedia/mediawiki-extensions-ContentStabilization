@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LoggerInterface;
-use RequestContext;
 use Throwable;
 
 class AutoStabilize implements PageSaveCompleteHook {

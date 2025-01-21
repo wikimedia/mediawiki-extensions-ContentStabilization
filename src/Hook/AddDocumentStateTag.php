@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\InclusionManager;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
@@ -10,7 +11,6 @@ use MediaWiki\Revision\RevisionStore;
 use Message;
 use Parser;
 use PPFrame;
-use RequestContext;
 use TitleFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 

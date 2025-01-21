@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Rest;
 
 use Config;
 use Language;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\Data\StabilizedPages\Store;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\HookContainer\HookContainer;
@@ -12,7 +13,6 @@ use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;
 use MWStake\MediaWiki\Component\CommonWebAPIs\Rest\QueryStore;
 use MWStake\MediaWiki\Component\DataStore\IStore;
-use RequestContext;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class StabilizationOverviewHandler extends QueryStore {

@@ -8,11 +8,11 @@ use BlueSpice\UEModulePDF\Hook\BSUEModulePDFgetPageHook;
 use Config;
 use DOMXPath;
 use Language;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use RequestContext;
 use TitleFactory;
 use WebRequest;
 

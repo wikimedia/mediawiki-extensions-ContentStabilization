@@ -6,6 +6,7 @@ use Article;
 use DifferenceEngine;
 use ManualLogEntry;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Diff\Hook\DifferenceEngineViewHeaderHook;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
@@ -38,7 +39,6 @@ use OutputPage;
 use Parser;
 use ParserOptions;
 use PermissionsError;
-use RequestContext;
 use TitleFactory;
 
 class StabilizeContent implements
