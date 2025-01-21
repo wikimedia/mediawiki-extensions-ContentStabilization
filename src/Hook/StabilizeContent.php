@@ -33,13 +33,13 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionRenderer;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use Message;
 use OutputPage;
 use Parser;
 use ParserOptions;
 use PermissionsError;
-use TitleFactory;
 
 class StabilizeContent implements
 	ArticleViewHeaderHook,

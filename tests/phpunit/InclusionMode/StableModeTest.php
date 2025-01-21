@@ -10,6 +10,7 @@ use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
 
@@ -43,7 +44,7 @@ class StableModeTest extends TestCase {
 			}
 		);
 
-		$titleFactory = $this->createMock( \TitleFactory::class );
+		$titleFactory = $this->createMock( TitleFactory::class );
 		$titleFactory->method( 'makeTitle' )->willReturnCallback(
 			function ( $namespace, $title ) use ( $page, $image ) {
 				$pageId = 0;

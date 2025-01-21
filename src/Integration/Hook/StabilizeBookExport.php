@@ -14,9 +14,9 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use PageProps;
-use TitleFactory;
 
 class StabilizeBookExport implements
 	BSBookshelfExportBeforeArticlesHook,

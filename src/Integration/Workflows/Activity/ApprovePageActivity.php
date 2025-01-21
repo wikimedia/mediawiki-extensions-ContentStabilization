@@ -14,11 +14,11 @@ use MediaWiki\Extension\Workflows\WorkflowContext;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use Message;
 use MWTimestamp;
-use TitleFactory;
 
 /**
  * Required data:

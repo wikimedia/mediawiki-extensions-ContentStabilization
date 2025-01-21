@@ -10,9 +10,9 @@ use MediaWiki\Hook\PageHistoryLineEndingHook;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Page\Hook\ImagePageFileHistoryLineHook;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use Message;
-use TitleFactory;
 
 class IntegrateIntoHistory implements PageHistoryLineEndingHook, BeforeInitializeHook, ImagePageFileHistoryLineHook {
 

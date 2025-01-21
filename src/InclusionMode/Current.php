@@ -5,8 +5,8 @@ namespace MediaWiki\Extension\ContentStabilization\InclusionMode;
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\TitleFactory;
 use RepoGroup;
-use TitleFactory;
 
 class Current implements InclusionMode {
 	/** @var RevisionLookup */

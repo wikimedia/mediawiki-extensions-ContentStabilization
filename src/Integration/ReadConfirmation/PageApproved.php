@@ -15,11 +15,11 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use MWException;
 use MWStake\MediaWiki\Component\Events\Notifier;
 use Psr\Log\LoggerInterface;
-use TitleFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**

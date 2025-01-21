@@ -8,10 +8,10 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Revision\RevisionStore;
+use MediaWiki\Title\TitleFactory;
 use Message;
 use Parser;
 use PPFrame;
-use TitleFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class AddDocumentStateTag implements ParserFirstCallInitHook {
