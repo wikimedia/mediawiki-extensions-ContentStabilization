@@ -9,13 +9,13 @@ use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
-use WebRequest;
 use WikitextContent;
 
 class StabilizationLookup {

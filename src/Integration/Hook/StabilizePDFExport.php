@@ -11,10 +11,10 @@ use Language;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use TitleFactory;
-use WebRequest;
 
 class StabilizePDFExport implements
 	BSUEModulePDFgetPageHook,
