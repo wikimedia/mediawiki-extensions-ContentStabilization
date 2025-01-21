@@ -9,8 +9,8 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\TitleFactory;
 use RepoGroup;
-use TitleFactory;
 
 class Stable implements InclusionMode {
 	/** @var RevisionLookup */

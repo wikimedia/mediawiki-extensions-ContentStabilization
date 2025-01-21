@@ -6,7 +6,7 @@ use ApiMain;
 use BlueSpice\PageAssignments\Hook\BSPageAssignmentsOverviewHook;
 use BSApiMyPageAssignmentStore;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
-use TitleFactory;
+use MediaWiki\Title\TitleFactory;
 
 class AddStabilizationInfoToPageAssignments implements BSPageAssignmentsOverviewHook {
 

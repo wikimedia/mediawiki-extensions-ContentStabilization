@@ -6,8 +6,8 @@ use BlueSpice\SMWConnector\PropertyValueProvider;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\TitleFactory;
 use SMW\DIWikiPage;
-use TitleFactory;
 
 class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 

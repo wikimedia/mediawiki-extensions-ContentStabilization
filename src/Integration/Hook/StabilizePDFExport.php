@@ -13,8 +13,8 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
-use TitleFactory;
 
 class StabilizePDFExport implements
 	BSUEModulePDFgetPageHook,
