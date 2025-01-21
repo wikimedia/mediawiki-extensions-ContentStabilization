@@ -8,6 +8,7 @@ use BlueSpice\UniversalExport\ExportSpecification;
 use Config;
 use DOMElement;
 use Language;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\HookContainer\HookContainer;
@@ -15,7 +16,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use PageProps;
-use RequestContext;
 use TitleFactory;
 
 class StabilizeBookExport implements

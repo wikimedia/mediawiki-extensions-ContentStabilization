@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Hook\ImgAuthBeforeStreamHook;
 use RepoGroup;
-use RequestContext;
 
 class StabilizeImgAuth implements ImgAuthBeforeStreamHook {
 
