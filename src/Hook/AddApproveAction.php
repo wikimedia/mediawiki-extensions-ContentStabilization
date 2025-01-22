@@ -10,8 +10,8 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Hook\EditPageGetCheckboxesDefinitionHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
+use MediaWiki\Message\Message;
 use MediaWiki\Permissions\PermissionManager;
-use Message;
 
 class AddApproveAction implements SkinTemplateNavigation__UniversalHook, EditPageGetCheckboxesDefinitionHook {
 
