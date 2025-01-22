@@ -11,6 +11,7 @@ use Language;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use MediaWiki\Message\Message;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -149,7 +150,7 @@ class StabilizePDFExport implements
 
 		$stableTag = $page['dom']->createElement(
 			'span',
-			\Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )
+			Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )
 				->text()
 		) . ' ';
 
@@ -157,7 +158,7 @@ class StabilizePDFExport implements
 		if ( !$lastStableTime ) {
 			$dateNode = $page['dom']->createElement(
 				'span',
-				\Message::newFromKey( 'contentstabilization-export-no-stable-date' )
+				Message::newFromKey( 'contentstabilization-export-no-stable-date' )
 					->plain()
 			);
 			$dateNode->setAttribute( 'class', 'nostable' );
@@ -169,7 +170,7 @@ class StabilizePDFExport implements
 
 		$stableRevDateTag = $page['dom']->createElement(
 			'span',
-			' / ' . \Message::newFromKey( 'contentstabilization-export-stablerevisiondate-tag-text' )
+			' / ' . Message::newFromKey( 'contentstabilization-export-stablerevisiondate-tag-text' )
 				->params( $page['meta']['stablerevisiondate'] )
 				->text()
 		);

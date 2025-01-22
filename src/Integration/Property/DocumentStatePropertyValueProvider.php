@@ -6,7 +6,7 @@ use BlueSpice\SMWConnector\PropertyValueProvider;
 use MediaWiki\Extension\ContentStabilization\StabilizationBot;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\MediaWikiServices;
-use Message;
+use MediaWiki\Message\Message;
 use SMWDataItem;
 use SMWDIBlob;
 

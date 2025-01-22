@@ -7,7 +7,7 @@ use Html;
 use IContextSource;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\MediaWikiServices;
-use Message;
+use MediaWiki\Message\Message;
 use PageHeader\IPageInfo;
 
 class PageStatusDropdown extends StabilizedPageElement {
