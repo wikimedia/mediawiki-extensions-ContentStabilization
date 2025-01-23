@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Rest;
 
-use Config;
 use Language;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\Data\StabilizedPages\Store;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;

@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration\AlertProvider;
 
 use BlueSpice\AlertProviderBase;
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\MediaWikiServices;

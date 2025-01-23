@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\PageInfoElement;
 
-use Config;
 use IContextSource;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use PageHeader\PageInfo;

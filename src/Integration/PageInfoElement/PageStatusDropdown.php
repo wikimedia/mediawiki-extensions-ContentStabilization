@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\PageInfoElement;
 
-use Config;
 use Html;
 use IContextSource;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
