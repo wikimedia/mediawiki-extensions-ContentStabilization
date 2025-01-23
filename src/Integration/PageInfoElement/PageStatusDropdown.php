@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration\PageInfoElement;
 
 use Html;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
