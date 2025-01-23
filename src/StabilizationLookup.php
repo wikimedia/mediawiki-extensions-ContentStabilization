@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\ContentStabilization;
 
 use File;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;

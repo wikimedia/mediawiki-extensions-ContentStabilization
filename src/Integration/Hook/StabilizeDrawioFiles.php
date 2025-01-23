@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
 use File;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\DrawioEditor\Hook\DrawioGetFileHook;
