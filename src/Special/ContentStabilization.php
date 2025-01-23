@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Special;
 
-use Config;
 use Language;
+use MediaWiki\Config\Config;
 use OOUI\MessageWidget;
 use SpecialPage;
 

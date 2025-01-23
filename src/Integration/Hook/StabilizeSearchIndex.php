@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
 use BS\ExtendedSearch\MediaWiki\Hook\BSExtendedSearchRepoFileGetFileHook;
 use BS\ExtendedSearch\MediaWiki\Hook\BSExtendedSearchWikipageFetchRevisionHook;
-use Config;
 use File;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;

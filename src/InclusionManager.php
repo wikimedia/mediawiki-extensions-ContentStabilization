@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\ContentStabilization;
 
-use Config;
 use GlobalVarConfig;
 use HashBagOStuff;
 use IDBAccessObject;
+use MediaWiki\Config\Config;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;

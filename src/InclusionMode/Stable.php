@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\InclusionMode;
 
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
