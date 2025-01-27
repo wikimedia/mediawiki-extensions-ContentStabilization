@@ -570,21 +570,30 @@ class StabilizeContent implements
 			if ( $view->getRevision()->isCurrent() ) {
 				return;
 			}
+			if ( $context->getRequest()->getText( 'action', 'view' ) === 'visualeditor' ) {
+				// Do not replace actual content for VE parsing
+				$oldId = $context->getRequest()->getInt( 'oldid' );
+				$stabilizedRev = $view->getRevision()->getId();
+				if ( $oldId !== $stabilizedRev ) {
+					$context->getRequest()->setVal( 'oldid', $stabilizedRev );
+				}
+				return;
+			}
 			// Do not re-trigger this hook while we re-parse
 			$this->allowParserOutputAlteration = false;
 			$options = ParserOptions::newFromContext( $context );
 			$renderedRev = $this->revisionRenderer->getRenderedRevision( $view->getRevision(), $options );
 			if ( $renderedRev ) {
-				$text = $renderedRev->getRevisionParserOutput()->getText();
+				$text = $renderedRev->getRevisionParserOutput()->runOutputPipeline( $options )->getContentHolderText();
 				// Remove wrapping in <div class="mw-parser-output">...</div>
 				$text = preg_replace( '/^<div class="mw-parser-output">(.*)<\/div>$/s', '$1', $text );
-				$parserOutput->setText( $text );
+				$parserOutput->setRawText( $text );
 			}
 			$this->allowParserOutputAlteration = true;
 			return;
 		}
 
-		$parserOutput->setText( '' );
+		$parserOutput->setRawText( null );
 	}
 
 	/**
