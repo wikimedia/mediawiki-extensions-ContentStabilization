@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Migration;
 
-use Status;
+use MediaWiki\Status\Status;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Settings {
