@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\ContentStabilization\Special;
 
 use Language;
 use MediaWiki\Config\Config;
+use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\MessageWidget;
-use SpecialPage;
 
 class ContentStabilization extends SpecialPage {
 

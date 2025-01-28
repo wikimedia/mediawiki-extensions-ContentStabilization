@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\ContentStabilization\Integration;
 
 use MediaWiki\Message\Message;
+use MediaWiki\SpecialPage\SpecialPage;
 use MWStake\MediaWiki\Component\CommonUserInterface\Component\RestrictedTextLink;
-use SpecialPage;
 
 class OverviewGlobalAction extends RestrictedTextLink {
 
