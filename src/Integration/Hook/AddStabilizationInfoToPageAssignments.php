@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use ApiMain;
 use BlueSpice\PageAssignments\Hook\BSPageAssignmentsOverviewHook;
 use BSApiMyPageAssignmentStore;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Title\TitleFactory;
 
