@@ -20,6 +20,7 @@ use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
@@ -516,7 +517,7 @@ class StabilizeContent implements
 		$msg = Message::newFromKey(
 			'contentstabilization-edit-notice-approval-needed'
 		);
-		$notices['contentstabilization-approvalnotice'] = \Html::rawElement( 'b', [], $msg->text() );
+		$notices['contentstabilization-approvalnotice'] = Html::rawElement( 'b', [], $msg->text() );
 	}
 
 	/**
