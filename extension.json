@@ -364,7 +364,8 @@
 		"PageSaveComplete": "autoStabilize",
 		"ParserFirstCallInit": "addDocumentStateTag",
 		"DifferenceEngineViewHeader": "stabilizeContent",
-		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications"
+		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications",
+		"CognitiveProcessDesignerBeforeRender": "stabilizeCognitiveProcessDesigner"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -464,6 +465,12 @@
 		"stabilizeNotifications": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeNotifications",
 			"services": [ "ContentStabilization.Lookup" ]
+		},
+		"stabilizeCognitiveProcessDesigner": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeCognitiveProcessDesigner",
+			"services": [
+				"ContentStabilization.Lookup", "RevisionLookup"
+			]
 		}
 	},
 	"SpecialPages": {
