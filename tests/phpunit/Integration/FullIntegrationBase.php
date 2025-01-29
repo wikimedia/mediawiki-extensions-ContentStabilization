@@ -8,11 +8,11 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use MWException;
-use OutputPage;
 use PermissionsError;
 
 abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
