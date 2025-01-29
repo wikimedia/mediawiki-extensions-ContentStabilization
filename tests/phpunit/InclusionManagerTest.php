@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests;
 
-use Content;
 use File;
 use HashConfig;
 use LocalRepo;
+use MediaWiki\Content\Content;
 use MediaWiki\Extension\ContentStabilization\InclusionManager;
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
 use MediaWiki\Linker\LinkTarget;
