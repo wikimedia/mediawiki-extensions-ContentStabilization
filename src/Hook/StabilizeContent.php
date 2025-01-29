@@ -29,6 +29,7 @@ use MediaWiki\Page\Hook\ImagePageFindFileHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -39,7 +40,6 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
 use Parser;
-use ParserOptions;
 use PermissionsError;
 
 class StabilizeContent implements
