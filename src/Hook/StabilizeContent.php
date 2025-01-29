@@ -24,6 +24,7 @@ use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Hook\ArticleViewHeaderHook;
 use MediaWiki\Page\Hook\ImagePageFindFileHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
@@ -38,7 +39,6 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
-use OutputPage;
 use Parser;
 use PermissionsError;
 
