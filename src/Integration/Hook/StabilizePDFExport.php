@@ -52,6 +52,9 @@ class StabilizePDFExport {
 	public function onPDFCreatorAfterSetRevision(
 		RevisionRecord &$revisionRecord, UserIdentity $userIdentity, array $params
 	): void {
+		if ( !$this->lookup->isStabilizationEnabled( $revisionRecord->getPage() ) ) {
+			return;
+		}
 		$this->params = $params;
 		if ( isset( $this->params['stable'] ) ) {
 			$stable = $this->params['stable'];
