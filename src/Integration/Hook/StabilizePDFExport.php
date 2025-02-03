@@ -157,14 +157,6 @@ class StabilizePDFExport {
 	}
 
 	/**
-	 * @inheritDoc
-	 */
-	public function onBSUEModulePDFBeforeAddingStyleBlocks( array &$template, array &$styleBlocks ): void {
-		$base = dirname( __DIR__, 3 ) . '/resources';
-		$styleBlocks[ 'ContentStabilization' ] = file_get_contents( "$base/stabilized-export.css" );
-	}
-
-	/**
 	 * @param string $lastStableRevisionTime
 	 * @param User $user
 	 * @return string
