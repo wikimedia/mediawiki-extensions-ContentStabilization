@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\PDFCreator\StyleBlockProvider;
 
-use MediaWiki\Extension\PDFCreator\Interface\IStyleBlocksProvider;
+use MediaWiki\Extension\PDFCreator\IStyleBlocksProvider;
 use MediaWiki\Extension\PDFCreator\Utility\ExportContext;
 
 class CSStyleBlocks implements IStyleBlocksProvider {
