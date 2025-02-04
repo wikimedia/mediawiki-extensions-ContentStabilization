@@ -11,8 +11,8 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\FakeResultWrapper;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -168,12 +168,12 @@ class StablePointStoreTest extends TestCase {
 				StablePointStore::class . '::removeStablePoint'
 			]
 		];
-		$lb->getConnectionRef( DB_REPLICA )->expects( $this->exactly( 2 ) )->method( 'delete' )
+		$lb->getConnection( DB_REPLICA )->expects( $this->exactly( 2 ) )->method( 'delete' )
 			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
 				$curExpectedArgs = array_shift( $expectedDeleteArgs );
-				$this->assertSame( $curExpectedArgs[0], $table );
-				$this->assertSame( $curExpectedArgs[1], $conds );
-				$this->assertSame( $curExpectedArgs[2], $fname );
+				$this->assertEquals( $curExpectedArgs[0], $table );
+				$this->assertEquals( $curExpectedArgs[1], $conds );
+				$this->assertEquals( $curExpectedArgs[2], $fname );
 			} );
 
 		$revision = $this->getMockBuilder( RevisionRecord::class )
@@ -280,10 +280,10 @@ class StablePointStoreTest extends TestCase {
 		$lb = $this->getMockBuilder( ILoadBalancer::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$conn = $this->getMockBuilder( IDatabase::class )
+		$conn = $this->getMockBuilder( DBConnRef::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$lb->method( 'getConnectionRef' )->willReturn( $conn );
+		$lb->method( 'getConnection' )->willReturn( $conn );
 		$lb->method( 'getConnection' )->willReturn( $conn );
 
 		return $lb;

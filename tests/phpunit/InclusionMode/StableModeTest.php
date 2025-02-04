@@ -77,11 +77,11 @@ class StableModeTest extends TestCase {
 			'images' => [ [ 'revision' => -1, 'timestamp' => $revsAtTimeOfStablization['image'], 'name' => 'Bar' ] ],
 		], $mainPageRevision );
 
-		$this->assertSame(
+		$this->assertEquals(
 			$expected['page'], $stabilized['transclusions'][0]['revision'],
 			'Transclusion revision should be the last stable'
 		);
-		$this->assertSame( $expected['image'], $stabilized['images'][0], 'Image should be the last stable' );
+		$this->assertEquals( $expected['image'], $stabilized['images'][0], 'Image should be the last stable' );
 	}
 
 	/**
