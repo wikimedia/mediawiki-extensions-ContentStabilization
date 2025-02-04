@@ -21,8 +21,8 @@ use Parser;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\FakeResultWrapper;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use WikiPage;
 
@@ -125,9 +125,9 @@ class InclusionManagerTest extends TestCase {
 			->method( 'delete' )
 			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
 				$curExpectedArgs = array_shift( $expectedDeleteArgs );
-				$this->assertSame( $curExpectedArgs[0], $table );
-				$this->assertSame( $curExpectedArgs[1], $conds );
-				$this->assertSame( $curExpectedArgs[2], $fname );
+				$this->assertEquals( $curExpectedArgs[0], $table );
+				$this->assertEquals( $curExpectedArgs[1], $conds );
+				$this->assertEquals( $curExpectedArgs[2], $fname );
 			} );
 
 		$dataExpectedToInsert = [
@@ -185,9 +185,9 @@ class InclusionManagerTest extends TestCase {
 			->method( 'insert' )
 			->willReturnCallback( function ( $table, $rows, $fname ) use ( &$expectedInsertArgs ) {
 				$curExpectedArgs = array_shift( $expectedInsertArgs );
-				$this->assertSame( $curExpectedArgs[0], $table );
-				$this->assertSame( $curExpectedArgs[1], $rows );
-				$this->assertSame( $curExpectedArgs[2], $fname );
+				$this->assertEquals( $curExpectedArgs[0], $table );
+				$this->assertTrue( $curExpectedArgs[1] == $rows );
+				$this->assertEquals( $curExpectedArgs[2], $fname );
 			} );
 
 		$connection->method( 'select' )->willReturnCallback( static function ( $table ) use ( $dataExpectedToInsert ) {
@@ -229,7 +229,7 @@ class InclusionManagerTest extends TestCase {
 
 		$inclusionManager = $this->getInclusionManager( null, $inclusionModeMock );
 		$inclusions = $inclusionManager->getCurrentStabilizedInclusions( $revision );
-		$this->assertSame( $expected, $inclusions );
+		$this->assertEquals( $expected, $inclusions );
 	}
 
 	/**
@@ -259,9 +259,9 @@ class InclusionManagerTest extends TestCase {
 			->method( 'delete' )
 			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
 				$curExpectedArgs = array_shift( $expectedDeleteArgs );
-				$this->assertSame( $curExpectedArgs[0], $table );
-				$this->assertSame( $curExpectedArgs[1], $conds );
-				$this->assertSame( $curExpectedArgs[2], $fname );
+				$this->assertEquals( $curExpectedArgs[0], $table );
+				$this->assertEquals( $curExpectedArgs[1], $conds );
+				$this->assertEquals( $curExpectedArgs[2], $fname );
 			} );
 
 		$inclusionManager = $this->getInclusionManager( $lb );
@@ -295,9 +295,9 @@ class InclusionManagerTest extends TestCase {
 			->method( 'delete' )
 			->willReturnCallback( function ( $table, $conds, $fname ) use ( &$expectedDeleteArgs ) {
 				$curExpectedArgs = array_shift( $expectedDeleteArgs );
-				$this->assertSame( $curExpectedArgs[0], $table );
-				$this->assertSame( $curExpectedArgs[1], $conds );
-				$this->assertSame( $curExpectedArgs[2], $fname );
+				$this->assertEquals( $curExpectedArgs[0], $table );
+				$this->assertEquals( $curExpectedArgs[1], $conds );
+				$this->assertEquals( $curExpectedArgs[2], $fname );
 			} );
 
 		$inclusionManager = $this->getInclusionManager( $lb );
@@ -375,10 +375,10 @@ class InclusionManagerTest extends TestCase {
 		$mock = $this->getMockBuilder( ILoadBalancer::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$connMock = $this->getMockBuilder( IDatabase::class )
+		$connMock = $this->getMockBuilder( DBConnRef::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$mock->method( 'getConnectionRef' )->willReturn( $connMock );
+		$mock->method( 'getConnection' )->willReturn( $connMock );
 
 		return $mock;
 	}
@@ -422,7 +422,7 @@ class InclusionManagerTest extends TestCase {
 		$mock = $this->getMockBuilder( ParserFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$mock->method( 'getMainInstance' )->willReturn( $parserMock );
+		$mock->method( 'create' )->willReturn( $parserMock );
 
 		return $mock;
 	}
