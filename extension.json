@@ -135,9 +135,9 @@
 			"ExportPluginModules": [
 				"ext.contentStabilization.exportmode.pdf"
 			],
-			"StyleBlocksProvider": {
+			"StylesheetsProvider": {
 				"content-stabilization": {
-					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PDFCreator\\StyleBlockProvider\\CSStyleBlocks"
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PDFCreator\\StylesheetsProvider\\CSStyles"
 				}
 			}
 		}
