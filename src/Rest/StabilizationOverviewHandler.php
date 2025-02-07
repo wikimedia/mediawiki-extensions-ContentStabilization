@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Rest;
 
-use Language;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\Data\StabilizedPages\Store;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\Language\Language;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;

@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
-use Language;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use MediaWiki\Language\Language;
 use MWStake\MediaWiki\Component\DataStore\Filter;
 use MWStake\MediaWiki\Component\DataStore\PrimaryDatabaseDataProvider;
 use MWStake\MediaWiki\Component\DataStore\ReaderParams;

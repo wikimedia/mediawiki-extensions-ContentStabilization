@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
-use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
+use MediaWiki\Language\Language;
 use MWStake\MediaWiki\Component\DataStore\ReaderParams;
 use Wikimedia\Rdbms\ILoadBalancer;
 

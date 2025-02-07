@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
 use BadMethodCallException;
 use JakubOnderka\PhpParallelLint\IWriter;
-use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
+use MediaWiki\Language\Language;
 use MWStake\MediaWiki\Component\DataStore\IReader;
 use MWStake\MediaWiki\Component\DataStore\IStore;
 use Wikimedia\Rdbms\ILoadBalancer;
