@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\PageHistoryLineEndingHook;
+use MediaWiki\Language\Language;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Message\Message;
 use MediaWiki\Page\Hook\ImagePageFileHistoryLineHook;

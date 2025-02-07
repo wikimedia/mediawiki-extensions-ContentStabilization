@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\EnhancedStandardUIs;
 
-use Language;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\EnhancedStandardUIs\IHistoryPlugin;
+use MediaWiki\Language\Language;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
