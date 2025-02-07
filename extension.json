@@ -518,6 +518,10 @@
 			"description": "Whether to stabilize SMW properties. If true, it will only show properties that are stable",
 			"value": true
 		},
+		"ContentStabilizationUnavailableNamespaces": {
+			"description": "Array of namespace IDs for which content stabilization cannot be enabled",
+			"value": [ -1, 8 ]
+		},
 		"ContentStabilizationDraftGroups": {
 			"description": "Array of user groups that are allowed to view draft content",
 			"value": [ "user" ]
