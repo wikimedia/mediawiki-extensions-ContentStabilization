@@ -9,9 +9,9 @@ use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Message\Message;
 use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\PPFrame;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Title\TitleFactory;
-use PPFrame;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class AddDocumentStateTag implements ParserFirstCallInitHook {
