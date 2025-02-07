@@ -7,7 +7,7 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 use BlueSpice\NamespaceManager\Hook\NamespaceManagerBeforePersistSettingsHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Message\Message;
-use NamespaceInfo;
+use MediaWiki\Title\NamespaceInfo;
 
 class IntegrateIntoNamespaceManager implements NamespaceManagerBeforePersistSettingsHook {
 
