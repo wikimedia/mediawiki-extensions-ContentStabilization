@@ -372,10 +372,13 @@ class StabilizationLookup {
 			$namespace = NS_FILE;
 		}
 
+		$unavailable = $this->config->get( 'UnavailableNamespaces' );
+		if ( in_array( $namespace, $unavailable ) ) {
+			return false;
+		}
+
 		$result = in_array( $page->getNamespace(), $this->config->get( 'EnabledNamespaces' ) );
-		if ( $namespace === NS_MEDIAWIKI || $namespace === NS_SPECIAL ) {
-			$result = false;
-		} elseif ( $namespace !== NS_FILE ) {
+		if ( $namespace !== NS_FILE ) {
 			$rev = $this->revisionStore->getRevisionByPageId( $page->getId() );
 			if ( !$rev ) {
 				$result = false;

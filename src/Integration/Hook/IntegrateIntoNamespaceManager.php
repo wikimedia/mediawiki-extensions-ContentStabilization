@@ -56,11 +56,12 @@ class IntegrateIntoNamespaceManager implements NamespaceManagerBeforePersistSett
 	 */
 	public function onBSApiNamespaceStoreMakeData( &$aResults ) {
 		$current = $this->config->get( 'ContentStabilizationEnabledNamespaces' );
+		$unavailable = $this->config->get( 'ContentStabilizationUnavailableNamespaces' );
 		$iResults = count( $aResults );
 		for ( $i = 0; $i < $iResults; $i++ ) {
 			$aResults[ $i ][ 'contentstabilization' ] = [
 				'value' => in_array( $aResults[ $i ][ 'id' ], $current ),
-				'disabled' => $aResults[ $i ]['isTalkNS'] || $i === NS_MEDIAWIKI
+				'disabled' => $aResults[ $i ]['isTalkNS'] || in_array( $aResults[$i]['id'], $unavailable )
 			];
 		}
 		return true;
