@@ -6,10 +6,10 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Html\Html;
+use MediaWiki\Language\RawMessage;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use PageHeader\IPageInfo;
-use RawMessage;
 
 class VersionSwitch extends StabilizedPageElement {
 
