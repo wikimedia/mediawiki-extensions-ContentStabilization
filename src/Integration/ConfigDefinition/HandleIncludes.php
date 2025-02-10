@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\ConfigDefinition;
 use BlueSpice\ConfigDefinition\ArraySetting;
 use BlueSpice\ConfigDefinition\IOverwriteGlobal;
 use HTMLFormField;
-use HTMLSelectField;
+use MediaWiki\HTMLForm\Field\HTMLSelectField;
 use MediaWiki\Registration\ExtensionRegistry;
 
 class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
