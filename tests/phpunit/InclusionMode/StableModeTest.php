@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Tests\InclusionMode;
 
 use File;
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\ContentStabilization\InclusionMode\Stable;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;

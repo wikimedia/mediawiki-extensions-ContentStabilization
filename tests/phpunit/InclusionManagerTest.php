@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\ContentStabilization\Tests;
 
 use File;
-use HashConfig;
 use LocalRepo;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Content\Content;
 use MediaWiki\Extension\ContentStabilization\InclusionManager;
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
