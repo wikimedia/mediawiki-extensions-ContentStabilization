@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
 
 class AddStyles implements BeforePageDisplayHook {
 
