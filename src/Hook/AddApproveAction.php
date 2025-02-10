@@ -4,8 +4,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
-use EditPage;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\EditPage\EditPage;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Hook\EditPageGetCheckboxesDefinitionHook;
