@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
-use DeferredUpdates;
 use Exception;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\ContentStabilization\Event\StablePointAdded;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointAddedHook;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointMovedHook;
