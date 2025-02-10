@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\ConfigDefinition;
 
 use BlueSpice\ConfigDefinition\BooleanSetting;
 use BlueSpice\ConfigDefinition\IOverwriteGlobal;
-use ExtensionRegistry;
+use MediaWiki\Registration\ExtensionRegistry;
 
 class PDFExportShowTag extends BooleanSetting implements IOverwriteGlobal {
 
