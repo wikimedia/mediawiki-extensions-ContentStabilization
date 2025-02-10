@@ -18,7 +18,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MWTimestamp;
+use MediaWiki\Utils\MWTimestamp;
 
 /**
  * Required data:
