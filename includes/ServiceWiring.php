@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\InclusionManager;
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
