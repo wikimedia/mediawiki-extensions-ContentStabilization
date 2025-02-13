@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\ReadConfirmation;
 
 use BlueSpice\PageAssignments\AssignmentFactory;
 use BlueSpice\ReadConfirmation\Event\ConfirmationRemindEvent;
+use BlueSpice\ReadConfirmation\Event\ConfirmationRequestEvent;
 use BlueSpice\ReadConfirmation\IMechanism;
 use DateInterval;
 use DateTime;
@@ -17,6 +18,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 use MWException;
 use MWStake\MediaWiki\Component\Events\Notifier;
 use Psr\Log\LoggerInterface;
@@ -73,7 +75,8 @@ class PageApproved implements IMechanism {
 			$services->getService( 'BSPageAssignmentsAssignmentFactory' ),
 			$services->getTitleFactory(),
 			$services->getService( 'ContentStabilization.Lookup' ),
-			$services->getService( 'MWStake.Notifier' )
+			$services->getService( 'MWStake.Notifier' ),
+			$services->getUserFactory()
 		);
 	}
 
@@ -97,7 +100,8 @@ class PageApproved implements IMechanism {
 		AssignmentFactory $assignmentFactory,
 		TitleFactory $titleFactory,
 		StabilizationLookup $stabilizationLookup,
-		Notifier $notifier
+		Notifier $notifier,
+		private readonly UserFactory $userFactory
 	) {
 		$this->dbLoadBalancer = $dbLoadBalancer;
 		$this->config = $config;
@@ -140,7 +144,7 @@ class PageApproved implements IMechanism {
 	 * @param Title $title
 	 * @param User $userAgent
 	 *
-	 * @return bool
+	 * @return bool|array
 	 * @throws MWException
 	 */
 	public function notify( Title $title, User $userAgent ) {
@@ -152,9 +156,9 @@ class PageApproved implements IMechanism {
 			return false;
 		}
 		$notifyUsers = $this->getNotifyUsers( $title->getArticleID() );
-		$event = new ConfirmationRemindEvent( $title, $notifyUsers );
+		$event = new ConfirmationRequestEvent( $userAgent, $title, $notifyUsers );
 		$this->notifier->emit( $event );
-		return true;
+		return $notifyUsers;
 	}
 
 	/**
@@ -363,10 +367,16 @@ class PageApproved implements IMechanism {
 		if ( !$revId ) {
 			return [];
 		}
-		return array_diff(
+		$ids = array_diff(
 			$affectedUsers,
 			$this->usersAlreadyReadRevision( $revId, $affectedUsers )
 		);
+
+		$notReadUsers = array_map( function ( $id ) {
+			return $this->userFactory->newFromId( $id );
+		}, $ids );
+
+		return array_filter( $notReadUsers );
 	}
 
 	/**
