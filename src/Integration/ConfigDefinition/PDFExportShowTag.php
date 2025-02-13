@@ -29,6 +29,13 @@ class PDFExportShowTag extends BooleanSetting implements IOverwriteGlobal {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getHelpMessageKey() {
+		return 'contentstabilization-pref-pdf-show-tag-help';
+	}
+
+	/**
 	 *
 	 * @return string
 	 */
