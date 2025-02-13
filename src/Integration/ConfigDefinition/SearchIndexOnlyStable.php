@@ -29,6 +29,13 @@ class SearchIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getHelpMessageKey() {
+		return 'contentstabilization-pref-index-stable-help';
+	}
+
+	/**
 	 *
 	 * @return string
 	 */
