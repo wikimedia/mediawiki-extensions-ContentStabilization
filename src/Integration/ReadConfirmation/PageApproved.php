@@ -517,6 +517,19 @@ class PageApproved implements IMechanism {
 	}
 
 	/**
+	 * @param Title $title
+	 * @param User $user
+	 * @return RevisionRecord|null
+	 */
+	public function getLatestRevisionToConfirm( Title $title, User $user ): ?RevisionRecord {
+		$stable = $this->stabilizationLookup->getLastStablePoint( $title );
+		if ( !( $stable instanceof StablePoint ) ) {
+			return null;
+		}
+		return $stable->getRevision();
+	}
+
+	/**
 	 * @param int $revisionId
 	 * @param array $userIds
 	 * @return array
