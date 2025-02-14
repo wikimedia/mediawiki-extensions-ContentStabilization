@@ -87,7 +87,7 @@
 	"contentstabilization-approval-date-sesp-desc": "The date and time of the successful review of that page",
 	"contentstabilization-approval-user-sesp-desc": "The user that reviewed the page",
 	"contentstabilization-document-version-sesp-desc": "The number of approved revisions in the page history",
-	"contentstabilization-pref-index-stable": "Index approved versions of pages only",
+	"contentstabilization-pref-index-stable": "Index only approved versions",
 	"contentstabilization-pref-pdf-show-tag": "Show stabilization information in PDF export",
 	"contentstabilization-pref-export-list-stable": "Export: List approved pages contained in the book",
 	"contentstabilization-pref-export-list-unstable": "Export: List not approved pages contained in the book",
@@ -141,5 +141,7 @@
 	"contentstabilization-wikiexplorer-filter-has-draft": "Has draft version",
 	"contentstabilization-wikiexplorer-filter-no-draft": "Has no draft version",
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Remove approval",
-	"contentstabilization-versionhistory-remove-approval-confirm": "Are you sure you want to remove the approval of this revision?"
+	"contentstabilization-versionhistory-remove-approval-confirm": "Are you sure you want to remove the approval of this revision?",
+	"contentstabilization-pref-pdf-show-tag-help": "Adds the last approval and revision dates below the page titles in the PDF output",
+	"contentstabilization-pref-index-stable-help": "Ensures that only the approved versions of pages are included in the search index"
 }
