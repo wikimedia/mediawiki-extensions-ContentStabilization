@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alesaru"
+			"Alesaru",
+			"Trotinel Iftode"
 		]
 	},
 	"contentstabilization-wikiexplorer-state": "Aprobat",
 	"contentstabilization-wikiexplorer-date": "Data de aprobare",
-	"contentstabilization-wikiexplorer-is-new-available": "În curs de aprobare"
+	"contentstabilization-wikiexplorer-is-new-available": "În curs de aprobare",
+	"contentstabilization-pref-index-stable": "Indexați numai versiunile aprobate",
+	"contentstabilization-pref-pdf-show-tag-help": "Adaugă ultimele date de aprobare și revizuire sub titlurile paginii în fișierul PDF",
+	"contentstabilization-pref-index-stable-help": "Se asigură că numai versiunile aprobate ale paginilor sunt incluse în indexul de căutare"
 }

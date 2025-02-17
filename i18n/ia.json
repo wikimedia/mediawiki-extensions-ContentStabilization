@@ -85,7 +85,7 @@
 	"contentstabilization-approval-date-sesp-desc": "Le data e hora del ultime revision succedite de ille pagina",
 	"contentstabilization-approval-user-sesp-desc": "Le usator que ha revidite le pagina",
 	"contentstabilization-document-version-sesp-desc": "Le numero de versiones approbate in le historia del pagina",
-	"contentstabilization-pref-index-stable": "Mitter in indice solmente le versiones approbate de paginas",
+	"contentstabilization-pref-index-stable": "Mitter in indice solmente le versiones approbate",
 	"contentstabilization-pref-pdf-show-tag": "Monstrar information de stabilisation in exportation PDF",
 	"contentstabilization-pref-export-list-stable": "Exportar: Listar paginas approbate continite in le libro",
 	"contentstabilization-pref-export-list-unstable": "Exportar: Listar paginas non approbate continite in le libro",

@@ -3,6 +3,7 @@
 		"authors": [
 			"Alshamiri1",
 			"Asma",
+			"Cigaryno",
 			"Meno25",
 			"Reedy"
 		]
@@ -89,7 +90,7 @@
 	"contentstabilization-approval-date-sesp-desc": "تاريخ ووقت المراجعة الناجحة لتلك الصفحة",
 	"contentstabilization-approval-user-sesp-desc": "المستخدم الذي راجع الصفحة",
 	"contentstabilization-document-version-sesp-desc": "عدد المراجعات المعتمدة في محفوظات الصفحة",
-	"contentstabilization-pref-index-stable": "فهرس الإصدارات المعتمدة من الصفحات فقط",
+	"contentstabilization-pref-index-stable": "فهرس الإصدارات المعتمدة فقط",
 	"contentstabilization-pref-pdf-show-tag": "إظهار معلومات التثبيت في تصدير PDF",
 	"contentstabilization-pref-export-list-stable": "تصدير: قائمة الصفحات المعتمدة الواردة في الكتاب",
 	"contentstabilization-pref-export-list-unstable": "تصدير: قائمة الصفحات غير المعتمدة الواردة في الكتاب",
