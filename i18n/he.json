@@ -85,7 +85,7 @@
 	"contentstabilization-approval-date-sesp-desc": "התאריך והשעה של הסקירה המוצלחת של הדף הזה",
 	"contentstabilization-approval-user-sesp-desc": "המשתמש שסקר את הדף",
 	"contentstabilization-document-version-sesp-desc": "מספר הגרסאות שאושרו בהיסטוריית הדף",
-	"contentstabilization-pref-index-stable": "למפתח גרסאות מאושרות של דפים בלבד",
+	"contentstabilization-pref-index-stable": "למפתח גרסאות מאושרות בלבד",
 	"contentstabilization-pref-pdf-show-tag": "להציג מידע ייצוב ביצוא PDF",
 	"contentstabilization-pref-export-list-stable": "יצוא: רשימת דפים מאושרים הכלולים בספר",
 	"contentstabilization-pref-export-list-unstable": "יצוא: רשימת דפים לא מאושרים הכלולים בספר",
@@ -139,5 +139,7 @@
 	"contentstabilization-wikiexplorer-filter-has-draft": "עם גרסת טיוטה",
 	"contentstabilization-wikiexplorer-filter-no-draft": "בלי גרסת טיוטה",
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "הסרת אישור",
-	"contentstabilization-versionhistory-remove-approval-confirm": "האם באמת להסיר את האישור של הגרסה הזאת?"
+	"contentstabilization-versionhistory-remove-approval-confirm": "האם באמת להסיר את האישור של הגרסה הזאת?",
+	"contentstabilization-pref-pdf-show-tag-help": "הוספת התאריכים של האישור ושל הגרסה האחרונה מתחת לכותרות הדפים בפלט ה־PDF",
+	"contentstabilization-pref-index-stable-help": "מבטיח שרק הגרסאות המאושרות של הדפים כלולות במפתח החיפוש"
 }
