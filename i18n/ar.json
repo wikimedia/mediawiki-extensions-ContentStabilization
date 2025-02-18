@@ -71,6 +71,7 @@
 	"logentry-stabilization-update": "$1 {{GENDER:$2| تمت الموافقة}} على التغييرات في الموارد في الصفحة $3",
 	"contentstabilization-status-stable": "مقبول",
 	"contentstabilization-status-unstable": "مسودة",
+	"contentstabilization-status-implicit-unstable": "مشروع ضمني",
 	"contentstabilization-status-first-unstable": "المسودة الأولى",
 	"contentstabilization-overview-no-enabled": "لم يتم تمكين الموافقة على أي نطاق",
 	"contentstabilization-overview-enabled": "الموافقة ممكّنة حاليًا للنطاقات التالية: $1",
