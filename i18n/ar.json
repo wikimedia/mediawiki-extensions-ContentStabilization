@@ -107,5 +107,6 @@
 	"content-stabilization-stable-diff": "في انتظار المراجعة",
 	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
-	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة"
+	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
+	"contentstabilization-status-implicit-unstable": "مشروع ضمني"
 }
