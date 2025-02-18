@@ -107,5 +107,6 @@
 	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
 	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
-	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة"
+	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة",
+	"contentstabilization-status-implicit-unstable": "مشروع ضمني"
 }
