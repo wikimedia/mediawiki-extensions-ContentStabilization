@@ -16,11 +16,13 @@
 	"contentstabilization-status-unstable": "پیش‌نویس",
 	"contentstabilization-status-first-unstable": "اولین پیش‌نویس",
 	"contentstabilization-overview-header-title": "صفحه",
+	"contentstabilization-pref-index-stable": "تنها نسخه‌های تأییدشده فهرست شوند",
 	"contentstabilization-stabilizationhistory-comment": "نظر",
 	"contentstabilization-ui-switch-to-stable-title": "تغییر به نسخهٔ تأییدشده",
 	"echo-category-title-content-stabilization-cat": "تأییدیه",
 	"content-stabilization-echo-cat-tooltip": "هرگاه صفحه تأیید شد به من اطلاع بده",
 	"content-stabilization-approval-notification-summary": "$3 صفحهٔ $1 را {{GENDER:$2|تأیید کرد}}",
 	"content-stabilization-approval-notification-subject": "صفحهٔ $1 تأیید شد",
-	"content-stabilization-approval-notification-email-body": "$3 صفحهٔ $1 را {{GENDER:$2|تأیید کرد}}"
+	"content-stabilization-approval-notification-email-body": "$3 صفحهٔ $1 را {{GENDER:$2|تأیید کرد}}",
+	"contentstabilization-pref-index-stable-help": "اطمینان از این که تنها نسخه‌های تأییدشده از صفحه‌ها در فهرست جستجو آورده می‌شوند"
 }

@@ -86,7 +86,7 @@
 	"contentstabilization-approval-date-sesp-desc": "Датумот и времето на успешната проверка на таа страница",
 	"contentstabilization-approval-user-sesp-desc": "Корисникот што ја проверил страницата",
 	"contentstabilization-document-version-sesp-desc": "Бројот на одобрени преработки во историјата на страницата",
-	"contentstabilization-pref-index-stable": "Индексирај само одобрени верзии на страници",
+	"contentstabilization-pref-index-stable": "Индексирај само одобрени верзии",
 	"contentstabilization-pref-pdf-show-tag": "Прикажувај информации за устојчување во PDF-извоз",
 	"contentstabilization-pref-export-list-stable": "Извоз: Наведи одобрени страници содржани во книгата",
 	"contentstabilization-pref-export-list-unstable": "Извоз: Наведи неодобрени страници содржани во книгата",
@@ -139,5 +139,7 @@
 	"contentstabilization-wikiexplorer-filter-has-draft": "Има нацрт-верзија",
 	"contentstabilization-wikiexplorer-filter-no-draft": "Нема нацрт-верзија",
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Одземи одобрение",
-	"contentstabilization-versionhistory-remove-approval-confirm": "Дали сигурно сакате да го одземете одобрението на оваа преработка?"
+	"contentstabilization-versionhistory-remove-approval-confirm": "Дали сигурно сакате да го одземете одобрението на оваа преработка?",
+	"contentstabilization-pref-pdf-show-tag-help": "Ги додава последите датуми на одобрение и преработка под насловите на страниците во PDF-изводот",
+	"contentstabilization-pref-index-stable-help": "Обезбедува вклучување на само одобрени верзии на страниците во индексот за пребарување"
 }
