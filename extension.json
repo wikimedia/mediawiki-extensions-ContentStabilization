@@ -352,7 +352,8 @@
 		"PageSaveComplete": "autoStabilize",
 		"ParserFirstCallInit": "addDocumentStateTag",
 		"DifferenceEngineViewHeader": "stabilizeContent",
-		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications"
+		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications",
+		"getUserPermissionsErrors": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {

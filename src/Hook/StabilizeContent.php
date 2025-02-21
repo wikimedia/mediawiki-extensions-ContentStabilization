@@ -27,6 +27,7 @@ use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionRenderer;
@@ -52,7 +53,8 @@ class StabilizeContent implements
 	MediaWikiPerformActionHook,
 	TitleGetEditNoticesHook,
 	ContentAlterParserOutputHook,
-	DifferenceEngineViewHeaderHook
+	DifferenceEngineViewHeaderHook,
+	GetUserPermissionsErrorsHook
 {
 
 	/** @var StabilizationLookup */
@@ -595,5 +597,17 @@ class StabilizeContent implements
 	 */
 	private function pageEquals( $a, $b ): bool {
 		return $a && $b && $a->getNamespace() === $b->getNamespace() && $a->getDBkey() === $b->getDBkey();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onGetUserPermissionsErrors( $title, $user, $action, &$result ) {
+		if ( $this->view && !$this->view->getRevision() ) {
+			// View is initialized, but no revision can be shown to the user
+			$result = 'badaccess-group0';
+			return false;
+		}
+		return true;
 	}
 }
