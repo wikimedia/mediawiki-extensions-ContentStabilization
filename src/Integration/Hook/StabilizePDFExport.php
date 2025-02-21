@@ -56,16 +56,40 @@ class StabilizePDFExport {
 			return;
 		}
 		$this->params = $params;
+		$stable = true;
 		if ( isset( $this->params['stable'] ) ) {
-			$stable = $this->params['stable'];
+			$stable = $this->getBoolValueFor( $this->params['stable'] );
 		}
-		if ( !in_array( $stable, [ 0, false, 'false' ] ) ) {
-			return;
+
+		if ( !$stable ) {
+			$this->params['forceUnstable'] = true;
 		}
-		$this->params['forceUnstable'] = false;
 
 		$this->view = $this->lookup->getStableView( $revisionRecord->getPage(), $userIdentity, $this->params );
 		$revisionRecord = $this->view->getRevision();
+	}
+
+	/**
+	 * @param mixed $value
+	 * @return bool
+	 */
+	private function getBoolValueFor( $value ): bool {
+		if ( is_bool( $value ) ) {
+			return $value;
+		}
+		if ( is_int( $value ) ) {
+			if ( $value === 1 ) {
+				return true;
+			}
+
+			return false;
+		}
+		if ( is_string( $value ) ) {
+			if ( $value === '1' || strtolower( $value ) === 'true' ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -77,19 +101,16 @@ class StabilizePDFExport {
 		if ( !$this->config->get( 'ContentStabilizationPDFCreatorShowStabilizationTag' ) ) {
 			return;
 		}
-
 		if ( !$context->getTitle()->canExist() ) {
 			// Virtual namespace
 			return;
 		}
-
 		if ( !$this->lookup->isStabilizationEnabled( $context->getTitle() ) ) {
 			return;
 		}
 		if ( !$this->view || !$this->view->getRevision() ) {
 			return;
 		}
-
 		$lastStable = null;
 		if ( $this->view->getStatus() === StableView::STATE_STABLE ) {
 			$lastStable = $this->view->getLastStablePoint();
@@ -103,7 +124,6 @@ class StabilizePDFExport {
 			$lastStableTime = $lastStable->getTime()->format( 'YmdHis' );
 			$lastStableRevisionTime = $lastStable->getRevision()->getTimestamp();
 		}
-
 		$stableTag = $dom->createElement(
 			'span',
 			Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )
@@ -111,7 +131,7 @@ class StabilizePDFExport {
 		);
 
 		$stableTag->setAttribute( 'class', 'contentstabilization-export-laststable-tag' );
-		if ( !$lastStableTime ) {
+		if ( $lastStableTime === '' ) {
 			$dateNode = $dom->createElement(
 				'span',
 				Message::newFromKey( 'contentstabilization-export-no-stable-date' )
