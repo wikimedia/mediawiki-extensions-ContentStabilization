@@ -364,7 +364,8 @@
 		"ParserFirstCallInit": "addDocumentStateTag",
 		"DifferenceEngineViewHeader": "stabilizeContent",
 		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications",
-		"CognitiveProcessDesignerBeforeRender": "stabilizeCognitiveProcessDesigner"
+		"CognitiveProcessDesignerBeforeRender": "stabilizeCognitiveProcessDesigner",
+		"getUserPermissionsErrors": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
