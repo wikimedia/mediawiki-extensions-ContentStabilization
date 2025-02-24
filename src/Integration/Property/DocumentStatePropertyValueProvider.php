@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\Property;
 use BlueSpice\SMWConnector\PropertyValueProvider;
 use MediaWiki\Extension\ContentStabilization\StabilizationBot;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
+use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use SMWDataItem;
@@ -93,6 +94,9 @@ class DocumentStatePropertyValueProvider extends PropertyValueProvider {
 			return;
 		}
 		$state = $view->getStatus();
+		if ( $state === StableView::STATE_IMPLICIT_UNSTABLE ) {
+			return;
+		}
 		$msg = Message::newFromKey( "contentstabilization-status-$state" )->inContentLanguage();
 		if ( !$msg->exists() ) {
 			return;
