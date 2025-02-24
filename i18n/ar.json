@@ -70,6 +70,7 @@
 	"logentry-stabilization-update": "$1 {{GENDER:$2| تمت الموافقة}} على التغييرات في الموارد في الصفحة $3",
 	"contentstabilization-status-stable": "مقبول",
 	"contentstabilization-status-unstable": "مسودة",
+	"contentstabilization-status-implicit-unstable": "مشروع ضمني",
 	"contentstabilization-status-first-unstable": "المسودة الأولى",
 	"contentstabilization-overview-no-enabled": "لم يتم تمكين الموافقة على أي نطاق",
 	"contentstabilization-overview-enabled": "الموافقة ممكّنة حاليًا للنطاقات التالية: $1",
@@ -107,6 +108,5 @@
 	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
 	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
-	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة",
-	"contentstabilization-status-implicit-unstable": "مشروع ضمني"
+	"contentstabilization-stablepoint-added-message-passive": "نسخة جديدة معتمدة من الصفحة متاحة"
 }
