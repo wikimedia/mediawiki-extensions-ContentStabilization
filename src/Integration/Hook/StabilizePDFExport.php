@@ -172,8 +172,13 @@ class StabilizePDFExport {
 			return;
 		}
 
-		$firstHeading->parentNode->insertBefore( $stableRevDateTag, $firstHeading->nextSibling );
-		$firstHeading->parentNode->insertBefore( $stableTag, $firstHeading->nextSibling );
+		$container = $dom->createElement( 'div' );
+		$container->setAttribute( 'class', 'contentstabilization-export-information' );
+
+		$container->appendChild( $stableTag );
+		$container->appendChild( $stableRevDateTag );
+
+		$firstHeading->parentNode->insertBefore( $container, $firstHeading->nextSibling );
 	}
 
 	/**
