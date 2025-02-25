@@ -32,3 +32,7 @@ span.flaggedrevs-color-2 {
 span.flaggedrevs-color-3 {
 	background-color: #afa;
 }
+
+.contentstabilization-export-information {
+	margin-bottom: 2em;
+}
