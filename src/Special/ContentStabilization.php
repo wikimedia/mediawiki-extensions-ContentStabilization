@@ -4,10 +4,10 @@ namespace MediaWiki\Extension\ContentStabilization\Special;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Language\Language;
-use MediaWiki\SpecialPage\SpecialPage;
+use OOJSPlus\Special\OOJSGridSpecialPage;
 use OOUI\MessageWidget;
 
-class ContentStabilization extends SpecialPage {
+class ContentStabilization extends OOJSGridSpecialPage {
 
 	/**
 	 * @var Config
@@ -35,14 +35,9 @@ class ContentStabilization extends SpecialPage {
 	 *
 	 * @return void
 	 */
-	public function execute( $subPage ) {
-		parent::execute( $subPage );
-
+	public function doExecute( $subPage ) {
 		$this->getOutput()->addModules( [ 'ext.contentStabilization.special' ] );
-		$this->getOutput()->enableOOUI();
-
 		$this->addEnabledNSBanner();
-
 		$this->getOutput()->addHTML( '<div id="contentstabilization"></div>' );
 	}
 
