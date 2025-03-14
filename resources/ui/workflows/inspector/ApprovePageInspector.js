@@ -18,7 +18,7 @@ ext.contentStabilization.ui.workflows.inspector.ApprovePageInspector.prototype.g
 			title: mw.message( 'workflows-ui-editor-inspector-properties' ).text()
 		},
 		{
-			type: 'user_picker',
+			type: 'text',
 			name: 'properties.user',
 			label: mw.message( 'contentstabilization-ui-workflows-inspector-activity-approve-page-property-user' ).text(),
 			help: mw.message( 'contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help' ).text(),
