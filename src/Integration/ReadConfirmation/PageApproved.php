@@ -246,6 +246,9 @@ class PageApproved implements IMechanism {
 	 * @return bool
 	 */
 	private function isMinorRevision( $revId ) {
+		if ( !$this->includeMinor() ) {
+			return false;
+		}
 		$revision = $this->revisionLookup->getRevisionById( $revId );
 		if ( $revision instanceof RevisionRecord ) {
 			return $revision->isMinor();
@@ -263,6 +266,9 @@ class PageApproved implements IMechanism {
 		$revision = $this->revisionLookup->getRevisionById( $revId );
 		if ( $revision instanceof RevisionRecord ) {
 			$previousRevision = $this->revisionLookup->getPreviousRevision( $revision );
+			if ( $this->stabilizationLookup->isStableRevision( $previousRevision ) ) {
+				return true;
+			}
 			while ( $previousRevision instanceof RevisionRecord ) {
 				if ( !$previousRevision->isMinor() ) {
 					return false;
@@ -417,11 +423,8 @@ class PageApproved implements IMechanism {
 	 * 	]
 	 */
 	private function getUserLatestReadRevisions( array $userIds ): array {
-		$conds = [];
-		if ( $userIds ) {
-			$conds = [
-				'rc_user_id' => $userIds
-			];
+		if ( !$userIds ) {
+			return [];
 		}
 
 		$res = $this->dbLoadBalancer->getConnection( DB_REPLICA )->select(
@@ -434,7 +437,7 @@ class PageApproved implements IMechanism {
 				'rev_page',
 				'rc_user_id'
 			],
-			$conds,
+			[ 'rc_user_id' => $userIds ],
 			__METHOD__,
 			[
 				'GROUP BY' => [
@@ -548,16 +551,15 @@ class PageApproved implements IMechanism {
 	 * @return array
 	 */
 	private function getUserReadRevisions( $userIds = [] ) {
-		$conds = [];
-		if ( !empty( $userIds ) ) {
-			$conds['rc_user_id'] = $userIds;
+		if ( !$userIds ) {
+			return [];
 		}
 		$res = $this->dbLoadBalancer
 			->getConnection( DB_REPLICA )
 			->select(
 				'bs_readconfirmation',
 				'*',
-				$conds,
+				[ 'rc_user_id' => $userIds ],
 				__METHOD__
 			);
 
@@ -578,46 +580,59 @@ class PageApproved implements IMechanism {
 	 * @return array
 	 */
 	private function getMustReadRevisions( array $pageIds = [] ) {
+		if ( !$pageIds ) {
+			return [];
+		}
 		$recentData = [];
 
-		$conds = [];
-
-		if ( !empty( $pageIds ) ) {
-			$conds['rev_page'] = $pageIds;
+		$sqb = $this->dbLoadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder();
+		$sqb
+			->from( 'revision', 'r' )
+			->select( [ 'MAX( r.rev_id ) as chosen_rev', 'r.rev_page' ] )
+			->join(
+				$sqb->newSubquery()->select( [ 'sp_page', 'MAX(sp_revision) AS last_stable' ] )
+					->from( 'stable_points' )
+					->groupBy( 'sp_page' ),
+				'sp',
+				'r.rev_page = sp.sp_page'
+			)
+			->where( 'r.rev_id <= sp.last_stable' )
+			->where( [ 'r.rev_page' => $pageIds ] )
+			->groupBy( 'r.rev_page' );
+		if ( $this->includeMinor() ) {
+			$sqb->where( 'r.rev_minor_edit = 0' );
 		}
-
-		$lastStablesRes = $this->dbLoadBalancer->getConnection( DB_REPLICA )->select(
-			'stable_points',
-			[ 'sp_page', 'MAX(sp_revision) as last_stable' ],
-			[],
-			__METHOD__,
-			[ 'GROUP BY' => 'sp_page' ]
-		);
-
-		$lastStableRevisions = [];
-		foreach ( $lastStablesRes as $row ) {
-			$lastStableRevisions[$row->sp_page] = (int)$row->last_stable;
-		}
-
-		$res = $this->dbLoadBalancer->getConnection( DB_REPLICA )->select(
-			[ 'revision' ],
-			[ 'rev_id', 'rev_page', 'rev_minor_edit' ],
-			$conds,
-			__METHOD__,
-			[ 'ORDER BY' => 'rev_id DESC' ]
-		);
-
+		$res = $sqb->fetchResultSet();
 		foreach ( $res as $row ) {
 			if ( isset( $recentData[$row->rev_page] ) ) {
 				continue;
 			}
-			$lastStableForPage = $lastStableRevisions[$row->rev_page] ?? 0;
-			if ( (int)$row->rev_id <= $lastStableForPage && (int)$row->rev_minor_edit === 0 ) {
-				$recentData[$row->rev_page] = (int)$row->rev_id;
-			}
+			$recentData[$row->rev_page] = (int)$row->rev_id;
 		}
 
 		return $recentData;
 	}
 
+	/**
+	 * Should trigger RC on minor stable revisions
+	 * @return bool
+	 */
+	protected function includeMinor(): bool {
+		return true;
+	}
+
+	/**
+	 * @param \MediaWiki\Title\Title $title
+	 * @param \MediaWiki\User\User $user
+	 * @return RevisionRecord|null
+	 */
+	public function getLatestRevisionToConfirm(
+		\MediaWiki\Title\Title $title, \MediaWiki\User\User $user
+	): ?RevisionRecord {
+		$latestStable = $this->stabilizationLookup->getLastStablePoint( $title );
+		if ( !$latestStable ) {
+			return null;
+		}
+		return $latestStable->getRevision();
+	}
 }
