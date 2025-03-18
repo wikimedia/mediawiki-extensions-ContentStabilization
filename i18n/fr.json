@@ -150,5 +150,7 @@
 	"contentstabilization-wikiexplorer-filter-has-draft": "A une version brouillon",
 	"contentstabilization-wikiexplorer-filter-no-draft": "N'a pas de version brouillon",
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Supprimer l'approbation",
-	"contentstabilization-versionhistory-remove-approval-confirm": "Êtes-vous sûr de vouloir supprimer l’approbation de cette révision ?"
+	"contentstabilization-versionhistory-remove-approval-confirm": "Êtes-vous sûr de vouloir supprimer l’approbation de cette révision ?",
+	"contentstabilization-pref-pdf-show-tag-help": "Ajoute les dernières dates d'approbation et de révision sous les titres de page dans la sortie PDF",
+	"contentstabilization-pref-index-stable-help": "Garantit que seules les versions approuvées des pages sont incluses dans l'index de recherche"
 }
