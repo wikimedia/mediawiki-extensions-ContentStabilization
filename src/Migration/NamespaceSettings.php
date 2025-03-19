@@ -60,7 +60,7 @@ class NamespaceSettings {
 	private function migrateDynamicConfig(): array {
 		/** @var DBConnRef $db */
 		$db = $this->loadBalancer->getConnection( DB_PRIMARY, __METHOD__ );
-		if ( !$db->tableExists( 'mwstake_dynamic_config' ) ) {
+		if ( !$db->tableExists( 'mwstake_dynamic_config', __METHOD__ ) ) {
 			return [ 'migrated_dynamic_config' => 'table_not_found' ];
 		}
 		$serialized = $db->selectRow(
