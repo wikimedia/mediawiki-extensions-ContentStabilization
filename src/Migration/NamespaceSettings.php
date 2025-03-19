@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Migration;
 
 use MediaWiki\Status\Status;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class NamespaceSettings {
@@ -57,7 +58,8 @@ class NamespaceSettings {
 	 * @return bool[]|string[]
 	 */
 	private function migrateDynamicConfig(): array {
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		/** @var DBConnRef $db */
+		$db = $this->loadBalancer->getConnection( DB_PRIMARY, __METHOD__ );
 		if ( !$db->tableExists( 'mwstake_dynamic_config' ) ) {
 			return [ 'migrated_dynamic_config' => 'table_not_found' ];
 		}
