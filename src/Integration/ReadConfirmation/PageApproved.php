@@ -307,7 +307,8 @@ class PageApproved implements IMechanism {
 			'bs_readconfirmation',
 			$row,
 			[ [ 'rc_rev_id', 'rc_user_id' ] ],
-			$row
+			$row,
+			__METHOD__
 		);
 
 		return true;
