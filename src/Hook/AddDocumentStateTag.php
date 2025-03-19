@@ -116,7 +116,8 @@ class AddDocumentStateTag implements ParserFirstCallInitHook {
 			->where( [
 				'sp_page' => $pageId
 			] )
-			->orderBy( 'sp_revision', 'DESC' );
+			->orderBy( 'sp_revision', 'DESC' )
+			->caller( __METHOD__ );
 
 		$res = $queryBuilder->fetchResultSet();
 
