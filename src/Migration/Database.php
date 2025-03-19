@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Migration;
 
 use MediaWiki\Status\Status;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Database {
@@ -27,15 +28,16 @@ class Database {
 	 */
 	public function migrate() {
 		$value = [];
+		/** @var DBConnRef $db */
 		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		if ( $db->tableExists( 'flaggedrevs' ) ) {
+		if ( $db->tableExists( 'flaggedrevs', __METHOD__ ) ) {
 			$s = $this->migrateFlaggedRevsTable();
 			if ( !$s->isOK() ) {
 				return $s;
 			}
 			$value = array_merge( $value, $s->getValue() );
 		}
-		if ( $db->tableExists( 'flaggedtemplates' ) ) {
+		if ( $db->tableExists( 'flaggedtemplates', __METHOD__ ) ) {
 			$s = $this->migrateFlaggedTemplatesTable();
 			if ( !$s->isOK() ) {
 				return $s;
@@ -43,7 +45,7 @@ class Database {
 			$value = array_merge( $value, $s->getValue() );
 		}
 
-		if ( $db->tableExists( 'flaggedimages' ) ) {
+		if ( $db->tableExists( 'flaggedimages', __METHOD__ ) ) {
 			$s = $this->migrateFlaggedImagesTable();
 			if ( !$s->isOK() ) {
 				return $s;

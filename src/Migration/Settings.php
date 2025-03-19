@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Migration;
 
 use MediaWiki\Status\Status;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Settings {
@@ -32,7 +33,8 @@ class Settings {
 	 * @return Status
 	 */
 	public function migrate() {
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		/** @var DBConnRef $db */
+		$db = $this->loadBalancer->getConnection( DB_PRIMARY, __METHOD__ );
 		if ( !$db->tableExists( 'bs_settings3' ) ) {
 			return Status::newGood( [ 'migrated_settings' => 'table_not_found' ] );
 		}
