@@ -76,7 +76,8 @@ return [
 			$services->getRevisionStore(),
 			$services->getUserGroupManager(),
 			$config,
-			$services->getHookContainer()
+			$services->getHookContainer(),
+			$services->getObjectCacheFactory()
 		);
 	}
 ];
