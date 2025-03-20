@@ -17,6 +17,7 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
+use ObjectCacheFactory;
 
 class StabilizationLookup {
 	/** @var StablePointStore */
@@ -43,6 +44,9 @@ class StabilizationLookup {
 	/** @var HookContainer */
 	private $hookContainer;
 
+	/** @var ObjectCacheFactory */
+	private $objectCacheFactory;
+
 	/**
 	 * @param StablePointStore $store
 	 * @param InclusionManager $inclusionManager
@@ -50,10 +54,12 @@ class StabilizationLookup {
 	 * @param UserGroupManager $userGroupManager
 	 * @param Config $config
 	 * @param HookContainer $hookContainer
+	 * @param ObjectCacheFactory $objectCacheFactory
 	 */
 	public function __construct(
 		StablePointStore $store, InclusionManager $inclusionManager, RevisionStore $revisionStore,
-		UserGroupManager $userGroupManager, Config $config, HookContainer $hookContainer
+		UserGroupManager $userGroupManager, Config $config, HookContainer $hookContainer,
+		ObjectCacheFactory $objectCacheFactory
 	) {
 		$this->store = $store;
 		$this->inclusionManager = $inclusionManager;
@@ -61,6 +67,7 @@ class StabilizationLookup {
 		$this->userGroupManager = $userGroupManager;
 		$this->config = $config;
 		$this->hookContainer = $hookContainer;
+		$this->objectCacheFactory = $objectCacheFactory;
 	}
 
 	/**
@@ -364,7 +371,7 @@ class StabilizationLookup {
 	 * @return bool
 	 */
 	public function isStabilizationEnabled( ?PageIdentity $page ): bool {
-		if ( $page === null || !$page->canExist() ) {
+		if ( !$page || !$page->canExist() ) {
 			return false;
 		}
 		$namespace = $page->getNamespace();
@@ -379,10 +386,22 @@ class StabilizationLookup {
 
 		$result = in_array( $page->getNamespace(), $this->config->get( 'EnabledNamespaces' ) );
 		if ( $namespace !== NS_FILE ) {
-			$rev = $this->revisionStore->getRevisionByPageId( $page->getId() );
-			if ( !$rev ) {
-				$result = false;
-			} elseif ( !( $rev->getContent( SlotRecord::MAIN ) instanceof WikitextContent ) ) {
+			$objectCache = $this->objectCacheFactory->getLocalServerInstance();
+
+			$checkResult = $objectCache->getWithSetCallback(
+				$objectCache->makeKey( 'contentstabilization-isstabilizationenabled', $page->getId() ),
+				$objectCache::TTL_SECOND,
+				function () use ( $page ) {
+					$rev = $this->revisionStore->getRevisionByPageId( $page->getId() );
+					if ( !$rev ) {
+						return false;
+					} elseif ( !( $rev->getContent( SlotRecord::MAIN ) instanceof WikitextContent ) ) {
+						return false;
+					}
+				}
+			);
+
+			if ( $checkResult === false ) {
 				$result = false;
 			}
 		}
