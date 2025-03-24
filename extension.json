@@ -1,6 +1,6 @@
 {
 	"name": "ContentStabilization",
-	"version": "3.0.0-alpha",
+	"version": "4.0.0-alpha",
 	"license-name": "GPL-3.0-only",
 	"author": [
 		"[http://www.hallowelt.com Hallo Welt! GmbH]"
@@ -8,9 +8,9 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:ContentStabilization",
 	"descriptionmsg": "contentstabilization-desc",
 	"requires": {
-		"MediaWiki": ">= 1.39.0",
+		"MediaWiki": ">= 1.43.0",
 		"extensions": {
-			"OOJSPlus": ">= 2.0.0"
+			"OOJSPlus": ">= 3.0.0"
 		}
 	},
 	"attributes": {
