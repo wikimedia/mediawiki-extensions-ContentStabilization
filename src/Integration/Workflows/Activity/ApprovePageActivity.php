@@ -127,7 +127,7 @@ class ApprovePageActivity extends GenericActivity {
 		}
 		$this->revision = $revision;
 
-		if ( isset( $data['user'] ) ) {
+		if ( !empty( $data['user'] ) ) {
 			// If user is explicitly set, use that. Definition is responsible
 			// to make sure this user can approve pages (use propertyValidator)
 			$this->user = $this->userFactory->newFromName( $data['user'] );
