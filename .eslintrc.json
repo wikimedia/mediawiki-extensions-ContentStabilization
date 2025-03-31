@@ -12,7 +12,8 @@
 		"no-jquery/no-global-selector": "off",
 		"no-prototype-builtins": "off",
 		"no-underscore-dangle": "off",
-		"no-unused-vars": "off"
+		"no-unused-vars": "off",
+		"no-jquery/no-done-fail": "warn"
 	},
 	"globals": {
 		"ext": "readonly",
