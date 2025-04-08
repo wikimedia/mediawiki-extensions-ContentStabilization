@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"TayfunEt.",
-			"Zolgoyo"
+			"Zolgoyo",
+			"Don Alessandro"
 		]
 	},
+	"contentstabilization-pageinfoelement-versionswitch-show-diff-label": "Farqnı köster",
 	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Farqnı köster",
 	"contentstabilization-ui-approve-cancel": "Lâğu",
 	"contentstabilization-overview-header-title": "Saife"
