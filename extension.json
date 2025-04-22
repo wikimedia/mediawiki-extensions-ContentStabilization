@@ -158,7 +158,9 @@
 		"includes/ServiceWiring.php"
 	],
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\ContentStabilization\\": "src/",
+		"MediaWiki\\Extension\\ContentStabilization\\": "src/"
+	},
+	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\ContentStabilization\\Tests\\": "tests/phpunit"
 	},
 	"ResourceModules": {
