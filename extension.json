@@ -41,7 +41,8 @@
 						"class": "MediaWiki\\Extension\\ContentStabilization\\Event\\StablePointAdded",
 						"services": [ "ContentStabilization._Store" ]
 					},
-					"buckets": [ "qm" ]
+					"buckets": [ "qm" ],
+					"description": "contentstabilization-event-stable-point-added-desc"
 				}
 			}
 		},
