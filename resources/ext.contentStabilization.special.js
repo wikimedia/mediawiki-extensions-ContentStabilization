@@ -68,14 +68,13 @@ $( () => {
 			const dfd = $.Deferred(),
 				store = new OOJSPlus.ui.data.store.RemoteRestStore( {
 					path: 'content_stabilization/list',
-					pageSize: -1,
 					sorter: {
 						page_title: {
 							direction: 'ASC'
 						}
 					}
 				} );
-			store.load().done( ( response ) => {
+			store.loadAll().done( ( response ) => {
 				const $table = $( '<table>' );
 				let $row = $( '<tr>' ),
 					$cell = $( '<td>' );
