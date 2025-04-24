@@ -88,7 +88,7 @@
 	"contentstabilization-approval-date-sesp-desc": "De datum en tijd van de goedbevinding van die pagina",
 	"contentstabilization-approval-user-sesp-desc": "De gebruiker die de pagina heeft beoordeeld",
 	"contentstabilization-document-version-sesp-desc": "Het aantal goedgekeurde versies in de paginageschiedenis",
-	"contentstabilization-pref-index-stable": "Alleen goedgekeurde versies van pagina's indexeren",
+	"contentstabilization-pref-index-stable": "Alleen goedgekeurde versies indexeren",
 	"contentstabilization-pref-pdf-show-tag": "Stabilisatie-informatie in PDF-export weergeven",
 	"contentstabilization-pref-export-list-stable": "Export: In het boek opgenomen goedgekeurde pagina's opsommen",
 	"contentstabilization-pref-export-list-unstable": "Export: In het boek opgenomen niet-goedgekeurde pagina's opsommen",
@@ -143,5 +143,7 @@
 	"contentstabilization-wikiexplorer-filter-has-draft": "Heeft een conceptversie",
 	"contentstabilization-wikiexplorer-filter-no-draft": "Heeft geen conceptversie",
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Goedkeuring intrekken",
-	"contentstabilization-versionhistory-remove-approval-confirm": "Weet u zeker dat u de goedkeuring van deze versie wilt intrekken?"
+	"contentstabilization-versionhistory-remove-approval-confirm": "Weet u zeker dat u de goedkeuring van deze versie wilt intrekken?",
+	"contentstabilization-pref-pdf-show-tag-help": "Voegt de laatste goedkeurings- en bewerkingsdatums toe onder de paginatitels in de PDF-uitvoer",
+	"contentstabilization-pref-index-stable-help": "Zorgt ervoor dat alleen de goedgekeurde versies van pagina’s in de zoekindex worden opgenomen"
 }
