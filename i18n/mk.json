@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "Им овозможува на корисниците да ги означуваат страниците како „одобрена“ или „нацрт“ и да ја гледаат најновата одобрена верзија на страница.",
 	"right-contentstabilization-oversight": "Преглед на сите одобрувања на страница",
-	"right-contentstabilization-admin": "Промена на кој може да гледа нацрти, бришење и измена на одобренија",
+	"right-contentstabilization-admin": "Дозволи бришење и преместување на устојчиви точки во друга преработка",
 	"right-contentstabilization-stabilize": "Одобрување на страници",
 	"action-contentstabilization-oversight": "преглед на сите одобрувања на страница",
 	"action-contentstabilization-stabilize": "одобрување на страница",
@@ -141,5 +141,6 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Одземи одобрение",
 	"contentstabilization-versionhistory-remove-approval-confirm": "Дали сигурно сакате да го одземете одобрението на оваа преработка?",
 	"contentstabilization-pref-pdf-show-tag-help": "Ги додава последите датуми на одобрение и преработка под насловите на страниците во PDF-изводот",
-	"contentstabilization-pref-index-stable-help": "Обезбедува вклучување на само одобрени верзии на страниците во индексот за пребарување"
+	"contentstabilization-pref-index-stable-help": "Обезбедува вклучување на само одобрени верзии на страниците во индексот за пребарување",
+	"contentstabilization-event-stable-point-added-desc": "Одобрена е страница"
 }
