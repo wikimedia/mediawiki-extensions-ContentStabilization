@@ -33,5 +33,6 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Approvato",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Non approvato",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Ha una versione bozza",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Non ha una versione bozza"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Non ha una versione bozza",
+	"contentstabilization-event-stable-point-added-desc": "Una pagina è stata approvata"
 }
