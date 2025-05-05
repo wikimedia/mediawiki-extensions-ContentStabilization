@@ -108,7 +108,7 @@ class StabilizeSMWProperties {
 	 * @return void
 	 */
 	private function assertStable( Title $title, ?int $revId = null ) {
-		$stable = $this->lookup->getLastStablePoint( $title->toPageIdentity(), $revId );
+		$stable = $this->lookup->getLastRawStablePoint( $title->toPageIdentity(), $revId );
 		if ( !$stable ) {
 			$this->stable = null;
 			return;

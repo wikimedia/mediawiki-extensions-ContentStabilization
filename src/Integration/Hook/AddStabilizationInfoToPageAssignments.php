@@ -58,12 +58,12 @@ class AddStabilizationInfoToPageAssignments {
 			if ( !$page ) {
 				continue;
 			}
-			$stable = $this->lookup->getLastStablePoint( $page->toPageIdentity() );
+			$stable = $this->lookup->getLastStableRevision( $page->toPageIdentity() );
 			if ( !$stable ) {
 				continue;
 			}
 
-			$dataSet->last_stable_date = $stable->getRevision()->getTimestamp();
+			$dataSet->last_stable_date = $stable->getTimestamp();
 		}
 	}
 

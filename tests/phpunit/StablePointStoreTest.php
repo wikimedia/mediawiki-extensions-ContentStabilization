@@ -45,7 +45,7 @@ class StablePointStoreTest extends TestCase {
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],
 			[ 'sp_page' => 1 ],
-			StablePointStore::class . '::rawQuery',
+			StablePointStore::class . '::query',
 			[ 'ORDER BY' => 'sp_revision DESC' ]
 		);
 
@@ -84,7 +84,7 @@ class StablePointStoreTest extends TestCase {
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],
 			[ 'sp_page' => 1 ],
-			StablePointStore::class . '::rawQuery',
+			StablePointStore::class . '::getLatestMatchingPoint',
 			[ 'ORDER BY' => 'sp_revision DESC' ]
 		);
 

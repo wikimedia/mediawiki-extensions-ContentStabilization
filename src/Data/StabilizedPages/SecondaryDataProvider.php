@@ -56,7 +56,7 @@ class SecondaryDataProvider implements ISecondaryDataProvider {
 			$hasChangedInclusions = $state === StableView::STATE_STABLE && $currentView->doesNeedStabilization();
 			$dataSet->set( Record::HAS_CHANGED_INCLUSIONS, $hasChangedInclusions );
 
-			$lastStable = $this->lookup->getLastStablePoint( $title );
+			$lastStable = $this->lookup->getLastRawStablePoint( $title );
 			if ( $lastStable ) {
 				$approver = $lastStable->getApprover();
 				$bot = new StabilizationBot();

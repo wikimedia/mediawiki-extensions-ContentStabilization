@@ -27,6 +27,12 @@ class RunDatabaseUpdates implements LoadExtensionSchemaUpdatesHook {
 			__DIR__ . '/../../db/stable_file_transclusions.sql'
 		);
 
+		$updater->addExtensionIndex(
+			'stable_points',
+			'sp_revision_index',
+			"$dir/db/$dbType/stable_points_indices_patch.sql"
+		);
+
 		// Migrate FlaggedRevs data
 		$updater->addPostDatabaseUpdateMaintenance(
 			'MediaWiki\Extension\ContentStabilization\Migration\MigrateFlaggedRevsData'
