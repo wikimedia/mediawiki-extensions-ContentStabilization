@@ -57,9 +57,10 @@ class StablePointStore {
 	 * @param array|null $conds
 	 *
 	 * @return StablePoint[]
+	 * @throws Exception
 	 */
-	public function query( ?array $conds = [] ): array {
-		$res = $this->rawQuery( $conds );
+	public function query( ?array $conds = [], string $method = __METHOD__ ): array {
+		$res = $this->rawQuery( $conds, $method );
 
 		$points = [];
 		foreach ( $res as $row ) {
@@ -99,9 +100,10 @@ class StablePointStore {
 	 * @param array|null $conds
 	 *
 	 * @return StablePoint|null
+	 * @throws Exception
 	 */
 	public function getLatestMatchingPoint( $conds = [] ): ?StablePoint {
-		$res = $this->rawQuery( $conds );
+		$res = $this->rawQuery( $conds, __METHOD__ );
 		if ( !$res->numRows() ) {
 			return null;
 		}
@@ -117,6 +119,7 @@ class StablePointStore {
 	 * @param stdClass $row
 	 *
 	 * @return StablePoint|null
+	 * @throws Exception
 	 */
 	private function stablePointFromRow( $row ): ?StablePoint {
 		$rowHash = 'row:' . md5( serialize( $row ) );
@@ -266,10 +269,10 @@ class StablePointStore {
 
 	/**
 	 * @param array|null $conds
-	 *
+	 * @param string $method
 	 * @return ResultWrapper
 	 */
-	private function rawQuery( ?array $conds ): ResultWrapper {
+	private function rawQuery( ?array $conds, string $method = __METHOD__ ): ResultWrapper {
 		$cacheKey = __METHOD__ . md5( json_encode( $conds ) );
 		if ( $this->queryCache->hasKey( $cacheKey ) ) {
 			return $this->queryCache->get( $cacheKey );
@@ -279,7 +282,7 @@ class StablePointStore {
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],
 			$conds,
-			__METHOD__,
+			$method,
 			[ 'ORDER BY' => 'sp_revision DESC' ],
 			[ 'stable_file_points' => [ 'LEFT JOIN', 'sfp_revision = sp_revision' ] ],
 		);

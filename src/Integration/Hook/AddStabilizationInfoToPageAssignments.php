@@ -62,12 +62,12 @@ class AddStabilizationInfoToPageAssignments implements BSPageAssignmentsOverview
 			if ( !$page ) {
 				continue;
 			}
-			$stable = $this->lookup->getLastStablePoint( $page->toPageIdentity() );
+			$stable = $this->lookup->getLastStableRevision( $page->toPageIdentity() );
 			if ( !$stable ) {
 				continue;
 			}
 
-			$timestamp = $stable->getRevision()->getTimestamp();
+			$timestamp = $stable->getTimestamp();
 			if ( !$timestamp ) {
 				continue;
 			}
