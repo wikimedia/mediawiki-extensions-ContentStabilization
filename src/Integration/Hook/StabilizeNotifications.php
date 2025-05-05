@@ -39,7 +39,7 @@ class StabilizeNotifications implements NotifyMeBeforeGenerateNotificationHook {
 			return true;
 		}
 		$isDraft = !empty( $this->lookup->getPendingUnstableRevisions( $title ) );
-		$isFirstDraft = $this->lookup->getLastStablePoint( $title ) === null;
+		$isFirstDraft = $this->lookup->getLastRawStablePoint( $title ) === null;
 		if ( $isFirstDraft && $this->lookup->isFirstUnstableAllowed() ) {
 			return true;
 		}

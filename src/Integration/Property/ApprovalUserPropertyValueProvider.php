@@ -77,7 +77,7 @@ class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 	 * @param \SMW\SemanticData $semanticData
 	 */
 	public function addAnnotation( $appFactory, $property, $semanticData ) {
-		$sp = $this->lookup->getLastStablePoint( $semanticData->getSubject()->getTitle()->toPageIdentity() );
+		$sp = $this->lookup->getLastRawStablePoint( $semanticData->getSubject()->getTitle()->toPageIdentity() );
 		if ( $sp instanceof StablePoint ) {
 			$title = $this->titleFactory->makeTitle( NS_USER, $sp->getApprover()->getUser()->getName() );
 			$semanticData->addPropertyObjectValue( $property, DIWikiPage::newFromTitle( $title ) );

@@ -70,14 +70,14 @@ class IntegrateIntoHistory implements PageHistoryLineEndingHook, BeforeInitializ
 			if ( !$this->lookup->canUserSeeUnstable( $this->user ) && !$this->showFirstUnstable( $title ) ) {
 				$classes[] = 'content-stabilization-hidden';
 			} elseif ( $title->getLatestRevID() === (int)$row->rev_id ) {
-				$lastStable = $this->lookup->getLastStablePoint( $title->toPageIdentity() );
+				$lastStable = $this->lookup->getLastStableRevision( $title->toPageIdentity() );
 				if ( !$lastStable ) {
 					return;
 				}
 				$link = $this->linkRenderer->makeLink(
 					$title,
 					Message::newFromKey( 'content-stabilization-stable-diff' )->text(),
-					[], [ 'oldid' => $lastStable->getRevision()->getId() ] );
+					[], [ 'oldid' => $lastStable->getId() ] );
 
 				$s .= "[<b>$link</b>]";
 			}

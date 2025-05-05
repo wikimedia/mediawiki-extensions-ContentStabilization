@@ -437,10 +437,10 @@ class StabilizeContent implements
 		}
 		$requested = $this->view->getRevision();
 		$stableFromView = $this->view->getLastStablePoint();
-		$latestStable = $this->lookup->getLastStablePoint( $page );
+		$latestStableRevision = $this->lookup->getLastStableRevision( $page );
 		if (
-			$stableFromView && $latestStable &&
-			$stableFromView->getRevision()->getId() < $latestStable->getRevision()->getId()
+			$stableFromView && $latestStableRevision &&
+			$stableFromView->getRevision()->getId() < $latestStableRevision->getId()
 		) {
 			// If we are viewing an old revision, that has a stable point afterwards, edit that one
 			return false;

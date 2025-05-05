@@ -77,7 +77,7 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	 * @return void
 	 */
 	public function addAnnotation( $appFactory, $property, $semanticData ) {
-		$sp = $this->lookup->getLastStablePoint( $semanticData->getSubject()->getTitle()->toPageIdentity() );
+		$sp = $this->lookup->getLastRawStablePoint( $semanticData->getSubject()->getTitle()->toPageIdentity() );
 		if ( $sp instanceof StablePoint ) {
 			$semanticData->addPropertyObjectValue(
 				$property, SMWDITime::newFromDateTime( $sp->getTime() )
