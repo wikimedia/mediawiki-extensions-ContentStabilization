@@ -71,7 +71,7 @@ class StablePagesHistoryPlugin implements IHistoryPlugin {
 			if ( !$this->lookup->canUserSeeUnstable( $user ) && !$this->showFirstUnstable( $title ) ) {
 				$classes[] = 'content-stabilization-hidden';
 			} else {
-				$lastStable = $this->lookup->getLastStablePoint( $title->toPageIdentity() );
+				$lastStable = $this->lookup->getLastRawStablePoint( $title->toPageIdentity() );
 				$entry['sp_approver'] = '';
 				$entry['sp_approve_ts'] = '';
 				$entry['sp_approve_comment'] = '';

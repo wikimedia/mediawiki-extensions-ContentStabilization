@@ -79,7 +79,7 @@ class StabilizeSearchIndex implements BSExtendedSearchWikipageFetchRevisionHook,
 	 * @return StablePoint|null
 	 */
 	private function getStable( Title $title ): ?StablePoint {
-		return $this->lookup->getLastStablePoint( $title->toPageIdentity() );
+		return $this->lookup->getLastRawStablePoint( $title->toPageIdentity() );
 	}
 
 	/**

@@ -207,15 +207,15 @@ class PageApproved implements IMechanism {
 			return false;
 		}
 
-		$stable = $this->stabilizationLookup->getLastStablePoint( $title );
-		if ( !( $stable instanceof StablePoint ) ) {
+		$stable = $this->stabilizationLookup->getLastStableRevision( $title );
+		if ( !( $stable instanceof RevisionRecord ) ) {
 			// first draft
 			return false;
 		}
-		if ( $revId && $revId !== $stable->getRevision()->getId() ) {
+		if ( $revId && $revId !== $stable->getId() ) {
 			return false;
 		}
-		$revId = $stable->getRevision()->getId();
+		$revId = $stable->getId();
 
 		if ( $this->isMinorRevision( $revId ) ) {
 			if ( $this->hasNoPreviousMajorRevisionDrafts( $revId ) ) {

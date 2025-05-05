@@ -85,7 +85,7 @@ class StabilizationLookup {
 	 * @return StablePoint[]
 	 */
 	public function getStablePointsForPage( PageIdentity $page ): array {
-		$points = $this->store->query( [ 'sp_page' => $page->getId() ] );
+		$points = $this->store->query( [ 'sp_page' => $page->getId() ], __METHOD__ );
 		return array_map( [ $this, 'decorateWithInclusions' ], $points );
 	}
 
@@ -115,9 +115,32 @@ class StabilizationLookup {
 	 * @return StablePoint|null
 	 */
 	public function getLastStablePoint( PageIdentity $page, $upToRevision = null ): ?StablePoint {
+		$point = $this->getLastRawStablePoint( $page, $upToRevision );
+		return $this->decorateWithInclusions( $point );
+	}
+
+	/**
+	 * @param PageIdentity $page
+	 * @param RevisionRecord|int|null $upToRevision
+	 * @return StablePoint|null
+	 */
+	public function getLastRawStablePoint( PageIdentity $page, $upToRevision = null ): ?StablePoint {
 		$conditions = [ 'sp_page' => $page->getId() ];
 		$this->addUpToRevisionCondition( $conditions, $upToRevision );
-		return $this->decorateWithInclusions( $this->store->getLatestMatchingPoint( $conditions ) );
+		return $this->store->getLatestMatchingPoint( $conditions );
+	}
+
+	/**
+	 * @param PageIdentity $page
+	 * @param RevisionRecord|int|null $upToRevision
+	 * @return RevisionRecord|null
+	 */
+	public function getLastStableRevision( PageIdentity $page, $upToRevision = null ): ?RevisionRecord {
+		$point = $this->getLastRawStablePoint( $page, $upToRevision );
+		if ( !$point ) {
+			return null;
+		}
+		return $point->getRevision();
 	}
 
 	/**
@@ -126,7 +149,7 @@ class StabilizationLookup {
 	 * @return bool
 	 */
 	public function isStableRevision( RevisionRecord $revisionRecord ): bool {
-		$stablePoint = $this->getLastStablePoint( $revisionRecord->getPage(), $revisionRecord );
+		$stablePoint = $this->getLastRawStablePoint( $revisionRecord->getPage(), $revisionRecord );
 		if ( !$stablePoint ) {
 			return false;
 		}
@@ -140,7 +163,7 @@ class StabilizationLookup {
 	public function getPendingUnstableRevisions( PageIdentity $page ): array {
 		$unstable = [];
 		if ( $this->hasStable( $page ) ) {
-			$rev = $this->getLastStablePoint( $page )->getRevision();
+			$rev = $this->getLastStableRevision( $page );
 		} else {
 			$rev = $this->revisionStore->getFirstRevision( $page );
 			$unstable[] = $rev;
