@@ -48,6 +48,7 @@ return [
 			$services->getRepoGroup(),
 			$services->getService( 'ContentStabilization._Config' ),
 			$services->getParserFactory(),
+			$services->getHookContainer(),
 			$inclusionModes
 		);
 	},
