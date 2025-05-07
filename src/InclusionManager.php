@@ -6,6 +6,7 @@ use HashBagOStuff;
 use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
@@ -41,6 +42,9 @@ class InclusionManager {
 	/** @var array */
 	private $inclusionModes;
 
+	/** @var HookContainer */
+	private $hookContainer;
+
 	/** @var HashBagOStuff */
 	private $cache;
 
@@ -51,12 +55,13 @@ class InclusionManager {
 	 * @param RepoGroup $repoGroup
 	 * @param GlobalVarConfig $config
 	 * @param ParserFactory $parserFactory
+	 * @param HookContainer $hookContainer
 	 * @param array $inclusionModes
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer, WikiPageFactory $wikiPageFactory,
 		RevisionLookup $revisionLookup, RepoGroup $repoGroup, Config $config,
-		ParserFactory $parserFactory, array $inclusionModes
+		ParserFactory $parserFactory, HookContainer $hookContainer, array $inclusionModes
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->wikiPageFactory = $wikiPageFactory;
@@ -65,6 +70,7 @@ class InclusionManager {
 		$this->config = $config;
 		$this->parserFactory = $parserFactory;
 		$this->inclusionModes = $inclusionModes;
+		$this->hookContainer = $hookContainer;
 		$this->cache = new HashBagOStuff();
 	}
 
@@ -241,6 +247,8 @@ class InclusionManager {
 				'sha1' => $image->getSha1(),
 			];
 		}
+
+		$this->hookContainer->run( 'ContentStabilizationGetCurrentInclusions', [ $page, &$res ] );
 
 		return $res;
 	}

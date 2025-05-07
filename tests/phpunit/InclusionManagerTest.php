@@ -8,6 +8,7 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Content\Content;
 use MediaWiki\Extension\ContentStabilization\InclusionManager;
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
@@ -322,6 +323,7 @@ class InclusionManagerTest extends TestCase {
 			$this->mockRepoGroup(),
 			new HashConfig( [ 'InclusionMode' => 'default' ] ),
 			$this->getParserFactoryMock(),
+			$this->createMock( HookContainer::class ),
 			[ 'default' => $inclusionModeMock ]
 		);
 	}
