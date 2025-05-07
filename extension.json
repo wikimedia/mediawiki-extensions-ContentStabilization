@@ -368,7 +368,10 @@
 		"DifferenceEngineViewHeader": "stabilizeContent",
 		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications",
 		"CognitiveProcessDesignerBeforeRender": "stabilizeCognitiveProcessDesigner",
-		"getUserPermissionsErrors": "stabilizeContent"
+		"getUserPermissionsErrors": "stabilizeContent",
+		"MediaWikiServices": "overrideServices",
+		"ApiQueryBaseBeforeQuery": "overrideApis",
+		"ModifyExportQuery": "overrideApis"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -468,6 +471,13 @@
 			"services": [
 				"ContentStabilization.Lookup", "RevisionLookup"
 			]
+		},
+		"overrideServices": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\OverrideServices"
+		},
+		"overrideApis": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\OverrideApis",
+			"services": [ "ContentStabilization.Lookup" ]
 		}
 	},
 	"SpecialPages": {
