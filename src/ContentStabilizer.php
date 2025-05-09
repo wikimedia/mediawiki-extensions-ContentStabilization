@@ -224,7 +224,7 @@ final class ContentStabilizer {
 			'sp_page' => $new->getPage()->getId(),
 			'sp_revision > ' . $old->getId(),
 			'sp_revision < ' . $new->getId()
-		] );
+		], __METHOD__ );
 		if ( !empty( $between ) ) {
 			throw new InvalidArgumentException( 'Cannot move stable point over another stable point' );
 		}

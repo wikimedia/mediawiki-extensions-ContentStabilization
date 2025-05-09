@@ -1,0 +1,107 @@
+{
+	"before": {
+		"name": "stable_points",
+		"columns": [
+			{
+				"name": "sp_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_page",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_time",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_user",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_comment",
+				"type": "text",
+				"options": {
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [],
+		"pk": [ "sp_revision" ]
+	},
+	"after": {
+		"name": "stable_points",
+		"columns": [
+			{
+				"name": "sp_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_page",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_time",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_user",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "sp_comment",
+				"type": "text",
+				"options": {
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "sp_revision_index",
+				"columns": [ "sp_revision" ],
+				"unique": true
+			},
+			{
+				"name": "sp_page",
+				"columns": [ "sp_page" ],
+				"unique": false
+			},
+			{
+				"name": "sp_time",
+				"columns": [ "sp_time" ],
+				"unique": false
+			},
+			{
+				"name": "sp_user",
+				"columns": [ "sp_user" ],
+				"unique": false
+			}
+		],
+		"pk": [ "sp_revision" ]
+	}
+}
