@@ -531,16 +531,18 @@ class PageApproved implements IMechanism {
 	}
 
 	/**
-	 * @param Title $title
-	 * @param User $user
+	 * @param \MediaWiki\Title\Title $title
+	 * @param \MediaWiki\User\User $user
 	 * @return RevisionRecord|null
 	 */
-	public function getLatestRevisionToConfirm( Title $title, User $user ): ?RevisionRecord {
-		$stable = $this->stabilizationLookup->getLastStablePoint( $title );
-		if ( !( $stable instanceof StablePoint ) ) {
+	public function getLatestRevisionToConfirm(
+		\MediaWiki\Title\Title $title, \MediaWiki\User\User $user
+	): ?RevisionRecord {
+		$latestStable = $this->stabilizationLookup->getLastStablePoint( $title );
+		if ( !$latestStable ) {
 			return null;
 		}
-		return $stable->getRevision();
+		return $latestStable->getRevision();
 	}
 
 	/**
@@ -645,18 +647,4 @@ class PageApproved implements IMechanism {
 		return true;
 	}
 
-	/**
-	 * @param \MediaWiki\Title\Title $title
-	 * @param \MediaWiki\User\User $user
-	 * @return RevisionRecord|null
-	 */
-	public function getLatestRevisionToConfirm(
-		\MediaWiki\Title\Title $title, \MediaWiki\User\User $user
-	): ?RevisionRecord {
-		$latestStable = $this->stabilizationLookup->getLastStablePoint( $title );
-		if ( !$latestStable ) {
-			return null;
-		}
-		return $latestStable->getRevision();
-	}
 }
