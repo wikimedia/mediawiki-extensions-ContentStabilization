@@ -141,5 +141,6 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Remover approbation",
 	"contentstabilization-versionhistory-remove-approval-confirm": "Es tu secur de voler remover le approbation de iste version?",
 	"contentstabilization-pref-pdf-show-tag-help": "Adde le ultime datas de approbation e de revision sub le titulos del pagina in le sortita PDF",
-	"contentstabilization-pref-index-stable-help": "Assecura que solmente le versiones approbate de paginas es includite in le indice de recerca"
+	"contentstabilization-pref-index-stable-help": "Assecura que solmente le versiones approbate de paginas es includite in le indice de recerca",
+	"contentstabilization-event-stable-point-added-desc": "Un pagina ha essite approbate"
 }
