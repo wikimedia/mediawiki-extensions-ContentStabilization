@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
 use Article;
+use Exception;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
@@ -12,7 +13,6 @@ use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use MWException;
 use PermissionsError;
 
 abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
@@ -83,7 +83,7 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	 * @param Title|null $title
 	 *
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 * @throws PermissionsError
 	 */
 	protected function assertOutputContains( User $user, $expected, $requestData = [], $message = '', $title = null ) {
