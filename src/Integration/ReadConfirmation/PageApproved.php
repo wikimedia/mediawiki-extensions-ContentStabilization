@@ -8,6 +8,7 @@ use BlueSpice\ReadConfirmation\Event\ConfirmationRequestEvent;
 use BlueSpice\ReadConfirmation\IMechanism;
 use DateInterval;
 use DateTime;
+use Exception;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
@@ -19,7 +20,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MWException;
 use MWStake\MediaWiki\Component\Events\Notifier;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -124,7 +124,7 @@ class PageApproved implements IMechanism {
 	 * @param User $userAgent
 	 *
 	 * @return bool
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	private function notifyDaily( Title $title, User $userAgent ) {
 		if ( !$title->exists() ) {
@@ -145,7 +145,7 @@ class PageApproved implements IMechanism {
 	 * @param User $userAgent
 	 *
 	 * @return bool|array
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function notify( Title $title, User $userAgent ) {
 		if ( !$title->exists() ) {
@@ -163,7 +163,7 @@ class PageApproved implements IMechanism {
 
 	/**
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function autoNotify() {
 		$delay = $this->config->get( 'BlueSpicePageApprovedReminderDelay' );
@@ -201,7 +201,7 @@ class PageApproved implements IMechanism {
 	 * @param int|null $revId
 	 *
 	 * @return bool
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function canConfirm( Title $title, User $user, $revId = null ) {
 		if ( !$this->stabilizationLookup->isStabilizationEnabled( $title ) ) {
@@ -363,7 +363,7 @@ class PageApproved implements IMechanism {
 	 * @param int $pageId
 	 *
 	 * @return array
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	private function getNotifyUsers( $pageId ) {
 		$affectedUsers = $this->getAssignedUsers( $pageId );
@@ -390,7 +390,7 @@ class PageApproved implements IMechanism {
 	 * @param int $pageId
 	 *
 	 * @return array
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	private function getAssignedUsers( $pageId ) {
 		$title = $this->titleFactory->newFromID( $pageId );

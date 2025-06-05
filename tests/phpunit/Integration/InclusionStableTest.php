@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
+use Exception;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use MWException;
 use PermissionsError;
 
 /**
@@ -48,7 +48,7 @@ class InclusionStableTest extends FullIntegrationBase {
 	/**
 	 *
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 * @throws PermissionsError
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onArticleViewHeader
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onBeforeParserFetchFileAndTitle
@@ -147,7 +147,7 @@ class InclusionStableTest extends FullIntegrationBase {
 	 * (Should always see the latest version)
 	 *
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 * @throws PermissionsError
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onArticleViewHeader
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onBeforeParserFetchFileAndTitle

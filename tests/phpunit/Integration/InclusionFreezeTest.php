@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
+use Exception;
 use MediaWiki\User\User;
 
 /**
@@ -33,7 +34,7 @@ class InclusionFreezeTest extends FullIntegrationBase {
 	/**
 	 *
 	 * @return void
-	 * @throws \MWException
+	 * @throws Exception
 	 * @throws \PermissionsError
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onArticleViewHeader
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onBeforeParserFetchFileAndTitle
