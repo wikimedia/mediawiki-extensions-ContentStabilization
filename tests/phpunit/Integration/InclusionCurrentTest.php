@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
+use Exception;
 use MediaWiki\User\User;
-use MWException;
 use PermissionsError;
 
 /**
@@ -35,7 +35,7 @@ class InclusionCurrentTest extends FullIntegrationBase {
 	/**
 	 *
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 * @throws PermissionsError
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onArticleViewHeader
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onBeforeParserFetchFileAndTitle

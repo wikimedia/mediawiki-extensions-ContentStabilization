@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\ContentStabilization;
 
+use Exception;
 use ManualLogEntry;
 use MediaWiki\Permissions\Authority;
-use MWException;
 
 class StabilizationLog {
 	/**
 	 * @param StablePoint $stablePoint
 	 *
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function stablePointAdded( StablePoint $stablePoint ) {
 		$logEntry = new ManualLogEntry( 'stabilization', 'add' );
@@ -27,7 +27,7 @@ class StabilizationLog {
 	 * @param Authority $remover
 	 *
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function stablePointRemoved( StablePoint $stablePoint, Authority $remover ) {
 		$logEntry = new ManualLogEntry( 'stabilization', 'remove' );
@@ -42,7 +42,7 @@ class StabilizationLog {
 	 * @param StablePoint $stablePoint
 	 *
 	 * @return void
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function stablePointUpdated( StablePoint $stablePoint ) {
 		$logEntry = new ManualLogEntry( 'stabilization', 'update' );
