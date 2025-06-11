@@ -371,7 +371,9 @@
 		"getUserPermissionsErrors": "stabilizeContent",
 		"MediaWikiServices": "overrideServices",
 		"ApiQueryBaseBeforeQuery": "overrideApis",
-		"ModifyExportQuery": "overrideApis"
+		"ModifyExportQuery": "overrideApis",
+		"APIGetAllowedParams": "addStabilizationDataToApiReports",
+		"APIQueryAfterExecute": "addStabilizationDataToApiReports"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -478,6 +480,10 @@
 		"overrideApis": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\OverrideApis",
 			"services": [ "ContentStabilization.Lookup" ]
+		},
+		"addStabilizationDataToApiReports": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddStabilizationDataToApiReports",
+			"services": [ "DBLoadBalancer", "TitleFactory", "ContentStabilization.Lookup" ]
 		}
 	},
 	"SpecialPages": {
