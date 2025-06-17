@@ -131,6 +131,19 @@ final class ContentStabilizer {
 		$this->assertRevisionsAreOnSamePage( $point->getRevision(), $revisionRecord );
 		$this->assertNoStablePointBetween( $point->getRevision(), $revisionRecord );
 
+		return $this->moveStablePointUnsafe( $point, $revisionRecord, $approver, $comment );
+	}
+
+	/**
+	 * @param StablePoint $point
+	 * @param RevisionRecord $revisionRecord
+	 * @param Authority $approver
+	 * @param string $comment
+	 * @return StablePoint
+	 */
+	public function moveStablePointUnsafe(
+		StablePoint $point, RevisionRecord $revisionRecord, Authority $approver, string $comment
+	): StablePoint {
 		$this->inclusionManager->removeStableInclusionsForRevision( $point->getRevision() );
 		$this->store->updateStablePoint( $point, $revisionRecord, $approver, $comment );
 		$this->inclusionManager->stabilizeInclusions( $revisionRecord );
