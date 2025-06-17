@@ -92,6 +92,13 @@ class StablePointAdded extends TitleEvent {
 	}
 
 	/**
+	 * @return int
+	 */
+	public function getNewStableRevisionId(): int {
+		return $this->newStableRevision;
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public static function getArgsForTesting(
