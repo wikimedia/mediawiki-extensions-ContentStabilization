@@ -19,12 +19,13 @@
 				"stable": {
 					"class": "MediaWiki\\Extension\\ContentStabilization\\InclusionMode\\Stable",
 					"services": [
-						"RevisionLookup", "ContentStabilization._Store", "RepoGroup", "TitleFactory", "ContentStabilization._Config"
+						"RevisionLookup", "ContentStabilization._Store", "RepoGroup", "TitleFactory",
+						"ContentStabilization._Config", "HookContainer"
 					]
 				},
 				"current": {
 					"class": "MediaWiki\\Extension\\ContentStabilization\\InclusionMode\\Current",
-					"services": [ "RevisionLookup", "RepoGroup", "TitleFactory" ]
+					"services": [ "RevisionLookup", "RepoGroup", "TitleFactory", "HookContainer" ]
 				}
 			}
 		},

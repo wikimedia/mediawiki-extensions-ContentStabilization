@@ -7,6 +7,7 @@ use MediaWiki\Extension\ContentStabilization\InclusionMode;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\TitleFactory;
@@ -24,22 +25,27 @@ class Stable implements InclusionMode {
 	/** @var array */
 	private $enabledNamespaces;
 
+	/** @var HookContainer */
+	private $hookContainer;
+
 	/**
 	 * @param RevisionLookup $revisionLookup
 	 * @param StablePointStore $store
 	 * @param RepoGroup $repoGroup
 	 * @param TitleFactory $titleFactory
 	 * @param Config $config
+	 * @param HookContainer $hookContainer
 	 */
 	public function __construct(
 		RevisionLookup $revisionLookup, StablePointStore $store, RepoGroup $repoGroup,
-		TitleFactory $titleFactory, Config $config
+		TitleFactory $titleFactory, Config $config, HookContainer $hookContainer
 	) {
 		$this->revisionLookup = $revisionLookup;
 		$this->store = $store;
 		$this->repoGroup = $repoGroup;
 		$this->titleFactory = $titleFactory;
 		$this->enabledNamespaces = $config->get( 'EnabledNamespaces' );
+		$this->hookContainer = $hookContainer;
 	}
 
 	/**
@@ -56,9 +62,26 @@ class Stable implements InclusionMode {
 		$viewingLatest = $mainRevision->isCurrent() || !$this->hasNewerStable( $mainRevision );
 		foreach ( $inclusions as $type => &$inclusionArray ) {
 			foreach ( $inclusionArray as &$inclusion ) {
+				// In case user is viewing the latest revision of the page, or latest stable revision,
+				// show the latest stable version of includes.
+				// Otherwise, limit to the last stable version before the freezing point
+				// (if user is viewing old version of the page, show transclusions as they were at that time)
+				$revLimit = !$viewingLatest ? $inclusion['revision'] : 0;
+				if ( isset( $inclusion['source'] ) && $inclusion['source'] !== 'local' ) {
+					$this->hookContainer->run(
+						'ContentStabilizationGetStableForeignInclusion', [ &$inclusion, $type, $revLimit ]
+					);
+					continue;
+				}
 				if ( $type === 'transclusions' ) {
+					if ( !in_array( $inclusion['namespace'], $this->enabledNamespaces ) ) {
+						continue;
+					}
 					$page = $this->titleFactory->makeTitle( $inclusion['namespace'], $inclusion['title'] );
 				} elseif ( $type === 'images' ) {
+					if ( !in_array( NS_FILE, $this->enabledNamespaces ) ) {
+						continue;
+					}
 					$page = $this->titleFactory->makeTitle( NS_FILE, $inclusion['name'] );
 				} else {
 					continue;
@@ -66,15 +89,7 @@ class Stable implements InclusionMode {
 				if ( !$page->exists() ) {
 					continue;
 				}
-				if ( !in_array( $page->getNamespace(), $this->enabledNamespaces ) ) {
-					continue;
-				}
-				// In case user is viewing the latest revision of the page, or latest stable revision,
-				// show the latest stable version of includes.
-				// Otherwise, limit to the last stable version before the freezing point
-				// (if user is viewing old version of the page, show transclusions as they were at that time)
 
-				$revLimit = !$viewingLatest ? $inclusion['revision'] : 0;
 				$conds = [
 					'sp_page' => $page->getArticleID()
 				];
@@ -127,6 +142,7 @@ class Stable implements InclusionMode {
 	 * @param RevisionRecord $mainRevision
 	 *
 	 * @return bool
+	 * @throws \Exception
 	 */
 	private function hasNewerStable( RevisionRecord $mainRevision ): bool {
 		$stable = $this->store->getLatestMatchingPoint( [
