@@ -330,12 +330,18 @@ class StabilizeContent implements
 				) {
 					$stabilized = true;
 					$selectedRevision = $revRecord;
-					if ( !$selectedRevision || $selectedRevision->getId() !== $transclusion['revision'] ) {
-						// Direct transclusion
-						$replacement = $this->revisionLookup->getRevisionById( $transclusion['revision'] );
-						if ( $replacement ) {
-							$selectedRevision = $replacement;
+					$replacement = null;
+					if ( $transclusion['source'] === 'local' ) {
+						if ( !$selectedRevision || $selectedRevision->getId() !== $transclusion['revision'] ) {
+							$replacement = $this->revisionLookup->getRevisionById( $transclusion['revision'] );
 						}
+					} else {
+						$this->hookContainer->run( 'ContentStabilizationFetchForeignRevisionForTransclusion', [
+							$transclusion, &$replacement, $this->view->getTargetUser()
+						] );
+					}
+					if ( $replacement ) {
+						$selectedRevision = $replacement;
 					}
 					if ( $selectedRevision ) {
 						// Get stable view for transclusion

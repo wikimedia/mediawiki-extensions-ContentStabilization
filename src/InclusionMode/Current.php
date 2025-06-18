@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\InclusionMode;
 
 use MediaWiki\Extension\ContentStabilization\InclusionMode;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\TitleFactory;
@@ -15,18 +16,22 @@ class Current implements InclusionMode {
 	private $repoGroup;
 	/** @var TitleFactory */
 	private $titleFactory;
+	/** @var HookContainer */
+	private $hookContainer;
 
 	/**
 	 * @param RevisionLookup $revisionLookup
 	 * @param RepoGroup $repoGroup
 	 * @param TitleFactory $titleFactory
+	 * @param HookContainer $hookContainer
 	 */
 	public function __construct(
-		RevisionLookup $revisionLookup, RepoGroup $repoGroup, TitleFactory $titleFactory
+		RevisionLookup $revisionLookup, RepoGroup $repoGroup, TitleFactory $titleFactory, HookContainer $hookContainer
 	) {
 		$this->revisionLookup = $revisionLookup;
 		$this->repoGroup = $repoGroup;
 		$this->titleFactory = $titleFactory;
+		$this->hookContainer = $hookContainer;
 	}
 
 	/**
@@ -43,17 +48,24 @@ class Current implements InclusionMode {
 	public function stabilizeInclusions( array $inclusions, RevisionRecord $mainRevision ): array {
 		foreach ( $inclusions as $type => &$inclusionArray ) {
 			foreach ( $inclusionArray as &$inclusion ) {
+				$latestRev = null;
 				if ( $type === 'transclusions' ) {
-					$page = $this->titleFactory->makeTitle( $inclusion['namespace'], $inclusion['title'] );
+					if ( $inclusion['source'] === 'local' ) {
+						$page = $this->titleFactory->makeTitle( $inclusion['namespace'], $inclusion['title'] );
+						$latestRev = $page->exists() ? $this->revisionLookup->getRevisionByTitle( $page ) : null;
+					} else {
+						$inclusion['revision'] = null;
+						$this->hookContainer->run( 'ContentStabilizationFetchForeignRevisionForTransclusion', [
+							$inclusion, &$latestRev, null, [ 'inclusionMode' => $this ]
+						] );
+					}
 				} elseif ( $type === 'images' ) {
 					$page = $this->titleFactory->makeTitle( NS_FILE, $inclusion['name'] );
+					$latestRev = $page->exists() ? $this->revisionLookup->getRevisionByTitle( $page ) : null;
 				} else {
 					continue;
 				}
-				if ( !$page->exists() ) {
-					continue;
-				}
-				$latestRev = $this->revisionLookup->getRevisionByTitle( $page );
+
 				if ( !$latestRev ) {
 					continue;
 				}

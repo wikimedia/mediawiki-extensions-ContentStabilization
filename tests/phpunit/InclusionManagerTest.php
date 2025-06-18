@@ -16,6 +16,7 @@ use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserFactory;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
+use MediaWiki\Parser\ParserOutputLinkTypes;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
@@ -42,8 +43,28 @@ class InclusionManagerTest extends TestCase {
 	private function getParserOutputData(): array {
 		return [
 			'PageToTest' => [
-				'images' => [ 'Foo.png' => 1, 'Bar.png' => 2 ],
-				'transclusions' => [ NS_MAIN => [ 'Foo' => 3, 'Bar' => 4 ] ]
+				'images' => [ [
+					'link' => 'Foo.png',
+					'namespace' => NS_FILE,
+					'revid' => 9,
+					'time' => '20200101000000',
+					'sha1' => 'a21234567890'
+				], [
+					'link' => 'Bar.png',
+					'revid' => 11,
+					'namespace' => NS_FILE,
+					'time' => '20210104000000',
+					'sha1' => 'b21234567890'
+				] ],
+				'transclusions' => [ [
+					'link' => 'Foo',
+					'revid' => 4,
+					'namespace' => NS_MAIN,
+				], [
+					'link' => 'Bar',
+					'revid' => 7,
+					'namespace' => NS_MAIN,
+				] ]
 			],
 		];
 	}
@@ -54,10 +75,10 @@ class InclusionManagerTest extends TestCase {
 	private function getRevisionIds(): array {
 		return [
 			// Inclusions
-			3 => [ 2, 3, 4 ],
-			4 => [ 5, 6, 7 ],
-			1 => [ 8, 9 ],
-			2 => [ 10, 11 ],
+			'Foo' => [ 2, 3, 4 ],
+			'Bar' => [ 5, 6, 7 ],
+			'Foo.png' => [ 8, 9 ],
+			'Bar.png' => [ 10, 11 ],
 		];
 	}
 
@@ -84,13 +105,19 @@ class InclusionManagerTest extends TestCase {
 		return [
 			// Highest revision from `getRevisionIds`
 			'transclusions' => [
-				[ 'revision' => 4, 'namespace' => NS_MAIN, 'title' => 'Foo' ],
-				[ 'revision' => 7, 'namespace' => NS_MAIN, 'title' => 'Bar' ]
+				[ 'revision' => 4, 'namespace' => NS_MAIN, 'title' => 'Foo', 'source' => 'local' ],
+				[ 'revision' => 7, 'namespace' => NS_MAIN, 'title' => 'Bar', 'source' => 'local' ]
 			],
 			// Data from the highest revision from `getImages`
 			'images' => [
-				[ 'revision' => 9, 'name' => 'Foo.png', 'timestamp' => '20200101000000', 'sha1' => 'a21234567890' ],
-				[ 'revision' => 11, 'name' => 'Bar.png', 'timestamp' => '20210104000000', 'sha1' => 'b21234567890' ],
+				[
+					'revision' => 9, 'name' => 'Foo.png',
+					'timestamp' => '20200101000000', 'sha1' => 'a21234567890', 'source' => 'local'
+				],
+				[
+					'revision' => 11, 'name' => 'Bar.png',
+					'timestamp' => '20210104000000', 'sha1' => 'b21234567890', 'source' => 'local'
+				],
 			],
 		];
 	}
@@ -140,11 +167,13 @@ class InclusionManagerTest extends TestCase {
 						'st_transclusion_revision' => 4,
 						'st_transclusion_namespace' => NS_MAIN,
 						'st_transclusion_title' => 'Foo',
+						'st_transclusion_source' => 'local',
 					], [
 						'st_revision' => 1, 'st_page' => 2,
 						'st_transclusion_revision' => 7,
 						'st_transclusion_namespace' => NS_MAIN,
 						'st_transclusion_title' => 'Bar',
+						'st_transclusion_source' => 'local',
 					],
 				],
 			],
@@ -153,16 +182,18 @@ class InclusionManagerTest extends TestCase {
 				'records' => [
 					[
 						'sft_revision' => 1, 'sft_page' => 2,
+						'sft_file_revision' => 9,
 						'sft_file_name' => 'Foo.png',
 						'sft_file_timestamp' => '20200101000000',
 						'sft_file_sha1' => 'a21234567890',
-						'sft_file_revision' => 9,
+						'sft_file_source' => 'local'
 					], [
 						'sft_revision' => 1, 'sft_page' => 2,
+						'sft_file_revision' => 11,
 						'sft_file_name' => 'Bar.png',
 						'sft_file_timestamp' => '20210104000000',
 						'sft_file_sha1' => 'b21234567890',
-						'sft_file_revision' => 11,
+						'sft_file_source' => 'local'
 					],
 				],
 			]
@@ -187,7 +218,7 @@ class InclusionManagerTest extends TestCase {
 			->willReturnCallback( function ( $table, $rows, $fname ) use ( &$expectedInsertArgs ) {
 				$curExpectedArgs = array_shift( $expectedInsertArgs );
 				$this->assertEquals( $curExpectedArgs[0], $table );
-				$this->assertTrue( $curExpectedArgs[1] == $rows );
+				$this->assertEquals( $curExpectedArgs[1], $rows );
 				$this->assertEquals( $curExpectedArgs[2], $fname );
 			} );
 
@@ -352,19 +383,28 @@ class InclusionManagerTest extends TestCase {
 	private function getParserOutput( LinkTarget $page ): ParserOutput {
 		$output = $this->createMock( ParserOutput::class );
 		$currentInclusions = $this->getParserOutputData();
-		$output->method( 'getTemplates' )->willReturnCallback(
-			static function () use ( $page, $currentInclusions ) {
+		$output->expects( $this->exactly( 2 ) )
+			->method( 'getLinkList' )
+			->willReturnCallback(
+			function ( $type ) use ( $page, $currentInclusions ) {
 				if ( !isset( $currentInclusions[$page->getDBkey()] ) ) {
 					return [];
 				}
-				return $currentInclusions[$page->getDBkey()]['transclusions'];
-			} );
-		$output->method( 'getImages' )->willReturnCallback(
-			static function () use ( $page, $currentInclusions ) {
-				if ( !isset( $currentInclusions[$page->getDBkey()] ) ) {
-					return [];
+				if ( $type === ParserOutputLinkTypes::TEMPLATE ) {
+					$value = $currentInclusions[$page->getDBkey()]['transclusions'];
+				} elseif ( $type === ParserOutputLinkTypes::MEDIA ) {
+					$value = $currentInclusions[$page->getDBkey()]['images'] ?? [];
 				}
-				return $currentInclusions[$page->getDBkey()]['images'];
+				foreach ( $value as &$item ) {
+					if ( isset( $item['link'] ) ) {
+						$linkTarget = $this->createMock( LinkTarget::class );
+						$linkTarget->method( 'isSameLinkAs' )->willReturn( false );
+						$linkTarget->method( 'getNamespace' )->willReturn( $item['namespace'] );
+						$linkTarget->method( 'getDBkey' )->willReturn( $item['link'] );
+						$item['link' ] = $linkTarget;
+					}
+				}
+				return $value;
 			} );
 
 		return $output;
@@ -436,18 +476,17 @@ class InclusionManagerTest extends TestCase {
 		$mock = $this->getMockBuilder( RevisionLookup::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$mock->method( 'getRevisionByPageId' )->willReturnCallback( function ( $pageId ) {
+		$mock->method( 'getRevisionByTitle' )->willReturnCallback( function ( $page ) {
 			$mock = $this->getMockBuilder( RevisionRecord::class )
 				->disableOriginalConstructor()
 				->getMock();
-			$mock->method( 'getId' )->willReturnCallback( function () use ( $pageId ) {
+			$mock->method( 'getId' )->willReturnCallback( function () use ( $page ) {
 				$revisionIds = $this->getRevisionIds();
-				if ( !isset( $revisionIds[$pageId] ) ) {
+				if ( !isset( $revisionIds[$page->getDbKey()] ) ) {
 					return null;
 				}
-				return max( $revisionIds[$pageId] );
+				return max( $revisionIds[$page->getDbKey()] );
 			} );
-			$mock->method( 'getPageId' )->willReturn( $pageId );
 			return $mock;
 		} );
 

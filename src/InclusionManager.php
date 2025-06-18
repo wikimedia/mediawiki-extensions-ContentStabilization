@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\ContentStabilization;
 
 use HashBagOStuff;
-use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\HookContainer\HookContainer;
@@ -11,8 +10,10 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Parser\ParserFactory;
+use MediaWiki\Parser\ParserOutputLinkTypes;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\WikiMap\WikiMap;
 use RepoGroup;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -214,40 +215,35 @@ class InclusionManager {
 			/* $clearstate = */ true,
 			$page->getTitle()->getLatestRevID()
 		);
-		$transclusions = $parserOutput->getTemplates();
-		$images = $parserOutput->getImages();
+		$transclusions = $parserOutput->getLinkList( ParserOutputLinkTypes::TEMPLATE );
+		$images = $parserOutput->getLinkList( ParserOutputLinkTypes::MEDIA );
 
 		$res = [ 'transclusions' => [], 'images' => [] ];
-		foreach ( $transclusions as $nsId => $pages ) {
-			foreach ( $pages as $dbKey => $pageId ) {
-				if ( $dbKey === $target->getDBkey() && $target->getNamespace() === $nsId ) {
-					// For some reason, getTemplates returns the current page as a transclusion
-					continue;
-				}
-				$latest = $this->revisionLookup->getRevisionByPageId( $pageId );
-				if ( !$latest ) {
-					// Page doesn't exist (or something worse)
-					continue;
-				}
-				$res['transclusions'][] = [
-					'revision' => $latest->getId(),
-					'namespace' => $nsId,
-					'title' => $dbKey,
-				];
-			}
-		}
-
-		foreach ( $images as $name => $id ) {
-			$image = $this->repoGroup->getLocalRepo()->findFile( $name );
-			if ( !$image ) {
-				// Image doesn't exist (or something worse)
+		foreach ( $transclusions as $transclusion ) {
+			if ( $target->isSameLinkAs( $transclusion['link'] ) ) {
 				continue;
 			}
+			$res['transclusions'][] = [
+				'source' => 'local',
+				'revision' => $transclusion['revid'],
+				'namespace' => $transclusion['link']->getNamespace(),
+				'title' => $transclusion['link']->getDBkey(),
+			];
+		}
+
+		foreach ( $images as $image ) {
+			// Source for images is the repo key
+			$source = 'local';
+			$file = $this->repoGroup->findFile( $image['link'] );
+			if ( $file ) {
+				$source = $file->getRepo()->getName();
+			}
 			$res['images'][] = [
-				'revision' => $image->getTitle()->getLatestRevID( IDBAccessObject::READ_LATEST ),
-				'name' => $image->getName(),
-				'timestamp' => $image->getTimestamp(),
-				'sha1' => $image->getSha1(),
+				'source' => $source,
+				'revision' => $this->revisionLookup->getRevisionByTitle( $image['link'] )?->getId() ?: 0,
+				'name' => $image['link']->getDBkey(),
+				'timestamp' => $image['time'],
+				'sha1' => $image['sha1'] ?: '',
 			];
 		}
 
@@ -271,6 +267,7 @@ class InclusionManager {
 				'st_transclusion_revision' => $item['revision'],
 				'st_transclusion_namespace' => $item['namespace'],
 				'st_transclusion_title' => $item['title'],
+				'st_transclusion_source' => $item['source'] ?? ''
 			];
 		}
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
@@ -299,6 +296,7 @@ class InclusionManager {
 				'sft_file_name' => $image['name'],
 				'sft_file_timestamp' => $image['timestamp'],
 				'sft_file_sha1' => $image['sha1'],
+				'sft_file_source' => $image['source'] ?? 'local',
 			];
 		}
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
@@ -326,17 +324,23 @@ class InclusionManager {
 		$db = $this->loadBalancer->getConnection( DB_REPLICA );
 		$res = $db->select(
 			'stable_transclusions',
-			[ 'st_transclusion_revision', 'st_transclusion_namespace', 'st_transclusion_title' ],
+			[
+				'st_transclusion_revision', 'st_transclusion_namespace',
+				'st_transclusion_title', 'st_transclusion_source'
+			],
 			[ 'st_revision' => $revisionRecord->getId() ],
 			__METHOD__
 		);
 
 		$transclusions = [];
 		foreach ( $res as $row ) {
+			$source = !$row->st_transclusion_source || $row->st_transclusion_source === WikiMap::getCurrentWikiId() ?
+				'local' : $row->st_transclusion_source;
 			$transclusions[] = [
 				'revision' => (int)$row->st_transclusion_revision,
 				'namespace' => (int)$row->st_transclusion_namespace,
 				'title' => $row->st_transclusion_title,
+				'source' => $source,
 			];
 		}
 		$this->cache->set( $cacheKey, $transclusions );
@@ -357,7 +361,7 @@ class InclusionManager {
 		$db = $this->loadBalancer->getConnection( DB_REPLICA );
 		$res = $db->select(
 			'stable_file_transclusions',
-			[ 'sft_file_revision', 'sft_file_name', 'sft_file_timestamp', 'sft_file_sha1' ],
+			[ 'sft_file_revision', 'sft_file_name', 'sft_file_timestamp', 'sft_file_sha1', 'sft_file_source' ],
 			[ 'sft_revision' => $main->getId() ],
 			__METHOD__
 		);
@@ -369,6 +373,7 @@ class InclusionManager {
 				'name' => $row->sft_file_name,
 				'timestamp' => $row->sft_file_timestamp,
 				'sha1' => $row->sft_file_sha1,
+				'source' => $row->sft_file_source ?? 'local',
 			];
 		}
 
@@ -418,7 +423,7 @@ class InclusionManager {
 	 * @return array empty if same
 	 */
 	private function compareTransclusions( array $latest, array $stable ): array {
-		return $this->rawCompare( $latest, $stable, [ 'namespace', 'title', 'revision' ] );
+		return $this->rawCompare( $latest, $stable, [ 'namespace', 'title', 'revision', 'source' ] );
 	}
 
 	/**
@@ -459,6 +464,8 @@ class InclusionManager {
 		$simplified = [];
 		foreach ( $inclusions as $inclusion ) {
 			$relevantKeys = array_intersect_key( $inclusion, array_flip( $fields ) );
+			// Sort $inclusion to ensure consistent key order
+			ksort( $relevantKeys );
 			$simpleKey = implode( '|', array_values( $relevantKeys ) );
 			$simplified[$simpleKey] = $inclusion;
 		}
