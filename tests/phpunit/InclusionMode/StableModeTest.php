@@ -7,6 +7,7 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\ContentStabilization\InclusionMode\Stable;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
@@ -69,12 +70,22 @@ class StableModeTest extends TestCase {
 
 		$store = $this->mockStore( $page, $image );
 		$repoGroup = $this->mockRepoGroup( $image );
-		$stableInclusionMode = new Stable( $revisionLookup, $store, $repoGroup, $titleFactory, $config );
+		$hookContainer = $this->createMock( HookContainer::class );
+		$stableInclusionMode = new Stable(
+			$revisionLookup, $store, $repoGroup, $titleFactory, $config, $hookContainer
+		);
 		$stabilized = $stableInclusionMode->stabilizeInclusions( [
 			'transclusions' => [
-				[ 'revision' => $revsAtTimeOfStablization['page'], 'namespace' => NS_TEMPLATE, 'title' => 'Foo' ]
+				[
+					'source' => 'local', 'revision' => $revsAtTimeOfStablization['page'],
+					'namespace' => NS_TEMPLATE, 'title' => 'Foo'
+				]
 			],
-			'images' => [ [ 'revision' => -1, 'timestamp' => $revsAtTimeOfStablization['image'], 'name' => 'Bar' ] ],
+			'images' => [ [
+				'revision' => -1,
+				'timestamp' => $revsAtTimeOfStablization['image'],
+				'name' => 'Bar', 'source' => 'local'
+			] ],
 		], $mainPageRevision );
 
 		$this->assertEquals(
@@ -112,6 +123,7 @@ class StableModeTest extends TestCase {
 						'timestamp' => '20220101000000',
 						'name' => 'Bar',
 						'sha1' => '12345',
+						'source' => 'local'
 					]
 				]
 			],
@@ -138,6 +150,7 @@ class StableModeTest extends TestCase {
 						'timestamp' => '20220101000002',
 						'name' => 'Bar',
 						'sha1' => '12347',
+						'source' => 'local'
 					]
 				]
 			],
@@ -164,6 +177,7 @@ class StableModeTest extends TestCase {
 						'timestamp' => '20220101000001',
 						'name' => 'Bar',
 						'sha1' => '12346',
+						'source' => 'local'
 					]
 				]
 			],
@@ -190,6 +204,7 @@ class StableModeTest extends TestCase {
 						'timestamp' => '20220101000002',
 						'name' => 'Bar',
 						'sha1' => '12347',
+						'source' => 'local',
 					]
 				]
 			]

@@ -9,13 +9,11 @@ use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\HookContainer\HookContainer;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
-use MediaWiki\Title\Title;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use ObjectCacheFactory;
@@ -536,14 +534,5 @@ class StabilizationLookup {
 	 */
 	public function isStabilizedNamespace( int $namespace ) {
 		return in_array( $namespace, $this->config->get( 'EnabledNamespaces' ) );
-	}
-
-	/**
-	 * @param PageIdentity $page
-	 *
-	 * @return LinkTarget
-	 */
-	private function linkTargetFromPageIdentity( PageIdentity $page ): LinkTarget {
-		return Title::castFromPageIdentity( $page );
 	}
 }
