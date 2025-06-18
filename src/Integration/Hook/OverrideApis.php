@@ -44,6 +44,9 @@ class OverrideApis implements ModifyExportQueryHook, ApiQueryBaseBeforeQueryHook
 	 */
 	public function onModifyExportQuery( $db, &$tables, $cond, &$opts, &$join_conds, &$conds ) {
 		$user = RequestContext::getMain()->getUser();
+		if ( MW_ENTRY_POINT === 'cli' ) {
+			return;
+		}
 		if ( $this->stabilizationLookup->canUserSeeUnstable( $user ) ) {
 			return;
 		}
