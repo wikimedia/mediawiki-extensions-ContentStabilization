@@ -49,6 +49,9 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 	 */
 	public function makeData( $params ) {
 		$this->data = [];
+		if ( empty( $this->enabledNamespaces ) ) {
+			return $this->data;
+		}
 		$conds = $this->makePreFilterConds( $params );
 		$conds[] = 'page_namespace IN (' . $this->db->makeList( $this->enabledNamespaces ) . ')';
 		$options = $this->makePreOptionConds( $params );
