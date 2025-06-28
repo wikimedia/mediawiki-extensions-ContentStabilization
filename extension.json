@@ -162,7 +162,7 @@
 		"MediaWiki\\Extension\\ContentStabilization\\": "src/"
 	},
 	"TestAutoloadNamespaces": {
-		"MediaWiki\\Extension\\ContentStabilization\\Tests\\": "tests/phpunit"
+		"MediaWiki\\Extension\\ContentStabilization\\Tests\\": "tests/phpunit/"
 	},
 	"ResourceModules": {
 		"ext.contentStabilization.bootstrap": {
