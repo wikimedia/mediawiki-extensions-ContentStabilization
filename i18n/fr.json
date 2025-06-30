@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alien333",
+			"Derugon",
 			"Gomoko",
 			"Iketsi",
 			"JLTRY",
@@ -17,7 +18,7 @@
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
 	"right-contentstabilization-oversight": "Voir l’aperçu de toutes les approbations d’une page",
-	"right-contentstabilization-admin": "Modifier qui peut voir les brouillons, supprimer et modifier les approbations",
+	"right-contentstabilization-admin": "Autoriser la suppression et le déplacement de points approuvés vers une révision différente",
 	"right-contentstabilization-stabilize": "Approuver les pages",
 	"action-contentstabilization-oversight": "voir aperçu des approbations",
 	"action-contentstabilization-stabilize": "approuver une page",
@@ -152,5 +153,6 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Supprimer l'approbation",
 	"contentstabilization-versionhistory-remove-approval-confirm": "Êtes-vous sûr de vouloir supprimer l’approbation de cette révision ?",
 	"contentstabilization-pref-pdf-show-tag-help": "Ajoute les dernières dates d'approbation et de révision sous les titres de page dans la sortie PDF",
-	"contentstabilization-pref-index-stable-help": "Garantit que seules les versions approuvées des pages sont incluses dans l'index de recherche"
+	"contentstabilization-pref-index-stable-help": "Garantit que seules les versions approuvées des pages sont incluses dans l'index de recherche",
+	"contentstabilization-event-stable-point-added-desc": "Une page a été approuvée"
 }
