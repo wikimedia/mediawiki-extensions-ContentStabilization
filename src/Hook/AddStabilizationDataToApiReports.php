@@ -80,7 +80,7 @@ class AddStabilizationDataToApiReports implements APIGetAllowedParamsHook, APIQu
 			] )
 			->from( 'stable_points', 'sp' )
 			->join( 'user', 'u', 'sp.sp_user=u.user_id' )
-			->left( 'stable_file_points', 'spf', [
+			->leftJoin( 'stable_file_points', 'spf', [
 				'spf.sfp_page=sp.sp_page',
 				'spf.sfp_revision=sp.sp_revision',
 			] );
