@@ -86,10 +86,6 @@ class StabilizePDFExport implements
 		if ( !( $title instanceof Title ) ) {
 			return;
 		}
-		if ( !$oldId ) {
-			// If not set anywhere, use latest
-			$oldId = $title->getLatestRevID();
-		}
 
 		if ( !$title->canExist() ) {
 			// Virtual namespace
