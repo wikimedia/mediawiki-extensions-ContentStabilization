@@ -6,10 +6,12 @@ use BlueSpice\UEModulePDF\Hook\BSUEModulePDFBeforeAddingStyleBlocksHook;
 use BlueSpice\UEModulePDF\Hook\BSUEModulePDFbeforeGetPageHook;
 use BlueSpice\UEModulePDF\Hook\BSUEModulePDFgetPageHook;
 use Config;
+use DOMElement;
 use DOMXPath;
 use Language;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use Message;
 use RequestContext;
 use Title;
 use TitleFactory;
@@ -94,10 +96,13 @@ class StabilizePDFExport implements
 		if ( !$this->lookup->isStabilizationEnabled( $title->toPageIdentity() ) ) {
 			return;
 		}
-		$this->view = $this->lookup->getStableView( $title, $this->user, [
+		$stabilizationOptions = [
 			'forceUnstable' => $forceUnstable,
-			'upToRevision' => $oldId
-		] );
+		];
+		if ( $oldId ) {
+			$stabilizationOptions['upToRevision'] = $oldId;
+		}
+		$this->view = $this->lookup->getStableView( $title, $this->user, $stabilizationOptions );
 
 		if ( !$this->view ) {
 			return;
@@ -127,11 +132,15 @@ class StabilizePDFExport implements
 			return;
 		}
 
+		$lastStable = null;
+		if ( $this->view->getStatus() === StableView::STATE_STABLE ) {
+			$lastStable = $this->view->getLastStablePoint();
+		}
+
 		// Timestamp when stable point was added (time of approval)
 		$lastStableTime = '';
 		// Timestamp when the revision was created
 		$lastStableRevisionTime = '';
-		$lastStable = $this->view->getLastStablePoint();
 		if ( $lastStable ) {
 			$lastStableTime = $lastStable->getTime()->format( 'YmdHis' );
 			$lastStableRevisionTime = $lastStable->getRevision()->getTimestamp();
@@ -140,41 +149,46 @@ class StabilizePDFExport implements
 		$page['meta']['laststabledate'] = $this->formatTs( $lastStableTime );
 		$page['meta']['stablerevisiondate'] = $this->formatTs( $lastStableRevisionTime );
 
-		$stableTag = $page['dom']->createElement(
-			'span',
-			\Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )
-				->text()
-		);
+		$revNode = $this->createRevisionInformationNode( $page, !!$lastStableTime );
 
-		$stableTag->setAttribute( 'class', 'contentstabilization-export-laststable-tag' );
-		if ( !$lastStableTime ) {
-			$dateNode = $page['dom']->createElement(
+		$page['firstheading-element']->parentNode->insertBefore(
+			$revNode, $page['firstheading-element']->nextSibling
+		);
+	}
+
+	private function createRevisionInformationNode( array $page, bool $isStable ): DOMElement {
+		$dom = $page['dom'];
+		$lastStableTime = $page['meta']['laststabledate'];
+		$lastStableRevisionTime = $page['meta']['stablerevisiondate'];
+
+		$revInfoNode = $dom->createElement( 'span' );
+
+		if ( !$isStable ) {
+			$dateNode = $dom->createElement(
 				'span',
-				\Message::newFromKey( 'contentstabilization-export-no-stable-date' )
-					->plain()
-			);
+				" " . Message::newFromKey( 'contentstabilization-export-no-stable-date' )->escaped() );
 			$dateNode->setAttribute( 'class', 'nostable' );
 		} else {
-			$dateNode = $page['dom']->createTextNode( $page['meta']['laststabledate'] );
+			$dateNode = $dom->createElement( 'span', " " . $lastStableTime );
 		}
 
+		$stableTagText = Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )->escaped();
+		$stableTag = $dom->createElement( 'span', $stableTagText );
+		$stableTag->setAttribute( 'class', 'contentstabilization-export-laststable-tag' );
 		$stableTag->appendChild( $dateNode );
 
-		$stableRevDateTag = $page['dom']->createElement(
-			'span',
-			' / ' . \Message::newFromKey( 'contentstabilization-export-stablerevisiondate-tag-text' )
-				->params( $page['meta']['stablerevisiondate'] )
-				->text()
-		);
+		$stableRevDateTagText = Message::newFromKey(
+			'contentstabilization-export-stablerevisiondate-tag-text',
+			$lastStableRevisionTime
+		)->escaped();
+		$stableRevDateTag = $dom->createElement( 'span', $stableRevDateTagText );
 		$stableRevDateTag->setAttribute( 'class', 'contentstabilization-export' );
 
-		$page['firstheading-element']->parentNode->insertBefore(
-			$stableRevDateTag, $page['firstheading-element']->nextSibling
-		);
+		$revInfoNode->appendChild( $stableTag );
+		$revInfoNode->appendChild( $dom->createElement( 'span', " / " ) );
+		$revInfoNode->appendChild( $stableRevDateTag );
 
-		$page['firstheading-element']->parentNode->insertBefore(
-			$stableTag, $page['firstheading-element']->nextSibling
-		);
+		return $revInfoNode;
 	}
 
 	/**
