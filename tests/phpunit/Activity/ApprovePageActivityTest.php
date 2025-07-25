@@ -10,7 +10,6 @@ use MediaWiki\Extension\Workflows\Definition\DefinitionContext;
 use MediaWiki\Extension\Workflows\Definition\Element\Task;
 use MediaWiki\Extension\Workflows\WorkflowContext;
 use MediaWiki\Extension\Workflows\WorkflowContextMutable;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
@@ -38,7 +37,7 @@ class ApprovePageActivityTest extends MediaWikiIntegrationTestCase {
 		$this->overrideConfigValues( [
 			'ContentStabilizationEnabledNamespaces' => [ NS_MAIN ]
 		] );
-		$this->lookup = MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' );
+		$this->lookup = $this->getServiceContainer()->getService( 'ContentStabilization.Lookup' );
 	}
 
 	/**
@@ -47,7 +46,7 @@ class ApprovePageActivityTest extends MediaWikiIntegrationTestCase {
 	 *
 	 */
 	public function testExecute() {
-		$mutable = new WorkflowContextMutable( MediaWikiServices::getInstance()->getTitleFactory() );
+		$mutable = new WorkflowContextMutable( $this->getServiceContainer()->getTitleFactory() );
 		$mutable->setDefinitionContext( new DefinitionContext( [
 			'pageId' => $this->title->getArticleID(),
 			'revision' => $this->title->getLatestRevID()
@@ -55,7 +54,7 @@ class ApprovePageActivityTest extends MediaWikiIntegrationTestCase {
 		$context = new WorkflowContext( $mutable );
 		$task = new Task( 'Approve1', 'Approve page', [], [], 'task' );
 
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$activity = new ApprovePageActivity(
 			$services->getTitleFactory(),
 			$services->getService( 'ContentStabilization.Stabilizer' ),
