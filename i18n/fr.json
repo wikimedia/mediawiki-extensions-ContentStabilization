@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alien333",
+			"Bananax47",
 			"Derugon",
 			"Gomoko",
 			"Iketsi",
@@ -124,7 +125,7 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Approuvé par",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Date d’approbation",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "Commentaire d'approbation",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Approuver l'activité de la page",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Activité \"Approuver la page\"",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utilisateur",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Utilisateur pour l'approbation de la page",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Commentaire",
