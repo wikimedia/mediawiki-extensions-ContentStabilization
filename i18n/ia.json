@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "Permitte que usatores marca paginas como \"approbate\" o \"provisori\" e vide le version approbate le plus recente de un pagina.",
 	"right-contentstabilization-oversight": "Vider un vista general de tote le approbationes de un pagina",
-	"right-contentstabilization-admin": "Cambiar le personas qui pote vider versiones provisori e deler e cambiar approbationes",
+	"right-contentstabilization-admin": "Permitter le deletion e le displaciamento a un altere version de punctos stabile",
 	"right-contentstabilization-stabilize": "Approbar paginas",
 	"action-contentstabilization-oversight": "vider un vista general de approbationes",
 	"action-contentstabilization-stabilize": "approbar un pagina",
@@ -141,5 +141,6 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Remover approbation",
 	"contentstabilization-versionhistory-remove-approval-confirm": "Es tu secur de voler remover le approbation de iste version?",
 	"contentstabilization-pref-pdf-show-tag-help": "Adde le ultime datas de approbation e de revision sub le titulos del pagina in le sortita PDF",
-	"contentstabilization-pref-index-stable-help": "Assecura que solmente le versiones approbate de paginas es includite in le indice de recerca"
+	"contentstabilization-pref-index-stable-help": "Assecura que solmente le versiones approbate de paginas es includite in le indice de recerca",
+	"contentstabilization-event-stable-point-added-desc": "Un pagina ha essite approbate"
 }

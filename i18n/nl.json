@@ -10,7 +10,7 @@
 	},
 	"contentstabilization-desc": "Hiermee kunnen gebruikers pagina’s markeren als “goedgekeurd” of “concept” en de meest recente goedgekeurde versie van een pagina bekijken.",
 	"right-contentstabilization-oversight": "Het overzicht van alle goedkeuringen van een pagina bekijken",
-	"right-contentstabilization-admin": "Wijzigen wie concepten kan zien en goedkeuringen kan verwijderen en wijzigen",
+	"right-contentstabilization-admin": "Toestaan om stabiele punten te verwijderen en te verplaatsen naar een andere versie",
 	"right-contentstabilization-stabilize": "Pagina's goedkeuren",
 	"action-contentstabilization-oversight": "het overzicht van de goedkeuringen te bekijken",
 	"action-contentstabilization-stabilize": "een pagina goed te keuren",
@@ -145,5 +145,6 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Goedkeuring intrekken",
 	"contentstabilization-versionhistory-remove-approval-confirm": "Weet u zeker dat u de goedkeuring van deze versie wilt intrekken?",
 	"contentstabilization-pref-pdf-show-tag-help": "Voegt de laatste goedkeurings- en bewerkingsdatums toe onder de paginatitels in de PDF-uitvoer",
-	"contentstabilization-pref-index-stable-help": "Zorgt ervoor dat alleen de goedgekeurde versies van pagina’s in de zoekindex worden opgenomen"
+	"contentstabilization-pref-index-stable-help": "Zorgt ervoor dat alleen de goedgekeurde versies van pagina’s in de zoekindex worden opgenomen",
+	"contentstabilization-event-stable-point-added-desc": "Er is een pagina goedgekeurd"
 }

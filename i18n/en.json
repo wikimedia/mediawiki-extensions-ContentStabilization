@@ -7,7 +7,7 @@
 	},
 	"contentstabilization-desc": "Allows users to mark pages as \"approved\" or \"draft\" and to view the most recent approved version of a page.",
 	"right-contentstabilization-oversight": "See overview of all approvals of a page",
-	"right-contentstabilization-admin": "Change who can see drafts, delete and change approvals",
+	"right-contentstabilization-admin": "Allow to delete and move stable points to a different revision",
 	"right-contentstabilization-stabilize": "Approve pages",
 	"action-contentstabilization-oversight": "see overview of approvals",
 	"action-contentstabilization-stabilize": "approve a page",
@@ -115,7 +115,7 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Approved by",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Approval date",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "Approval comment",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Approve page activity",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "\"Approve page\" activity",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "User",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "User for page approving",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Comment",
@@ -143,5 +143,6 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "Remove approval",
 	"contentstabilization-versionhistory-remove-approval-confirm": "Are you sure you want to remove the approval of this revision?",
 	"contentstabilization-pref-pdf-show-tag-help": "Adds the last approval and revision dates below the page titles in the PDF output",
-	"contentstabilization-pref-index-stable-help": "Ensures that only the approved versions of pages are included in the search index"
+	"contentstabilization-pref-index-stable-help": "Ensures that only the approved versions of pages are included in the search index",
+	"contentstabilization-event-stable-point-added-desc": "A page was approved"
 }

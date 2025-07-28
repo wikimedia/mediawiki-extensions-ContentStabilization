@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "אפשרות לסמן דפים כ\"מאושרים\" או \"טיוטה\" ולהציג את הגרסה המאושרת העדכנית ביותר של דף.",
 	"right-contentstabilization-oversight": "צפייה בסקירה כללית של כל האישורים של דף",
-	"right-contentstabilization-admin": "שינוי של מי יכול לראות טיוטות, למחוק ולשנות אישורים",
+	"right-contentstabilization-admin": "אפשור מחיקה והעברה של נקודות יציבות לגרסה אחרת",
 	"right-contentstabilization-stabilize": "אישור דפים",
 	"action-contentstabilization-oversight": "לראות סקירה כללית של אישורים",
 	"action-contentstabilization-stabilize": "לאשר דף",
@@ -141,5 +141,6 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "הסרת אישור",
 	"contentstabilization-versionhistory-remove-approval-confirm": "האם באמת להסיר את האישור של הגרסה הזאת?",
 	"contentstabilization-pref-pdf-show-tag-help": "הוספת התאריכים של האישור ושל הגרסה האחרונה מתחת לכותרות הדפים בפלט ה־PDF",
-	"contentstabilization-pref-index-stable-help": "מבטיח שרק הגרסאות המאושרות של הדפים כלולות במפתח החיפוש"
+	"contentstabilization-pref-index-stable-help": "מבטיח שרק הגרסאות המאושרות של הדפים כלולות במפתח החיפוש",
+	"contentstabilization-event-stable-point-added-desc": "אושר דף"
 }

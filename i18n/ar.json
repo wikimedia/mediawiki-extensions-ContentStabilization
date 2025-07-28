@@ -10,7 +10,7 @@
 	},
 	"contentstabilization-desc": "يسمح للمستخدمين بوضع علامة على الصفحات على أنها \"موافق عليها\" أو \"مسودة\" وعرض أحدث نسخة تمت الموافقة عليها من الصفحة.",
 	"right-contentstabilization-oversight": "انظر نظرة عامة على جميع الموافقات على الصفحة",
-	"right-contentstabilization-admin": "تغيير من يمكنه رؤية المسودات وحذف الموافقات وتغييرها",
+	"right-contentstabilization-admin": "السماح بحذف النقاط المستقرة ونقلها إلى مراجعة مختلفة",
 	"right-contentstabilization-stabilize": "الموافقة على الصفحات",
 	"action-contentstabilization-oversight": "انظر نظرة عامة على الموافقات",
 	"action-contentstabilization-stabilize": "الموافقة على الصفحة",
