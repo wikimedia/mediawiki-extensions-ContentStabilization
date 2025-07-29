@@ -13,7 +13,8 @@
 			"SleaY",
 			"Terio legale",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Bananax47"
 		]
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
@@ -126,7 +127,7 @@
 	"contentstabilization-versionhistory-grid-header-approver": "Approuvé par",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Date d’approbation",
 	"contentstabilization-versionhistory-grid-header-approval-comment": "Commentaire d'approbation",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Approuver l'activité de la page",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Activité \"Approuver la page\"",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utilisateur",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Utilisateur pour l'approbation de la page",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-comment": "Commentaire",
