@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alien333",
+			"Bananax47",
 			"Derugon",
 			"Gomoko",
 			"Iketsi",
@@ -13,8 +14,7 @@
 			"SleaY",
 			"Terio legale",
 			"Verdy p",
-			"Wladek92",
-			"Bananax47"
+			"Wladek92"
 		]
 	},
 	"contentstabilization-desc": "Permet aux utilisateurs de marquer des pages comme « approuvées » ou comme « brouillons » et d’afficher la version approuvée la plus récente d’une page.",
