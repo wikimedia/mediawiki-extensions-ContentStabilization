@@ -23,6 +23,7 @@
 	"contentstabilization-versionhistory-grid-header-state": "Stato",
 	"contentstabilization-versionhistory-grid-header-approver": "Approvato da",
 	"contentstabilization-versionhistory-grid-header-approval-date": "Data approvazione",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Attività \"Approva pagina\"",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Utente",
 	"echo-category-title-content-stabilization-cat": "Approvazione",
 	"content-stabilization-echo-cat-tooltip": "Avvisami quando la pagina viene approvata",
@@ -34,6 +35,5 @@
 	"contentstabilization-wikiexplorer-filter-not-approved": "Non approvato",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Ha una versione bozza",
 	"contentstabilization-wikiexplorer-filter-no-draft": "Non ha una versione bozza",
-	"contentstabilization-event-stable-point-added-desc": "Una pagina è stata approvata",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Attività \"Approva pagina\""
+	"contentstabilization-event-stable-point-added-desc": "Una pagina è stata approvata"
 }
