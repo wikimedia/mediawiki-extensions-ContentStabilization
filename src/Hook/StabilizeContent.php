@@ -17,6 +17,7 @@ use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Hook\BeforeParserFetchFileAndTitleHook;
 use MediaWiki\Hook\BeforeParserFetchTemplateRevisionRecordHook;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
+use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\HookContainer\HookContainer;
@@ -56,7 +57,8 @@ class StabilizeContent implements
 	TitleGetEditNoticesHook,
 	ContentAlterParserOutputHook,
 	DifferenceEngineViewHeaderHook,
-	GetUserPermissionsErrorsHook
+	GetUserPermissionsErrorsHook,
+	OutputPageBodyAttributesHook
 {
 
 	/** @var StabilizationLookup */
@@ -628,5 +630,33 @@ class StabilizeContent implements
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ): void {
+		if ( !$this->view ) {
+			return;
+		}
+		$isStable = $this->view->isStable();
+		$status = $this->view->getStatus();
+		if ( $isStable ) {
+			$bodyAttrs['data-stable'] = 'true';
+		}
+		// add class
+		$classes = $bodyAttrs['class'] ?? '';
+		if ( empty( $classes ) ) {
+			$classes = [];
+		} elseif ( !is_array( $classes ) ) {
+			$classes = explode( ' ', $classes );
+		}
+		$classes[] = 'cs-state-' . $status;
+		if ( $isStable ) {
+			$classes[] = 'cs-stable';
+		} else {
+			$classes[] = 'cs-unstable';
+		}
+		$bodyAttrs['class'] = implode( ' ', $classes );
 	}
 }
