@@ -373,7 +373,8 @@
 		"ApiQueryBaseBeforeQuery": "overrideApis",
 		"ModifyExportQuery": "overrideApis",
 		"APIGetAllowedParams": "addStabilizationDataToApiReports",
-		"APIQueryAfterExecute": "addStabilizationDataToApiReports"
+		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
+		"OutputPageBodyAttributes": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
