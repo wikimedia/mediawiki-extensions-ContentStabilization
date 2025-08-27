@@ -132,7 +132,7 @@
 	"contentstabilization-overview-header-page-id": "Seiten-ID",
 	"contentstabilization-ui-switch-to-draft-title": "Zur Entwurfsversion wechseln",
 	"contentstabilization-ui-switch-to-stable-title": "Zur freigegebenen Version wechseln",
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Seitenaktivität freigeben",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-title": "Aktivität \"Seite freigeben\"",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user-help": "Benutzer für die Seitenfreigabe",
 	"contentstabilization-ui-editor-approve-with-pending": "Diese Version (einschließlich {{PLURAL:$1| einer ausstehenden Änderung| $1 ausstehenden Änderungen}}) freigeben",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Alle ausstehenden Änderungen werden beim Speichern automatisch freigegeben. Stelle sicher, dass alle Änderungen vor dem Speichern überprüft wurden",
