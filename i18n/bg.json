@@ -34,7 +34,7 @@
 	"contentstabilization-overview-header-has-changed-last-stable-ts": "Дата на последното одобрение",
 	"contentstabilization-overview-header-has-changed-last-comment": "Коментар от последното одобрение",
 	"contentstabilization-document-version-sesp-desc": "Брой одобрени версии в историята на страницата",
-	"contentstabilization-pref-index-stable": "Индексиране само на одобрени версии на страници",
+	"contentstabilization-pref-index-stable": "Индексиране само на одобрени версии",
 	"contentstabilization-pref-pdf-show-tag": "Показване на информация за стабилизацията в изнасяне на PDF",
 	"contentstabilization-pref-export-list-stable": "Изнасяне: Посочете одобрените страници, съдържащи се в книгата",
 	"contentstabilization-pref-export-list-unstable": "Изнасяне: Посочете неодобрените страници, съдържащи се в книгата",
