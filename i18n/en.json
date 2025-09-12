@@ -145,5 +145,6 @@
 	"contentstabilization-pref-pdf-show-tag-help": "Adds the last approval and revision dates below the page titles in the PDF output",
 	"contentstabilization-pref-index-stable-help": "Ensures that only the approved versions of pages are included in the search index",
 	"contentstabilization-event-stable-point-added-desc": "A page was approved",
-	"contentstabilization-preview-links-empty-preview-label": "No preview content available"
+	"contentstabilization-preview-links-empty-preview-label": "No preview content available",
+	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot"
 }

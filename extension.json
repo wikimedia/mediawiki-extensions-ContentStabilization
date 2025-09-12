@@ -67,7 +67,8 @@
 				"ContentStabilizationAllowFirstUnstable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\AllowFirstUnstable::getInstance",
 				"ContentStabilizationStabilizeSMWProperties": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\StabilizeSMWProperties::getInstance",
 				"BlueSpiceExtendedSearchIndexOnlyStable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\SearchIndexOnlyStable::getInstance",
-				"ContentStabilizationPDFCreatorShowStabilizationTag": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\PDFExportShowTag::getInstance"
+				"ContentStabilizationPDFCreatorShowStabilizationTag": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\PDFExportShowTag::getInstance",
+				"WikiRAGIndexOnlyStable": "MediaWiki\\Extension\\ContentStabilization\\Integration\\ConfigDefinition\\WikiRAGIndexOnlyStable::getInstance"
 			},
 			"AlertProviderRegistry": {
 				"contentstabilization-revisionstate": "MediaWiki\\Extension\\ContentStabilization\\Integration\\AlertProvider\\RevisionState::factory"
@@ -382,7 +383,8 @@
 		"ModifyExportQuery": "overrideApis",
 		"APIGetAllowedParams": "addStabilizationDataToApiReports",
 		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
-		"OutputPageBodyAttributes": "stabilizeContent"
+		"OutputPageBodyAttributes": "stabilizeContent",
+		"WikiRAGRunForPage": "stabilizeWikiRAG"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -493,6 +495,10 @@
 		"addStabilizationDataToApiReports": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddStabilizationDataToApiReports",
 			"services": [ "DBLoadBalancer", "TitleFactory", "ContentStabilization.Lookup" ]
+		},
+		"stabilizeWikiRAG": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeWikiRAG",
+			"services": [ "ContentStabilization.Lookup", "MainConfig" ]
 		}
 	},
 	"SpecialPages": {
@@ -565,6 +571,10 @@
 		"BlueSpicePageApprovedReminderDelay": {
 			"public": false,
 			"value": 168
+		},
+		"WikiRAGIndexOnlyStable": {
+			"description": "Whether to index only stable content in the WikiRAG index",
+			"value": false
 		}
 	},
 	"LogTypes": [ "stabilization" ],
