@@ -141,6 +141,14 @@
 					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PDFCreator\\StylesheetsProvider\\CSStyles"
 				}
 			}
+		},
+		"PreviewLinks": {
+			"PreviewProcessors": {
+				"contentstabilization": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PreviewLinks\\CSPreviewProcessor",
+					"services": [ "WikiPageFactory", "ContentStabilization.Lookup", "RevisionLookup" ]
+				}
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
