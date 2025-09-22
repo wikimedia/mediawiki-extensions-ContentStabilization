@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization;
 
+use Exception;
 use File;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\WikitextContent;
@@ -109,9 +110,10 @@ class StabilizationLookup {
 	 * @param int $revisionId
 	 *
 	 * @return StablePoint|null
+	 * @throws Exception
 	 */
 	public function getStablePointForRevisionId( int $revisionId ): ?StablePoint {
-		$point = $this->store->getLatestMatchingPoint( [ 'sp_revision' => $revisionId ] );
+		$point = $this->store->getLatestMatchingPoint( [ 'sp_revision' => $revisionId ], __METHOD__ );
 		return $this->decorateWithInclusions( $point );
 	}
 
@@ -120,6 +122,7 @@ class StabilizationLookup {
 	 * @param RevisionRecord|int|null $upToRevision RevisionRecord object or id, or null for latest
 	 *
 	 * @return StablePoint|null
+	 * @throws Exception
 	 */
 	public function getLastStablePoint( PageIdentity $page, $upToRevision = null ): ?StablePoint {
 		$point = $this->getLastRawStablePoint( $page, $upToRevision );
@@ -130,17 +133,21 @@ class StabilizationLookup {
 	 * @param PageIdentity $page
 	 * @param RevisionRecord|int|null $upToRevision
 	 * @return StablePoint|null
+	 * @throws Exception
 	 */
 	public function getLastRawStablePoint( PageIdentity $page, $upToRevision = null ): ?StablePoint {
 		$conditions = [ 'sp_page' => $page->getId() ];
-		$this->addUpToRevisionCondition( $conditions, $upToRevision );
-		return $this->store->getLatestMatchingPoint( $conditions );
+		$isCacheable = !$this->addUpToRevisionCondition( $conditions, $upToRevision );
+		return $isCacheable ?
+			$this->store->getLatestMatchingWithCache( $conditions, $page, __METHOD__ ) :
+			$this->store->getLatestMatchingPoint( $conditions, __METHOD__ );
 	}
 
 	/**
 	 * @param PageIdentity $page
 	 * @param RevisionRecord|int|null $upToRevision
 	 * @return RevisionRecord|null
+	 * @throws Exception
 	 */
 	public function getLastStableRevision( PageIdentity $page, $upToRevision = null ): ?RevisionRecord {
 		$point = $this->getLastRawStablePoint( $page, $upToRevision );
@@ -446,10 +453,11 @@ class StabilizationLookup {
 	 * @param File $file
 	 *
 	 * @return StablePoint|null
+	 * @throws Exception
 	 */
 	public function getStablePointForFile( File $file ): ?StablePoint {
 		$conditions = [ 'sp_page' => $file->getTitle()->getArticleID(), 'sfp_file_timestamp' => $file->getTimestamp() ];
-		return $this->store->getLatestMatchingPoint( $conditions );
+		return $this->store->getLatestMatchingPoint( $conditions, __METHOD__ );
 	}
 
 	/**
@@ -458,15 +466,20 @@ class StabilizationLookup {
 	 * @param array &$conds
 	 * @param int|RevisionRecord|null $upToRevision
 	 *
-	 * @return void
+	 * @return bool
 	 */
-	private function addUpToRevisionCondition( array &$conds, $upToRevision ) {
-		if ( $upToRevision instanceof RevisionRecord ) {
+	private function addUpToRevisionCondition( array &$conds, $upToRevision ): bool {
+		// If passed revision is current, no need to add condition, as that is the default
+		// Not setting the condition helps with caching
+		if ( $upToRevision instanceof RevisionRecord && !$upToRevision->isCurrent() ) {
 			$conds[] = 'sp_revision <= ' . $upToRevision->getId();
+			return true;
 		}
 		if ( is_int( $upToRevision ) ) {
 			$conds[] = 'sp_revision <= ' . $upToRevision;
+			return true;
 		}
+		return false;
 	}
 
 	/**

@@ -11,6 +11,7 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
+use WANObjectCache;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -52,7 +53,11 @@ class StablePointStoreTest extends TestCase {
 
 		$userFactory = $this->mockUserFactory();
 		$store = new StablePointStore(
-			$lb, $userFactory, $this->mockRevisionStore(), $this->createMock( \RepoGroup::class )
+			$lb,
+			$userFactory,
+			$this->mockRevisionStore(),
+			$this->createMock( \RepoGroup::class ),
+			$this->mockWANObjectCache()
 		);
 		$points = $store->query( [ 'sp_page' => 1 ] );
 
@@ -91,7 +96,11 @@ class StablePointStoreTest extends TestCase {
 
 		$userFactory = $this->mockUserFactory();
 		$store = new StablePointStore(
-			$lb, $userFactory, $this->mockRevisionStore(), $this->createMock( \RepoGroup::class )
+			$lb,
+			$userFactory,
+			$this->mockRevisionStore(),
+			$this->createMock( \RepoGroup::class ),
+			$this->mockWANObjectCache()
 		);
 		$point = $store->getLatestMatchingPoint( [ 'sp_page' => 1 ] );
 
@@ -139,7 +148,11 @@ class StablePointStoreTest extends TestCase {
 		} );
 
 		$store = new StablePointStore(
-			$lb, $this->mockUserFactory(), $this->mockRevisionStore(), $this->createMock( \RepoGroup::class )
+			$lb,
+			$this->mockUserFactory(),
+			$this->mockRevisionStore(),
+			$this->createMock( \RepoGroup::class ),
+			$this->mockWANObjectCache()
 		);
 		$store->insertStablePoint( $revision, $user, 'Comment' );
 	}
@@ -192,7 +205,11 @@ class StablePointStoreTest extends TestCase {
 		$stablePoint->method( 'getRevision' )->willReturn( $revision );
 
 		$store = new StablePointStore(
-			$lb, $this->mockUserFactory(), $this->mockRevisionStore(), $this->createMock( \RepoGroup::class )
+			$lb,
+			$this->mockUserFactory(),
+			$this->mockRevisionStore(),
+			$this->createMock( \RepoGroup::class ),
+			$this->mockWANObjectCache()
 		);
 		$store->removeStablePoint( $stablePoint );
 	}
@@ -249,7 +266,11 @@ class StablePointStoreTest extends TestCase {
 		$user->method( 'getUser' )->willReturn( $user );
 
 		$store = new StablePointStore(
-			$lb, $this->mockUserFactory(), $this->mockRevisionStore(), $this->createMock( RepoGroup::class )
+			$lb,
+			$this->mockUserFactory(),
+			$this->mockRevisionStore(),
+			$this->createMock( RepoGroup::class ),
+			$this->mockWANObjectCache()
 		);
 		$store->updateStablePoint( $stablePoint, $newRevision, $user, 'CommentFoo' );
 	}
@@ -305,4 +326,11 @@ class StablePointStoreTest extends TestCase {
 		} );
 		return $mock;
 	}
+
+	private function mockWANObjectCache() {
+		return $this->getMockBuilder( WANObjectCache::class )
+			->disableOriginalConstructor()
+			->getMock();
+	}
+
 }
