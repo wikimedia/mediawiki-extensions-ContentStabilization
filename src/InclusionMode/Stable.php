@@ -81,7 +81,7 @@ class Stable implements InclusionMode {
 				if ( $revLimit > 0 ) {
 					$conds[] = 'sp_revision <= ' . $revLimit;
 				}
-				$stableInclusion = $this->store->getLatestMatchingPoint( $conds );
+				$stableInclusion = $this->store->getLatestMatchingWithCache( $conds, $page, __METHOD__ );
 				// If there is no stable version,
 				// use revision that was current at the time of $mainRevision's stabilization
 				if ( $type === 'transclusions' ) {
@@ -132,7 +132,7 @@ class Stable implements InclusionMode {
 		$stable = $this->store->getLatestMatchingPoint( [
 			'sp_page' => $mainRevision->getPageId(),
 			'sp_revision > ' . $mainRevision->getId(),
-		] );
+		], __METHOD__ );
 		return $stable instanceof StablePoint;
 	}
 }

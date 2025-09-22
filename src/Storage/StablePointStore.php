@@ -16,6 +16,7 @@ use MediaWiki\User\UserFactory;
 use RepoGroup;
 use ResultWrapper;
 use stdClass;
+use WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -34,28 +35,33 @@ class StablePointStore {
 	/** @var RepoGroup */
 	private $repoGroup;
 	/** @var HashBagOStuff */
-	private $queryCache;
+	private $operationalCache;
+
+	/** @var WANObjectCache */
+	private $mainCache;
 
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param UserFactory $userFactory
 	 * @param RevisionStore $revisionStore
 	 * @param RepoGroup $repoGroup
+	 * @param WANObjectCache $mainCache
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer, UserFactory $userFactory,
-		RevisionStore $revisionStore, RepoGroup $repoGroup
+		RevisionStore $revisionStore, RepoGroup $repoGroup, WANObjectCache $mainCache
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->userFactory = $userFactory;
 		$this->revisionStore = $revisionStore;
 		$this->repoGroup = $repoGroup;
-		$this->queryCache = new HashBagOStuff();
+		$this->operationalCache = new HashBagOStuff();
+		$this->mainCache = $mainCache;
 	}
 
 	/**
 	 * @param array|null $conds
-	 *
+	 * @param string $method
 	 * @return StablePoint[]
 	 * @throws Exception
 	 */
@@ -75,35 +81,71 @@ class StablePointStore {
 	 * @return array
 	 */
 	public function getStableRevisionIds( PageIdentity $page ): array {
-		$cacheKey = __METHOD__ . $page->getId();
-		if ( $this->queryCache->hasKey( $cacheKey ) ) {
-			return $this->queryCache->get( $cacheKey );
-		}
-		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
-		$res = $db->select(
-			'stable_points',
-			[ 'sp_revision' ],
-			[ 'sp_page' => $page->getId() ],
-			__METHOD__,
-			[ 'ORDER BY' => 'sp_revision ASC' ]
-		);
+		$cacheKey = $this->makeGlobalCacheKey( $page, 'stable-revisions' );
+		$cached = $this->mainCache->get( $cacheKey );
+		if ( !is_array( $cached ) ) {
+			$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$res = $db->select(
+				'stable_points',
+				[ 'sp_revision' ],
+				[ 'sp_page' => $page->getId() ],
+				__METHOD__,
+				[ 'ORDER BY' => 'sp_revision ASC' ]
+			);
 
-		$revisions = [];
-		foreach ( $res as $row ) {
-			$revisions[] = (int)$row->sp_revision;
+			$cached = [];
+			foreach ( $res as $row ) {
+				$cached[] = (int)$row->sp_revision;
+			}
+			$this->mainCache->set( $cacheKey, $cached, $this->mainCache::TTL_DAY );
 		}
-		$this->queryCache->set( $cacheKey, $revisions );
-		return $revisions;
+
+		return $cached;
 	}
 
 	/**
-	 * @param array|null $conds
-	 *
+	 * @param array $conds
+	 * @param string $method
 	 * @return StablePoint|null
 	 * @throws Exception
 	 */
-	public function getLatestMatchingPoint( $conds = [] ): ?StablePoint {
-		$res = $this->rawQuery( $conds, __METHOD__ );
+	public function getLatestMatchingPoint( $conds = [], string $method = __METHOD__ ): ?StablePoint {
+		$row = $this->fetchOne( $conds, $method );
+		if ( !$row ) {
+			return null;
+		}
+		return $this->stablePointFromRow( $row );
+	}
+
+	/**
+	 * @param array $conds
+	 * @param PageIdentity $cacheForPage
+	 * @param string $method
+	 * @return StablePoint|null
+	 * @throws Exception
+	 */
+	public function getLatestMatchingWithCache(
+		array $conds, PageIdentity $cacheForPage, string $method = __METHOD__
+	): ?StablePoint {
+		$cacheKey = $this->makeGlobalCacheKey( $cacheForPage, 'stable-point' );
+		$row = $this->mainCache->get( $cacheKey );
+		if ( !$row ) {
+			$row = $this->fetchOne( $conds, $method );
+			$this->mainCache->set( $cacheKey, $row, $this->mainCache::TTL_DAY );
+		}
+		if ( !$row ) {
+			return null;
+		}
+		return $this->stablePointFromRow( $row );
+	}
+
+	/**
+	 * @param array $conds
+	 * @param string $method
+	 * @return stdClass|null
+	 */
+	private function fetchOne( array $conds = [], string $method = __METHOD__ ): ?stdClass {
+		$res = $this->rawQuery( $conds, $method );
 		if ( !$res->numRows() ) {
 			return null;
 		}
@@ -112,7 +154,7 @@ class StablePointStore {
 		if ( !$row ) {
 			return null;
 		}
-		return $this->stablePointFromRow( (object)$row );
+		return (object)$row;
 	}
 
 	/**
@@ -123,8 +165,8 @@ class StablePointStore {
 	 */
 	private function stablePointFromRow( $row ): ?StablePoint {
 		$rowHash = 'row:' . md5( serialize( $row ) );
-		if ( $this->queryCache->hasKey( $rowHash ) ) {
-			return $this->queryCache->get( $rowHash );
+		if ( $this->operationalCache->hasKey( $rowHash ) ) {
+			return $this->operationalCache->get( $rowHash );
 		}
 		$revision = $this->revisionStore->getRevisionById( $row->sp_revision );
 		if ( $revision instanceof RevisionRecord === false ) {
@@ -135,7 +177,7 @@ class StablePointStore {
 		$time = DateTime::createFromFormat( 'YmdHis', $row->sp_time );
 		$file = $this->maybeGetFile( $revision, $row );
 		if ( $file ) {
-			$this->queryCache->set( $rowHash, new StableFilePoint(
+			$this->operationalCache->set( $rowHash, new StableFilePoint(
 				$file, $revision, $actor, $time, $row->sp_comment ?? ''
 			) );
 			$stablePoint = new StableFilePoint( $file, $revision, $actor, $time, $row->sp_comment ?? '' );
@@ -143,7 +185,7 @@ class StablePointStore {
 			$stablePoint = new StablePoint( $revision, $actor, $time, $row->sp_comment ?? '' );
 		}
 
-		$this->queryCache->set( $rowHash, $stablePoint );
+		$this->operationalCache->set( $rowHash, $stablePoint );
 		return $stablePoint;
 	}
 
@@ -261,10 +303,13 @@ class StablePointStore {
 	}
 
 	/**
+	 * @param PageIdentity $page
 	 * @return void
 	 */
-	public function clearCache() {
-		$this->queryCache->clear();
+	public function clearCache( PageIdentity $page ) {
+		$this->operationalCache->clear();
+		$this->mainCache->delete( $this->makeGlobalCacheKey( $page, 'stable-point' ) );
+		$this->mainCache->delete( $this->makeGlobalCacheKey( $page, 'stable-revisions' ) );
 	}
 
 	/**
@@ -274,8 +319,8 @@ class StablePointStore {
 	 */
 	private function rawQuery( ?array $conds, string $method = __METHOD__ ): ResultWrapper {
 		$cacheKey = __METHOD__ . md5( json_encode( $conds ) );
-		if ( $this->queryCache->hasKey( $cacheKey ) ) {
-			return $this->queryCache->get( $cacheKey );
+		if ( $this->operationalCache->hasKey( $cacheKey ) ) {
+			return $this->operationalCache->get( $cacheKey );
 		}
 		$db = $this->loadBalancer->getConnectionRef( DB_REPLICA );
 		$res = $db->select(
@@ -287,7 +332,7 @@ class StablePointStore {
 			[ 'stable_file_points' => [ 'LEFT JOIN', 'sfp_revision = sp_revision' ] ],
 		);
 
-		$this->queryCache->set( $cacheKey, $res );
+		$this->operationalCache->set( $cacheKey, $res );
 		return $res;
 	}
 
@@ -366,4 +411,15 @@ class StablePointStore {
 		}
 		return $file;
 	}
+
+	/**
+	 * @param PageIdentity $page
+	 * @param string $type
+	 * @return string
+	 */
+	private function makeGlobalCacheKey( PageIdentity $page, string $type ): string {
+		$pageKey = [ $page->getWikiId(), $page->getId() ];
+		return $this->mainCache->makeKey( 'contentstabilization', $type, ...$pageKey );
+	}
+
 }
