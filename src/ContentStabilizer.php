@@ -69,7 +69,7 @@ final class ContentStabilizer {
 
 		$this->store->insertStablePoint( $revisionRecord, $approver, $comment );
 		$this->inclusionManager->stabilizeInclusions( $revisionRecord );
-		$this->store->clearCache();
+		$this->store->clearCache( $revisionRecord->getPage() );
 		$newStable = $this->lookup->getStablePointForRevision( $revisionRecord );
 		$this->hookContainer->run( 'ContentStabilizationStablePointAdded', [ $newStable ] );
 		return $newStable;
@@ -89,7 +89,7 @@ final class ContentStabilizer {
 		);
 		$this->store->updateStablePoint( $point, $point->getRevision(), $approver, $comment );
 		$this->inclusionManager->stabilizeInclusions( $point->getRevision() );
-		$this->store->clearCache();
+		$this->store->clearCache( $point->getPage() );
 		$updated = $this->lookup->getStablePointForRevision( $point->getRevision() );
 		$this->hookContainer->run( 'ContentStabilizationStablePointUpdated', [ $updated ] );
 		return $updated;
@@ -108,7 +108,7 @@ final class ContentStabilizer {
 		);
 		$this->inclusionManager->removeStableInclusionsForRevision( $point->getRevision() );
 		$this->store->removeStablePoint( $point );
-		$this->store->clearCache();
+		$this->store->clearCache( $point->getPage() );
 		$this->hookContainer->run( 'ContentStabilizationStablePointRemoved', [ $point, $actor ] );
 	}
 
@@ -134,7 +134,7 @@ final class ContentStabilizer {
 		$this->inclusionManager->removeStableInclusionsForRevision( $point->getRevision() );
 		$this->store->updateStablePoint( $point, $revisionRecord, $approver, $comment );
 		$this->inclusionManager->stabilizeInclusions( $revisionRecord );
-		$this->store->clearCache();
+		$this->store->clearCache( $point->getPage() );
 		$newPoint = $this->lookup->getStablePointForRevision( $revisionRecord );
 		$this->hookContainer->run( 'ContentStabilizationStablePointMoved', [ $point, $newPoint ] );
 		return $newPoint;

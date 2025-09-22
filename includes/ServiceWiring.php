@@ -22,7 +22,8 @@ return [
 			$services->getDBLoadBalancer(),
 			$services->getUserFactory(),
 			$services->getRevisionStore(),
-			$services->getRepoGroup()
+			$services->getRepoGroup(),
+			$services->getMainWANObjectCache()
 		);
 	},
 	// Internal use only
