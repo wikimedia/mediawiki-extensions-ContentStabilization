@@ -17,7 +17,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @var StabilizationLookup
 	 */
 	protected $lookup = null;
@@ -30,7 +29,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getAliasMessageKey() {
@@ -38,7 +36,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getDescriptionMessageKey() {
@@ -46,7 +43,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getId() {
@@ -54,7 +50,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabel() {
@@ -62,7 +57,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getType() {

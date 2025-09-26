@@ -18,7 +18,6 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class RevisionState extends AlertProviderBase {
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public static function factory( $skin = null ) {
@@ -32,13 +31,11 @@ class RevisionState extends AlertProviderBase {
 	}
 
 	/**
-	 *
 	 * @var StabilizationLookup
 	 */
 	protected $lookup;
 
 	/**
-	 *
 	 * @var TitleFactory
 	 */
 	protected $titleFactory;
@@ -64,7 +61,6 @@ class RevisionState extends AlertProviderBase {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHTML() {
@@ -76,7 +72,6 @@ class RevisionState extends AlertProviderBase {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getType() {
@@ -118,7 +113,6 @@ class RevisionState extends AlertProviderBase {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function skipForContextReasons() {

@@ -41,9 +41,7 @@ class ApprovePageActivityTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 *
 	 * @covers \MediaWiki\Extension\ContentStabilization\Integration\Workflows\Activity\ApprovePageActivity::execute
-	 *
 	 */
 	public function testExecute() {
 		$mutable = new WorkflowContextMutable( $this->getServiceContainer()->getTitleFactory() );

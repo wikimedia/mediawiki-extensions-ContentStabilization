@@ -48,7 +48,6 @@ class ApprovePageActivity extends GenericActivity {
 	private $titleFactory;
 
 	/**
-	 *
 	 * @param TitleFactory $titleFactory
 	 * @param ContentStabilizer $stabilizer
 	 * @param StabilizationLookup $stabilizationLookup
@@ -85,7 +84,6 @@ class ApprovePageActivity extends GenericActivity {
 	}
 
 	/**
-	 *
 	 * @param WorkflowContext $context
 	 * @param array $data
 	 * @return void
@@ -153,7 +151,6 @@ class ApprovePageActivity extends GenericActivity {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	private function assertApprovable() {
@@ -161,7 +158,6 @@ class ApprovePageActivity extends GenericActivity {
 	}
 
 	/**
-	 *
 	 * @param string $comment
 	 *
 	 * @return void

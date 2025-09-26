@@ -21,7 +21,6 @@ class VersionSwitch extends StabilizedPageElement {
 	protected $hasImplicitDraft = false;
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @param Config $config
 	 * @return static
@@ -33,7 +32,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getLabelMessage() {
@@ -51,7 +49,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getTooltipMessage() {
@@ -69,7 +66,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getName() {
@@ -77,7 +73,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getUrl() {
@@ -91,7 +86,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHtmlClass() {
@@ -105,7 +99,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPosition() {
@@ -120,7 +113,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @return bool
 	 */
@@ -157,7 +149,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getMenu() {
@@ -171,7 +162,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function makeMenu() {
@@ -190,7 +180,6 @@ class VersionSwitch extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function makeDiffLink() {

@@ -33,7 +33,6 @@ class InclusionCurrentTest extends FullIntegrationBase {
 	}
 
 	/**
-	 *
 	 * @return void
 	 * @throws Exception
 	 * @throws PermissionsError

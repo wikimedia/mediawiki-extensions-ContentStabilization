@@ -16,7 +16,6 @@ use MediaWiki\User\User;
 use PHPUnit\Framework\TestCase;
 
 /**
- *
  * @covers \MediaWiki\Extension\ContentStabilization\ContentStabilizer
  */
 class ContentStabilizerTest extends TestCase {
@@ -79,7 +78,6 @@ class ContentStabilizerTest extends TestCase {
 	 * @return void
 	 * @covers       \MediaWiki\Extension\ContentStabilization\ContentStabilizer::removeStablePoint
 	 * @dataProvider provideStablePoints
-	 *
 	 */
 	public function testRemoveStablePoint( $username, bool $expectException ) {
 		$inclusionManager = $this->getMockBuilder( InclusionManager::class )

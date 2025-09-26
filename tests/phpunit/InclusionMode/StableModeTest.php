@@ -17,7 +17,6 @@ use RepoGroup;
 /**
  * @covers \MediaWiki\Extension\ContentStabilization\InclusionMode\Stable
  * @group Broken To be fixed when discussion on how this should be handled happens
- *
  */
 class StableModeTest extends TestCase {
 

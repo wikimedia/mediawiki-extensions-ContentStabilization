@@ -12,7 +12,6 @@ use MediaWiki\User\UserIdentity;
 
 /**
  * Authority to be used for bot stabilization
- *
  */
 class StabilizationBot implements Authority {
 	/** @var string[] */

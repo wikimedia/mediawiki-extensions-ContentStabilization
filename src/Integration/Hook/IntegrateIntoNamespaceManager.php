@@ -12,13 +12,11 @@ use MediaWiki\Title\NamespaceInfo;
 class IntegrateIntoNamespaceManager implements NamespaceManagerBeforePersistSettingsHook {
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var NamespaceInfo
 	 */
 	protected $namespaceInfo = null;

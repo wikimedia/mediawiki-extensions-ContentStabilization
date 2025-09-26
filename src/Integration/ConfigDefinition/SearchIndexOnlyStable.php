@@ -9,7 +9,6 @@ use MediaWiki\Registration\ExtensionRegistry;
 class SearchIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal {
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -21,7 +20,6 @@ class SearchIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -36,7 +34,6 @@ class SearchIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getGlobalName() {

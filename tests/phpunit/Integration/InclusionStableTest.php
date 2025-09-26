@@ -46,7 +46,6 @@ class InclusionStableTest extends FullIntegrationBase {
 	}
 
 	/**
-	 *
 	 * @return void
 	 * @throws Exception
 	 * @throws PermissionsError
