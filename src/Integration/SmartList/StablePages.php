@@ -98,12 +98,10 @@ class StablePages extends GenericSmartlistMode {
 			}
 
 			$title = $this->services->getTitleFactory()->makeTitleSafe( $row->namespace, $row->title );
-			$userCanRead = $this->services->getPermissionManager()->quickUserCan(
-				'read',
-				$context->getUser(),
-				$title
-			);
-			if ( !$title || !$userCanRead ) {
+			if ( !$title ) {
+				continue;
+			}
+			if ( !$this->userCanRead( $title, $context->getUser(), $this->$this->services->getPermissionManager() ) ) {
 				continue;
 			}
 
