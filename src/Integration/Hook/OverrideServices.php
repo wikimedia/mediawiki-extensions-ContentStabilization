@@ -13,6 +13,10 @@ class OverrideServices implements MediaWikiServicesHook {
 	 * @inheritDoc
 	 */
 	public function onMediaWikiServices( $services ) {
+		if ( defined( 'MW_QUIBBLE_CI' ) ) {
+			return;
+		}
+
 		$services->redefineService(
 			'PageRestHelperFactory',
 			static function ( MediaWikiServices $services ) {
