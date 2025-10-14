@@ -16,6 +16,7 @@
 	"action-contentstabilization-oversight": "{{doc-action|contentstabilization-oversight}}",
 	"action-contentstabilization-stabilize": "{{doc-action|contentstabilization-stabilize}}",
 	"action-contentstabilization-admin": "{{doc-action|contentstabilization-admin}}",
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "{{doc-apihelp-param|query+revisions-paramvalue-prop|stabilization}}",
 	"contentstabilization": "{{doc-special|ContentStabilization}}",
 	"contentstabilization-global-action-overview": "Label for a link to [[Special:ContentStabilization]]",
 	"contentstabilization-global-action-overview-desc": "Tooltip for a link to [[Special:ContentStabilization]]",
