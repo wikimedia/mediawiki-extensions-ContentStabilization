@@ -205,11 +205,14 @@ class InclusionManager {
 		$page = $this->wikiPageFactory->newFromLinkTarget( $target );
 		$parserOptions = $page->makeParserOptions( 'canonical' );
 		$parser = $this->parserFactory->create();
-		// Only clear state if the Parser is not in the middle of parsing already (called recursively)
-		$clearState = $parser->getOutput() === null || $parser->getStripState() === null;
+
 		$parserOutput = $parser->parse(
-			$page->getContent()->getWikitextForTransclusion(), $page->getTitle(), $parserOptions,
-			true, $clearState, $page->getTitle()->getLatestRevID()
+			$page->getContent()->getWikitextForTransclusion(),
+			$page->getTitle(),
+			$parserOptions,
+			/* $linestart = */ true,
+			/* $clearstate = */ true,
+			$page->getTitle()->getLatestRevID()
 		);
 		$transclusions = $parserOutput->getTemplates();
 		$images = $parserOutput->getImages();

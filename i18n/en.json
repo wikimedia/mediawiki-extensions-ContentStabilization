@@ -12,6 +12,7 @@
 	"action-contentstabilization-oversight": "see overview of approvals",
 	"action-contentstabilization-stabilize": "approve a page",
 	"action-contentstabilization-admin": "manage approvals",
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "Adds stabilization data for revisions",
 	"contentstabilization": "Quality management overview",
 	"contentstabilization-global-action-overview": "Quality management",
 	"contentstabilization-global-action-overview-desc": "Overview of pages in the approval process",

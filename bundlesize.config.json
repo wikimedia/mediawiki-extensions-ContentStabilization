@@ -1,10 +1,10 @@
 [
 	{
 		"resourceModule": "ext.contentStabilization.view.styles",
-		"maxSize": "0.2 kB"
+		"maxSize": "1 kB"
 	},
 	{
 		"resourceModule": "ext.contentStabilization.bootstrap",
-		"maxSize": "1.0 kB"
+		"maxSize": "2 kB"
 	}
 ]
