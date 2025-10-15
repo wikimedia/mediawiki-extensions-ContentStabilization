@@ -144,5 +144,6 @@
 	"contentstabilization-versionhistory-remove-approval-confirm": "Are you sure you want to remove the approval of this revision?",
 	"contentstabilization-pref-pdf-show-tag-help": "Adds the last approval and revision dates below the page titles in the PDF output",
 	"contentstabilization-pref-index-stable-help": "Ensures that only the approved versions of pages are included in the search index",
-	"contentstabilization-event-stable-point-added-desc": "A page was approved"
+	"contentstabilization-event-stable-point-added-desc": "A page was approved",
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "Adds stabilization data for revisions"
 }
