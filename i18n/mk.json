@@ -11,6 +11,7 @@
 	"action-contentstabilization-oversight": "преглед на сите одобрувања на страница",
 	"action-contentstabilization-stabilize": "одобрување на страница",
 	"action-contentstabilization-admin": "управување со одобренија",
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "Додава податоци за устојчување во преработките",
 	"contentstabilization": "Преглед на управувањето со квалитетот",
 	"contentstabilization-global-action-overview": "Управување со квалитетот",
 	"contentstabilization-global-action-overview-desc": "Преглед на страници во процесот на одобрување",
