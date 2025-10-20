@@ -207,7 +207,7 @@ class StabilizeContent implements
 			$article->getContext()->getOutput()->setRevisionId( $pageTitle->getLatestRevID() );
 		}
 		$article->getContext()->getOutput()->addJsConfigVars(
-			[ 'wgStabilizedRevisionId' => $revisionUsed->getId() ]
+			[ 'wgStabilizedRevisionId' => $revisionUsed->getId(), 'wgStabilizationState' => $this->view->getStatus() ]
 		);
 		$end = microtime( true );
 		$article->getContext()->getOutput()->addHTML( '<!-- StabilizeContent: ' . ( $end - $start ) . ' -->' );

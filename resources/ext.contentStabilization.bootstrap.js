@@ -94,4 +94,7 @@ mw.hook( 'readconfirmation.check.request.before' ).add( ( data ) => {
 	if ( stabilized ) {
 		data.stabilizedRevId = stabilized;
 	}
+	if ( mw.config.get( 'wgStabilizationState' ) === 'unstable' ) {
+		data.preventReadConfirmation = true;
+	}
 } );
