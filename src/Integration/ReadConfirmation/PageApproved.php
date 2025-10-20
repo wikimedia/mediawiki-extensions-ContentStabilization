@@ -216,9 +216,11 @@ class PageApproved implements IMechanism {
 			// first draft
 			return false;
 		}
-		if ( $revId && $revId !== $stable->getId() ) {
+		if ( $revId && $revId < $stable->getId() ) {
+			// Cant confirm old stable
 			return false;
 		}
+		// Ignore passed $revId, as this mechanism always applies to latest stable revision only
 		$revId = $stable->getId();
 
 		if ( $this->isMinorRevision( $revId ) ) {
@@ -625,7 +627,7 @@ class PageApproved implements IMechanism {
 			->where( 'r.rev_id <= sp.last_stable' )
 			->where( [ 'r.rev_page' => $pageIds ] )
 			->groupBy( 'r.rev_page' );
-		if ( $this->includeMinor() ) {
+		if ( !$this->includeMinor() ) {
 			$sqb->where( 'r.rev_minor_edit = 0' );
 		}
 		$res = $sqb->fetchResultSet();
@@ -633,7 +635,7 @@ class PageApproved implements IMechanism {
 			if ( isset( $recentData[$row->rev_page] ) ) {
 				continue;
 			}
-			$recentData[$row->rev_page] = (int)$row->rev_id;
+			$recentData[$row->rev_page] = (int)$row->chosen_rev;
 		}
 
 		return $recentData;
