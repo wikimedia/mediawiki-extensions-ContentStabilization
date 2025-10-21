@@ -15,6 +15,7 @@
 	"action-contentstabilization-oversight": "het overzicht van de goedkeuringen te bekijken",
 	"action-contentstabilization-stabilize": "een pagina goed te keuren",
 	"action-contentstabilization-admin": "goedkeuringen te beheren",
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "Voegt stabilisatiegegevens voor versies toe",
 	"contentstabilization": "Overzicht kwaliteitsbeheer",
 	"contentstabilization-global-action-overview": "Kwaliteitsbeheer",
 	"contentstabilization-global-action-overview-desc": "Overzicht van pagina’s in het goedkeuringsproces",
