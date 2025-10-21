@@ -11,6 +11,7 @@
 	"action-contentstabilization-oversight": "vider un vista general de approbationes",
 	"action-contentstabilization-stabilize": "approbar un pagina",
 	"action-contentstabilization-admin": "gerer approbationes",
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "Adder datos de stabilisation pro versiones",
 	"contentstabilization": "Vista general del gestion de qualitate",
 	"contentstabilization-global-action-overview": "Gestion de qualitate",
 	"contentstabilization-global-action-overview-desc": "Vista general de paginas in le processo de approbation",
