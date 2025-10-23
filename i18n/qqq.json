@@ -148,5 +148,6 @@
 	"contentstabilization-versionhistory-remove-approval-confirm": "Confirmation message for removing approval",
 	"contentstabilization-pref-pdf-show-tag-help": "Description of config variable \"PDFExportShowTag\"",
 	"contentstabilization-pref-index-stable-help": "Description of config variable \"SearchIndexOnlyStable\"",
-	"contentstabilization-event-stable-point-added-desc": "Description of event trigger"
+	"contentstabilization-event-stable-point-added-desc": "Description of event trigger",
+	"contentstabilization-preview-links-empty-preview-label": "Label if there is no content of page to preview"
 }
