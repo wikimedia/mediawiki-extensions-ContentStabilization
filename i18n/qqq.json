@@ -149,5 +149,7 @@
 	"contentstabilization-pref-pdf-show-tag-help": "Description of config variable \"PDFExportShowTag\"",
 	"contentstabilization-pref-index-stable-help": "Description of config variable \"SearchIndexOnlyStable\"",
 	"contentstabilization-event-stable-point-added-desc": "Description of event trigger",
-	"apihelp-query+revisions-paramvalue-prop-stabilization": "{{doc-apihelp-param|query+revisions-paramvalue-prop|stabilization}}"
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "{{doc-apihelp-param|query+revisions-paramvalue-prop|stabilization}}",
+	"contentstabilization-preview-links-empty-preview-label": "Label if there is no content of page to preview",
+	"contentstabilization-pref-wiki-rag-index-stable": "Label of an option on [[Special:ConfigManager]]"
 }

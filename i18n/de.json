@@ -148,5 +148,6 @@
 	"contentstabilization-wikiexplorer-filter-no-draft": "Hat keine Entwurfsversion",
 	"contentstabilization-pref-pdf-show-tag-help": "Fügt das letzte Freigabe- und Revisionsdatum unterhalb der Seitentitel in der PDF-Ausgabe ein",
 	"contentstabilization-pref-index-stable-help": "Stellt sicher, dass nur die freigegebenen Versionen von Seiten in den Such-Index aufgenommen werden",
-	"contentstabilization-event-stable-point-added-desc": "Eine Seite wurde freigegeben"
+	"contentstabilization-event-stable-point-added-desc": "Eine Seite wurde freigegeben",
+	"contentstabilization-preview-links-empty-preview-label": "Es sind keine Vorschauinhalte verfügbar"
 }
