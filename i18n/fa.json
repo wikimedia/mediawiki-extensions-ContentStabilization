@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeeputer"
+			"Jeeputer",
+			"LordProfo"
 		]
 	},
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "دارای یک نسخهٔ پیش‌نویس است",
@@ -14,7 +15,7 @@
 	"contentstabilization-export-stablerevisiondate-tag-text": "نسخه: $1",
 	"log-name-stabilization": "سیاههٔ پایدارسازی محتوا",
 	"contentstabilization-status-unstable": "پیش‌نویس",
-	"contentstabilization-status-first-unstable": "اولین پیش‌نویس",
+	"contentstabilization-status-first-unstable": "نخستین پیش‌نویس",
 	"contentstabilization-overview-header-title": "صفحه",
 	"contentstabilization-pref-index-stable": "تنها نسخه‌های تأییدشده فهرست شوند",
 	"contentstabilization-stabilizationhistory-comment": "نظر",
