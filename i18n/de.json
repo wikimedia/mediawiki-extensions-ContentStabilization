@@ -41,7 +41,7 @@
 	"contentstabilization-ui-approve-approve": "Freigeben",
 	"contentstabilization-ui-approve-cancel": "Abbrechen",
 	"contentstabilization-ui-approve-error": "Fehler beim Freigeben der Seite",
-	"contentstabilization-ui-approve-notice": "Nach der Freigabe ersetzt diese Version die aktuell freigegebene Version der Seite. Möchtest du die Entwurfsversion freigeben?",
+	"contentstabilization-ui-approve-notice": "Nach der Freigabe ersetzt diese Version die aktuell freigegebene Version der Seite. {{#FORMAL:Möchtest du|Möchten Sie}} die Entwurfsversion freigeben?",
 	"contentstabilization-ui-approve-comment": "Kommentar",
 	"contentstabilization-pref-handleincludes": "Behandlung von eingebundenen Ressourcen",
 	"contentstabilization-pref-handleinclude-none": "Versionen, die zum Zeitpunkt der Freigabe aktuell waren, verwenden",
