@@ -5,6 +5,7 @@
 			"Asma",
 			"Cigaryno",
 			"Meno25",
+			"Mohammed Qays",
 			"Reedy"
 		]
 	},
@@ -108,5 +109,7 @@
 	"content-stabilization-stable-diff": "في انتظار المراجعة",
 	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
-	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة"
+	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
+	"contentstabilization-preview-links-empty-preview-label": "لا يوجد محتوى معاينة متاح",
+	"contentstabilization-pref-wiki-rag-index-stable": "استخدم فقط الإصدارات المعتمدة مصدرًا لبيانات المحادثة بالذكاء الاصطناعي عبر chatbot"
 }

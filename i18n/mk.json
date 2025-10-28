@@ -143,5 +143,7 @@
 	"contentstabilization-versionhistory-remove-approval-confirm": "Дали сигурно сакате да го одземете одобрението на оваа преработка?",
 	"contentstabilization-pref-pdf-show-tag-help": "Ги додава последите датуми на одобрение и преработка под насловите на страниците во PDF-изводот",
 	"contentstabilization-pref-index-stable-help": "Обезбедува вклучување на само одобрени верзии на страниците во индексот за пребарување",
-	"contentstabilization-event-stable-point-added-desc": "Одобрена е страница"
+	"contentstabilization-event-stable-point-added-desc": "Одобрена е страница",
+	"contentstabilization-preview-links-empty-preview-label": "Нема достапна содржина за преглед",
+	"contentstabilization-pref-wiki-rag-index-stable": "Користете само одобрени верзии како изорни податоци за ВИ-виртуелен соговорник"
 }

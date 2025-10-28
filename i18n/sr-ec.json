@@ -43,5 +43,6 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Одобрено",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Није одобрено",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Има верзију у нацрту",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Нема верзију у нацрту"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Нема верзију у нацрту",
+	"contentstabilization-pref-wiki-rag-index-stable": "Користит само одобрене верзије као извор података за AI chatbot-а"
 }
