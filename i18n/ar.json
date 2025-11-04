@@ -5,7 +5,8 @@
 			"Asma",
 			"Cigaryno",
 			"Meno25",
-			"Reedy"
+			"Reedy",
+			"Mohammed Qays"
 		]
 	},
 	"contentstabilization-desc": "يسمح للمستخدمين بوضع علامة على الصفحات على أنها \"موافق عليها\" أو \"مسودة\" وعرض أحدث نسخة تمت الموافقة عليها من الصفحة.",
@@ -108,5 +109,7 @@
 	"content-stabilization-stable-diff": "في انتظار المراجعة",
 	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
-	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة"
+	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
+	"contentstabilization-preview-links-empty-preview-label": "لا يوجد محتوى معاينة متاح",
+	"contentstabilization-pref-wiki-rag-index-stable": "استخدم فقط الإصدارات المعتمدة مصدرًا لبيانات المحادثة بالذكاء الاصطناعي عبر chatbot"
 }
