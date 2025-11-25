@@ -168,7 +168,7 @@ class StabilizePDFExport {
 			$firstHeading = $heading;
 			break;
 		}
-		if ( $heading === null ) {
+		if ( $firstHeading === null ) {
 			return;
 		}
 
