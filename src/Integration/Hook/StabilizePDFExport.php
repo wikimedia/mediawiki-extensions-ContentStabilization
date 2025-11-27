@@ -4,7 +4,10 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
 use DOMDocument;
 use DOMElement;
+use DOMException;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\Extension\PDFCreator\Utility\PageContext;
@@ -27,20 +30,25 @@ class StabilizePDFExport {
 	/** @var Language */
 	private $language;
 
-	/** @var array */
-	private $params;
-
 	/**
 	 * @param StabilizationLookup $stabilizationLookup
 	 * @param Language $language
 	 * @param Config $config
+	 * @param IContextSource|null $requestContext
 	 */
 	public function __construct(
-		StabilizationLookup $stabilizationLookup, Language $language, Config $config
+		StabilizationLookup $stabilizationLookup,
+		Language $language,
+		Config $config,
+		private ?IContextSource $requestContext = null
 	) {
 		$this->lookup = $stabilizationLookup;
 		$this->language = $language;
 		$this->config = $config;
+
+		if ( $this->requestContext === null ) {
+			$this->requestContext = RequestContext::getMain();
+		}
 	}
 
 	/**
@@ -55,47 +63,22 @@ class StabilizePDFExport {
 		if ( !$this->lookup->isStabilizationEnabled( $revisionRecord->getPage() ) ) {
 			return;
 		}
-		$this->params = $params;
-		$stable = true;
-		if ( isset( $this->params['stable'] ) ) {
-			$stable = $this->getBoolValueFor( $this->params['stable'] );
+		$view = $this->lookup->getStableViewFromContext( $this->requestContext );
+
+		if ( !$view || !$view->getRevision() ) {
+			return;
 		}
 
-		if ( !$stable ) {
-			$this->params['forceUnstable'] = true;
-		}
-
-		$this->view = $this->lookup->getStableView( $revisionRecord->getPage(), $userIdentity, $this->params );
+		$this->view = $view;
 		$revisionRecord = $this->view->getRevision();
-	}
-
-	/**
-	 * @param mixed $value
-	 * @return bool
-	 */
-	private function getBoolValueFor( $value ): bool {
-		if ( is_bool( $value ) ) {
-			return $value;
-		}
-		if ( is_int( $value ) ) {
-			if ( $value === 1 ) {
-				return true;
-			}
-
-			return false;
-		}
-		if ( is_string( $value ) ) {
-			if ( $value === '1' || strtolower( $value ) === 'true' ) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	/**
 	 * @param DOMDocument $dom
 	 * @param PageContext $context
+	 *
 	 * @return void
+	 * @throws DOMException
 	 */
 	public function onPDFCreatorAfterGetDOMDocument( DOMDocument $dom, PageContext $context ): void {
 		if ( !$this->config->get( 'ContentStabilizationPDFCreatorShowStabilizationTag' ) ) {
