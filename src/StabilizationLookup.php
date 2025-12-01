@@ -280,7 +280,11 @@ class StabilizationLookup {
 				$this->stableViewCache[$cacheKey] = null;
 				return null;
 			}
-
+			if ( $this->isStableRevision( $selected ) && $explicitlyRequestedRev && $selected->isCurrent() ) {
+				// If explicitly requesting latest revision, disregard that flag
+				// This is important due to implicit draft check, as that only happens for latest revision
+				$explicitlyRequestedRev = false;
+			}
 			if ( !$selected->isCurrent() || $explicitlyRequestedRev ) {
 				// Requesting old revision, show that if possible
 				$forceStable = $explicitStableState ? $forceStable : false;
