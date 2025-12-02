@@ -40,6 +40,9 @@ class StablePointStore {
 	/** @var WANObjectCache */
 	private $mainCache;
 
+	/** @var \Wikimedia\Rdbms\Database|null */
+	private $db = null;
+
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param UserFactory $userFactory
@@ -83,9 +86,9 @@ class StablePointStore {
 	public function getStableRevisionIds( PageIdentity $page ): array {
 		$cacheKey = $this->makeGlobalCacheKey( $page, 'stable-revisions' );
 		$cached = $this->mainCache->get( $cacheKey );
+		$this->assertDB();
 		if ( !is_array( $cached ) ) {
-			$db = $this->loadBalancer->getConnection( DB_REPLICA );
-			$res = $db->select(
+			$res = $this->db->select(
 				'stable_points',
 				[ 'sp_revision' ],
 				[ 'sp_page' => $page->getId() ],
@@ -197,13 +200,13 @@ class StablePointStore {
 	 * @return void
 	 */
 	public function insertStablePoint( RevisionRecord $revisionRecord, Authority $approver, string $comment ) {
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		$res = $db->insert(
+		$this->db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$res = $this->db->insert(
 			'stable_points',
 			[
 				'sp_page' => $revisionRecord->getPage()->getId(),
 				'sp_revision' => $revisionRecord->getId(),
-				'sp_time' => $db->timestamp(),
+				'sp_time' => $this->db->timestamp(),
 				'sp_user' => $approver->getUser()->getId(),
 				'sp_comment' => $comment,
 			],
@@ -222,8 +225,8 @@ class StablePointStore {
 	 * @return void
 	 */
 	public function removeStablePoint( StablePoint $point ) {
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		$res = $db->delete(
+		$this->db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$res = $this->db->delete(
 			'stable_points',
 			[
 				'sp_page' => $point->getRevision()->getPage()->getId(),
@@ -231,7 +234,7 @@ class StablePointStore {
 			],
 			__METHOD__
 		);
-		$res2 = $db->delete(
+		$res2 = $this->db->delete(
 			'stable_file_points',
 			[ 'sfp_revision' => $point->getRevision()->getId() ],
 			__METHOD__
@@ -253,13 +256,13 @@ class StablePointStore {
 	public function updateStablePoint(
 		StablePoint $point, RevisionRecord $revisionRecord, Authority $approver, string $comment
 	) {
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		$res = $db->update(
+		$this->db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$res = $this->db->update(
 			'stable_points',
 			[
 				'sp_revision' => $revisionRecord->getId(),
 				'sp_user' => $approver->getUser()->getId(),
-				'sp_time' => $db->timestamp(),
+				'sp_time' => $this->db->timestamp(),
 				'sp_comment' => $comment,
 			],
 			[
@@ -281,21 +284,23 @@ class StablePointStore {
 	 * @return void
 	 */
 	public function removeStablePointsForPage( PageIdentity $page ) {
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		$res = $db->delete(
+		$this->db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$this->db->startAtomic( __METHOD__ );
+		$res = $this->db->delete(
 			'stable_points',
 			[
 				'sp_page' => $page->getId(),
 			],
 			__METHOD__
 		);
-		$db->delete(
+		$this->db->delete(
 			'stable_file_points',
 			[
 				'sfp_page' => $page->getId(),
 			],
 			__METHOD__
 		);
+		$this->db->endAtomic( __METHOD__ );
 
 		if ( !$res ) {
 			throw new \RuntimeException( 'Failed to remove stable points for page' );
@@ -325,8 +330,8 @@ class StablePointStore {
 		if ( $this->operationalCache->hasKey( $cacheKey ) ) {
 			return $this->operationalCache->get( $cacheKey );
 		}
-		$db = $this->loadBalancer->getConnection( DB_REPLICA );
-		$res = $db->select(
+		$this->assertDB();
+		$res = $this->db->select(
 			[ 'stable_points', 'stable_file_points' ],
 			[ 'sp_page', 'sp_revision', 'sp_time', 'sp_user', 'sp_comment', 'sfp_file_timestamp', 'sfp_file_sha1' ],
 			$conds,
@@ -352,8 +357,8 @@ class StablePointStore {
 		if ( !$file ) {
 			return false;
 		}
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		return $db->insert(
+		$this->assertDB();
+		return $this->db->insert(
 			'stable_file_points',
 			[
 				'sfp_revision' => $revisionRecord->getId(),
@@ -378,8 +383,8 @@ class StablePointStore {
 		if ( !$file ) {
 			return false;
 		}
-		$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		return $db->update(
+		$this->assertDB();
+		return $this->db->update(
 			'stable_file_points',
 			[
 				'sfp_file_timestamp' => $file->getTimestamp(),
@@ -425,4 +430,12 @@ class StablePointStore {
 		return $this->mainCache->makeKey( 'contentstabilization', $type, ...$pageKey );
 	}
 
+	/**
+	 * @return void
+	 */
+	private function assertDB() {
+		if ( $this->db === null ) {
+			$this->db = $this->loadBalancer->getConnection( DB_REPLICA );
+		}
+	}
 }

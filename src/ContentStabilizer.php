@@ -71,7 +71,9 @@ final class ContentStabilizer {
 		$this->inclusionManager->stabilizeInclusions( $revisionRecord );
 		$this->store->clearCache( $revisionRecord->getPage() );
 		$newStable = $this->lookup->getStablePointForRevision( $revisionRecord );
-		$this->hookContainer->run( 'ContentStabilizationStablePointAdded', [ $newStable ] );
+		if ( $newStable ) {
+			$this->hookContainer->run( 'ContentStabilizationStablePointAdded', [ $newStable ] );
+		}
 		return $newStable;
 	}
 
@@ -91,7 +93,9 @@ final class ContentStabilizer {
 		$this->inclusionManager->stabilizeInclusions( $point->getRevision() );
 		$this->store->clearCache( $point->getPage() );
 		$updated = $this->lookup->getStablePointForRevision( $point->getRevision() );
-		$this->hookContainer->run( 'ContentStabilizationStablePointUpdated', [ $updated ] );
+		if ( $updated ) {
+			$this->hookContainer->run( 'ContentStabilizationStablePointUpdated', [ $updated ] );
+		}
 		return $updated;
 	}
 
@@ -149,7 +153,9 @@ final class ContentStabilizer {
 		$this->inclusionManager->stabilizeInclusions( $revisionRecord );
 		$this->store->clearCache( $point->getPage() );
 		$newPoint = $this->lookup->getStablePointForRevision( $revisionRecord );
-		$this->hookContainer->run( 'ContentStabilizationStablePointMoved', [ $point, $newPoint ] );
+		if ( $newPoint ) {
+			$this->hookContainer->run( 'ContentStabilizationStablePointMoved', [ $point, $newPoint ] );
+		}
 		return $newPoint;
 	}
 
