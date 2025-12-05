@@ -186,6 +186,7 @@ class StabilizeContent implements
 		$parserOutput->setRevisionTimestampUsed( $revisionUsed->getTimestamp() );
 		$parserOutput->setCacheRevisionId( $revisionUsed->getId() );
 		$parserOutput->setRevisionUsedSha1Base36( $revisionUsed->getSha1() );
+		$parserOutput->setExtensionData( 'stabilization-state', $this->view->getStatus() );
 
 		$pageTitle = $this->titleFactory->castFromPageIdentity( $revisionUsed->getPage() );
 		$this->hookContainer->run(
