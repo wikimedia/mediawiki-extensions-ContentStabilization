@@ -469,13 +469,13 @@ class StabilizeContent implements
 	 * @inheritDoc
 	 */
 	public function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $mediaWiki ) {
-		if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
+		if ( !$title->exists() || !$this->lookup->isStabilizationEnabled( $title ) ) {
 			return true;
 		}
-		$this->setViewFromArticle( $article );
 
 		$action = $request->getText( 'veaction', $request->getText( 'action', 'view' ) );
 		if ( $action === 'edit' || $action === 'editsource' ) {
+			$this->setViewFromArticle( $article );
 			if ( $request->getBool( 'nostabilize' ) || !$this->shouldSwitchToLatestForEdit( $title, $user ) ) {
 				return true;
 			}
@@ -485,6 +485,7 @@ class StabilizeContent implements
 		}
 
 		if ( $action === 'raw' ) {
+			$this->setViewFromArticle( $article );
 			if (
 				$this->view && $this->view->getRevision() &&
 				( $this->view->getStatus() === StableView::STATE_STABLE || $this->lookup->canUserSeeUnstable( $user ) )
