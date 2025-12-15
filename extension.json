@@ -403,7 +403,8 @@
 		"WikiRAGRunForPage": "stabilizeWikiRAG",
 		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
 		"ContentStabilizationResetState": "stabilizeContent",
-		"WikiRAGMetadata": "addStabilizationMetadata"
+		"WikiRAGMetadata": "addStabilizationMetadata",
+		"SkinAfterContent": "addStabilizationInfoOnView"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -531,7 +532,10 @@
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
 		},
 		"addStabilizationMetadata": {
-			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationMetadata",
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationMetadata"
+		},
+		"addStabilizationInfoOnView": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddStabilizationInfoOnView",
 			"services": [ "ContentStabilization.Lookup" ]
 		}
 	},

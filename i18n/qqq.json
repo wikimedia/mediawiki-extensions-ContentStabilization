@@ -158,5 +158,7 @@
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Label for the page status pill when the page is a first draft",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Label for the approve action button on the page status pill.\n{{Identical|Approve}}",
 	"contentstabilization-pageinfoelement-pill-action-update": "Label for the approve action button on the page status pill when only resources changed",
-	"contentstabilization-label-stabilize-ns-desc": "Description of namespace setting to enable approval"
+	"contentstabilization-label-stabilize-ns-desc": "Description of namespace setting to enable approval",
+	"contentstabilization-pref-wiki-rag-index-stable": "Label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-info-last-approved-date": "Label for last approved date in page information section.\n$1 - time of last approval\n$2 - date of last approval"
 }
