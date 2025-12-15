@@ -89,6 +89,10 @@ class AddDocumentStateTag implements ParserFirstCallInitHook {
 		if ( $pageName ) {
 			$title = $this->titleFactory->newFromText( $pageName );
 			if ( $title ) {
+				if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
+					return '';
+				}
+
 				$pageId = $title->getId();
 
 				if ( !$revisionId ) {
@@ -101,6 +105,11 @@ class AddDocumentStateTag implements ParserFirstCallInitHook {
 			$revision = $this->revisionStore->getRevisionById( $revisionId );
 			if ( $revision ) {
 				$pageId = $revision->getPageId();
+
+				$title = $revision->getPage();
+				if ( !$this->lookup->isStabilizationEnabled( $title ) ) {
+					return '';
+				}
 			}
 		}
 
