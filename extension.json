@@ -417,7 +417,8 @@
 		"PageExcerptsChooseRevision": "integratePageExcerpts",
 		"ContentStabilizationResetState": "stabilizeContent",
 		"WikiRAGMetadata": "addStabilizationMetadata",
-		"NeoWikiRegistration": "registerNeoWikiProperties"
+		"NeoWikiRegistration": "registerNeoWikiProperties",
+		"SkinAfterContent": "addStabilizationInfoOnView"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -546,7 +547,10 @@
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
 		},
 		"addStabilizationMetadata": {
-			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationMetadata",
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationMetadata"
+		},
+		"addStabilizationInfoOnView": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddStabilizationInfoOnView",
 			"services": [ "ContentStabilization.Lookup" ]
 		},
 		"registerNeoWikiProperties": {
