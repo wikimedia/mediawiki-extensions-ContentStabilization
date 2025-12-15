@@ -383,7 +383,8 @@
 		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
 		"OutputPageBodyAttributes": "stabilizeContent",
 		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
-		"ContentStabilizationResetState": "stabilizeContent"
+		"ContentStabilizationResetState": "stabilizeContent",
+		"SkinAfterContent": "addStabilizationInfoOnView"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -505,6 +506,10 @@
 		},
 		"registerCrons": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
+		},
+		"addStabilizationInfoOnView": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddStabilizationInfoOnView",
+			"services": [ "ContentStabilization.Lookup" ]
 		}
 	},
 	"SpecialPages": {

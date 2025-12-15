@@ -146,7 +146,6 @@
 	"contentstabilization-pref-index-stable-help": "Ensures that only the approved versions of pages are included in the search index",
 	"contentstabilization-event-stable-point-added-desc": "A page was approved",
 	"contentstabilization-preview-links-empty-preview-label": "No preview content available",
-	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Use only approved content for the AI chatbot",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "When enabled, the AI chatbot only uses content that has been approved as a source. Drafts are excluded.",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "When page is approved",
@@ -155,5 +154,7 @@
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "First draft",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Approve",
 	"contentstabilization-pageinfoelement-pill-action-update": "Approve resource changes",
-	"contentstabilization-label-stabilize-ns-desc": "Allow creating draft and approved revisions of pages"
+	"contentstabilization-label-stabilize-ns-desc": "Allow creating draft and approved revisions of pages",
+	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot",
+	"contentstabilization-info-last-approved-date": "Page was approved at $1, on $2"
 }
