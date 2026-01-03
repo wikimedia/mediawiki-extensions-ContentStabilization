@@ -7,7 +7,7 @@
 	},
 	"contentstabilization-desc": "Allows users to mark pages as \"approved\" or \"draft\" and to view the most recent approved version of a page.",
 	"right-contentstabilization-oversight": "See overview of all approvals of a page",
-	"right-contentstabilization-admin": "Allow to delete and move stable points to a different revision",
+	"right-contentstabilization-admin": "Delete and move stable points to a different revision",
 	"right-contentstabilization-stabilize": "Approve pages",
 	"action-contentstabilization-oversight": "see overview of approvals",
 	"action-contentstabilization-stabilize": "approve a page",
