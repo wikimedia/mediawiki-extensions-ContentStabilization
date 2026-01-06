@@ -9,7 +9,7 @@
 			"Verdy p"
 		]
 	},
-	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
+	"contentstabilization-desc": "{{desc|name=ContentStabilization|url=https://www.mediawiki.org/wiki/Extension:ContentStabilization}}",
 	"right-contentstabilization-oversight": "{{doc-right|contentstabilization-oversight}}",
 	"right-contentstabilization-admin": "{{doc-right|contentstabilization-admin}}",
 	"right-contentstabilization-stabilize": "{{doc-right|contentstabilization-stabilize}}",
