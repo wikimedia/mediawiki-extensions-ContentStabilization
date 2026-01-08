@@ -2,18 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"contentstabilization-desc": "Gör så att användare kan markera sidor som \"godkända\" eller \"utkast\" och visa de senaste godkända versionen av en sida.",
 	"right-contentstabilization-oversight": "Läs översikten över alla godkännanden av en sida",
-	"right-contentstabilization-admin": "Ändra vem som kan se utkast, radera och ändra godkännanden",
+	"right-contentstabilization-admin": "Tillåt att ta bort och flytta stabila punkter till en annan revision",
 	"right-contentstabilization-stabilize": "Godkänn sidor",
 	"action-contentstabilization-oversight": "läs översikt över godkännanden",
 	"action-contentstabilization-stabilize": "godkänn en sida",
 	"action-contentstabilization-admin": "hantera godkännanden",
 	"contentstabilization": "Översikt över kvalitetshantering",
-	"contentstabilization-global-action-overview": "Översikt över kvalitetshantering",
+	"contentstabilization-global-action-overview": "Kvalitetshantering",
 	"contentstabilization-global-action-overview-desc": "Översikt över sidor i godkännandeprocessen",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "har en utkastsversion",
 	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "har en godkänd version",
@@ -55,7 +56,7 @@
 	"contentstabilization-pref-allowfirstunstable-help": "När det aktiverats kommer den första utkastsversionen av en sida visas för användare som annars inte skulle kunna se utkastsversioner",
 	"contentstabilization-pref-stabilize-smw-help": "När det aktiverats kommer uppdatering av Semantisk MediaWiki-egenskaper triggas bara på aktuella versioner av sidor",
 	"contentstabilization-stablepoint-added-message-passive": "Ny godkänd version av sidan finns tillgänglig",
-	"contentstabilization-stablepoint-added-message": "lade till en ny godkänd version av sidan",
+	"contentstabilization-stablepoint-added-message": "{{GENDER:$1|lade till}} en ny godkänd version av sidan $2",
 	"contentstabilization-export-no-stable-date": "Inte godkänd",
 	"contentstabilization-export-laststable-tag-text": "Godkänd:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Sidversion: $1",
@@ -87,7 +88,7 @@
 	"contentstabilization-approval-date-sesp-desc": "Datum och tid sedan sidan granskades",
 	"contentstabilization-approval-user-sesp-desc": "Användaren som granskade sidan",
 	"contentstabilization-document-version-sesp-desc": "Antalet godkända sidversioner i sidhistoriken",
-	"contentstabilization-pref-index-stable": "Förteckning över endast godkända versioner av sidor",
+	"contentstabilization-pref-index-stable": "Indexera endast godkända versioner",
 	"contentstabilization-pref-pdf-show-tag": "Visa stabiliseringsinformation i PDF-exportering",
 	"contentstabilization-pref-export-list-stable": "Exportera: Lista godkända sidor i boken",
 	"contentstabilization-pref-export-list-unstable": "Exportera: Lista inte godkända sidor i boken",
