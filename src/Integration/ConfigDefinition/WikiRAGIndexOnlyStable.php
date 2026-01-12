@@ -9,7 +9,6 @@ use MediaWiki\Registration\ExtensionRegistry;
 class WikiRAGIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal {
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -21,7 +20,6 @@ class WikiRAGIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal 
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -29,7 +27,6 @@ class WikiRAGIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal 
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getGlobalName() {
