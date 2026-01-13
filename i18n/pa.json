@@ -4,19 +4,19 @@
 			"Cabal"
 		]
 	},
+	"contentstabilization-pageinfoelement-pagestatus-accept": "ਵਰਕੇ ਦੀ ਪ੍ਰਵਾਨਗੀ",
 	"contentstabilization-pageinfoelement-pagestatus-is-unstable-text": "ਖਰੜਾ",
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text": "ਇੱਕ ਪਹਿਲਾ ਖਰੜਾ",
+	"contentstabilization-ui-approve-title": "ਵਰਕੇ ਦੀ ਪ੍ਰਵਾਨਗੀ",
 	"contentstabilization-ui-approve-cancel": "ਰੱਦ ਕਰੋ",
 	"contentstabilization-status-unstable": "ਖਰੜਾ",
 	"contentstabilization-status-first-unstable": "ਪਹਿਲਾ ਖਰੜਾ",
+	"contentstabilization-overview-header-title": "ਵਰਕਾ",
 	"contentstabilization-overview-header-is-in-sync": "ਸਮਕਾਲੀ ਵਿੱਚ",
+	"contentstabilization-stabilizationhistory-title": "ਵਰਕਾ",
+	"contentstabilization-overview-header-page-id": "ਵਰਕੇ ਦੀ ਪਛਾਨ(ਸ਼ਨਾਖ਼ਤ)",
+	"contentstabilization-overview-header-page-namespace": "ਵਰਕੇ ਦਾ ਨਾਂ-ਥਾਂ",
 	"contentstabilization-wikiexplorer-filter-approved": "ਮਨਜ਼ੂਰ ਕੀਤਾ",
 	"contentstabilization-wikiexplorer-filter-not-approved": "ਮਨਜ਼ੂਰ ਨਹੀਂ",
-	"contentstabilization-versionhistory-grid-header-remove-approval-title": "ਪ੍ਰਵਾਨਗੀ ਹਟਾਓ",
-	"contentstabilization-stabilizationhistory-title": "ਵਰਕਾ",
-	"contentstabilization-pageinfoelement-pagestatus-accept": "ਵਰਕੇ ਦੀ ਪ੍ਰਵਾਨਗੀ",
-	"contentstabilization-ui-approve-title": "ਵਰਕੇ ਦੀ ਪ੍ਰਵਾਨਗੀ",
-	"contentstabilization-overview-header-title": "ਵਰਕਾ",
-	"contentstabilization-overview-header-page-id": "ਵਰਕੇ ਦੀ ਪਛਾਨ(ਸ਼ਨਾਖ਼ਤ)",
-	"contentstabilization-overview-header-page-namespace": "ਵਰਕੇ ਦਾ ਨਾਂ-ਥਾਂ"
+	"contentstabilization-versionhistory-grid-header-remove-approval-title": "ਪ੍ਰਵਾਨਗੀ ਹਟਾਓ"
 }
