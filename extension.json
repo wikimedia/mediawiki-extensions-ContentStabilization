@@ -150,6 +150,14 @@
 					"services": [ "WikiPageFactory", "ContentStabilization.Lookup", "RevisionLookup" ]
 				}
 			}
+		},
+		"WikiRAG": {
+			"ChangeObservers": {
+				"stabilization": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationObserver",
+					"services": [ "HookContainer", "WikiRAG._Factory" ]
+				}
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
