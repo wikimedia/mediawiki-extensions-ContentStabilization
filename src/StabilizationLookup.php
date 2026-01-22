@@ -347,10 +347,19 @@ class StabilizationLookup {
 				$inSync = empty( $outOfSyncInclusions );
 			}
 
-			// If viewing the latest stable, but it's not forced, and it's not in sync, set correct state
-			if ( $isRequestedStable && !$forceStable && !$hasNewerStable && !$inSync && $canSeeDrafts ) {
+			// If viewing the latest stable and latest revision,
+			// but it's not forced, and it's not in sync, set correct state
+			if (
+				$isRequestedStable &&
+				!$forceStable &&
+				!$hasNewerStable &&
+				!$inSync &&
+				$canSeeDrafts &&
+				$selected->isCurrent()
+			) {
 				$state = StableView::STATE_IMPLICIT_UNSTABLE;
 			}
+
 			// If viewing an old revision, on the page which does not have later stable points, page needs stabilization
 			$hasApprovableDraft =
 				!$isRequestedStable ||
