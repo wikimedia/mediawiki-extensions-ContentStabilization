@@ -63,13 +63,25 @@ class StabilizePDFExport {
 		if ( !$this->lookup->isStabilizationEnabled( $revisionRecord->getPage() ) ) {
 			return;
 		}
-		$view = $this->lookup->getStableViewFromContext( $this->requestContext );
 
-		if ( !$view || !$view->getRevision() ) {
-			return;
+		if ( isset( $params['rev-id'] ) ) {
+			$params['upToRevision'] = $params['rev-id'];
 		}
 
-		$this->view = $view;
+		if ( isset( $params['stable'] ) ) {
+			// sanitize param value. Might have wrong value in manual written specification.
+			if ( in_array( $params['stable'], [ '1', 1, 'true', true ] ) ) {
+				$params['stable'] = '1';
+			} else {
+				$params['stable'] = '0';
+			}
+
+			if ( wfStringToBool( $params['stable'] ) === false ) {
+				$params['forceUnstable'] = true;
+			}
+		}
+
+		$this->view = $this->lookup->getStableView( $revisionRecord->getPage(), $userIdentity, $params );
 		$revisionRecord = $this->view->getRevision();
 	}
 
@@ -102,11 +114,14 @@ class StabilizePDFExport {
 		// Timestamp when stable point was added (time of approval)
 		$lastStableTime = '';
 		// Timestamp when the revision was created
-		$lastStableRevisionTime = '';
+		$revisionTimestamp = '';
 		if ( $lastStable ) {
 			$lastStableTime = $lastStable->getTime()->format( 'YmdHis' );
-			$lastStableRevisionTime = $lastStable->getRevision()->getTimestamp();
+			$revisionTimestamp = $lastStable->getRevision()->getTimestamp();
+		} else {
+			$revisionTimestamp = $this->view->getRevision()->getTimestamp();
 		}
+
 		$stableTag = $dom->createElement(
 			'span',
 			Message::newFromKey( 'contentstabilization-export-laststable-tag-text' )
@@ -130,7 +145,7 @@ class StabilizePDFExport {
 		$stableRevDateTag = $dom->createElement(
 			'span',
 			' / ' . Message::newFromKey( 'contentstabilization-export-stablerevisiondate-tag-text' )
-				->params( $this->formatTs( $lastStableRevisionTime, $context->getUser() ) )
+				->params( $this->formatTs( $revisionTimestamp, $context->getUser() ) )
 				->text()
 		);
 		$stableRevDateTag->setAttribute( 'class', 'contentstabilization-export' );
@@ -165,11 +180,11 @@ class StabilizePDFExport {
 	}
 
 	/**
-	 * @param string $lastStableRevisionTime
+	 * @param string $revisionTimestamp
 	 * @param User $user
 	 * @return string
 	 */
-	private function formatTs( string $lastStableRevisionTime, User $user ): string {
-		return $this->language->userTimeAndDate( $lastStableRevisionTime, $user );
+	private function formatTs( string $revisionTimestamp, User $user ): string {
+		return $this->language->userTimeAndDate( $revisionTimestamp, $user );
 	}
 }
