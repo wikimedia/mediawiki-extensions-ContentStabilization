@@ -25,7 +25,15 @@ class WikiRAGIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal 
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
-		return 'contentstabilization-pref-wiki-rag-index-stable';
+		return 'contentstabilization-pref-wiki-rag-index-stable-label';
+	}
+
+	/**
+	 *
+	 * @return string
+	 */
+	public function getHelpMessageKey() {
+		return 'contentstabilization-pref-wiki-rag-index-stable-help';
 	}
 
 	/**
