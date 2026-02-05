@@ -146,5 +146,6 @@
 	"contentstabilization-pref-index-stable-help": "Ensures that only the approved versions of pages are included in the search index",
 	"contentstabilization-event-stable-point-added-desc": "A page was approved",
 	"contentstabilization-preview-links-empty-preview-label": "No preview content available",
-	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot"
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Use only approved content for the AI chatbot",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "When enabled, the AI chatbot only uses content that has been approved as a source. Drafts are excluded."
 }
