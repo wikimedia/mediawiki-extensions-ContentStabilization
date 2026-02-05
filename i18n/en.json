@@ -147,5 +147,7 @@
 	"contentstabilization-event-stable-point-added-desc": "A page was approved",
 	"apihelp-query+revisions-paramvalue-prop-stabilization": "Adds stabilization data for revisions",
 	"contentstabilization-preview-links-empty-preview-label": "No preview content available",
-	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot"
+	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Use only approved content for the AI chatbot",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "When enabled, the AI chatbot only uses content that has been approved as a source. Drafts are excluded."
 }

@@ -151,5 +151,7 @@
 	"contentstabilization-event-stable-point-added-desc": "Description of event trigger",
 	"apihelp-query+revisions-paramvalue-prop-stabilization": "{{doc-apihelp-param|query+revisions-paramvalue-prop|stabilization}}",
 	"contentstabilization-preview-links-empty-preview-label": "Label if there is no content of page to preview",
-	"contentstabilization-pref-wiki-rag-index-stable": "Label of an option on [[Special:ConfigManager]]"
+	"contentstabilization-pref-wiki-rag-index-stable": "Label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Help label of an option on [[Special:ConfigManager]]"
 }
