@@ -146,6 +146,5 @@
 	"contentstabilization-pref-pdf-show-tag-help": "在PDF输出文件的页面标题下方添加最后审批日期和修订日期",
 	"contentstabilization-pref-index-stable-help": "确保只有经过批准的页面版本才会被包含在搜索索引中。",
 	"contentstabilization-event-stable-point-added-desc": "页面已获批准",
-	"contentstabilization-preview-links-empty-preview-label": "暂无预览内容",
-	"contentstabilization-pref-wiki-rag-index-stable": "仅使用已批准的版本作为人工智能聊天机器人的源数据。"
+	"contentstabilization-preview-links-empty-preview-label": "暂无预览内容"
 }

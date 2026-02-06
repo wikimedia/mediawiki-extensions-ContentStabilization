@@ -144,6 +144,5 @@
 	"contentstabilization-pref-pdf-show-tag-help": "Engade as datas da última aprobación e mais da última revisión debaixo dos títulos das páxinas na saída en PDF",
 	"contentstabilization-pref-index-stable-help": "Garante que só as versións aprobadas das páxinas se inclúan no índice de procura",
 	"contentstabilization-event-stable-point-added-desc": "Aprobouse unha páxina",
-	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido",
-	"contentstabilization-pref-wiki-rag-index-stable": "Usar só as versións aprobadas como datos de orixe para a charla coa IA"
+	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido"
 }
