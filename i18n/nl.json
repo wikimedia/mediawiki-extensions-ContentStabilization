@@ -148,5 +148,7 @@
 	"contentstabilization-pref-pdf-show-tag-help": "Voegt de laatste goedkeurings- en bewerkingsdatums toe onder de paginatitels in de PDF-uitvoer",
 	"contentstabilization-pref-index-stable-help": "Zorgt ervoor dat alleen de goedgekeurde versies van pagina’s in de zoekindex worden opgenomen",
 	"contentstabilization-event-stable-point-added-desc": "Er is een pagina goedgekeurd",
-	"contentstabilization-preview-links-empty-preview-label": "Geen voorbeeldinhoud beschikbaar"
+	"contentstabilization-preview-links-empty-preview-label": "Geen voorbeeldinhoud beschikbaar",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Gebruik alleen goedgekeurde inhoud voor de AI-chatbot.",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Wanneer deze functie is ingeschakeld, gebruikt de AI-chatbot alleen goedgekeurde inhoud als bron. Concepten worden uitgesloten."
 }

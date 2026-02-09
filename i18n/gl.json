@@ -144,5 +144,7 @@
 	"contentstabilization-pref-pdf-show-tag-help": "Engade as datas da última aprobación e mais da última revisión debaixo dos títulos das páxinas na saída en PDF",
 	"contentstabilization-pref-index-stable-help": "Garante que só as versións aprobadas das páxinas se inclúan no índice de procura",
 	"contentstabilization-event-stable-point-added-desc": "Aprobouse unha páxina",
-	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido"
+	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar só contido aprobado para o bot de charlas de IA",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores."
 }

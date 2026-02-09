@@ -110,5 +110,7 @@
 	"contentstabilization-pref-handleinclude-current": "الإصدارات الحالية من الصفحات المضمنة",
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
 	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
-	"contentstabilization-preview-links-empty-preview-label": "لا يوجد محتوى معاينة متاح"
+	"contentstabilization-preview-links-empty-preview-label": "لا يوجد محتوى معاينة متاح",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "استخدم المحتوى المعتمد فقط لبرنامج الدردشة الآلي المدعوم بالذكاء الصنعي",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "عند تفعيل هذه الخاصية، لا يستخدم برنامج الدردشة الآلي المدعوم بالذكاء الصنعي إلا المحتوى الذي تمت الموافقة عليه مصدراً. وتستبعد المسودات."
 }
