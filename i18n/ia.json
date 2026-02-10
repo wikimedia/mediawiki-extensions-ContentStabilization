@@ -145,5 +145,7 @@
 	"contentstabilization-event-stable-point-added-desc": "Un pagina ha essite approbate",
 	"apihelp-query+revisions-paramvalue-prop-stabilization": "Adder datos de stabilisation pro versiones",
 	"contentstabilization-preview-links-empty-preview-label": "Il non ha contento a previsualisar",
-	"contentstabilization-pref-wiki-rag-index-stable": "Usar solmente versiones approbate como datos de fonte pro le chatbot de IA"
+	"contentstabilization-pref-wiki-rag-index-stable": "Usar solmente versiones approbate como datos de fonte pro le chatbot de IA",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar solmente contento approbate pro le chatbot de IA",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Quando activate, le chatbot de IA usa solmente contento que ha essite approbate como un fonte. Le versiones provisori es excludite."
 }

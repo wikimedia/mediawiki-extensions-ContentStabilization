@@ -149,5 +149,7 @@
 	"contentstabilization-event-stable-point-added-desc": "Er is een pagina goedgekeurd",
 	"apihelp-query+revisions-paramvalue-prop-stabilization": "Voegt stabilisatiegegevens voor versies toe",
 	"contentstabilization-preview-links-empty-preview-label": "Geen voorbeeldinhoud beschikbaar",
-	"contentstabilization-pref-wiki-rag-index-stable": "Gebruik alleen goedgekeurde versies als brongegevens voor AI-chatbot"
+	"contentstabilization-pref-wiki-rag-index-stable": "Gebruik alleen goedgekeurde versies als brongegevens voor AI-chatbot",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Gebruik alleen goedgekeurde inhoud voor de AI-chatbot.",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Wanneer deze functie is ingeschakeld, gebruikt de AI-chatbot alleen goedgekeurde inhoud als bron. Concepten worden uitgesloten."
 }
