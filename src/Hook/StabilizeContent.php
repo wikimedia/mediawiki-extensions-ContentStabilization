@@ -602,7 +602,11 @@ class StabilizeContent implements
 			if ( $renderedRev ) {
 				$text = $renderedRev->getRevisionParserOutput()->runOutputPipeline( $options )->getContentHolderText();
 				// Remove wrapping in <div class="mw-parser-output">...</div>
-				$text = preg_replace( '/^<div class="mw-parser-output">(.*)<\/div>$/s', '$1', $text );
+				$text = preg_replace(
+					'/^<div[^>]*class="[^"]*\bmw-parser-output\b[^"]*"[^>]*>(.*)<\/div>$/s',
+					'$1',
+					$text
+				);
 				$parserOutput->setRawText( $text );
 			}
 			$this->allowParserOutputAlteration = true;
