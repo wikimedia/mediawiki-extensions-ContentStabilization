@@ -146,5 +146,7 @@
 	"contentstabilization-pref-pdf-show-tag-help": "在 PDF 輸出檔案的頁面標題下方新增最後批准與修訂日期",
 	"contentstabilization-pref-index-stable-help": "確認只有經過批准的頁面版本才會被包含在搜尋索引裡。",
 	"contentstabilization-event-stable-point-added-desc": "頁面已獲批准",
-	"contentstabilization-preview-links-empty-preview-label": "無可用預覽內容"
+	"contentstabilization-preview-links-empty-preview-label": "無可用預覽內容",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "AI 聊天機器人僅可使用已批准的內容。",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "啟用後，AI 聊天機器人會僅使用已批准為來源的內容（草稿除外）。"
 }
