@@ -130,7 +130,7 @@ class PageApproved implements IMechanism {
 		if ( !$title->exists() ) {
 			return false;
 		}
-		if ( $this->isMinorRevision( $title->getArticleID() )
+		if ( !$this->includeMinor() && $this->isMinorRevision( $title->getArticleID() )
 			&& $this->hasNoPreviousMajorRevisionDrafts( $title->getArticleID() ) ) {
 			return false;
 		}
@@ -223,8 +223,11 @@ class PageApproved implements IMechanism {
 		// Ignore passed $revId, as this mechanism always applies to latest stable revision only
 		$revId = $stable->getId();
 
-		if ( $this->isMinorRevision( $revId ) ) {
+		if ( !$this->includeMinor() && $this->isMinorRevision( $revId ) ) {
 			if ( $this->hasNoPreviousMajorRevisionDrafts( $revId ) ) {
+				// If we don't include minor revisions and the latest approved version is a minor,
+				// that has no major versions between it and the previous stable,
+				// then we don't require read confirmation, as there is no significant change to read.
 				return false;
 			}
 			$this->logger->debug(
@@ -252,9 +255,6 @@ class PageApproved implements IMechanism {
 	 * @return bool
 	 */
 	private function isMinorRevision( $revId ) {
-		if ( !$this->includeMinor() ) {
-			return false;
-		}
 		$revision = $this->revisionLookup->getRevisionById( $revId );
 		if ( $revision instanceof RevisionRecord ) {
 			return $revision->isMinor();
@@ -630,6 +630,7 @@ class PageApproved implements IMechanism {
 		if ( !$this->includeMinor() ) {
 			$sqb->where( 'r.rev_minor_edit = 0' );
 		}
+
 		$res = $sqb->fetchResultSet();
 		foreach ( $res as $row ) {
 			if ( isset( $recentData[$row->rev_page] ) ) {
