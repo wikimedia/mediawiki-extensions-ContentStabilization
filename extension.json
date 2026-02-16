@@ -392,7 +392,8 @@
 		"APIGetAllowedParams": "addStabilizationDataToApiReports",
 		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
 		"OutputPageBodyAttributes": "stabilizeContent",
-		"WikiRAGRunForPage": "stabilizeWikiRAG"
+		"WikiRAGRunForPage": "stabilizeWikiRAG",
+		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -507,6 +508,9 @@
 		"stabilizeWikiRAG": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizeWikiRAG",
 			"services": [ "ContentStabilization.Lookup", "MainConfig" ]
+		},
+		"addNamespaceProperties": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\NamespaceManagerCollectNamespaceProperties\\AddNamespaceProperties"
 		}
 	},
 	"SpecialPages": {
