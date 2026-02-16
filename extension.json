@@ -374,7 +374,8 @@
 		"ModifyExportQuery": "overrideApis",
 		"APIGetAllowedParams": "addStabilizationDataToApiReports",
 		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
-		"OutputPageBodyAttributes": "stabilizeContent"
+		"OutputPageBodyAttributes": "stabilizeContent",
+		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -485,6 +486,9 @@
 		"addStabilizationDataToApiReports": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddStabilizationDataToApiReports",
 			"services": [ "DBLoadBalancer", "TitleFactory", "ContentStabilization.Lookup" ]
+		},
+		"addNamespaceProperties": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\NamespaceManagerCollectNamespaceProperties\\AddNamespaceProperties"
 		}
 	},
 	"SpecialPages": {
