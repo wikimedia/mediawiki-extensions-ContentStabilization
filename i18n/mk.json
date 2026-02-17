@@ -145,5 +145,7 @@
 	"contentstabilization-pref-index-stable-help": "Обезбедува вклучување на само одобрени верзии на страниците во индексот за пребарување",
 	"contentstabilization-event-stable-point-added-desc": "Одобрена е страница",
 	"contentstabilization-preview-links-empty-preview-label": "Нема достапна содржина за преглед",
-	"contentstabilization-pref-wiki-rag-index-stable": "Користете само одобрени верзии како изорни податоци за ВИ-виртуелен соговорник"
+	"contentstabilization-pref-wiki-rag-index-stable": "Користете само одобрени верзии како изорни податоци за ВИ-виртуелен соговорник",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Користи само одобрена содржина за разговорниот бот со ВИ",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Кога е овозможено, разговорниот бот со ВИ користи само содржина одобрена како извор. Нацртите се изземени."
 }

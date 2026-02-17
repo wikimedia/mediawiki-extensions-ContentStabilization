@@ -5,8 +5,8 @@
 			"Asma",
 			"Cigaryno",
 			"Meno25",
-			"Reedy",
-			"Mohammed Qays"
+			"Mohammed Qays",
+			"Reedy"
 		]
 	},
 	"contentstabilization-desc": "يسمح للمستخدمين بوضع علامة على الصفحات على أنها \"موافق عليها\" أو \"مسودة\" وعرض أحدث نسخة تمت الموافقة عليها من الصفحة.",
@@ -111,5 +111,7 @@
 	"contentstabilization-overview-header-page-id": "معرف الصفحة ID",
 	"contentstabilization-overview-header-page-namespace": "مساحات اسم الصفحة",
 	"contentstabilization-preview-links-empty-preview-label": "لا يوجد محتوى معاينة متاح",
-	"contentstabilization-pref-wiki-rag-index-stable": "استخدم فقط الإصدارات المعتمدة مصدرًا لبيانات المحادثة بالذكاء الاصطناعي عبر chatbot"
+	"contentstabilization-pref-wiki-rag-index-stable": "استخدم فقط الإصدارات المعتمدة مصدرًا لبيانات المحادثة بالذكاء الاصطناعي عبر chatbot",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "استخدم المحتوى المعتمد فقط لبرنامج الدردشة الآلي المدعوم بالذكاء الصنعي",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "عند تفعيل هذه الخاصية، لا يستخدم برنامج الدردشة الآلي المدعوم بالذكاء الصنعي إلا المحتوى الذي تمت الموافقة عليه مصدراً. وتستبعد المسودات."
 }
