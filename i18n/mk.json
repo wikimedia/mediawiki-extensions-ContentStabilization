@@ -144,5 +144,7 @@
 	"contentstabilization-pref-pdf-show-tag-help": "Ги додава последите датуми на одобрение и преработка под насловите на страниците во PDF-изводот",
 	"contentstabilization-pref-index-stable-help": "Обезбедува вклучување на само одобрени верзии на страниците во индексот за пребарување",
 	"contentstabilization-event-stable-point-added-desc": "Одобрена е страница",
-	"contentstabilization-preview-links-empty-preview-label": "Нема достапна содржина за преглед"
+	"contentstabilization-preview-links-empty-preview-label": "Нема достапна содржина за преглед",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Користи само одобрена содржина за разговорниот бот со ВИ",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Кога е овозможено, разговорниот бот со ВИ користи само содржина одобрена како извор. Нацртите се изземени."
 }
