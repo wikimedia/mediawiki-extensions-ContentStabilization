@@ -10,7 +10,7 @@
 	},
 	"contentstabilization-desc": "Hiermee kunnen gebruikers pagina’s markeren als “goedgekeurd” of “concept” en de meest recente goedgekeurde versie van een pagina bekijken.",
 	"right-contentstabilization-oversight": "Het overzicht van alle goedkeuringen van een pagina bekijken",
-	"right-contentstabilization-admin": "Toestaan om stabiele punten te verwijderen en te verplaatsen naar een andere versie",
+	"right-contentstabilization-admin": "Stabiele punten verwijderen en verplaatsen naar een andere versie",
 	"right-contentstabilization-stabilize": "Pagina's goedkeuren",
 	"action-contentstabilization-oversight": "het overzicht van de goedkeuringen te bekijken",
 	"action-contentstabilization-stabilize": "een pagina goed te keuren",
