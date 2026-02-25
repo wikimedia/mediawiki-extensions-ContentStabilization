@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "Permitte que usatores marca paginas como \"approbate\" o \"provisori\" e vide le version approbate le plus recente de un pagina.",
 	"right-contentstabilization-oversight": "Vider un vista general de tote le approbationes de un pagina",
-	"right-contentstabilization-admin": "Permitter le deletion e le displaciamento a un altere version de punctos stabile",
+	"right-contentstabilization-admin": "Deler e displaciar punctos stabile a un altere version",
 	"right-contentstabilization-stabilize": "Approbar paginas",
 	"action-contentstabilization-oversight": "vider un vista general de approbationes",
 	"action-contentstabilization-stabilize": "approbar un pagina",
