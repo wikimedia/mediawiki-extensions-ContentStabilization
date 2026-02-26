@@ -647,7 +647,7 @@ class PageApproved implements IMechanism {
 	 * @return bool
 	 */
 	protected function includeMinor(): bool {
-		return true;
+		return false;
 	}
 
 }
