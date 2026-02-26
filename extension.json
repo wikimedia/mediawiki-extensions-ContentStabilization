@@ -158,6 +158,17 @@
 					"services": [ "HookContainer", "WikiRAG._Factory" ]
 				}
 			}
+		},
+		"WikiAutomations": {
+			"Triggers": {
+				"cs-after-approval": {
+					"type": "page",
+					"message": "contentstabilization-wiki-automation-trigger-page-stabilized",
+					"spec": {
+						"class": "MediaWiki\\Extension\\WikiAutomations\\Trigger\\PageEventTrigger"
+					}
+				}
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
