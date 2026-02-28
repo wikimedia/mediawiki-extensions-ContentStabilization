@@ -27,7 +27,6 @@ class WikiRAGIndexOnlyStable extends BooleanSetting implements IOverwriteGlobal 
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHelpMessageKey() {
