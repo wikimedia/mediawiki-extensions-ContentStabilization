@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "Permite aos usuarios marcar as páxinas como «aprobadas» ou como «borradores» e ver a versión aprobada máis recente dunha páxina.",
 	"right-contentstabilization-oversight": "Ver a vista xeral de todas as aprobacións dunha páxina",
-	"right-contentstabilization-admin": "Permitir eliminar e mover puntos estables a unha revisión diferente",
+	"right-contentstabilization-admin": "Eliminar e mover puntos estables a unha revisión diferente",
 	"right-contentstabilization-stabilize": "Aprobar páxinas",
 	"action-contentstabilization-oversight": "ver a vista xeral das aprobacións",
 	"action-contentstabilization-stabilize": "aprobar unha páxina",
