@@ -4,5 +4,22 @@
 			"Yupik"
 		]
 	},
-	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Õõʹnni"
+	"right-contentstabilization-stabilize": "Priim seeidaid",
+	"action-contentstabilization-stabilize": "seeid priimmâd",
+	"contentstabilization-pageinfoelement-pagestatus-accept": "Priim seeid",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "primmum",
+	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Primmum versio",
+	"contentstabilization-ui-approve-title": "Priim seeid",
+	"contentstabilization-ui-approve-approve": "Priim",
+	"contentstabilization-ui-approve-cancel": "Jõõsk",
+	"contentstabilization-ui-approve-error": "Seeid priimmʼmõš ij oʹnnstam",
+	"content-stabilization-integration-activity-error-cannot-approve": "Seeid priimmʼmõš ij oʹnnstam",
+	"contentstabilization-export-laststable-tag-text": "Primmum:",
+	"contentstabilization-status-stable": "Primmum",
+	"contentstabilization-column-last-stable": "Primmum",
+	"contentstabilization-stabilizationhistory-stableversionstabletitle": "Primmum seeid",
+	"contentstabilization-stabilizationhistory-nostableversionstabletitle": "Seeid, kook ij leäkku primmum",
+	"contentstabilization-wikiexplorer-state": "Primmum",
+	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Õõʹnni",
+	"contentstabilization-wikiexplorer-filter-approved": "Primmum"
 }
