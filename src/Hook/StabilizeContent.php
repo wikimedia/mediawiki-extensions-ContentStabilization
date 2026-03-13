@@ -207,6 +207,7 @@ class StabilizeContent implements
 			// Otherwise always edit the latest version
 			$article->getContext()->getOutput()->setRevisionId( $pageTitle->getLatestRevID() );
 		}
+		$article->getContext()->getOutput()->setRevisionId( $revisionUsed->getId() );
 		$article->getContext()->getOutput()->addJsConfigVars(
 			[ 'wgStabilizedRevisionId' => $revisionUsed->getId(), 'wgStabilizationState' => $this->view->getStatus() ]
 		);
