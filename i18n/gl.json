@@ -146,5 +146,6 @@
 	"contentstabilization-event-stable-point-added-desc": "Aprobouse unha páxina",
 	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar só contido aprobado para o bot de charlas de IA",
-	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores."
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores.",
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Cando se aproba a páxina"
 }
