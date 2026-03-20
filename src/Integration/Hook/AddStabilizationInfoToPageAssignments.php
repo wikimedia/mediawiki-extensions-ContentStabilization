@@ -2,14 +2,12 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use BlueSpice\PageAssignments\Hook\BSPageAssignmentsOverviewHook;
-use BSApiMyPageAssignmentStore;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Title\TitleFactory;
 
-class AddStabilizationInfoToPageAssignments implements BSPageAssignmentsOverviewHook {
+class AddStabilizationInfoToPageAssignments {
 
 	/**
 	 * @var StabilizationLookup
@@ -37,6 +35,7 @@ class AddStabilizationInfoToPageAssignments implements BSPageAssignmentsOverview
 	 * @param array &$data
 	 *
 	 * @return bool
+	 * @throws \Exception
 	 */
 	public function onBSApiExtJSStoreBaseBeforePostProcessData( $apiModule, &$data ) {
 		if ( $apiModule instanceof BSApiMyPageAssignmentStore ) {
@@ -49,6 +48,7 @@ class AddStabilizationInfoToPageAssignments implements BSPageAssignmentsOverview
 	 * Append "last_stable_date" field to each dataset
 	 * @param array &$data
 	 * @return void
+	 * @throws \Exception
 	 */
 	protected function extendBSApiMyPageAssignmentStore( &$data ) {
 		$context = RequestContext::getMain();
@@ -81,7 +81,8 @@ class AddStabilizationInfoToPageAssignments implements BSPageAssignmentsOverview
 	}
 
 	/**
-	 * @inheritDoc
+	 * @param array &$deps
+	 * @return void
 	 */
 	public function onBSPageAssignmentsOverview( array &$deps ): void {
 		$deps[] = 'ext.contentStabilization.pageassignments.stabilization';
