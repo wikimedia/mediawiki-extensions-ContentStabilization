@@ -7,7 +7,7 @@
 	},
 	"contentstabilization-desc": "Allows users to mark pages as \"approved\" or \"draft\" and to view the most recent approved version of a page.",
 	"right-contentstabilization-oversight": "See overview of all approvals of a page",
-	"right-contentstabilization-admin": "Allow to delete and move stable points to a different revision",
+	"right-contentstabilization-admin": "Delete and move stable points to a different revision",
 	"right-contentstabilization-stabilize": "Approve pages",
 	"action-contentstabilization-oversight": "see overview of approvals",
 	"action-contentstabilization-stabilize": "approve a page",
@@ -149,5 +149,6 @@
 	"contentstabilization-preview-links-empty-preview-label": "No preview content available",
 	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Use only approved content for the AI chatbot",
-	"contentstabilization-pref-wiki-rag-index-stable-help": "When enabled, the AI chatbot only uses content that has been approved as a source. Drafts are excluded."
+	"contentstabilization-pref-wiki-rag-index-stable-help": "When enabled, the AI chatbot only uses content that has been approved as a source. Drafts are excluded.",
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "When page is approved"
 }

@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "Permite aos usuarios marcar as páxinas como «aprobadas» ou como «borradores» e ver a versión aprobada máis recente dunha páxina.",
 	"right-contentstabilization-oversight": "Ver a vista xeral de todas as aprobacións dunha páxina",
-	"right-contentstabilization-admin": "Permitir eliminar e mover puntos estables a unha revisión diferente",
+	"right-contentstabilization-admin": "Eliminar e mover puntos estables a unha revisión diferente",
 	"right-contentstabilization-stabilize": "Aprobar páxinas",
 	"action-contentstabilization-oversight": "ver a vista xeral das aprobacións",
 	"action-contentstabilization-stabilize": "aprobar unha páxina",
@@ -147,5 +147,6 @@
 	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido",
 	"contentstabilization-pref-wiki-rag-index-stable": "Usar só as versións aprobadas como datos de orixe para a charla coa IA",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar só contido aprobado para o bot de charlas de IA",
-	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores."
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores.",
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Cando se aproba a páxina"
 }
