@@ -93,9 +93,6 @@ class StabilizePDFExport {
 	 * @throws DOMException
 	 */
 	public function onPDFCreatorAfterGetDOMDocument( DOMDocument $dom, PageContext $context ): void {
-		if ( !$this->config->get( 'ContentStabilizationPDFCreatorShowStabilizationTag' ) ) {
-			return;
-		}
 		if ( !$context->getTitle()->canExist() ) {
 			// Virtual namespace
 			return;
@@ -109,6 +106,16 @@ class StabilizePDFExport {
 		$lastStable = null;
 		if ( $this->view->getStatus() === StableView::STATE_STABLE ) {
 			$lastStable = $this->view->getLastStablePoint();
+		}
+
+		$body = $dom->getElementsByTagName( 'body' )->item( 0 );
+		$div = $body->getElementsByTagName( 'div' )->item( 0 );
+		$classes = $div->getAttribute( 'class' );
+		$classes .= ' contentstabilization-' . str_replace( ' ', '-', $this->view->getStatus() );
+		$div->setAttribute( 'class', $classes );
+
+		if ( !$this->config->get( 'ContentStabilizationPDFCreatorShowStabilizationTag' ) ) {
+			return;
 		}
 
 		// Timestamp when stable point was added (time of approval)
