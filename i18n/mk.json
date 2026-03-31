@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "Им овозможува на корисниците да ги означуваат страниците како „одобрена“ или „нацрт“ и да ја гледаат најновата одобрена верзија на страница.",
 	"right-contentstabilization-oversight": "Преглед на сите одобрувања на страница",
-	"right-contentstabilization-admin": "Дозволи бришење и преместување на постојани точки во друга преработка",
+	"right-contentstabilization-admin": "Бришење и преместување на постојани точки во друга преработка",
 	"right-contentstabilization-stabilize": "Одобрување на страници",
 	"action-contentstabilization-oversight": "преглед на сите одобрувања на страница",
 	"action-contentstabilization-stabilize": "одобрување на страница",
@@ -146,5 +146,6 @@
 	"contentstabilization-event-stable-point-added-desc": "Одобрена е страница",
 	"contentstabilization-preview-links-empty-preview-label": "Нема достапна содржина за преглед",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Користи само одобрена содржина за разговорниот бот со ВИ",
-	"contentstabilization-pref-wiki-rag-index-stable-help": "Кога е овозможено, разговорниот бот со ВИ користи само содржина одобрена како извор. Нацртите се изземени."
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Кога е овозможено, разговорниот бот со ВИ користи само содржина одобрена како извор. Нацртите се изземени.",
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Кога ќе се одобри страницата"
 }
