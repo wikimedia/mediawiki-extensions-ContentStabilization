@@ -192,10 +192,10 @@ class StabilizationLookup {
 
 	/**
 	 * @param IContextSource $context
-	 *
+	 * @param array $options
 	 * @return StableView|null
 	 */
-	public function getStableViewFromContext( IContextSource $context ): ?StableView {
+	public function getStableViewFromContext( IContextSource $context, array $options = [] ): ?StableView {
 		if ( $context->getTitle() === null || !$context->getTitle()->canExist() ) {
 			return null;
 		}
@@ -210,6 +210,7 @@ class StabilizationLookup {
 		if ( $explicitlyStable !== null ) {
 			$params['forceUnstable'] = !$explicitlyStable;
 		}
+		$params = array_merge( $params, $options );
 
 		return $this->getStableView( $context->getTitle()->toPageIdentity(), $context->getUser(), $params );
 	}

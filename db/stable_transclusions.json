@@ -47,13 +47,7 @@
 				}
 			}
 		],
-		"indexes": [
-			{
-				"name": "st_revision_transclusion_revision",
-				"columns": [ "st_revision", "st_transclusion_revision", "st_transclusion_source" ],
-				"unique": true
-			}
-		],
+		"indexes": [],
 		"pk": []
 	}
 ]

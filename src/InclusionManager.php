@@ -206,6 +206,8 @@ class InclusionManager {
 		$page = $this->wikiPageFactory->newFromLinkTarget( $target );
 		$parserOptions = $page->makeParserOptions( 'canonical' );
 		$parser = $this->parserFactory->create();
+		// Set reason to let other extension know why this render is happening
+		$parserOptions->setRenderReason( 'CS_INCLUSION_FETCH' );
 
 		$parserOutput = $parser->parse(
 			$page->getContent()->getWikitextForTransclusion(),
@@ -450,6 +452,10 @@ class InclusionManager {
 		$diff = array_diff_key( $a, $b );
 		if ( !empty( $diff ) ) {
 			return array_values( $diff );
+		}
+		$diff2 = array_diff_key( $b, $a );
+		if ( !empty( $diff2 ) ) {
+			return array_values( $diff2 );
 		}
 		return [];
 	}

@@ -1,0 +1,110 @@
+{
+	"before": {
+		"name": "stable_transclusions",
+		"columns": [
+			{
+				"name": "st_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_page",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_namespace",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_title",
+				"type": "binary",
+				"options": {
+					"length": 255,
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_source",
+				"type": "binary",
+				"options": {
+					"length": 255,
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "st_revision_transclusion_revision",
+				"columns": [ "st_revision", "st_transclusion_revision", "st_transclusion_source" ],
+				"unique": true
+			}
+		],
+		"pk": []
+	},
+	"after": {
+		"name": "stable_transclusions",
+		"columns": [
+			{
+				"name": "st_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_page",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_revision",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_namespace",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_title",
+				"type": "binary",
+				"options": {
+					"length": 255,
+					"notnull": true
+				}
+			},
+			{
+				"name": "st_transclusion_source",
+				"type": "binary",
+				"options": {
+					"length": 255,
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [],
+		"pk": []
+	}
+}
