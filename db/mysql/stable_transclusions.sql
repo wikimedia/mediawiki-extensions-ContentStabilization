@@ -8,9 +8,5 @@ CREATE TABLE /*_*/stable_transclusions (
   st_transclusion_revision INT NOT NULL,
   st_transclusion_namespace INT NOT NULL,
   st_transclusion_title VARBINARY(255) NOT NULL,
-  st_transclusion_source VARBINARY(255) NOT NULL,
-  UNIQUE INDEX st_revision_transclusion_revision (
-    st_revision, st_transclusion_revision,
-    st_transclusion_source
-  )
+  st_transclusion_source VARBINARY(255) NOT NULL
 ) /*$wgDBTableOptions*/;

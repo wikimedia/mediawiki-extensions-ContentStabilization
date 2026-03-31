@@ -48,6 +48,12 @@ class RunDatabaseUpdates implements LoadExtensionSchemaUpdatesHook {
 			"$dir/db/$dbType/stable_file_transclusions_source_patch.sql"
 		);
 
+		$updater->dropExtensionIndex(
+			'stable_transclusions',
+			'st_revision_transclusion_revision',
+			"$dir/db/$dbType/stable_transclusions_remove_unique_index.sql"
+		);
+
 		// Migrate FlaggedRevs data
 		$updater->addPostDatabaseUpdateMaintenance(
 			'MediaWiki\Extension\ContentStabilization\Migration\MigrateFlaggedRevsData'

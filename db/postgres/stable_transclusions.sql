@@ -9,8 +9,3 @@ CREATE TABLE stable_transclusions (
   st_transclusion_title TEXT NOT NULL,
   st_transclusion_source TEXT NOT NULL
 );
-
-CREATE UNIQUE INDEX st_revision_transclusion_revision ON stable_transclusions (
-  st_revision, st_transclusion_revision,
-  st_transclusion_source
-);

@@ -9,8 +9,3 @@ CREATE TABLE /*_*/stable_transclusions (
   st_transclusion_title BLOB NOT NULL,
   st_transclusion_source BLOB NOT NULL
 );
-
-CREATE UNIQUE INDEX st_revision_transclusion_revision ON /*_*/stable_transclusions (
-  st_revision, st_transclusion_revision,
-  st_transclusion_source
-);

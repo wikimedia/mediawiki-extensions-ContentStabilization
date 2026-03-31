@@ -405,7 +405,8 @@
 		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
 		"OutputPageBodyAttributes": "stabilizeContent",
 		"WikiRAGRunForPage": "stabilizeWikiRAG",
-		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties"
+		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
+		"PageExcerptsChooseRevision": "integratePageExcerpts"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -523,6 +524,10 @@
 		},
 		"addNamespaceProperties": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\NamespaceManagerCollectNamespaceProperties\\AddNamespaceProperties"
+		},
+		"integratePageExcerpts": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\StabilizePageExcerpts",
+			"services": [ "ContentStabilization.Lookup" ]
 		},
 		"registerCrons": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
