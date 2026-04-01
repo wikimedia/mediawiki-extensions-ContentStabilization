@@ -387,7 +387,7 @@
 		"NotifyMeBeforeGenerateNotification": "stabilizeNotifications",
 		"CognitiveProcessDesignerBeforeRender": "stabilizeCognitiveProcessDesigner",
 		"getUserPermissionsErrors": "stabilizeContent",
-		"MediaWikiServices": "overrideServices",
+		"MediaWikiServices": [ "overrideServices", "registerCrons" ],
 		"ApiQueryBaseBeforeQuery": "overrideApis",
 		"ModifyExportQuery": "overrideApis",
 		"APIGetAllowedParams": "addStabilizationDataToApiReports",
@@ -512,6 +512,9 @@
 		},
 		"addNamespaceProperties": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\NamespaceManagerCollectNamespaceProperties\\AddNamespaceProperties"
+		},
+		"registerCrons": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
 		}
 	},
 	"SpecialPages": {
@@ -588,6 +591,18 @@
 		"WikiRAGIndexOnlyStable": {
 			"description": "Whether to index only stable content in the WikiRAG index",
 			"value": false
+		},
+		"ContentStabilizationApprovalSyncEnabled": {
+			"description": "Whether to enable nightly sync of approved pages to target wikis via ContentTransfer.",
+			"value": false
+		},
+		"ContentStabilizationApprovalSyncSource": {
+			"description": "Identifier of the source wiki to push approved pages from. Must match the value of ContentTransferCurrentWiki on that wiki.",
+			"value": ""
+		},
+		"ContentStabilizationApprovalSyncTargets": {
+			"description": "Array of ContentTransfer target keys to push approved pages to. Each key must exist in ContentTransferTargets.",
+			"value": []
 		}
 	},
 	"LogTypes": [ "stabilization" ],
