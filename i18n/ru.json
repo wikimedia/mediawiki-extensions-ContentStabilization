@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dirruw'o",
+			"Engineer56",
 			"Kareyac",
 			"Stjn"
 		]
@@ -21,5 +22,7 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Одобрено",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Не одобрена",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Имеет черновую версию",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Не имеет черновой версии"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Не имеет черновой версии",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Используйте только одобренный контент для чат-бота ИИ",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "При включении, чат-бот использует только контент, который был одобрен в качестве источника. Черновики исключены."
 }

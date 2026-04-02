@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ucukor"
+		]
+	},
+	"contentstabilization-ui-approve-cancel": "Скасаваць",
+	"content-stabilization-integration-activity-error-context-data-missing": "брак \"pageId\""
+}

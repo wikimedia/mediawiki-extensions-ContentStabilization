@@ -9,7 +9,7 @@
 			"Verdy p"
 		]
 	},
-	"contentstabilization-desc": "Description of ContentStabilization for [[Special:Version]]",
+	"contentstabilization-desc": "{{desc|name=ContentStabilization|url=https://www.mediawiki.org/wiki/Extension:ContentStabilization}}",
 	"right-contentstabilization-oversight": "{{doc-right|contentstabilization-oversight}}",
 	"right-contentstabilization-admin": "{{doc-right|contentstabilization-admin}}",
 	"right-contentstabilization-stabilize": "{{doc-right|contentstabilization-stabilize}}",
@@ -150,5 +150,8 @@
 	"contentstabilization-pref-index-stable-help": "Description of config variable \"SearchIndexOnlyStable\"",
 	"contentstabilization-event-stable-point-added-desc": "Description of event trigger",
 	"contentstabilization-preview-links-empty-preview-label": "Label if there is no content of page to preview",
-	"contentstabilization-pref-wiki-rag-index-stable": "Label of an option on [[Special:ConfigManager]]"
+	"contentstabilization-pref-wiki-rag-index-stable": "Label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Help label of an option on [[Special:ConfigManager]]",
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "WikiAutomations trigger description"
 }

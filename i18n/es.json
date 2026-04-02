@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Codename Noreste",
 			"Eulalio",
 			"Fitoschido"
 		]
@@ -36,5 +37,19 @@
 	"contentstabilization-ui-editor-approve-title": "Aprobar automáticamente los cambios al guardar",
 	"contentstabilization-ui-editor-approve-with-pending": "Aprobar esta versión (incluyendo {{PLURAL:$1| un cambio pendiente| $1 cambios pendientes}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Aprobar automáticamente todos los cambios pendientes al guardarlos. Asegurarse de haber revisado todos los cambios antes de guardar",
-	"contentstabilization-edit-notice-approval-needed": "Sus cambios se mostrarán a los lectores cuando un usuario autorizado los apruebe."
+	"contentstabilization-edit-notice-approval-needed": "Sus cambios se mostrarán a los lectores cuando un usuario autorizado los apruebe.",
+	"contentstabilization-desc": "Permite a los usuarios marcar las páginas como «aprobadas » o «borrador» y ver la versión aprobada más reciente de una página.",
+	"right-contentstabilization-oversight": "Ver el resumen de todas las aprobaciones de una página",
+	"right-contentstabilization-admin": "Eliminar y mover los puntos estables a una revisión diferente",
+	"action-contentstabilization-oversight": "ver resumen de aprobaciones",
+	"action-contentstabilization-stabilize": "aprobar una página",
+	"action-contentstabilization-admin": "gestionar las aprobaciones",
+	"apihelp-query+revisions-paramvalue-prop-stabilization": "Agrega datos de estabilización para las revisiones",
+	"contentstabilization": "Resumen del gestión de la calidad",
+	"contentstabilization-global-action-overview": "Gestión de calidad",
+	"contentstabilization-global-action-overview-desc": "Resumen de las páginas del proceso de aprobación",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "tiene una versión borrador",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-text": "tiene una versión aprobada",
+	"contentstabilization-pageinfoelement-versionswitch-has-unstable-title": "Mostrar la versión borrador",
+	"contentstabilization-pageinfoelement-versionswitch-has-stable-title": "Mostrar la versión aprobada"
 }

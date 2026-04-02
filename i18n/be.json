@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Ucukor"
 		]
 	},
-	"contentstabilization-overview-header-title": "Старонка"
+	"contentstabilization-overview-header-title": "Старонка",
+	"contentstabilization-ui-approve-cancel": "Скасаваць"
 }

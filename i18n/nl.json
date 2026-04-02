@@ -10,7 +10,7 @@
 	},
 	"contentstabilization-desc": "Hiermee kunnen gebruikers pagina’s markeren als “goedgekeurd” of “concept” en de meest recente goedgekeurde versie van een pagina bekijken.",
 	"right-contentstabilization-oversight": "Het overzicht van alle goedkeuringen van een pagina bekijken",
-	"right-contentstabilization-admin": "Toestaan om stabiele punten te verwijderen en te verplaatsen naar een andere versie",
+	"right-contentstabilization-admin": "Stabiele punten verwijderen en verplaatsen naar een andere versie",
 	"right-contentstabilization-stabilize": "Pagina's goedkeuren",
 	"action-contentstabilization-oversight": "het overzicht van de goedkeuringen te bekijken",
 	"action-contentstabilization-stabilize": "een pagina goed te keuren",
@@ -149,5 +149,8 @@
 	"contentstabilization-event-stable-point-added-desc": "Er is een pagina goedgekeurd",
 	"apihelp-query+revisions-paramvalue-prop-stabilization": "Voegt stabilisatiegegevens voor versies toe",
 	"contentstabilization-preview-links-empty-preview-label": "Geen voorbeeldinhoud beschikbaar",
-	"contentstabilization-pref-wiki-rag-index-stable": "Gebruik alleen goedgekeurde versies als brongegevens voor AI-chatbot"
+	"contentstabilization-pref-wiki-rag-index-stable": "Gebruik alleen goedgekeurde versies als brongegevens voor AI-chatbot",
+	"contentstabilization-pref-wiki-rag-index-stable-label": "Gebruik alleen goedgekeurde inhoud voor de AI-chatbot.",
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Wanneer deze functie is ingeschakeld, gebruikt de AI-chatbot alleen goedgekeurde inhoud als bron. Concepten worden uitgesloten.",
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Wanneer de pagina is goedgekeurd"
 }
