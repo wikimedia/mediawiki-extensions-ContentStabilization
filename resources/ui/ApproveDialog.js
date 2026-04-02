@@ -9,7 +9,7 @@ ext.contentStabilization.ui.ApproveDialog.static.name = 'contentStabilizationApp
 ext.contentStabilization.ui.ApproveDialog.static.title = mw.msg( 'contentstabilization-ui-approve-title' );
 ext.contentStabilization.ui.ApproveDialog.static.actions = [
 	{ action: 'approve', label: mw.msg( 'contentstabilization-ui-approve-approve' ), flags: [ 'primary', 'progressive' ] },
-	{ action: 'cancel', label: mw.msg( 'contentstabilization-ui-approve-cancel' ), flags: 'safe' }
+	{ action: 'cancel', label: mw.msg( 'contentstabilization-ui-approve-cancel' ), flags: [ 'safe', 'close' ] }
 ];
 
 ext.contentStabilization.ui.ApproveDialog.prototype.initialize = function () {
