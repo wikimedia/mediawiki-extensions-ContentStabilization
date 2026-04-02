@@ -1,11 +1,101 @@
+:root {
+	--contentstabilization-info-approve: var( --bs-eclipse-color-green );
+	--contentstabilization-info-approve--hover: var( --bs-eclipse-color-green-dark );
+	--contentstabilization-info-draft: var( --bs-eclipse-color-orange );
+	--contentstabilization-info-draft--hover: var( --bs-eclipse-color-orange-dark );
+	--contentstabilization-info-fg: #fff;
+}
+
+/* ---- Text-color fallback (non-pill contexts) ---- */
 .contentstabilization-pageinfo-page-first-unstable,
 .contentstabilization-pageinfo-page-implicit-unstable,
 .contentstabilization-pageinfo-page-unstable {
-	color: #e49c00 !important;
+	color: var( --contentstabilization-info-draft ) !important;
 	margin-right: 5px;
 }
 
 .contentstabilization-pageinfo-page-stable {
-	color: #38c748 !important;
+	color: var( --contentstabilization-info-approve ) !important;
 	margin-right: 5px;
+}
+
+/* ---- Active pill: colored background, white text ---- */
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-first-unstable {
+	background-color: var( --contentstabilization-info-draft );
+	color: #fff !important;
+	margin-right: 0;
+}
+
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-unstable,
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-implicit-unstable {
+	background-color: var( --contentstabilization-info-draft );
+	color: #fff !important;
+	margin-right: 0;
+}
+
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-stable {
+	background-color: var( --contentstabilization-info-approve );
+	color: var( --contentstabilization-info-fg ) !important;
+	margin-right: 0;
+}
+
+.pageinfo-pill.cs-pageinfo-pill--active .pageinfo-pill__label {
+	color: var( --contentstabilization-info-fg ) !important;
+}
+
+/* ---- Inactive pill: white background, colored text, colored border ---- */
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-first-unstable {
+	background-color: var( --contentstabilization-info-fg );
+	color: var( --contentstabilization-info-draft ) !important;
+	border: 1px solid var( --contentstabilization-info-draft );
+	margin-right: 0;
+}
+
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-unstable,
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-implicit-unstable {
+	background-color: var( --contentstabilization-info-fg );
+	color: var( --contentstabilization-info-draft ) !important;
+	border: 1px solid var( --contentstabilization-info-draft );
+	margin-right: 0;
+}
+
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-unstable:hover,
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-implicit-unstable:hover,
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-unstable:hover,
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-unstable:hover .pageinfo-pill__label,
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-implicit-unstable:hover,
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-implicit-unstable:hover .pageinfo-pill__label {
+	background-color: var( --contentstabilization-info-draft--hover );
+	color: var( --contentstabilization-info-fg ) !important;
+}
+
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-stable {
+	background-color: var( --contentstabilization-info-fg );
+	color: var( --contentstabilization-info-approve ) !important;
+	border: 1px solid var( --contentstabilization-info-approve );
+	margin-right: 0;
+}
+
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-stable:hover,
+.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-stable:hover .pageinfo-pill__label {
+	background-color: var( --contentstabilization-info-approve--hover );
+	color: var( --contentstabilization-info-fg ) !important;
+}
+
+/* ---- Approve action button: pen icon only, hidden until hover ---- */
+.pageinfo-pill .pageinfo-pill__action {
+	color: var( --contentstabilization-info-fg ) !important;
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	font-size: 0; /* hide text label visually, kept in DOM for accessibility */
+	padding: 4px 8px;
+}
+
+.pageinfo-pill .pageinfo-pill__action::before {
+	font-size: 0.875rem;
+	line-height: 1;
+}
+
+.pageinfo-pill:hover .pageinfo-pill__action {
+	opacity: 1;
 }

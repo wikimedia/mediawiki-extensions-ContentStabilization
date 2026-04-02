@@ -32,7 +32,9 @@
 		"PageHeader": {
 			"PageInfoRegistry": {
 				"contentstabilization-versionswitch": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\VersionSwitch::factory",
-				"contentstabilization-pagestatus-dropdown": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\PageStatusDropdown::factory"
+				"contentstabilization-pagestatus-dropdown": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\PageStatusDropdown::factory",
+				"contentstabilization-pagestatus-pill": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\PageStatusPill::factory",
+				"contentstabilization-versionswitch-pill": "MediaWiki\\Extension\\ContentStabilization\\Integration\\PageInfoElement\\VersionSwitchPill::factory"
 			}
 		},
 		"NotifyMe": {

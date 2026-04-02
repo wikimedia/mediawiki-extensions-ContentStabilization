@@ -36,9 +36,9 @@ class PageStatusDropdown extends StabilizedPageElement {
 		// contentstabilization-pageinfoelement-pagestatus-is-unstable-text
 		// contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text
 		// contentstabilization-pageinfoelement-pagestatus-is-stable-text
-		$state = $this->state === StableView::STATE_IMPLICIT_UNSTABLE ? StableView::STATE_UNSTABLE : $this->state;
+		// contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-text
 		return $this->context->msg(
-			'contentstabilization-pageinfoelement-pagestatus-is-' . $state . '-text'
+			'contentstabilization-pageinfoelement-pagestatus-is-' . $this->state . '-text'
 		);
 	}
 
