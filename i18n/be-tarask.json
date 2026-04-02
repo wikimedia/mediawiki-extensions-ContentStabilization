@@ -4,5 +4,6 @@
 			"Ucukor"
 		]
 	},
-	"contentstabilization-ui-approve-cancel": "Скасаваць"
+	"contentstabilization-ui-approve-cancel": "Скасаваць",
+	"content-stabilization-integration-activity-error-context-data-missing": "брак \"pageId\""
 }

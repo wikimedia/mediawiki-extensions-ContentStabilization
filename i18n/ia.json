@@ -6,7 +6,7 @@
 	},
 	"contentstabilization-desc": "Permitte que usatores marca paginas como \"approbate\" o \"provisori\" e vide le version approbate le plus recente de un pagina.",
 	"right-contentstabilization-oversight": "Vider un vista general de tote le approbationes de un pagina",
-	"right-contentstabilization-admin": "Permitter le deletion e le displaciamento a un altere version de punctos stabile",
+	"right-contentstabilization-admin": "Deler e displaciar punctos stabile a un altere version",
 	"right-contentstabilization-stabilize": "Approbar paginas",
 	"action-contentstabilization-oversight": "vider un vista general de approbationes",
 	"action-contentstabilization-stabilize": "approbar un pagina",
@@ -147,5 +147,6 @@
 	"contentstabilization-preview-links-empty-preview-label": "Il non ha contento a previsualisar",
 	"contentstabilization-pref-wiki-rag-index-stable": "Usar solmente versiones approbate como datos de fonte pro le chatbot de IA",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar solmente contento approbate pro le chatbot de IA",
-	"contentstabilization-pref-wiki-rag-index-stable-help": "Quando activate, le chatbot de IA usa solmente contento que ha essite approbate como un fonte. Le versiones provisori es excludite."
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Quando activate, le chatbot de IA usa solmente contento que ha essite approbate como un fonte. Le versiones provisori es excludite.",
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Quando le pagina es approbate"
 }
