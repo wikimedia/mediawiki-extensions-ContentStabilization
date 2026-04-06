@@ -3,7 +3,8 @@
 		"authors": [
 			"Codename Noreste",
 			"Eulalio",
-			"Fitoschido"
+			"Fitoschido",
+			"Jaume9118"
 		]
 	},
 	"contentstabilization-desc": "Permite a los usuarios marcar las páginas como «aprobadas » o «borrador» y ver la versión aprobada más reciente de una página.",
@@ -14,7 +15,7 @@
 	"action-contentstabilization-stabilize": "aprobar una página",
 	"action-contentstabilization-admin": "gestionar las aprobaciones",
 	"apihelp-query+revisions-paramvalue-prop-stabilization": "Agrega datos de estabilización para las revisiones",
-	"contentstabilization": "Resumen del gestión de la calidad",
+	"contentstabilization": "Descripcion general de la gestión de la calidad",
 	"contentstabilization-global-action-overview": "Gestión de calidad",
 	"contentstabilization-global-action-overview-desc": "Resumen de las páginas del proceso de aprobación",
 	"contentstabilization-pageinfoelement-versionswitch-has-unstable-text": "tiene una versión borrador",
