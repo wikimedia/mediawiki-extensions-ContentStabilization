@@ -8,7 +8,7 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:ContentStabilization",
 	"descriptionmsg": "contentstabilization-desc",
 	"requires": {
-		"MediaWiki": ">= 1.43.0",
+		"MediaWiki": ">= 1.46.0",
 		"extensions": {
 			"OOJSPlus": ">= 3.0.0"
 		}

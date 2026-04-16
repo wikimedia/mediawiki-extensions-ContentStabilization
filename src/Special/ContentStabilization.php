@@ -24,10 +24,15 @@ class ContentStabilization extends OOJSGridSpecialPage {
 	 * @param Language $language
 	 */
 	public function __construct( Config $csConfig, Language $language ) {
-		parent::__construct( "ContentStabilization", "contentstabilization-oversight" );
+		parent::__construct( 'ContentStabilization' );
 
 		$this->csConfig = $csConfig;
 		$this->language = $language;
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'contentstabilization-oversight';
 	}
 
 	/**
