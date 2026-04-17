@@ -351,6 +351,13 @@
 			"contentstabilization-stabilize": true
 		}
 	},
+	"GrantPermissions": {
+		"editprotected": {
+			"contentstabilization-admin": true,
+			"contentstabilization-oversight": true,
+			"contentstabilization-stabilize": true
+		}
+	},
 	"Hooks": {
 		"BeforePageDisplay": [ "addBootstrap", "integrationAddStyles", "stabilizeContent" ],
 		"LoadExtensionSchemaUpdates": "runDatabaseUpdates",
