@@ -384,9 +384,9 @@
 		"SMW::RevisionGuard::ChangeRevision": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::ChangeFile": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::IsApprovedRevision": "stabilizeSMWProperties",
-		"ContentStabilizationStablePointAdded": "runUpdatesOnStabilizationChange",
+		"ContentStabilizationStablePointAdded": [ "runUpdatesOnStabilizationChange", "registerNeoWikiProperties" ],
 		"ContentStabilizationStablePointUpdated": "runUpdatesOnStabilizationChange",
-		"ContentStabilizationStablePointRemoved": "runUpdatesOnStabilizationChange",
+		"ContentStabilizationStablePointRemoved": [ "runUpdatesOnStabilizationChange", "registerNeoWikiProperties" ],
 		"ContentStabilizationStablePointMoved": "runUpdatesOnStabilizationChange",
 		"DrawioGetFile": "stabilizeDrawioFile",
 		"ImgAuthBeforeStream": "stabilizeImgAuthFile",
@@ -416,7 +416,8 @@
 		"WikiRAGRunForPage": "stabilizeWikiRAG",
 		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
 		"PageExcerptsChooseRevision": "integratePageExcerpts",
-		"ContentStabilizationResetState": "stabilizeContent"
+		"ContentStabilizationResetState": "stabilizeContent",
+		"NeoWikiRegistration": "registerNeoWikiProperties"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -541,6 +542,10 @@
 		},
 		"registerCrons": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
+		},
+		"registerNeoWikiProperties": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\RegisterNeoWikiProperties",
+			"services": [ "TitleFactory", "ContentStabilization.Lookup", "RevisionLookup" ]
 		}
 	},
 	"SpecialPages": {
