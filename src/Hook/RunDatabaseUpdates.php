@@ -36,6 +36,12 @@ class RunDatabaseUpdates implements LoadExtensionSchemaUpdatesHook {
 			"$dir/db/$dbType/stable_points_indices_patch.sql"
 		);
 
+		$updater->addExtensionIndex(
+			'stable_points',
+			'sp_page_revision_index',
+			"$dir/db/$dbType/stable_points_page_revision_index.sql"
+		);
+
 		$updater->addExtensionField(
 			'stable_transclusions',
 			'st_transclusion_source',
