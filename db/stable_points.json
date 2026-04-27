@@ -38,7 +38,13 @@
 				}
 			}
 		],
-		"indexes": [],
+		"indexes": [
+			{
+				"name": "sp_page_revision_index",
+				"columns": [ "sp_page", "sp_revision" ],
+				"unique": false
+			}
+		],
 		"pk": [ "sp_revision" ]
 	}
 ]
