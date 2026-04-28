@@ -5,20 +5,24 @@
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
-	"rules": {
-		"camelcase": "off",
-		"max-len": "off",
-		"no-jquery/no-class-state": "off",
-		"no-jquery/no-global-selector": "off",
-		"no-prototype-builtins": "off",
-		"no-underscore-dangle": "off",
-		"no-unused-vars": "off",
-		"no-jquery/no-done-fail": "warn"
+	"parserOptions": {
+		"sourceType": "commonjs"
 	},
 	"globals": {
 		"ext": "readonly",
 		"jQuery": "readonly",
 		"mediaWiki": "readonly",
 		"OOJSPlus": "readonly"
+	},
+	"rules": {
+		"camelcase": "off",
+		"max-len": "off",
+		"mediawiki/no-unlabeled-buttonwidget": "off",
+		"no-jquery/no-class-state": "off",
+		"no-jquery/no-global-selector": "off",
+		"no-prototype-builtins": "off",
+		"no-underscore-dangle": "off",
+		"no-unused-vars": "off",
+		"no-jquery/no-done-fail": "warn"
 	}
 }
