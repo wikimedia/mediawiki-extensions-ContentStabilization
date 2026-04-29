@@ -2,11 +2,14 @@
 
 namespace MediaWiki\Extension\ContentStabilization\WikiCron;
 
+use ContentTransfer\PageContentProviderFactory;
 use ContentTransfer\PagePusherFactory;
+use ContentTransfer\Target;
 use ContentTransfer\TargetManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use MWStake\MediaWiki\Component\ProcessManager\IProcessStep;
@@ -19,13 +22,17 @@ class SyncStabilizedPagesStep implements IProcessStep {
 
 	private LoggerInterface $logger;
 
+	/** @var array<string,array<int,bool>> Track pushed files per target to avoid duplicates within a run */
+	private array $pushedFiles = [];
+
 	public function __construct(
 		private readonly ILoadBalancer $loadBalancer,
 		private readonly TitleFactory $titleFactory,
 		private readonly TargetManager $targetManager,
 		private readonly PagePusherFactory $pusherFactory,
 		private readonly Config $config,
-		private readonly StabilizationLookup $stabilizationLookup
+		private readonly StabilizationLookup $stabilizationLookup,
+		private readonly PageContentProviderFactory $contentProviderFactory
 	) {
 		$this->logger = LoggerFactory::getInstance( 'ContentStabilization' );
 	}
@@ -152,6 +159,8 @@ class SyncStabilizedPagesStep implements IProcessStep {
 						[ 'page' => $title->getPrefixedText(), 'target' => $target->getDisplayText() ]
 					);
 					$pushCount++;
+
+					$this->pushRelatedFiles( $title, $target, $user );
 				}
 			}
 
@@ -170,6 +179,90 @@ class SyncStabilizedPagesStep implements IProcessStep {
 		);
 
 		return [ 'status' => 'done', 'pushed' => $totalPushCount, 'errors' => $totalErrorCount ];
+	}
+
+	/**
+	 * Push all files referenced by a page to the target wiki.
+	 * Skips files that have already been pushed and haven't changed since.
+	 *
+	 * @param Title $pageTitle The page whose files should be pushed
+	 * @param Target $target The target wiki
+	 * @param User $user System user for push history
+	 */
+	private function pushRelatedFiles( Title $pageTitle, Target $target, User $user ): void {
+		$targetKey = $target->getDisplayText();
+
+		try {
+			$contentProvider = $this->contentProviderFactory->newFromTitle( $pageTitle );
+			$relatedTitles = $contentProvider->getRelatedTitles( [] );
+		} catch ( RuntimeException $e ) {
+			$this->logger->warning(
+				'SyncStabilizedPages: could not extract related titles for "{page}": {message}',
+				[ 'page' => $pageTitle->getPrefixedText(), 'message' => $e->getMessage() ]
+			);
+			return;
+		}
+
+		foreach ( $relatedTitles as $relatedTitle ) {
+			if ( $relatedTitle->getNamespace() !== NS_FILE ) {
+				continue;
+			}
+
+			$filePageId = $relatedTitle->getArticleID();
+			if ( isset( $this->pushedFiles[$targetKey][$filePageId] ) ) {
+				continue;
+			}
+
+			$pushHistory = $this->pusherFactory->newPushHistory( $relatedTitle, $user, $targetKey );
+			if ( !$pushHistory->isChangedSinceLastPush() ) {
+				$this->pushedFiles[$targetKey][$filePageId] = true;
+				continue;
+			}
+
+			$contentProviderForFile = $this->contentProviderFactory->newFromTitle( $relatedTitle );
+			if ( !$contentProviderForFile->isFile() || $contentProviderForFile->getFile() === null ) {
+				$this->logger->warning(
+					'SyncStabilizedPages: file "{file}" has no usable binary, skipping',
+					[ 'file' => $relatedTitle->getPrefixedText() ]
+				);
+				$this->pushedFiles[$targetKey][$filePageId] = true;
+				continue;
+			}
+
+			$filePusher = $this->pusherFactory->newPusher( $relatedTitle, $target, $pushHistory );
+			try {
+				$filePusher->push();
+			} catch ( RuntimeException $e ) {
+				$this->logger->error(
+					'SyncStabilizedPages: file push failed for "{file}" to "{target}": {message}',
+					[
+						'file' => $relatedTitle->getPrefixedText(),
+						'target' => $targetKey,
+						'message' => $e->getMessage(),
+					]
+				);
+				continue;
+			}
+
+			$status = $filePusher->getStatus();
+			if ( !$status->isOK() ) {
+				$this->logger->error(
+					'SyncStabilizedPages: file push status not OK for "{file}" to "{target}": {errors}',
+					[
+						'file' => $relatedTitle->getPrefixedText(),
+						'target' => $targetKey,
+						'errors' => $status->getMessage()->text(),
+					]
+				);
+			} else {
+				$this->logger->debug(
+					'SyncStabilizedPages: successfully pushed file "{file}" to "{target}"',
+					[ 'file' => $relatedTitle->getPrefixedText(), 'target' => $targetKey ]
+				);
+			}
+
+			$this->pushedFiles[$targetKey][$filePageId] = true;
+		}
 	}
 
 	/**
