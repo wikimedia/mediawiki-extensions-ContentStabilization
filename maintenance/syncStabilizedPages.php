@@ -1,10 +1,13 @@
 <?php
 
+use ContentTransfer\PageContentProviderFactory;
 use ContentTransfer\PagePusherFactory;
+use ContentTransfer\Target;
 use ContentTransfer\TargetManager;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -15,6 +18,15 @@ require_once dirname( __DIR__, 3 ) . '/maintenance/Maintenance.php';
 class SyncStabilizedPages extends Maintenance {
 
 	private LoggerInterface $logger;
+
+	/** @var PageContentProviderFactory */
+	private PageContentProviderFactory $contentProviderFactory;
+
+	/** @var PagePusherFactory */
+	private PagePusherFactory $pusherFactory;
+
+	/** @var array<string,array<int,bool>> Track pushed files per target to avoid duplicates within a run */
+	private array $pushedFiles = [];
 
 	public function __construct() {
 		parent::__construct();
@@ -82,8 +94,8 @@ class SyncStabilizedPages extends Maintenance {
 		/** @var StabilizationLookup $stabilizationLookup */
 		$stabilizationLookup = $services->getService( 'ContentStabilization.Lookup' );
 
-		/** @var PagePusherFactory $pusherFactory */
-		$pusherFactory = $services->getService( 'ContentTransfer.PagePusherFactory' );
+		$this->pusherFactory = $services->getService( 'ContentTransfer.PagePusherFactory' );
+		$this->contentProviderFactory = $services->getService( 'ContentTransferPageContentProviderFactory' );
 		$user = User::newSystemUser( 'MediaWiki default' );
 
 		$totalPushCount = 0;
@@ -137,8 +149,8 @@ class SyncStabilizedPages extends Maintenance {
 
 				$this->output( "Pushing '{$title->getPrefixedText()}'... " );
 
-				$pushHistory = $pusherFactory->newPushHistory( $title, $user, $target->getDisplayText() );
-				$pusher = $pusherFactory->newPusher( $title, $target, $pushHistory );
+				$pushHistory = $this->pusherFactory->newPushHistory( $title, $user, $target->getDisplayText() );
+				$pusher = $this->pusherFactory->newPusher( $title, $target, $pushHistory );
 
 				try {
 					$pusher->push();
@@ -176,6 +188,8 @@ class SyncStabilizedPages extends Maintenance {
 						[ 'page' => $title->getPrefixedText(), 'target' => $target->getDisplayText() ]
 					);
 					$pushCount++;
+
+					$this->pushRelatedFiles( $title, $target, $user );
 				}
 			}
 
@@ -238,6 +252,70 @@ class SyncStabilizedPages extends Maintenance {
 		}
 
 		return $pageIds;
+	}
+
+	/**
+	 * Push all files referenced by a page to the target wiki.
+	 * Skips files that have already been pushed and haven't changed since.
+	 *
+	 * @param Title $pageTitle The page whose files should be pushed
+	 * @param Target $target The target wiki
+	 * @param User $user System user for push history
+	 */
+	private function pushRelatedFiles( Title $pageTitle, Target $target, User $user ): void {
+		$targetKey = $target->getDisplayText();
+
+		try {
+			$contentProvider = $this->contentProviderFactory->newFromTitle( $pageTitle );
+			$relatedTitles = $contentProvider->getRelatedTitles( [] );
+		} catch ( RuntimeException $e ) {
+			$this->output( "    WARNING: could not extract related titles: {$e->getMessage()}\n" );
+			return;
+		}
+
+		foreach ( $relatedTitles as $relatedTitle ) {
+			if ( $relatedTitle->getNamespace() !== NS_FILE ) {
+				continue;
+			}
+
+			$filePageId = $relatedTitle->getArticleID();
+			if ( isset( $this->pushedFiles[$targetKey][$filePageId] ) ) {
+				continue;
+			}
+
+			$pushHistory = $this->pusherFactory->newPushHistory( $relatedTitle, $user, $targetKey );
+			if ( !$pushHistory->isChangedSinceLastPush() ) {
+				$this->pushedFiles[$targetKey][$filePageId] = true;
+				continue;
+			}
+
+			$contentProviderForFile = $this->contentProviderFactory->newFromTitle( $relatedTitle );
+			if ( !$contentProviderForFile->isFile() || $contentProviderForFile->getFile() === null ) {
+				$this->output( "    SKIP file '{$relatedTitle->getPrefixedText()}' — no usable binary.\n" );
+				$this->pushedFiles[$targetKey][$filePageId] = true;
+				continue;
+			}
+
+			$this->output( "    Pushing file '{$relatedTitle->getPrefixedText()}'... " );
+
+			$filePusher = $this->pusherFactory->newPusher( $relatedTitle, $target, $pushHistory );
+			try {
+				$filePusher->push();
+			} catch ( RuntimeException $e ) {
+				$this->output( "ERROR: {$e->getMessage()}\n" );
+				$this->pushedFiles[$targetKey][$filePageId] = true;
+				continue;
+			}
+
+			$status = $filePusher->getStatus();
+			if ( !$status->isOK() ) {
+				$this->output( "ERROR: {$status->getMessage()->text()}\n" );
+			} else {
+				$this->output( "OK\n" );
+			}
+
+			$this->pushedFiles[$targetKey][$filePageId] = true;
+		}
 	}
 }
 
