@@ -50,6 +50,7 @@ class RegisterCrons implements MediaWikiServicesHook {
 							'ContentTransfer.PagePusherFactory',
 							'MainConfig',
 							'ContentStabilization.Lookup',
+							'ContentTransferPageContentProviderFactory',
 						],
 					],
 				],
