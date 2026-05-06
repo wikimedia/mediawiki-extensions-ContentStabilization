@@ -612,13 +612,13 @@ class StabilizeContent implements
 					'$1',
 					$text
 				);
-				$parserOutput->setRawText( $text );
+				$parserOutput->setContentHolderText( $text );
 			}
 			$this->allowParserOutputAlteration = true;
 			return;
 		}
 
-		$parserOutput->setRawText( null );
+		$parserOutput->setContentHolderText( null );
 	}
 
 	/**
