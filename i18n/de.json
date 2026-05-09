@@ -151,5 +151,10 @@
 	"contentstabilization-event-stable-point-added-desc": "Eine Seite wurde freigegeben",
 	"contentstabilization-preview-links-empty-preview-label": "Es sind keine Vorschauinhalte verfügbar",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Ausschließlich freigegebenen Inhalt für den KI-Chatbot verwenden",
-	"contentstabilization-pref-wiki-rag-index-stable-help": "Wenn aktiviert, verwendet der KI-Chatbot nur Inhalte als Quelle, die freigegeben wurden. Entwürfe sind ausgeschlossen"
+	"contentstabilization-pref-wiki-rag-index-stable-help": "Wenn aktiviert, verwendet der KI-Chatbot nur Inhalte als Quelle, die freigegeben wurden. Entwürfe sind ausgeschlossen",
+	"contentstabilization-pageinfoelement-pill-label-stable": "Freigegeben",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Entwurf",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Erstentwurf",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Freigeben",
+	"contentstabilization-pageinfoelement-pill-action-update": "Ressourcenänderungen freigeben"
 }
