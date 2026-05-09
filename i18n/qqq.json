@@ -152,5 +152,10 @@
 	"contentstabilization-preview-links-empty-preview-label": "Label if there is no content of page to preview",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Help label of an option on [[Special:ConfigManager]]",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "WikiAutomations trigger description"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "WikiAutomations trigger description",
+	"contentstabilization-pageinfoelement-pill-label-stable": "Label for the page status pill when the page is approved",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Label for the page status pill when the page is a draft",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Label for the page status pill when the page is a first draft",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Label for the approve action button on the page status pill.\n{{Identical|Approve}}",
+	"contentstabilization-pageinfoelement-pill-action-update": "Label for the approve action button on the page status pill when only resources changed"
 }
