@@ -417,6 +417,7 @@
 		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
 		"PageExcerptsChooseRevision": "integratePageExcerpts",
 		"ContentStabilizationResetState": "stabilizeContent",
+		"WikiRAGMetadata": "addStabilizationMetadata",
 		"NeoWikiRegistration": "registerNeoWikiProperties"
 	},
 	"HookHandlers": {
@@ -542,6 +543,10 @@
 		},
 		"registerCrons": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
+		},
+		"addStabilizationMetadata": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationMetadata",
+			"services": [ "ContentStabilization.Lookup" ]
 		},
 		"registerNeoWikiProperties": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\RegisterNeoWikiProperties",
