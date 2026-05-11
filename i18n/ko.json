@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bisang",
 			"Tensama0415",
 			"Ykhwong"
 		]
@@ -24,6 +25,10 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-title": "최초 초안 판",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "승인됨",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "승인된 판",
+	"contentstabilization-pageinfoelement-pill-label-stable": "승인됨",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "초안",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "최초 초안",
+	"contentstabilization-pageinfoelement-pill-action-approve": "승인",
 	"contentstabilization-ui-approve-title": "문서 승인",
 	"contentstabilization-ui-approve-approve": "승인",
 	"contentstabilization-ui-approve-cancel": "취소",

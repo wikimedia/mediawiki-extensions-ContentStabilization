@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pyscowicz"
+			"Pyscowicz",
+			"Wikipeedikko"
 		]
 	},
+	"contentstabilization-pageinfoelement-pill-label-stable": "Hyväksytty",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Luonnos",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Ensimmäinen luonnos",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Hyväksy",
+	"contentstabilization-pageinfoelement-pill-action-update": "Hyväksy resurssien muutokset",
 	"contentstabilization-ui-approve-cancel": "Peruuta",
 	"contentstabilization-export-laststable-tag-text": "Hyväksytty:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Versio: $1",
