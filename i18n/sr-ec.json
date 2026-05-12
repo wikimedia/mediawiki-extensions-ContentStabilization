@@ -9,6 +9,9 @@
 	"contentstabilization-pageinfoelement-versionswitch-show-diff-tooltip": "Прикажи разлике",
 	"contentstabilization-pageinfoelement-pagestatus-is-first-unstable-text": "први нацрт",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "одобрено",
+	"contentstabilization-pageinfoelement-pill-label-stable": "Одобрено",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Нацрт",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Одобри",
 	"contentstabilization-ui-approve-cancel": "Откажи",
 	"content-stabilization-stable-data": "{{GENDER:$1|Одобрио|Одобрила}} [[User:$1]], $2. Опис: $3",
 	"contentstabilization-export-laststable-tag-text": "Одобрено:",
@@ -43,8 +46,5 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Одобрено",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Није одобрено",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Има верзију у нацрту",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Нема верзију у нацрту",
-	"contentstabilization-pageinfoelement-pill-label-stable": "Одобрено",
-	"contentstabilization-pageinfoelement-pill-label-unstable": "Нацрт",
-	"contentstabilization-pageinfoelement-pill-action-approve": "Одобри"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Нема верзију у нацрту"
 }
