@@ -147,5 +147,10 @@
 	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar só contido aprobado para o bot de charlas de IA",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores.",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "Cando se aproba a páxina"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Cando se aproba a páxina",
+	"contentstabilization-pageinfoelement-pill-label-stable": "Aprobada",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Borrador",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Primeiro borrador",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Aprobar",
+	"contentstabilization-pageinfoelement-pill-action-update": "Aprobar os cambios de recursos"
 }
