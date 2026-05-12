@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bisang",
 			"Tensama0415",
 			"Ykhwong"
 		]
@@ -90,5 +91,9 @@
 	"contentstabilization-versionhistory-grid-header-remove-approval-title": "승인 취소",
 	"contentstabilization-versionhistory-remove-approval-confirm": "이 판의 승인을 제거하시겠습니까?",
 	"contentstabilization-event-stable-point-added-desc": "문서가 승인되었습니다",
-	"contentstabilization-preview-links-empty-preview-label": "사용 가능한 미리보기 콘텐츠 없음"
+	"contentstabilization-preview-links-empty-preview-label": "사용 가능한 미리보기 콘텐츠 없음",
+	"contentstabilization-pageinfoelement-pill-label-stable": "승인됨",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "초안",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "최초 초안",
+	"contentstabilization-pageinfoelement-pill-action-approve": "승인"
 }

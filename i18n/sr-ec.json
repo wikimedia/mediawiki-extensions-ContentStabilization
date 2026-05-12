@@ -43,5 +43,8 @@
 	"contentstabilization-wikiexplorer-filter-approved": "Одобрено",
 	"contentstabilization-wikiexplorer-filter-not-approved": "Није одобрено",
 	"contentstabilization-wikiexplorer-filter-has-draft": "Има верзију у нацрту",
-	"contentstabilization-wikiexplorer-filter-no-draft": "Нема верзију у нацрту"
+	"contentstabilization-wikiexplorer-filter-no-draft": "Нема верзију у нацрту",
+	"contentstabilization-pageinfoelement-pill-label-stable": "Одобрено",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Нацрт",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Одобри"
 }
