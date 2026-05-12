@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
+use BSApiMyPageAssignmentStore;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
