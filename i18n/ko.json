@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bisang",
 			"Tensama0415",
 			"Ykhwong"
 		]
@@ -90,5 +91,9 @@
 	"contentstabilization-ui-editor-approve": "내 변경 사항 승인",
 	"contentstabilization-stablepoint-added-links-view-changes": "변경사항 보기",
 	"contentstabilization-event-stable-point-added-desc": "문서가 승인되었습니다",
-	"contentstabilization-preview-links-empty-preview-label": "사용 가능한 미리보기 콘텐츠 없음"
+	"contentstabilization-preview-links-empty-preview-label": "사용 가능한 미리보기 콘텐츠 없음",
+	"contentstabilization-pageinfoelement-pill-label-stable": "승인됨",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "초안",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "최초 초안",
+	"contentstabilization-pageinfoelement-pill-action-approve": "승인"
 }
