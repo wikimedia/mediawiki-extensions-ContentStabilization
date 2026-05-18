@@ -7,9 +7,10 @@
 			"解浪"
 		]
 	},
+	"right-contentstabilization-admin": "승인된 판의 승인을 삭제하고 다른 판으로 이동",
 	"right-contentstabilization-stabilize": "문서 승인",
-	"action-contentstabilization-stabilize": "문서를 승인할",
-	"action-contentstabilization-admin": "승인을 관리할",
+	"action-contentstabilization-stabilize": "문서 승인",
+	"action-contentstabilization-admin": "승인 관리",
 	"contentstabilization": "품질 관리 개요",
 	"contentstabilization-global-action-overview": "품질 관리",
 	"contentstabilization-global-action-overview-desc": "승인 프로세스 개요 페이지",
@@ -39,6 +40,7 @@
 	"content-stabilization-stable-data": "$2에 {{GENDER:$1|[[User:$1]]}}님이 승인했습니다. 의견: $3",
 	"contentstabilization-label-stabilize-ns": "승인",
 	"content-stabilization-integration-activity-error-context-data-missing": "\"pageId\" 누락됨",
+	"content-stabilization-integration-activity-error-context-invalid-title": "제공된 \"pageId\"로 유효한 제목을 생성할 수 없습니다",
 	"content-stabilization-integration-activity-error-provided-user": "유효하지 않은 사용자 지정됨: $1",
 	"content-stabilization-integration-activity-error-cannot-approve": "문서 승인을 실패했습니다",
 	"contentstabilization-export-no-stable-date": "승인되지 않음",
