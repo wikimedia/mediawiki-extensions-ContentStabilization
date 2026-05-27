@@ -5,9 +5,10 @@ namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Language\Language;
 use MWStake\MediaWiki\Component\DataStore\ReaderParams;
+use MWStake\MediaWiki\Component\DataStore\TitleAwareReader;
 use Wikimedia\Rdbms\ILoadBalancer;
 
-class Reader extends \MWStake\MediaWiki\Component\DataStore\Reader {
+class Reader extends TitleAwareReader {
 
 	/**
 	 * @var ILoadBalancer
