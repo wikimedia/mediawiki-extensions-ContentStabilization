@@ -2,9 +2,12 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Data\StabilizedPages;
 
+use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
+use MWStake\MediaWiki\Component\DataStore\IContinueAwareRecord;
 use MWStake\MediaWiki\Component\DataStore\Record as BaseRecord;
 
-class Record extends BaseRecord {
+class Record extends BaseRecord implements IContinueAwareRecord {
 	public const PAGE_ID = 'page_id';
 	public const PAGE_NAMESPACE = 'page_namespace';
 	public const PAGE_TITLE = 'page_title';
@@ -17,4 +20,31 @@ class Record extends BaseRecord {
 	public const LAST_APPROVER = 'last_approver';
 	public const LAST_COMMENT = 'last_comment';
 	public const HAS_CHANGED_INCLUSIONS = 'has_changed_inclusions';
+
+	/**
+	 * @param TitleFactory $titleFactory
+	 * @return Title|null
+	 */
+	public function getTitle( TitleFactory $titleFactory ): ?Title {
+		return $titleFactory->makeTitleSafe(
+			$this->get( self::PAGE_NAMESPACE ), $this->get( self::PAGE_TITLE )
+		);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getContinueValue(): array {
+		return [ $this->get( self::PAGE_NAMESPACE ), $this->get( self::PAGE_TITLE ) ];
+	}
+
+	/**
+	 * @param array $continueValue
+	 * @return bool
+	 */
+	public function matchesContinueValue( array $continueValue ): bool {
+		return count( $continueValue ) === 2 &&
+			$this->get( self::PAGE_NAMESPACE ) === $continueValue[0] &&
+			$this->get( self::PAGE_TITLE ) === $continueValue[1];
+	}
 }
