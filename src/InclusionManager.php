@@ -49,6 +49,9 @@ class InclusionManager {
 	/** @var HashBagOStuff */
 	private $cache;
 
+	/** @var bool */
+	private $useCache = true;
+
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param WikiPageFactory $wikiPageFactory
@@ -166,7 +169,7 @@ class InclusionManager {
 			$cacheKey .= get_class( $inclusionMode );
 		}
 
-		if ( $this->cache->hasKey( $cacheKey ) ) {
+		if ( $this->useCache && $this->cache->hasKey( $cacheKey ) ) {
 			return $this->cache->get( $cacheKey );
 		}
 		$current = $this->getCurrentInclusions( $revisionRecord->getPageAsLinkTarget() );
@@ -178,6 +181,13 @@ class InclusionManager {
 		$stabilized = $inclusionMode->stabilizeInclusions( $current, $revisionRecord );
 		$this->cache->set( $cacheKey, $stabilized );
 		return $stabilized;
+	}
+
+	/**
+	 * @return void
+	 */
+	public function disableCache(): void {
+		$this->useCache = false;
 	}
 
 	/**
@@ -317,7 +327,7 @@ class InclusionManager {
 	 */
 	private function retrieveTransclusions( RevisionRecord $revisionRecord, bool $recache = false ): array {
 		$cacheKey = __METHOD__ . $revisionRecord->getId();
-		if ( !$recache && $this->cache->hasKey( $cacheKey ) ) {
+		if ( $this->useCache && !$recache && $this->cache->hasKey( $cacheKey ) ) {
 			return $this->cache->get( $cacheKey );
 		}
 
@@ -355,7 +365,7 @@ class InclusionManager {
 	 */
 	private function retrieveImages( RevisionRecord $main, bool $recache = true ): array {
 		$cacheKey = __METHOD__ . $main->getId();
-		if ( !$recache && $this->cache->hasKey( $cacheKey ) ) {
+		if ( $this->useCache && !$recache && $this->cache->hasKey( $cacheKey ) ) {
 			return $this->cache->get( $cacheKey );
 		}
 		$db = $this->loadBalancer->getConnection( DB_REPLICA );
@@ -393,7 +403,7 @@ class InclusionManager {
 			return [];
 		}
 		$cacheKey = __METHOD__ . $point->getRevision()->getId();
-		if ( $this->cache->hasKey( $cacheKey ) ) {
+		if ( $this->useCache && $this->cache->hasKey( $cacheKey ) ) {
 			return $this->cache->get( $cacheKey );
 		}
 		$stableInclusions = $point->getInclusions();

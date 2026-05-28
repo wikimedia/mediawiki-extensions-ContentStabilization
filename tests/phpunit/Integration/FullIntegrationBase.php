@@ -31,7 +31,9 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 		parent::setUp();
 		// Allow anons to read (let CS stabilize the content instead of the read permission)
 		$this->setGroupPermissions( '*', 'read', true );
+		$this->setGroupPermissions( 'sysop', 'read', true );
 		$GLOBALS['bsgGroupRoles']['*']['reader'] = true;
+		$GLOBALS['bsgGroupRoles']['sysop']['reader'] = true;
 
 		$this->overrideConfigValues( [
 			MainConfigNames::ParserCacheType => CACHE_NONE,
@@ -58,6 +60,9 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 		$this->lookup = $this->getServiceContainer()->getService( 'ContentStabilization.Lookup' );
 		// Needed for the test but not in real life, since here we have a lot of edits in the same request
 		$this->lookup->setUseCache( false );
+
+		$inclusionManager = $this->getServiceContainer()->getService( 'ContentStabilization._InclusionManager' );
+		$inclusionManager->disableCache();
 	}
 
 	/**
@@ -87,6 +92,7 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	 * @throws PermissionsError
 	 */
 	protected function assertOutputContains( User $user, $expected, $requestData = [], $message = '', $title = null ) {
+		$this->getServiceContainer()->getHookContainer()->run( 'ContentStabilizationResetState' );
 		$title = $title ?? $this->pageToTest;
 
 		$fauxRequest = new FauxRequest( [ 'title' => $title->getPrefixedDBkey() ] + $requestData );
@@ -94,10 +100,12 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 		$context = new RequestContext();
 		$context->setRequest( $fauxRequest );
 		$context->setUser( $user );
+		$context->setAuthority( $user );
 		$context->setTitle( $title );
 		$outputPage = new OutputPage( $context );
 		$context->setOutput( $outputPage );
 		$outputPage->setArticleBodyOnly( true );
+		RequestContext::getMain()->setUser( $user );
 
 		$thrown = false;
 		try {
@@ -140,5 +148,6 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 		} else {
 			$this->stabilizer->addStablePoint( $revision, $this->testUser, 'test' );
 		}
+		$this->getServiceContainer()->getHookContainer()->run( 'ContentStabilizationResetState' );
 	}
 }

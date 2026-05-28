@@ -401,7 +401,8 @@
 		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
 		"OutputPageBodyAttributes": "stabilizeContent",
 		"WikiRAGRunForPage": "stabilizeWikiRAG",
-		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties"
+		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
+		"ContentStabilizationResetState": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
