@@ -52,6 +52,7 @@ class InclusionFreezeTest extends FullIntegrationBase {
 
 		// Crate first stable
 		$this->stabilize( $this->pageToTest );
+
 		// Not permitted users can see stable
 		$this->assertOutputContains( new User(), "V1T1", [], 'Anon user should see stable' );
 		// same as permitted users
@@ -73,6 +74,7 @@ class InclusionFreezeTest extends FullIntegrationBase {
 
 		// Update template
 		$this->editPage( $this->templatePage, 'T2' );
+
 		// Not permitted users can see stable version of template
 		$this->assertOutputContains( new User(), "V1T1", [], 'Anon user should see stable, even if there is draft' );
 		// permitted users can see updated
@@ -88,6 +90,7 @@ class InclusionFreezeTest extends FullIntegrationBase {
 
 		// Edit template again - only change in resources
 		$this->editPage( $this->templatePage, 'T3' );
+
 		// Not permitted users can see frozen version of template
 		$this->assertOutputContains( new User(), "V2T2", [], 'Anon user should not see changes in resources' );
 		// permitted users still see stable, by default

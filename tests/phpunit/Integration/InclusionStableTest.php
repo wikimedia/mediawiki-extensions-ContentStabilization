@@ -119,6 +119,7 @@ class InclusionStableTest extends FullIntegrationBase {
 
 		// Create draft of inclusion
 		$this->editPage( $this->templatePage, 'T3' );
+
 		// everyone should now see last stable of the inclusion
 		$this->assertOutputContains(
 			new User(), "V2T2", [], 'Anon should see latest stable version of the inclusion'
@@ -160,7 +161,7 @@ class InclusionStableTest extends FullIntegrationBase {
 		$this->editPage( $this->notEnabledPage, 'H2' );
 
 		$this->assertOutputContains(
-			$this->testUser, "V1H1", [ 'stable' => 0 ],
+			$this->testUser, "V1H2", [ 'stable' => 0 ],
 			'Permitted user should see draft of the current page, ' .
 			'and frozen version of the inclusion when stabilization is not enabled'
 		);

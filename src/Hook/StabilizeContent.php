@@ -144,6 +144,7 @@ class StabilizeContent implements
 	public function onArticleViewHeader( $article, &$outputDone, &$pcache ) {
 		$start = microtime( true );
 		$this->setViewFromArticle( $article );
+
 		if ( !$this->view ) {
 			return;
 		}
@@ -431,6 +432,7 @@ class StabilizeContent implements
 	 * @return void
 	 */
 	private function setViewFromArticle( Article $article ) {
+		$this->processedInclusions = [];
 		if ( $article->getContext()->getRequest()->getBool( 'nostabilize' ) ) {
 			$this->view = null;
 			return;
@@ -504,6 +506,18 @@ class StabilizeContent implements
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Internal hook, for resetting state between test assertions.
+	 * Normally, there wouldn't be multiple users and multiple page states evaluated per request
+	 * but in tests that is the case, so we need to externally reset state.
+	 *
+	 * @return void
+	 */
+	public function onContentStabilizationResetState(): void {
+		$this->view = null;
+		$this->processedInclusions = [];
 	}
 
 	/**

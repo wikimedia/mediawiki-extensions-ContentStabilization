@@ -415,7 +415,8 @@
 		"OutputPageBodyAttributes": "stabilizeContent",
 		"WikiRAGRunForPage": "stabilizeWikiRAG",
 		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
-		"PageExcerptsChooseRevision": "integratePageExcerpts"
+		"PageExcerptsChooseRevision": "integratePageExcerpts",
+		"ContentStabilizationResetState": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
