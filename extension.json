@@ -382,7 +382,8 @@
 		"APIGetAllowedParams": "addStabilizationDataToApiReports",
 		"APIQueryAfterExecute": "addStabilizationDataToApiReports",
 		"OutputPageBodyAttributes": "stabilizeContent",
-		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties"
+		"NamespaceManagerCollectNamespaceProperties": "addNamespaceProperties",
+		"ContentStabilizationResetState": "stabilizeContent"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
