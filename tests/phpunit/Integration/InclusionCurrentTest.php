@@ -64,6 +64,7 @@ class InclusionCurrentTest extends FullIntegrationBase {
 
 		// New version of inclusion
 		$this->editPage( $this->templatePage, 'T2' );
+
 		// Everyone seeing latest
 		$this->assertOutputContains(
 			new User(), "V1T2", [], 'Anon should see latest version of inclusion'
