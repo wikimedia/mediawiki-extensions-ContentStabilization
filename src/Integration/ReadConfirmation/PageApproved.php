@@ -67,7 +67,7 @@ class PageApproved implements IMechanism {
 		$services = MediaWikiServices::getInstance();
 		$config = $services->getMainConfig();
 
-		return new self(
+		return new static(
 			$services->getDBLoadBalancer(),
 			$config,
 			$services->getRevisionLookup(),
