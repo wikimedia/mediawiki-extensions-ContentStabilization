@@ -380,10 +380,17 @@ class InclusionManager {
 
 		$images = [];
 		foreach ( $res as $row ) {
+			$timestamp = $row->sft_file_timestamp;
+			// This is a workaround for when image used does not exist
+			// Due to field type in DB, for such files, it will add a bunch of null bytes to fill "timestamp" format
+			// Check if that is the case and convert to NULL, so that logic doesnt fail later on
+			if ( trim( $timestamp, "\0" ) === '0' ) {
+				$timestamp = null;
+			}
 			$images[] = [
 				'revision' => (int)$row->sft_file_revision,
 				'name' => $row->sft_file_name,
-				'timestamp' => $row->sft_file_timestamp,
+				'timestamp' => $timestamp,
 				'sha1' => $row->sft_file_sha1,
 				'source' => $row->sft_file_source ?? 'local',
 			];
