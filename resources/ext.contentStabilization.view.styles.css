@@ -1,8 +1,8 @@
 :root {
-	--contentstabilization-info-approve: var( --bs-eclipse-color-green );
-	--contentstabilization-info-approve--hover: var( --bs-eclipse-color-green-dark );
-	--contentstabilization-info-draft: var( --bs-eclipse-color-orange );
-	--contentstabilization-info-draft--hover: var( --bs-eclipse-color-orange-dark );
+	--contentstabilization-info-approve: #14876b;
+	--contentstabilization-info-approve--hover: #177860;
+	--contentstabilization-info-draft: #bb5c26;
+	--contentstabilization-info-draft--hover: #a95226;
 	--contentstabilization-info-fg: #fff;
 }
 
