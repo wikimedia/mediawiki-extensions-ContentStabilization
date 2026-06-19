@@ -22,6 +22,7 @@ use MediaWiki\Title\Title;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
+use WANObjectCache;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -324,6 +325,7 @@ class InclusionManagerTest extends TestCase {
 			new HashConfig( [ 'InclusionMode' => 'default' ] ),
 			$this->getParserFactoryMock(),
 			$this->createMock( HookContainer::class ),
+			WANObjectCache::newEmpty(),
 			[ 'default' => $inclusionModeMock ]
 		);
 	}
