@@ -10,6 +10,7 @@ use MediaWiki\Message\Message;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\TitleFactory;
+use ProfessionalWiki\NeoWiki\Domain\Page\PageDateTime;
 use ProfessionalWiki\NeoWiki\Domain\Page\PagePropertyProvider;
 use ProfessionalWiki\NeoWiki\Domain\Page\PagePropertyProviderContext;
 
@@ -57,11 +58,18 @@ class StabilizationProperties implements PagePropertyProvider {
 	 */
 	private function getFromStablePoint( StablePoint $point ): array {
 		return [
+			// Deprecated - to be removed
 			'qm/state' => $this->getStateMessage( StableView::STATE_STABLE ),
 			'qm/state_raw' => StableView::STATE_STABLE,
 			'qm/approved_by' => $point->getApprover()->getUser()->getName(),
 			'qm/approved_at' => $point->getTime()->format( 'YmdHis' ),
 			'qm/has_draft' => false,
+
+			'qm_state' => $this->getStateMessage( StableView::STATE_STABLE ),
+			'qm_state_raw' => StableView::STATE_STABLE,
+			'qm_approved_by' => $point->getApprover()->getUser()->getName(),
+			'qm_has_draft' => false,
+			'qm_approved_at' => new PageDateTime( $point->getTime()->format( 'YmdHis' ) ),
 		];
 	}
 
@@ -72,11 +80,18 @@ class StabilizationProperties implements PagePropertyProvider {
 	private function getFromNoData( PageIdentity $page ): array {
 		$state = $this->getState( $page );
 		return [
+			// Deprecated - to be removed
 			'qm/state' => $state[1],
 			'qm/state_raw' => $state[0],
 			'qm/approved_by' => '',
 			'qm/approved_at' => '',
 			'qm/has_draft' => true,
+
+			'qm_state' => $state[1],
+			'qm_state_raw' => $state[0],
+			'qm_approved_by' => '',
+			'qm_approved_at' => '',
+			'qm_has_draft' => true,
 		];
 	}
 
