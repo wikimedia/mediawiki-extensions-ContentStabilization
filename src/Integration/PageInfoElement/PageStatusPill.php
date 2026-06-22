@@ -125,22 +125,12 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 * Returns a URL to switch to the other view (draft ↔ approved) when
-	 * both versions exist, so clicking the pill label toggles the view.
+	 * Status pill is intentionally non-interactive in both views.
+	 * Navigation and approval actions are handled by dedicated controls.
 	 *
 	 * @return string
 	 */
 	public function getUrl() {
-		$view = $this->getStableView();
-		if ( !$view ) {
-			return '';
-		}
-		if ( !$view->isStable() && $view->hasStable() ) {
-			return $this->context->getTitle()->getFullUrl( 'stable=1' );
-		}
-		if ( $view->isStable() && $view->doesNeedStabilization() ) {
-			return $this->context->getTitle()->getFullUrl( 'stable=0' );
-		}
 		return '';
 	}
 
