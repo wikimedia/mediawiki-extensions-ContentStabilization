@@ -1,6 +1,6 @@
 <?php
 
-namespace Mediawiki\Extension\ContentStabilization\Integration\WikiRAG;
+namespace MediaWiki\Extension\ContentStabilization\Integration\WikiRAG;
 
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\WikiRAG\Hook\WikiRAGMetadataHook;
