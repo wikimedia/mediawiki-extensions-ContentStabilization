@@ -22,7 +22,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	protected $canStabilize = false;
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @param Config $config
 	 * @return static
@@ -34,7 +33,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getLabelMessage() {
@@ -50,7 +48,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getTooltipMessage() {
@@ -68,7 +65,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getName() {
@@ -76,7 +72,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getUrl() {
@@ -90,7 +85,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHtmlClass() {
@@ -105,7 +99,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPosition() {
@@ -120,7 +113,6 @@ class VersionSwitchPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @return bool
 	 */

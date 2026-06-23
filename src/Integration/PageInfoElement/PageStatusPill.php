@@ -18,7 +18,6 @@ class PageStatusPill extends StabilizedPageElement {
 	public $canStabilize = false;
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @param Config $config
 	 * @return static
@@ -30,7 +29,6 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getLabelMessage() {
@@ -44,7 +42,6 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getName() {
@@ -52,7 +49,6 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getTooltipMessage() {
@@ -66,7 +62,6 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @return bool
 	 */
@@ -94,7 +89,6 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPosition() {
@@ -102,7 +96,6 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getItemClass() {
@@ -110,7 +103,6 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHtmlClass() {
