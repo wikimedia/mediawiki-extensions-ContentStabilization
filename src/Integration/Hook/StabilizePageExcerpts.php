@@ -28,7 +28,8 @@ class StabilizePageExcerpts implements PageExcerptsChooseRevisionHook {
 	 * @inheritDoc
 	 */
 	public function onPageExcerptsChooseRevision(
-		PageIdentity $includingPage, PageIdentity $excerptPage, string $excerptName, ?int &$excerptRevisionId
+		PageIdentity $includingPage, PageIdentity $excerptPage, string $excerptName,
+		?string $wikiId, ?int &$excerptRevisionId
 	): void {
 		if ( !$this->lookup->isStabilizationEnabled( $includingPage ) ) {
 			return;
@@ -40,7 +41,11 @@ class StabilizePageExcerpts implements PageExcerptsChooseRevisionHook {
 		$transclusions = $this->view ? $this->view->getInclusions() : [ 'transclusions' => [] ];
 
 		foreach ( $transclusions['transclusions'] as $transclusion ) {
-			if ( $transclusion['title'] === $key && $transclusion['namespace'] === $excerptPage->getNamespace() ) {
+			if (
+				$transclusion['source'] === $wikiId ?? 'local' &&
+				$transclusion['title'] === $key &&
+				$transclusion['namespace'] === $excerptPage->getNamespace()
+			) {
 				$excerptRevisionId = $transclusion['revision'];
 				return;
 			}
