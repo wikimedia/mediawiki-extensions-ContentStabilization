@@ -73,7 +73,7 @@
 	"log-description-stabilization": "문서 안정화에 대한 변경 사항을 나열한 로그",
 	"logentry-stabilization-add": "$1님이 $3 문서를 {{GENDER:$2|승인했습니다}}",
 	"logentry-stabilization-remove": "$1님이 $3 문서의 승인을 {{GENDER:$2|제거했습니다}}",
-	"logentry-stabilization-update": "$1님이 $3 문서의 리소스 변경을 {{GENDER:$2| 승인했습니다}}",
+	"logentry-stabilization-update": "$1님이 $3 문서의 리소스 변경을 {{GENDER:$2|승인했습니다}}",
 	"contentstabilization-status-stable": "승인됨",
 	"contentstabilization-status-unstable": "초안",
 	"contentstabilization-status-implicit-unstable": "암시적 초안",
