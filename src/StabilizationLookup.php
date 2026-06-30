@@ -140,7 +140,7 @@ class StabilizationLookup {
 	 */
 	public function getLastRawStablePoint( PageIdentity $page, $upToRevision = null ): ?StablePoint {
 		$conditions = [ 'sp_page' => $page->getId() ];
-		$isCacheable = !$this->addUpToRevisionCondition( $conditions, $upToRevision );
+		$isCacheable = $this->useCache && !$this->addUpToRevisionCondition( $conditions, $upToRevision );
 		return $isCacheable ?
 			$this->store->getLatestMatchingWithCache( $conditions, $page, __METHOD__ ) :
 			$this->store->getLatestMatchingPoint( $conditions, __METHOD__ );
