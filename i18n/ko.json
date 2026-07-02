@@ -124,7 +124,7 @@
 	"contentstabilization-state-draft-info-btn-popup-title": "변경된 리소스:",
 	"log-name-stabilization": "내용 안정화 로그",
 	"log-description-stabilization": "문서 안정화에 대한 변경 사항을 나열한 로그",
-	"logentry-stabilization-update": "$1님이 $3 문서의 리소스 변경을 {{GENDER:$2| 승인했습니다}}",
+	"logentry-stabilization-update": "$1님이 $3 문서의 리소스 변경을 {{GENDER:$2|승인했습니다}}",
 	"contentstabilization-status-implicit-unstable": "암시적 초안",
 	"contentstabilization-overview-no-enabled": "어떤 이름기능에서도 승인 기능이 활성화되어 있지 않습니다",
 	"contentstabilization-overview-enabled": "현재 다음 이름공간에 대해 승인 기능이 활성화되어 있습니다: $1",
