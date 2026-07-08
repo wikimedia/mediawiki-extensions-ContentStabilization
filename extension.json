@@ -172,6 +172,13 @@
 					}
 				}
 			}
+		},
+		"BlueSpiceGalaxyDistributionConnector": {
+			"NamespaceSettings": {
+				"stabilization": {
+					"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Galaxy\\AddNamespaceSettings"
+				}
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
