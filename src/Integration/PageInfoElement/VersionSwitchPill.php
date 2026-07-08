@@ -159,7 +159,7 @@ class VersionSwitchPill extends StabilizedPageElement {
 	 * @return array
 	 */
 	public function getTypeData(): array {
-		if ( !$this->hasSwitchToDraft || !$this->canStabilize ) {
+		if ( $this->hasSwitchToDraft || !$this->canStabilize ) {
 			return [];
 		}
 
