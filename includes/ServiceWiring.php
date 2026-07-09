@@ -50,7 +50,6 @@ return [
 			$services->getService( 'ContentStabilization._Config' ),
 			$services->getParserFactory(),
 			$services->getHookContainer(),
-			$services->getMainWANObjectCache(),
 			$inclusionModes
 		);
 	},
