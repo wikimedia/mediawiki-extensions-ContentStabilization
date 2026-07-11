@@ -174,7 +174,7 @@ class StabilizeContent implements
 				}
 				return MediaWikiServices::getInstance()
 					->getRevisionLookup()
-					->getKnownCurrentRevision( $page );
+					->getKnownLatestRevision( $page );
 			} );
 
 		$renderedRev = $this->revisionRenderer->getRenderedRevision(
