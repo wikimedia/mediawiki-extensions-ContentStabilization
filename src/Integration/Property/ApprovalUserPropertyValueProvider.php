@@ -11,6 +11,9 @@ use SMW\DIWikiPage;
 
 class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 
+	/**
+	 * @return array
+	 */
 	public static function factory() {
 		return [ new static(
 			MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' ),
