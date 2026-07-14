@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 $( () => {
 	const $cnt = $( '#contentstabilization' );
 	if ( $cnt.length === 0 ) {
@@ -35,7 +36,7 @@ $( () => {
 			has_changed_inclusions: {
 				headerText: mw.message( 'contentstabilization-overview-header-is-in-sync' ).text(),
 				type: 'boolean',
-				valueParser: function ( value, row ) {
+				valueParser: function ( value ) {
 					return value === false;
 				}
 			},
