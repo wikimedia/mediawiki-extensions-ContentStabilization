@@ -8,7 +8,6 @@ use BlueSpice\ConfigDefinition\IOverwriteGlobal;
 class StabilizeSMWProperties extends BooleanSetting implements IOverwriteGlobal {
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -20,7 +19,6 @@ class StabilizeSMWProperties extends BooleanSetting implements IOverwriteGlobal 
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -28,7 +26,6 @@ class StabilizeSMWProperties extends BooleanSetting implements IOverwriteGlobal 
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getGlobalName() {
@@ -36,7 +33,6 @@ class StabilizeSMWProperties extends BooleanSetting implements IOverwriteGlobal 
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHelpMessageKey() {

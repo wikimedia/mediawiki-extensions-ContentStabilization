@@ -11,6 +11,9 @@ use SMWDITime;
 
 class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 
+	/**
+	 * @return array
+	 */
 	public static function factory() {
 		return [ new static(
 			MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' )
@@ -18,7 +21,6 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @var StabilizationLookup
 	 */
 	protected $lookup = null;
@@ -31,7 +33,6 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getAliasMessageKey() {
@@ -39,7 +40,6 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getDescriptionMessageKey() {
@@ -47,7 +47,6 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getType() {
@@ -55,7 +54,6 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getId() {
@@ -63,7 +61,6 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabel() {

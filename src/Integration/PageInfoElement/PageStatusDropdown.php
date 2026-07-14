@@ -17,7 +17,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	public $needApproval = false;
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @param Config $config
 	 * @return static
@@ -29,7 +28,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getLabelMessage() {
@@ -43,7 +41,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getName() {
@@ -51,7 +48,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return Message
 	 */
 	public function getTooltipMessage() {
@@ -65,7 +61,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @return bool
 	 */
@@ -85,7 +80,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getItemClass() {
@@ -93,7 +87,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHtmlClass() {
@@ -101,7 +94,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getType() {
@@ -113,7 +105,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getMenu() {
@@ -137,7 +128,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function makeMenu() {
@@ -154,7 +144,6 @@ class PageStatusDropdown extends StabilizedPageElement {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function makeStabilizationLink() {

@@ -31,6 +31,9 @@ class SetStablePointHandler extends StabilizerHandler {
 		$this->revisionStore = $revisionStore;
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function needsWriteAccess() {
 		return true;
 	}

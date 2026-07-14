@@ -262,7 +262,6 @@ final class ContentStabilizer {
 	}
 
 	/**
-	 *
 	 * @param RevisionRecord $revisionRecord
 	 *
 	 * @return void
