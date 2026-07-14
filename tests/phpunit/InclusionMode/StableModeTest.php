@@ -27,7 +27,7 @@ class StableModeTest extends TestCase {
 	 * @param array $revsAtTimeOfStablization
 	 * @param array $expected
 	 *
-	 * @dataProvider getData
+	 * @dataProvider provideData
 	 * @covers \MediaWiki\Extension\ContentStabilization\InclusionMode\Stable::stabilizeInclusions
 	 *
 	 * @return void
@@ -97,7 +97,7 @@ class StableModeTest extends TestCase {
 	/**
 	 * @return array[]
 	 */
-	public function getData() {
+	public function provideData() {
 		return [
 			'already_on_stable' => [
 				'page' => [

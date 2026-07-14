@@ -13,6 +13,9 @@ use SMWDIBlob;
 
 class DocumentStatePropertyValueProvider extends PropertyValueProvider {
 
+	/**
+	 * @return array
+	 */
 	public static function factory() {
 		return [ new static(
 			MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' )

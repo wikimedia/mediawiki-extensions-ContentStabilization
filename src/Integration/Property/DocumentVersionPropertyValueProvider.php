@@ -10,6 +10,9 @@ use SMWDINumber;
 
 class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 
+	/**
+	 * @return array
+	 */
 	public static function factory() {
 		return [ new static(
 			MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' )
