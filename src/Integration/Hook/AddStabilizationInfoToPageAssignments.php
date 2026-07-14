@@ -11,13 +11,11 @@ use MediaWiki\Title\TitleFactory;
 class AddStabilizationInfoToPageAssignments {
 
 	/**
-	 *
 	 * @var StabilizationLookup
 	 */
 	protected $lookup = null;
 
 	/**
-	 *
 	 * @var TitleFactory
 	 */
 	protected $titleFactory = null;

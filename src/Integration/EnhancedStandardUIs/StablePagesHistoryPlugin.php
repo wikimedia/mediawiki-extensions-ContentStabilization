@@ -22,7 +22,6 @@ class StablePagesHistoryPlugin implements IHistoryPlugin {
 	private $userFactory;
 
 	/**
-	 *
 	 * @param StabilizationLookup $lookup
 	 */
 	public function __construct( StabilizationLookup $lookup, Language $language, UserFactory $userFactory ) {

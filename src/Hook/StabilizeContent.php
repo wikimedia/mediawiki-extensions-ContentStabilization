@@ -288,7 +288,6 @@ class StabilizeContent implements
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function onPDFCreatorContextBeforeGetPage( IContextSource $contextSource ): void {
@@ -522,7 +521,6 @@ class StabilizeContent implements
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function onTitleGetEditNotices( $title, $oldid, &$notices ) {

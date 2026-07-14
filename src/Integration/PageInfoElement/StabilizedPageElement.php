@@ -15,7 +15,6 @@ abstract class StabilizedPageElement extends PageInfo {
 	protected $lookup;
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @param Config $config
 	 * @param StabilizationLookup $lookup
@@ -26,7 +25,6 @@ abstract class StabilizedPageElement extends PageInfo {
 	}
 
 	/**
-	 *
 	 * @param IContextSource $context
 	 * @return bool
 	 */
