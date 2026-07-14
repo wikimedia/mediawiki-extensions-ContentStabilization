@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 ( function ( mw ) {
 
 	mw.hook( 'enhanced.versionhistory' ).add( ( gridCfg ) => {
