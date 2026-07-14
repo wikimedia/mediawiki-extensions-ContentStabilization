@@ -10,6 +10,9 @@ use SMWDINumber;
 
 class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 
+	/**
+	 * @return array
+	 */
 	public static function factory() {
 		return [ new static(
 			MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' )
@@ -17,7 +20,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @var StabilizationLookup
 	 */
 	protected $lookup = null;
@@ -30,7 +32,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getAliasMessageKey() {
@@ -38,7 +39,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getDescriptionMessageKey() {
@@ -46,7 +46,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getId() {
@@ -54,7 +53,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabel() {
@@ -62,7 +60,6 @@ class DocumentVersionPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getType() {

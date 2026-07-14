@@ -250,7 +250,6 @@ class PageApproved implements IMechanism {
 	}
 
 	/**
-	 *
 	 * @param int $revId
 	 * @return bool
 	 */
@@ -264,7 +263,6 @@ class PageApproved implements IMechanism {
 	}
 
 	/**
-	 *
 	 * @param int $revId
 	 * @return bool
 	 */

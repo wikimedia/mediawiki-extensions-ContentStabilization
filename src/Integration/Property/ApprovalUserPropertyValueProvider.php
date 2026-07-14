@@ -11,6 +11,9 @@ use SMW\DIWikiPage;
 
 class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 
+	/**
+	 * @return array
+	 */
 	public static function factory() {
 		return [ new static(
 			MediaWikiServices::getInstance()->getService( 'ContentStabilization.Lookup' ),
@@ -19,13 +22,11 @@ class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @var StabilizationLookup
 	 */
 	protected $lookup = null;
 
 	/**
-	 *
 	 * @var TitleFactory
 	 */
 	protected $titleFactory = null;
@@ -40,7 +41,6 @@ class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getAliasMessageKey() {
@@ -48,7 +48,6 @@ class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getDescriptionMessageKey() {
@@ -56,7 +55,6 @@ class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getId() {
@@ -64,7 +62,6 @@ class ApprovalUserPropertyValueProvider extends PropertyValueProvider {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabel() {

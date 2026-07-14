@@ -7,7 +7,6 @@ use MediaWiki\Revision\RevisionRecord;
 interface InclusionMode {
 
 	/**
-	 *
 	 * @param array $inclusion
 	 * @param RevisionRecord $revisionRecord
 	 *

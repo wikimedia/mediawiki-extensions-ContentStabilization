@@ -11,7 +11,6 @@ use MediaWiki\Registration\ExtensionRegistry;
 class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -23,7 +22,6 @@ class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return HTMLFormField
 	 */
 	public function getHtmlFormField() {
@@ -31,7 +29,6 @@ class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -39,7 +36,6 @@ class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getOptions() {
@@ -56,7 +52,6 @@ class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getGlobalName() {
@@ -64,7 +59,6 @@ class HandleIncludes extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHelpMessageKey() {

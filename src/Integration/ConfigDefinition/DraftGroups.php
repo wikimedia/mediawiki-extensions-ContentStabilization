@@ -34,7 +34,6 @@ class DraftGroups extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -46,7 +45,6 @@ class DraftGroups extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -63,7 +61,6 @@ class DraftGroups extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getGlobalName() {
@@ -71,7 +68,6 @@ class DraftGroups extends ArraySetting implements IOverwriteGlobal {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHelpMessageKey() {

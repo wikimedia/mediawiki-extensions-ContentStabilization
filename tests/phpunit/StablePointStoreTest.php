@@ -17,7 +17,6 @@ use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
- *
  * @covers \MediaWiki\Extension\ContentStabilization\Storage\StablePointStore
  */
 class StablePointStoreTest extends TestCase {
