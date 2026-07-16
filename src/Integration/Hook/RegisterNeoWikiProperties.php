@@ -46,27 +46,30 @@ class RegisterNeoWikiProperties implements
 	 * @inheritDoc
 	 */
 	public function onContentStabilizationStablePointAdded( StablePoint $stablePoint ): void {
-		$this->tryUpdateNeoWikiProperties( $stablePoint->getRevision(), $stablePoint->getApprover() );
+		$this->tryUpdateNeoWikiProperties( $stablePoint->getRevision() );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function onContentStabilizationStablePointRemoved( StablePoint $removedPoint, Authority $remover ): void {
-		$this->tryUpdateNeoWikiProperties( $removedPoint->getRevision(), $remover );
+		$this->tryUpdateNeoWikiProperties( $removedPoint->getRevision() );
 	}
 
 	/**
 	 * @param RevisionRecord $revision
-	 * @param Authority $actor
 	 * @return void
 	 */
-	private function tryUpdateNeoWikiProperties( RevisionRecord $revision, Authority $actor ) {
+	private function tryUpdateNeoWikiProperties( RevisionRecord $revision ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'NeoWiki' ) ) {
 			return;
 		}
+		$title = $this->titleFactory->castFromPageIdentity( $revision->getPage() );
+		if ( !$title ) {
+			return;
+		}
 		NeoWikiExtension::getInstance()
-			->getStoreContentUC()
-			->onRevisionCreated( $revision, $actor->getUser() );
+			->newSubjectPageRebuilder()
+			->rebuild( $title );
 	}
 }
