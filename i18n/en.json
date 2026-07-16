@@ -154,5 +154,6 @@
 	"contentstabilization-pageinfoelement-pill-label-unstable": "Draft",
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "First draft",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Approve",
-	"contentstabilization-pageinfoelement-pill-action-update": "Approve resource changes"
+	"contentstabilization-pageinfoelement-pill-action-update": "Approve resource changes",
+	"contentstabilization-label-stabilize-ns-desc": "Allow creating draft and approved revisions of pages"
 }

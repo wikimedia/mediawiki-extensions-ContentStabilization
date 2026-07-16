@@ -158,5 +158,6 @@
 	"contentstabilization-pageinfoelement-pill-label-unstable": "Label for the page status pill when the page is a draft",
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Label for the page status pill when the page is a first draft",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Label for the approve action button on the page status pill.\n{{Identical|Approve}}",
-	"contentstabilization-pageinfoelement-pill-action-update": "Label for the approve action button on the page status pill when only resources changed"
+	"contentstabilization-pageinfoelement-pill-action-update": "Label for the approve action button on the page status pill when only resources changed",
+	"contentstabilization-label-stabilize-ns-desc": "Description of namespace setting to enable approval"
 }
