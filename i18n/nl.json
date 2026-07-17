@@ -157,5 +157,6 @@
 	"contentstabilization-pageinfoelement-pill-label-unstable": "Concept",
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Eerste concept",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Goedkeuren",
-	"contentstabilization-pageinfoelement-pill-action-update": "Wijzigingen in bronnen goedkeuren"
+	"contentstabilization-pageinfoelement-pill-action-update": "Wijzigingen in bronnen goedkeuren",
+	"contentstabilization-label-stabilize-ns-desc": "Maak het mogelijk om conceptversies en goedgekeurde versies van pagina's aan te maken"
 }
