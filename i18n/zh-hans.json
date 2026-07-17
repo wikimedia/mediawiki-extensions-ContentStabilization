@@ -157,5 +157,6 @@
 	"contentstabilization-preview-links-empty-preview-label": "暂无预览内容",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "AI聊天机器人仅可使用经批准的内容",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "启用此功能后，AI聊天机器人仅使用已批准的内容作为来源，草稿除外。",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "页面获批后"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "页面获批后",
+	"contentstabilization-label-stabilize-ns-desc": "允许创建页面的草稿和已批准修订版本"
 }
