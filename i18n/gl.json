@@ -152,5 +152,6 @@
 	"contentstabilization-pageinfoelement-pill-label-unstable": "Borrador",
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Primeiro borrador",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Aprobar",
-	"contentstabilization-pageinfoelement-pill-action-update": "Aprobar os cambios de recursos"
+	"contentstabilization-pageinfoelement-pill-action-update": "Aprobar os cambios de recursos",
+	"contentstabilization-label-stabilize-ns-desc": "Permitir a creación de borradores e revisións aprobadas das páxinas"
 }
