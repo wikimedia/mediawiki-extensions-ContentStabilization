@@ -157,5 +157,6 @@
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "初稿",
 	"contentstabilization-pageinfoelement-pill-action-approve": "批准",
 	"contentstabilization-pageinfoelement-pill-action-update": "批准资源更改",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "页面获批后"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "页面获批后",
+	"contentstabilization-label-stabilize-ns-desc": "允许创建页面的草稿和已批准修订版本"
 }
