@@ -25,7 +25,7 @@ class StabilizationBot implements Authority {
 	 * @inheritDoc
 	 */
 	public function getUser(): UserIdentity {
-		return User::newSystemUser( "ContentStabilizationBot", [ "steal" => true ] );
+		return User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
 	}
 
 	/**
