@@ -91,7 +91,7 @@ class SyncStabilizedPagesStep implements IProcessStep {
 			);
 		}
 
-		$user = User::newSystemUser( 'MediaWiki default' );
+		$user = User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
 		$totalPushCount = 0;
 		$totalErrorCount = 0;
 

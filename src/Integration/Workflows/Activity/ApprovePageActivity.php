@@ -65,7 +65,7 @@ class ApprovePageActivity extends GenericActivity {
 		$this->stabilizationLookup = $stabilizationLookup;
 		$this->revisionStore = $revisionStore;
 		$this->userFactory = $userFactory;
-		$this->maintenanceUser = User::newSystemUser( 'MediaWiki default', [ 'steal' => true ] );
+		$this->maintenanceUser = User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
 	}
 
 	/**

@@ -96,7 +96,7 @@ class SyncStabilizedPages extends Maintenance {
 
 		$this->pusherFactory = $services->getService( 'ContentTransfer.PagePusherFactory' );
 		$this->contentProviderFactory = $services->getService( 'ContentTransferPageContentProviderFactory' );
-		$user = User::newSystemUser( 'MediaWiki default' );
+		$user = User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
 
 		$totalPushCount = 0;
 		$totalErrorCount = 0;
