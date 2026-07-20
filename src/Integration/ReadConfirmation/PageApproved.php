@@ -185,7 +185,7 @@ class PageApproved implements IMechanism {
 		if ( $res->numRows() > 0 ) {
 			return;
 		}
-		$agent = User::newSystemUser( 'Mediawiki default', [ 'steal' => true ] );
+		$agent = User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
 		foreach ( $res as $row ) {
 			$title = $this->titleFactory->newFromID( $row->sp_page );
 			if ( !$title ) {
