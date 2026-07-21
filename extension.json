@@ -400,7 +400,7 @@
 		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery",
 		"EditPageGetCheckboxesDefinition": "addApproveAction",
 		"TitleGetEditNotices": "stabilizeContent",
-		"ContentAlterParserOutput": [ "stabilizeContent" ],
+		"ContentAlterParserOutput": [ "stabilizeContent", "autoStabilize" ],
 		"PageSaveComplete": "autoStabilize",
 		"ParserFirstCallInit": "addDocumentStateTag",
 		"DifferenceEngineViewHeader": "stabilizeContent",
@@ -497,7 +497,12 @@
 		},
 		"autoStabilize": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AutoStabilize",
-			"services": [ "ContentStabilization.Stabilizer", "ContentStabilization.Lookup", "ContentStabilization._DebugLogger" ]
+			"services": [
+				"ContentStabilization.Stabilizer",
+				"ContentStabilization.Lookup",
+				"RevisionStore",
+				"ContentStabilization._DebugLogger"
+			]
 		},
 		"addDocumentStateTag": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddDocumentStateTag",
