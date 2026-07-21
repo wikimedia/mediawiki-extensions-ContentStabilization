@@ -30,6 +30,11 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "одобрено",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Одобрена верзија",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Нацрт поради промени во вклучените ресурси",
+	"contentstabilization-pageinfoelement-pill-label-stable": "Одобрено",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Нацрт",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Прв нацрт",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Одобри",
+	"contentstabilization-pageinfoelement-pill-action-update": "Одобри промени во ресурсите",
 	"contentstabilization-ui-approve-title": "Одобрување на страница",
 	"contentstabilization-ui-approve-approve": "Одобри",
 	"contentstabilization-ui-approve-cancel": "Откажи",
@@ -147,10 +152,5 @@
 	"contentstabilization-preview-links-empty-preview-label": "Нема достапна содржина за преглед",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Користи само одобрена содржина за разговорниот бот со ВИ",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Кога е овозможено, разговорниот бот со ВИ користи само содржина одобрена како извор. Нацртите се изземени.",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "Кога ќе се одобри страницата",
-	"contentstabilization-pageinfoelement-pill-label-stable": "Одобрено",
-	"contentstabilization-pageinfoelement-pill-label-unstable": "Нацрт",
-	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Прв нацрт",
-	"contentstabilization-pageinfoelement-pill-action-approve": "Одобри",
-	"contentstabilization-pageinfoelement-pill-action-update": "Одобри промени во ресурсите"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Кога ќе се одобри страницата"
 }

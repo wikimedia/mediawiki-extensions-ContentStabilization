@@ -30,6 +30,11 @@
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-text": "approbate",
 	"contentstabilization-pageinfoelement-pagestatus-is-stable-title": "Version approbate",
 	"contentstabilization-pageinfoelement-pagestatus-is-implicit-unstable-title": "Version provisori a causa de modificationes in le ressources includite",
+	"contentstabilization-pageinfoelement-pill-label-stable": "Approbate",
+	"contentstabilization-pageinfoelement-pill-label-unstable": "Version provisori",
+	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Prime version provisori",
+	"contentstabilization-pageinfoelement-pill-action-approve": "Approbar",
+	"contentstabilization-pageinfoelement-pill-action-update": "Approbar cambiamentos de ressource",
 	"contentstabilization-ui-approve-title": "Approbar pagina",
 	"contentstabilization-ui-approve-approve": "Approbar",
 	"contentstabilization-ui-approve-cancel": "Cancellar",
@@ -147,10 +152,5 @@
 	"contentstabilization-preview-links-empty-preview-label": "Il non ha contento a previsualisar",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar solmente contento approbate pro le chatbot de IA",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Quando activate, le chatbot de IA usa solmente contento que ha essite approbate como un fonte. Le versiones provisori es excludite.",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "Quando le pagina es approbate",
-	"contentstabilization-pageinfoelement-pill-label-stable": "Approbate",
-	"contentstabilization-pageinfoelement-pill-label-unstable": "Version provisori",
-	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Prime version provisori",
-	"contentstabilization-pageinfoelement-pill-action-approve": "Approbar",
-	"contentstabilization-pageinfoelement-pill-action-update": "Approbar cambiamentos de ressource"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Quando le pagina es approbate"
 }
