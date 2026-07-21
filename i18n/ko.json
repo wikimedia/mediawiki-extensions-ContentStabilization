@@ -155,5 +155,6 @@
 	"contentstabilization-pref-index-stable-help": "승인된 버전의 판만 검색 색인에 포함되도록 함",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "AI 챗봇에 승인된 내용만 사용",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "이 기능을 활성화하면 AI 챗봇은 승인된 내용만 사용합니다. 초안은 제외됩니다.",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "문서가 승인될 때"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "문서가 승인될 때",
+	"contentstabilization-label-stabilize-ns-desc": "문서의 초안 및 승인된 판의 생성을 허용합니다."
 }
