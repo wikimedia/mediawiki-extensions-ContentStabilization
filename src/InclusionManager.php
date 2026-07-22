@@ -15,7 +15,6 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\WikiMap\WikiMap;
 use RepoGroup;
-use WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class InclusionManager {
@@ -47,9 +46,6 @@ class InclusionManager {
 	/** @var HookContainer */
 	private $hookContainer;
 
-	/** @var WANObjectCache */
-	private $wanCache;
-
 	/** @var HashBagOStuff */
 	private $cache;
 
@@ -64,14 +60,12 @@ class InclusionManager {
 	 * @param GlobalVarConfig $config
 	 * @param ParserFactory $parserFactory
 	 * @param HookContainer $hookContainer
-	 * @param WANObjectCache $wanCache
 	 * @param array $inclusionModes
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer, WikiPageFactory $wikiPageFactory,
 		RevisionLookup $revisionLookup, RepoGroup $repoGroup, Config $config,
-		ParserFactory $parserFactory, HookContainer $hookContainer, WANObjectCache $wanCache,
-		array $inclusionModes
+		ParserFactory $parserFactory, HookContainer $hookContainer, array $inclusionModes
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->wikiPageFactory = $wikiPageFactory;
@@ -81,7 +75,6 @@ class InclusionManager {
 		$this->parserFactory = $parserFactory;
 		$this->inclusionModes = $inclusionModes;
 		$this->hookContainer = $hookContainer;
-		$this->wanCache = $wanCache;
 		$this->cache = new HashBagOStuff();
 	}
 
@@ -221,22 +214,6 @@ class InclusionManager {
 	 */
 	private function getCurrentInclusions( LinkTarget $target ): array {
 		$page = $this->wikiPageFactory->newFromLinkTarget( $target );
-
-		$wanCacheKey = null;
-		if ( $this->useCache ) {
-			$pageId = $page->getId();
-			if ( $pageId > 0 ) {
-				$wanCacheKey = $this->wanCache->makeKey(
-					'contentstabilization', 'getCurrentInclusions',
-					(string)$pageId, (string)$page->getTouched()
-				);
-				$cached = $this->wanCache->get( $wanCacheKey );
-				if ( is_array( $cached ) ) {
-					return $cached;
-				}
-			}
-		}
-
 		$parserOptions = $page->makeParserOptions( 'canonical' );
 		$parser = $this->parserFactory->create();
 
@@ -281,10 +258,6 @@ class InclusionManager {
 		}
 
 		$this->hookContainer->run( 'ContentStabilizationGetCurrentInclusions', [ $page, &$res ] );
-
-		if ( $wanCacheKey !== null ) {
-			$this->wanCache->set( $wanCacheKey, $res, WANObjectCache::TTL_HOUR );
-		}
 
 		return $res;
 	}
