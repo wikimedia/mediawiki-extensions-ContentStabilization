@@ -18,6 +18,7 @@
 	"contentstabilization-ui-approve-approve": "Akzeptéieren",
 	"contentstabilization-ui-approve-cancel": "Ofbriechen",
 	"contentstabilization-ui-approve-comment": "Bemierkung",
+	"content-stabilization-integration-activity-error-provided-user": "Ongültege Benotzer uginn: $1",
 	"contentstabilization-export-no-stable-date": "Net akzeptéiert",
 	"contentstabilization-export-laststable-tag-text": "Akzeptéiert:",
 	"contentstabilization-status-stable": "Akzeptéiert",
