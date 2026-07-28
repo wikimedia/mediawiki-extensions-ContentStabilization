@@ -31,5 +31,6 @@
 	"contentstabilization-overview-header-page-id": "ID vun der Säit",
 	"contentstabilization-versionhistory-grid-header-state": "Status",
 	"contentstabilization-ui-workflows-inspector-activity-approve-page-property-user": "Benotzer",
-	"contentstabilization-stablepoint-added-links-view-changes": "Ännerunge weisen"
+	"contentstabilization-stablepoint-added-links-view-changes": "Ännerunge weisen",
+	"contentstabilization-documentstate-no-valid-args": "Feeler: Et gouf kee gültege Säitennumm oder Versiouns-ID uginn."
 }
