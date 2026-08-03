@@ -198,7 +198,7 @@ class StabilizeContent implements
 		if ( !$authority->probablyCan( 'edit', $pageTitle ) ) {
 			$poOptions['enableSectionEditLinks'] = false;
 		}
-		$article->getContext()->getOutput()->addParserOutput( $parserOutput, $poOptions );
+		$article->getContext()->getOutput()->addParserOutput( $parserOutput, $options, $poOptions );
 		if ( $this->explicitlyRequestedOldId( $article ) ) {
 			// If user explicitly requested oldid, use that for editing (or whatever stabilized version user can see)
 			// Exception: if the oldid is the latest stable but there is a draft
