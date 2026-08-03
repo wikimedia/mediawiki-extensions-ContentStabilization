@@ -30,7 +30,6 @@ class OverrideServices implements MediaWikiServicesHook {
 					$services->getTitleFormatter(),
 					$services->getPageStore(),
 					$services->getParsoidOutputStash(),
-					$services->getStatsdDataFactory(),
 					$services->getParserOutputAccess(),
 					$services->getParsoidSiteConfig(),
 					$services->getHtmlTransformFactory(),
@@ -42,6 +41,7 @@ class OverrideServices implements MediaWikiServicesHook {
 					$services->getConnectionProvider(),
 					$services->getChangeTagsStore(),
 					$services->getStatsFactory(),
+					$services->getShadowPageLoader(),
 					$services->getService( 'ContentStabilization.Lookup' )
 				);
 			}

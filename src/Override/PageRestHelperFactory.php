@@ -2,14 +2,13 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Override;
 
-use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Content\IContentHandlerFactory;
 use MediaWiki\Edit\ParsoidOutputStash;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
-use MediaWiki\Languages\LanguageConverterFactory;
-use MediaWiki\Languages\LanguageFactory;
+use MediaWiki\Language\LanguageConverterFactory;
+use MediaWiki\Language\LanguageFactory;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\ParserOutputAccess;
 use MediaWiki\Page\RedirectStore;
@@ -18,6 +17,7 @@ use MediaWiki\Parser\Parsoid\HtmlTransformFactory;
 use MediaWiki\Rest\Handler\Helper\PageContentHelper;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRenderer;
+use MediaWiki\ShadowPage\ShadowPageLoader;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleFormatter;
 use Wikimedia\Rdbms\IConnectionProvider;
@@ -53,12 +53,17 @@ class PageRestHelperFactory extends \MediaWiki\Rest\Handler\Helper\PageRestHelpe
 	/**
 	 * @var IConnectionProvider
 	 */
-	private IConnectionProvider $connectionProvider;
+	private IConnectionProvider $dbProvider;
 
 	/**
 	 * @var ChangeTagsStore
 	 */
-	private ChangeTagsStore $changeTagStore;
+	private ChangeTagsStore $changeTagsStore;
+
+	/**
+	 * @var ShadowPageLoader
+	 */
+	private ShadowPageLoader $shadowPageLoader;
 
 	/**
 	 * @var StabilizationLookup
@@ -72,7 +77,6 @@ class PageRestHelperFactory extends \MediaWiki\Rest\Handler\Helper\PageRestHelpe
 	 * @param TitleFormatter $titleFormatter
 	 * @param PageLookup $pageLookup
 	 * @param ParsoidOutputStash $parsoidOutputStash
-	 * @param StatsdDataFactoryInterface $statsDataFactory
 	 * @param ParserOutputAccess $parserOutputAccess
 	 * @param ParsoidSiteConfig $parsoidSiteConfig
 	 * @param HtmlTransformFactory $htmlTransformFactory
@@ -81,34 +85,61 @@ class PageRestHelperFactory extends \MediaWiki\Rest\Handler\Helper\PageRestHelpe
 	 * @param RedirectStore $redirectStore
 	 * @param LanguageConverterFactory $languageConverterFactory
 	 * @param TitleFactory $titleFactory
-	 * @param IConnectionProvider $connectionProvider
-	 * @param ChangeTagsStore $changeTagStore
+	 * @param IConnectionProvider $dbProvider
+	 * @param ChangeTagsStore $changeTagsStore
 	 * @param StatsFactory $statsFactory
+	 * @param ShadowPageLoader $shadowPageLoader
 	 * @param StabilizationLookup $stabilizationLookup
 	 */
 	public function __construct(
-		ServiceOptions $options, RevisionLookup $revisionLookup, RevisionRenderer $revisionRenderer,
-		TitleFormatter $titleFormatter, PageLookup $pageLookup, ParsoidOutputStash $parsoidOutputStash,
-		StatsdDataFactoryInterface $statsDataFactory, ParserOutputAccess $parserOutputAccess,
-		ParsoidSiteConfig $parsoidSiteConfig, HtmlTransformFactory $htmlTransformFactory,
-		IContentHandlerFactory $contentHandlerFactory, LanguageFactory $languageFactory, RedirectStore $redirectStore,
-		LanguageConverterFactory $languageConverterFactory, TitleFactory $titleFactory,
-		IConnectionProvider $connectionProvider, ChangeTagsStore $changeTagStore, StatsFactory $statsFactory,
+		ServiceOptions $options,
+		RevisionLookup $revisionLookup,
+		RevisionRenderer $revisionRenderer,
+		TitleFormatter $titleFormatter,
+		PageLookup $pageLookup,
+		ParsoidOutputStash $parsoidOutputStash,
+		ParserOutputAccess $parserOutputAccess,
+		ParsoidSiteConfig $parsoidSiteConfig,
+		HtmlTransformFactory $htmlTransformFactory,
+		IContentHandlerFactory $contentHandlerFactory,
+		LanguageFactory $languageFactory,
+		RedirectStore $redirectStore,
+		LanguageConverterFactory $languageConverterFactory,
+		TitleFactory $titleFactory,
+		IConnectionProvider $dbProvider,
+		ChangeTagsStore $changeTagsStore,
+		StatsFactory $statsFactory,
+		ShadowPageLoader $shadowPageLoader,
 		StabilizationLookup $stabilizationLookup
 	) {
 		parent::__construct(
-			$options, $revisionLookup, $revisionRenderer, $titleFormatter, $pageLookup, $parsoidOutputStash,
-			$statsDataFactory, $parserOutputAccess, $parsoidSiteConfig, $htmlTransformFactory, $contentHandlerFactory,
-			$languageFactory, $redirectStore, $languageConverterFactory, $titleFactory, $connectionProvider,
-			$changeTagStore, $statsFactory
+			$options,
+			$revisionLookup,
+			$revisionRenderer,
+			$titleFormatter,
+			$pageLookup,
+			$parsoidOutputStash,
+			$parserOutputAccess,
+			$parsoidSiteConfig,
+			$htmlTransformFactory,
+			$contentHandlerFactory,
+			$languageFactory,
+			$redirectStore,
+			$languageConverterFactory,
+			$titleFactory,
+			$dbProvider,
+			$changeTagsStore,
+			$statsFactory,
+			$shadowPageLoader
 		);
 		$this->options = $options;
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFormatter = $titleFormatter;
 		$this->pageLookup = $pageLookup;
 		$this->titleFactory = $titleFactory;
-		$this->connectionProvider = $connectionProvider;
-		$this->changeTagStore = $changeTagStore;
+		$this->dbProvider = $dbProvider;
+		$this->changeTagsStore = $changeTagsStore;
+		$this->shadowPageLoader = $shadowPageLoader;
 		$this->stabilizationLookup = $stabilizationLookup;
 	}
 
@@ -122,8 +153,9 @@ class PageRestHelperFactory extends \MediaWiki\Rest\Handler\Helper\PageRestHelpe
 			$this->titleFormatter,
 			$this->pageLookup,
 			$this->titleFactory,
-			$this->connectionProvider,
-			$this->changeTagStore,
+			$this->dbProvider,
+			$this->changeTagsStore,
+			$this->shadowPageLoader,
 			$this->stabilizationLookup
 		);
 	}
