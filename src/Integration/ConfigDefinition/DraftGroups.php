@@ -6,7 +6,7 @@ use BlueSpice\ConfigDefinition;
 use BlueSpice\ConfigDefinition\ArraySetting;
 use BlueSpice\ConfigDefinition\IOverwriteGlobal;
 use BlueSpice\Utility\GroupHelper;
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 
