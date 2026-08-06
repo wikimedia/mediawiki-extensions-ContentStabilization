@@ -69,7 +69,7 @@ class RegisterNeoWikiProperties implements
 			return;
 		}
 		NeoWikiExtension::getInstance()
-			->newSubjectPageRebuilder()
+			->newPageRebuilder()
 			->rebuild( $title );
 	}
 }
