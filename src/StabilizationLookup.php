@@ -125,6 +125,9 @@ class StabilizationLookup {
 	 * @throws Exception
 	 */
 	public function getLastStablePoint( PageIdentity $page, $upToRevision = null ): ?StablePoint {
+		if ( !$this->isStabilizationEnabled( $page ) ) {
+			return null;
+		}
 		$point = $this->getLastRawStablePoint( $page, $upToRevision );
 		return $this->decorateWithInclusions( $point );
 	}
