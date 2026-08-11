@@ -138,7 +138,7 @@
 	"contentstabilization-ui-editor-approve-title": "Uw wijzigingen automatisch goedkeuren bij het opslaan",
 	"contentstabilization-ui-editor-approve-with-pending": "Deze versie goedkeuren (waaronder {{PLURAL:$1|één openstaande wijziging|$1 openstaande wijzigingen}})",
 	"contentstabilization-ui-editor-approve-with-pending-title": "Automatisch alle openstaande wijzigingen goedkeuren bij het opslaan. Zorg ervoor dat u alle wijzigingen hebt gecontroleerd voordat u ze opslaat",
-	"contentstabilization-edit-notice-approval-needed": "Uw wijziging wordt aan de lezers getoond zodra een geautoriseerde gebruiker deze accepteert",
+	"contentstabilization-edit-notice-approval-needed": "Uw wijziging wordt aan de lezers weergegeven zodra een geautoriseerde gebruiker deze accepteert",
 	"contentstabilization-stablepoint-added-key-desc": "Nieuwe goedgekeurde versie van de pagina beschikbaar",
 	"contentstabilization-stablepoint-added-links-intro": "Bezoek de pagina via de volgende koppeling om de wijzigingen te zien",
 	"contentstabilization-stablepoint-added-links-view-changes": "Wijzigingen bekijken",

@@ -152,5 +152,6 @@
 	"contentstabilization-preview-links-empty-preview-label": "Нема достапна содржина за преглед",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Користи само одобрена содржина за разговорниот бот со ВИ",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Кога е овозможено, разговорниот бот со ВИ користи само содржина одобрена како извор. Нацртите се изземени.",
-	"contentstabilization-wiki-automation-trigger-page-stabilized": "Кога ќе се одобри страницата"
+	"contentstabilization-wiki-automation-trigger-page-stabilized": "Кога ќе се одобри страницата",
+	"contentstabilization-label-stabilize-ns-desc": "Дозволи создавање на нацрти и одобрени преработки на страници"
 }
