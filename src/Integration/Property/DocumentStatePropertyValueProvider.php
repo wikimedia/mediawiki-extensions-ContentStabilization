@@ -92,7 +92,7 @@ class DocumentStatePropertyValueProvider extends PropertyValueProvider {
 		}
 		$state = $view->getStatus();
 		if ( $state === StableView::STATE_IMPLICIT_UNSTABLE ) {
-			return;
+			$state = StableView::STATE_STABLE;
 		}
 		$msg = Message::newFromKey( "contentstabilization-status-$state" )->inContentLanguage();
 		if ( !$msg->exists() ) {
