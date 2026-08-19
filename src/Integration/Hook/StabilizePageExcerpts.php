@@ -42,7 +42,7 @@ class StabilizePageExcerpts implements PageExcerptsChooseRevisionHook {
 
 		foreach ( $transclusions['transclusions'] as $transclusion ) {
 			if (
-				$transclusion['source'] === $wikiId ?? 'local' &&
+				$transclusion['source'] === ( $wikiId ?? 'local' ) &&
 				$transclusion['title'] === $key &&
 				$transclusion['namespace'] === $excerptPage->getNamespace()
 			) {
