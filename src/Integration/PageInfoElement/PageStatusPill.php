@@ -9,6 +9,13 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use PageHeader\IPageInfo;
 
+/**
+ * Shows the stabilization state of the page as a pill.
+ *
+ * If the user can reach both versions of the page, both are rendered as
+ * segments of a single combined "switch" pill, the currently shown version
+ * being the active segment. Otherwise a single-state pill is rendered.
+ */
 class PageStatusPill extends StabilizedPageElement {
 	/** @var string */
 	public $state = 'undefined';
@@ -16,6 +23,12 @@ class PageStatusPill extends StabilizedPageElement {
 	public $needApproval = false;
 	/** @var bool */
 	public $canStabilize = false;
+	/** @var bool */
+	protected $showingStable = false;
+	/** @var bool */
+	protected $hasDraft = false;
+	/** @var bool */
+	protected $hasApproved = false;
 
 	/**
 	 * @param IContextSource $context
@@ -75,7 +88,10 @@ class PageStatusPill extends StabilizedPageElement {
 			return false;
 		}
 		$this->state = $view->getStatus();
-		$this->needApproval = !$view->isStable() && $view->doesNeedStabilization();
+		$this->showingStable = $view->isStable();
+		$this->needApproval = !$this->showingStable && $view->doesNeedStabilization();
+		$this->hasDraft = $this->showingStable ? $view->doesNeedStabilization() : true;
+		$this->hasApproved = $this->showingStable ? true : $view->hasStable();
 
 		if ( $this->needApproval ) {
 			$this->canStabilize = MediaWikiServices::getInstance()->getPermissionManager()->userCan(
@@ -106,6 +122,9 @@ class PageStatusPill extends StabilizedPageElement {
 	 * @return string
 	 */
 	public function getHtmlClass() {
+		if ( $this->isSwitch() ) {
+			return 'contentstabilization-pageinfo-versionswitch';
+		}
 		return 'contentstabilization-pageinfo-page-' . $this->state . ' cs-pageinfo-pill--active';
 	}
 
@@ -118,7 +137,7 @@ class PageStatusPill extends StabilizedPageElement {
 
 	/**
 	 * Status pill is intentionally non-interactive in both views.
-	 * Navigation and approval actions are handled by dedicated controls.
+	 * Navigation between versions is done by the segments of the switch pill.
 	 *
 	 * @return string
 	 */
@@ -127,12 +146,88 @@ class PageStatusPill extends StabilizedPageElement {
 	}
 
 	/**
-	 * Provides action button data for the pill renderer when the user can
-	 * approve the current draft.
+	 * Both versions exist and are reachable for the user, so they are rendered
+	 * as segments of one combined pill.
+	 *
+	 * @return bool
+	 */
+	private function isSwitch(): bool {
+		return $this->hasDraft && $this->hasApproved;
+	}
+
+	/**
+	 * Provides the segments of the combined pill, as well as the action button
+	 * data for the pill renderer when the user can approve the current draft.
 	 *
 	 * @return array
 	 */
 	public function getTypeData(): array {
+		if ( !$this->isSwitch() ) {
+			return $this->makeActionData();
+		}
+
+		return [
+			'segments' => [
+				$this->makeApprovedSegment(),
+				$this->makeDraftSegment(),
+			],
+		];
+	}
+
+	/**
+	 * @return array
+	 */
+	private function makeApprovedSegment(): array {
+		$segment = [
+			'label' => $this->context->msg(
+				'contentstabilization-pageinfoelement-pill-label-stable'
+			)->text(),
+			'class' => 'contentstabilization-pageinfo-page-' . StableView::STATE_STABLE,
+			'active' => $this->showingStable,
+		];
+		if ( $this->showingStable ) {
+			$segment['title'] = $this->context->msg(
+				'contentstabilization-pageinfoelement-pagestatus-is-stable-title'
+			)->text();
+		} else {
+			$segment['title'] = $this->context->msg(
+				'contentstabilization-pageinfoelement-versionswitch-has-stable-title'
+			)->text();
+			$segment['href'] = $this->context->getTitle()->getFullURL( 'stable=1' );
+		}
+
+		return $segment;
+	}
+
+	/**
+	 * @return array
+	 */
+	private function makeDraftSegment(): array {
+		$segment = [
+			'label' => $this->context->msg(
+				'contentstabilization-pageinfoelement-pill-label-unstable'
+			)->text(),
+			'class' => 'contentstabilization-pageinfo-page-' .
+				( $this->showingStable ? StableView::STATE_UNSTABLE : $this->state ),
+			'active' => !$this->showingStable,
+		];
+		if ( $this->showingStable ) {
+			$segment['title'] = $this->context->msg(
+				'contentstabilization-pageinfoelement-versionswitch-has-unstable-title'
+			)->text();
+			$segment['href'] = $this->context->getTitle()->getFullURL( 'stable=0' );
+		} else {
+			$segment['title'] = $this->getTooltipMessage()->text();
+			$segment += $this->makeActionData();
+		}
+
+		return $segment;
+	}
+
+	/**
+	 * @return array
+	 */
+	private function makeActionData(): array {
 		if ( !$this->needApproval || !$this->canStabilize ) {
 			return [];
 		}

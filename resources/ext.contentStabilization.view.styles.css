@@ -4,6 +4,7 @@
 	--contentstabilization-info-draft: #bb5c26;
 	--contentstabilization-info-draft--hover: #a95226;
 	--contentstabilization-info-fg: #fff;
+	--contentstabilization-info-border: #a2a9b1;
 }
 
 /* ---- Text-color fallback (non-pill contexts) ---- */
@@ -43,41 +44,52 @@
 	color: var( --contentstabilization-info-fg ) !important;
 }
 
-/* ---- Inactive pill: white background, colored text, colored border ---- */
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-first-unstable {
+/* ---- Combined switch pill: approved and draft version in one pill ---- */
+.pageinfo-pill.contentstabilization-pageinfo-versionswitch {
 	background-color: var( --contentstabilization-info-fg );
-	color: var( --contentstabilization-info-draft ) !important;
-	border: 1px solid var( --contentstabilization-info-draft );
+	border: 1px solid var( --contentstabilization-info-border );
 	margin-right: 0;
 }
 
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-unstable,
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-implicit-unstable {
-	background-color: var( --contentstabilization-info-fg );
-	color: var( --contentstabilization-info-draft ) !important;
-	border: 1px solid var( --contentstabilization-info-draft );
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment {
+	color: inherit !important;
 	margin-right: 0;
 }
 
-.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-unstable:hover,
-.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-implicit-unstable:hover,
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-unstable:hover,
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-unstable:hover .pageinfo-pill__label,
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-implicit-unstable:hover,
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-implicit-unstable:hover .pageinfo-pill__label {
+/* Inactive segment: plain background, state colored label */
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-stable {
+	color: var( --contentstabilization-info-approve ) !important;
+}
+
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-unstable,
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-implicit-unstable {
+	color: var( --contentstabilization-info-draft ) !important;
+}
+
+.contentstabilization-pageinfo-versionswitch a.pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-stable:hover {
+	background-color: var( --contentstabilization-info-approve--hover );
+	color: var( --contentstabilization-info-fg ) !important;
+}
+
+.contentstabilization-pageinfo-versionswitch a.pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-unstable:hover,
+.contentstabilization-pageinfo-versionswitch a.pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-implicit-unstable:hover {
 	background-color: var( --contentstabilization-info-draft--hover );
 	color: var( --contentstabilization-info-fg ) !important;
 }
 
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-stable {
-	background-color: var( --contentstabilization-info-fg );
-	color: var( --contentstabilization-info-approve ) !important;
-	border: 1px solid var( --contentstabilization-info-approve );
-	margin-right: 0;
+/* Active segment: filled with the state color, marks the shown version */
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-stable {
+	background-color: var( --contentstabilization-info-approve );
+	color: var( --contentstabilization-info-fg ) !important;
 }
 
-.pageinfo-pill.cs-pageinfo-pill--inactive.contentstabilization-pageinfo-page-stable:hover .pageinfo-pill__label {
-	background-color: var( --contentstabilization-info-approve--hover );
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-unstable,
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-implicit-unstable {
+	background-color: var( --contentstabilization-info-draft );
+	color: var( --contentstabilization-info-fg ) !important;
+}
+
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active .pageinfo-pill__label {
 	color: var( --contentstabilization-info-fg ) !important;
 }
 
@@ -88,7 +100,7 @@
 }
 
 .pageinfo-pill.cs-pageinfo-pill--active .pageinfo-pill__action,
-.pageinfo-pill.cs-pageinfo-pill--inactive:hover .pageinfo-pill__action {
+.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active .pageinfo-pill__action {
 	color: var( --contentstabilization-info-fg ) !important;
 }
 
