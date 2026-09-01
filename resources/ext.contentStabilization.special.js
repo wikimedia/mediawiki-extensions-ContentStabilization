@@ -8,6 +8,7 @@ $( () => {
 		deletable: false,
 		style: 'differentiate-rows',
 		exportable: true,
+		stateId: 'contentstabilization-overview',
 		columns: {
 			page_display_text: {
 				headerText: mw.message( 'contentstabilization-overview-header-title' ).text(),
