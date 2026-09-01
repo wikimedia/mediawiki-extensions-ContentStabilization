@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"PanWor",
 			"WaldiSt"
 		]
 	},
@@ -14,6 +15,9 @@
 	"content-stabilization-integration-activity-error-context-invalid-title": "Nie można utworzyć prawidłowego tytułu na podstawie podanego „pageId”.",
 	"contentstabilization-pref-allowfirstunstable-help": "Jeśli ta opcja jest włączona, pierwsza wersja robocza strony będzie wyświetlana użytkownikom, którzy w przeciwnym razie nie mogliby zobaczyć wersji roboczych",
 	"contentstabilization-stablepoint-added-message": "dodano nową zatwierdzoną wersję strony",
+	"logentry-stabilization-add": "$1 {{GENDER:$2|zatwierdził|zatwierdziła|zatwierdził(a)}} stronę „$3”",
+	"logentry-stabilization-remove": "$1 {{GENDER:$2|anulował|anulowała|anulował(a)}} zatwierdzenie strony „$3”",
+	"logentry-stabilization-update": "$1 {{GENDER:$2|zatwierdził|zatwierdziła|zatwierdził(a)}} zmiany w zasobach na stronie „$3”",
 	"contentstabilization-overview-enabled": "Zatwierdzanie jest obecnie włączone dla następujących przestrzeni nazw: $1",
 	"contentstabilization-overview-header-title": "Strona",
 	"contentstabilization-overview-header-status": "Status",
