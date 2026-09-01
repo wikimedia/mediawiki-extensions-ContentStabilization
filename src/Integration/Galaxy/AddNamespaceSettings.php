@@ -11,7 +11,7 @@ class AddNamespaceSettings implements INamespaceSetting {
 	 * @return Message
 	 */
 	public function getLabel(): Message {
-		return Message::newFromKey( 'contentstabilization-label-stabilize-ns' );
+		return Message::newFromKey( 'contentstabilization-label-stabilize-ns-ns-settings' );
 	}
 
 	/**
