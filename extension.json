@@ -384,7 +384,7 @@
 		"SMW::RevisionGuard::ChangeRevision": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::ChangeFile": "stabilizeSMWProperties",
 		"SMW::RevisionGuard::IsApprovedRevision": "stabilizeSMWProperties",
-		"ContentStabilizationStablePointAdded": [ "runUpdatesOnStabilizationChange", "registerNeoWikiProperties" ],
+		"ContentStabilizationStablePointAdded": [ "runUpdatesOnStabilizationChange", "registerNeoWikiProperties", "triggerWikiAutomations" ],
 		"ContentStabilizationStablePointUpdated": "runUpdatesOnStabilizationChange",
 		"ContentStabilizationStablePointRemoved": [ "runUpdatesOnStabilizationChange", "registerNeoWikiProperties" ],
 		"ContentStabilizationStablePointMoved": "runUpdatesOnStabilizationChange",
@@ -552,6 +552,9 @@
 		"registerNeoWikiProperties": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\RegisterNeoWikiProperties",
 			"services": [ "TitleFactory", "ContentStabilization.Lookup", "RevisionLookup" ]
+		},
+		"triggerWikiAutomations": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\TriggerAutomations"
 		}
 	},
 	"SpecialPages": {
