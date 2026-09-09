@@ -158,5 +158,6 @@
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Help label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "WikiAutomations trigger description",
-	"contentstabilization-label-stabilize-ns-desc": "Description of namespace setting to enable approval"
+	"contentstabilization-label-stabilize-ns-desc": "Description of namespace setting to enable approval",
+	"contentstabilization-label-stabilize-ns-ns-settings": "Label for config to enable approval in namespace"
 }
