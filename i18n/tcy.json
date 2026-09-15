@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pragathi. BH"
+			"Pragathi. BH",
+			"Vishwanatha Badikana"
 		]
 	},
 	"contentstabilization-documentstate-no-valid-args": "ದೋಷ: ಮಾನ್ಯವಾಯಿನ ಪುಟೊತ ಪುದರ್ ಅತ್ತಂದೆ ಪರಿಷ್ಕರಣೆ ಐಡಿನ್ ಒದಗಿಸಂದಿನಿ.",
-	"contentstabilization-documentstate-no-valid-page-id": "ದೋಷ: ಕೊರ್ತಿನ ವಾದೊಲೆಡ್ದ್ ಪುಟ ಐಡಿನ್ ಪಡೆಯೆರೆ ವಿಫಲವಾತ್ಂಡ್."
+	"contentstabilization-documentstate-no-valid-page-id": "ದೋಷ: ಕೊರ್ತಿನ ವಾದೊಲೆಡ್ದ್ ಪುಟ ಐಡಿನ್ ಪಡೆಯೆರೆ ವಿಫಲವಾತ್ಂಡ್.",
+	"contentstabilization-label-stabilize-ns-desc": "ಡ್ರಾಫ್ಟ್ ಬುಕ್ಕೊ ಅನುಮೋದಿತ ಪುಟೊತ ಆವೃತ್ತಿಲೆನ್ ಬಳಕೆ ಮಲ್ಪುಲೆ"
 }

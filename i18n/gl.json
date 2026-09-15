@@ -153,5 +153,6 @@
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar só contido aprobado para o bot de charlas de IA",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores.",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "Cando se aproba a páxina",
-	"contentstabilization-label-stabilize-ns-desc": "Permitir a creación de borradores e revisións aprobadas das páxinas"
+	"contentstabilization-label-stabilize-ns-desc": "Permitir a creación de revisións de borrador e revisións aprobadas das páxinas",
+	"contentstabilization-label-stabilize-ns-ns-settings": "Aprobacións"
 }
