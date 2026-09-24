@@ -157,6 +157,6 @@
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Gebruik alleen goedgekeurde inhoud voor de AI-chatbot.",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Wanneer deze functie is ingeschakeld, gebruikt de AI-chatbot alleen goedgekeurde inhoud als bron. Concepten worden uitgesloten.",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "Wanneer de pagina is goedgekeurd",
-	"contentstabilization-label-stabilize-ns-desc": "Concept- en goedgekeurde paginaversies gebruiken",
+	"contentstabilization-label-stabilize-ns-desc": "Maakt het mogelijk concept- en goedgekeurde versies van pagina’s aan te maken",
 	"contentstabilization-label-stabilize-ns-ns-settings": "Goedkeuringen"
 }
