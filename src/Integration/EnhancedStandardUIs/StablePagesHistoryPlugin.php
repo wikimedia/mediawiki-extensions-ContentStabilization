@@ -5,12 +5,15 @@ namespace MediaWiki\Extension\ContentStabilization\Integration\EnhancedStandardU
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\EnhancedStandardUIs\IHistoryPlugin;
+use MediaWiki\Extension\EnhancedStandardUIs\IRevisionAgeExemption;
 use MediaWiki\Language\Language;
 use MediaWiki\Message\Message;
+use MediaWiki\Page\PageIdentity;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 
-class StablePagesHistoryPlugin implements IHistoryPlugin {
+class StablePagesHistoryPlugin implements IHistoryPlugin, IRevisionAgeExemption {
 
 	/** @var StabilizationLookup */
 	private $lookup;
@@ -100,6 +103,18 @@ class StablePagesHistoryPlugin implements IHistoryPlugin {
 		$entry['sp_approve_ts'] = $timestamp;
 		$entry['sp_approve_comment'] = $comment;
 		$classes[] = 'content-stabilization-stable-data';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getExemptFromTimestamp( PageIdentity $page, Authority $user ): ?string {
+		if ( !$this->lookup->isStabilizationEnabled( $page ) ) {
+			return null;
+		}
+		$lastStable = $this->lookup->getLastStableRevision( $page );
+
+		return $lastStable ? $lastStable->getTimestamp() : null;
 	}
 
 	/**
