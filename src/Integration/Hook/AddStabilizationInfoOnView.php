@@ -20,7 +20,7 @@ class AddStabilizationInfoOnView implements SkinAfterContentHook {
 	 * @inheritDoc
 	 */
 	public function onSkinAfterContent( &$data, $skin ) {
-		if ( get_class( $skin ) === 'BlueSpice\Discovery\Skin' ) {
+		if ( $skin instanceof \BlueSpice\Discovery\Skin ) {
 			// Not supported in BlueSpice Discovery skin
 			return;
 		}
