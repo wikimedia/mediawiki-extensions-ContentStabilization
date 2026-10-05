@@ -532,7 +532,8 @@
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RegisterCrons"
 		},
 		"addStabilizationMetadata": {
-			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationMetadata"
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\WikiRAG\\StabilizationMetadata",
+			"services": [ "ContentStabilization.Lookup" ]
 		},
 		"addStabilizationInfoOnView": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddStabilizationInfoOnView",
