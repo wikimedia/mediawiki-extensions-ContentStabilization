@@ -3,8 +3,18 @@
 	--contentstabilization-info-approve--hover: #177860;
 	--contentstabilization-info-draft: #bb5c26;
 	--contentstabilization-info-draft--hover: #a95226;
-	--contentstabilization-info-fg: #fff;
-	--contentstabilization-info-border: #a2a9b1;
+
+	/* pill colors */
+	--contentstabilization-info-pill-inactive-approve-fg: #177860;
+	--contentstabilization-info-pill-inactive-approve-bg: #fff;
+	--contentstabilization-info-pill-approve-fg: #fff;
+	--contentstabilization-info-pill-approve-bg: #14876b;
+	--contentstabilization-info-pill-approve--hover: #177860;
+	--contentstabilization-info-pill-inactive-draft-fg: #a95226;
+	--contentstabilization-info-pill-inactive-draft-bg: #fff;
+	--contentstabilization-info-pill-draft-fg: #fff;
+	--contentstabilization-info-pill-draft-bg: #bb5c26;
+	--contentstabilization-info-pill-draft--hover: #a95226;
 }
 
 /* ---- Text-color fallback (non-pill contexts) ---- */
@@ -20,77 +30,54 @@
 	margin-right: 5px;
 }
 
-/* ---- Active pill: colored background, white text ---- */
+/* ---- Active unstable pill: colored background ---- */
 .pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-first-unstable {
-	background-color: var( --contentstabilization-info-draft );
-	color: #fff !important;
-	margin-right: 0;
-}
-
-.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-unstable,
-.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-implicit-unstable {
-	background-color: var( --contentstabilization-info-draft );
-	color: #fff !important;
-	margin-right: 0;
-}
-
-.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-stable {
-	background-color: var( --contentstabilization-info-approve );
-	color: var( --contentstabilization-info-fg ) !important;
-	margin-right: 0;
-}
-
-.pageinfo-pill.cs-pageinfo-pill--active .pageinfo-pill__label {
-	color: var( --contentstabilization-info-fg ) !important;
-}
-
-/* ---- Combined switch pill: approved and draft version in one pill ---- */
-.pageinfo-pill.contentstabilization-pageinfo-versionswitch {
-	background-color: var( --contentstabilization-info-fg );
-	border: 1px solid var( --contentstabilization-info-border );
+	background-color: var( --contentstabilization-info-pill-draft-bg );
+	color: var( --contentstabilization-info-pill-draft-fg ) !important;
 	margin-right: 0;
 }
 
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment {
-	color: inherit !important;
 	margin-right: 0;
 }
 
 /* Inactive segment: plain background, state colored label */
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-stable {
-	color: var( --contentstabilization-info-approve ) !important;
+	color: var( --contentstabilization-info-pill-inactive-approve-fg ) !important;
+	border: 1px solid var( --contentstabilization-info-pill-inactive-approve-fg );
+	background-color: var( --contentstabilization-info-pill-inactive-approve-bg );
+}
+
+.contentstabilization-pageinfo-versionswitch a.pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-stable:hover {
+	background-color: var( --contentstabilization-info-pill-approve--hover );
+	color: var( --contentstabilization-info-pill-approve-fg ) !important;
 }
 
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-unstable,
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-implicit-unstable {
-	color: var( --contentstabilization-info-draft ) !important;
-}
-
-.contentstabilization-pageinfo-versionswitch a.pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-stable:hover {
-	background-color: var( --contentstabilization-info-approve--hover );
-	color: var( --contentstabilization-info-fg ) !important;
+	color: var( --contentstabilization-info-pill-inactive-draft-fg ) !important;
+	border: 1px solid var( --contentstabilization-info-pill-inactive-draft-fg );
+	background-color: var( --contentstabilization-info-pill-inactive-draft-bg );
 }
 
 .contentstabilization-pageinfo-versionswitch a.pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-unstable:hover,
 .contentstabilization-pageinfo-versionswitch a.pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-implicit-unstable:hover {
-	background-color: var( --contentstabilization-info-draft--hover );
-	color: var( --contentstabilization-info-fg ) !important;
+	background-color: var( --contentstabilization-info-pill-draft--hover );
+	color: var( --contentstabilization-info-pill-draft-fg ) !important;
 }
 
 /* Active segment: filled with the state color, marks the shown version */
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-stable {
-	background-color: var( --contentstabilization-info-approve );
-	color: var( --contentstabilization-info-fg ) !important;
+	background-color: var( --contentstabilization-info-pill-approve-bg );
+	border: 1px solid var( --contentstabilization-info-pill-approve-bg );
+	color: var( --contentstabilization-info-pill-approve-fg ) !important;
 }
 
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-unstable,
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-implicit-unstable {
-	background-color: var( --contentstabilization-info-draft );
-	color: var( --contentstabilization-info-fg ) !important;
-}
-
-.contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active .pageinfo-pill__label {
-	color: var( --contentstabilization-info-fg ) !important;
+	background-color: var( --contentstabilization-info-pill-draft-bg );
+	border: 1px solid var( --contentstabilization-info-pill-draft-bg );
+	color: var( --contentstabilization-info-pill-draft-fg ) !important;
 }
 
 /* ---- Approve action button: pen icon only ---- */
@@ -101,7 +88,7 @@
 
 .pageinfo-pill.cs-pageinfo-pill--active .pageinfo-pill__action,
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active .pageinfo-pill__action {
-	color: var( --contentstabilization-info-fg ) !important;
+	color: var( --contentstabilization-info-draft-fg ) !important;
 }
 
 .pageinfo-pill .pageinfo-pill__action::before {

@@ -239,10 +239,10 @@ class PageStatusPill extends StabilizedPageElement {
 		return [
 			'action' => [
 				'id'    => 'contentstabilization-stabilize-link',
+				'href' => '',
 				'label' => $label,
-				'title' => $this->context->msg(
-					'contentstabilization-pageinfoelement-pagestatus-is-' . $this->state . '-title'
-				)->plain(),
+				'title' => $label,
+				'class' => 'bi-check-lg'
 			],
 		];
 	}
