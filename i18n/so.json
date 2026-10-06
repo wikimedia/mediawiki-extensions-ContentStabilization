@@ -154,5 +154,7 @@
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Marka la hawlgeliyo, chatbot-ka AI-gu wuxuu il ahaan u isticmaalaa oo keliya nuxurka la ansixiyay. Qabyadu waa laga reebayaa.",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "Marka bogga la ansixiyo",
 	"contentstabilization-label-stabilize-ns-desc": "U oggolow abuurista dib u eegisyo qabyo ah iyo kuwa la ansixiyay ee bogagga",
-	"contentstabilization-label-stabilize-ns-ns-settings": "Ansixinnada"
+	"contentstabilization-label-stabilize-ns-ns-settings": "Ansixinnada",
+	"contentstabilization-pref-wiki-rag-index-stable": "Isticmaal oo keliya noocyada la ansixiyay inay yihiin xogta isha ee chatbot-ka AI",
+	"contentstabilization-info-last-approved-date": "Bogga waxaa la ansixiyay $1, taariikhda $2"
 }
