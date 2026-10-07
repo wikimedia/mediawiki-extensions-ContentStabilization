@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization;
 
 use Exception;
-use ManualLogEntry;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Permissions\Authority;
 
 class StabilizationLog {

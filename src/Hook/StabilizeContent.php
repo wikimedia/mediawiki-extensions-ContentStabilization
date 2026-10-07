@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\ContentStabilization\Hook;
 
 use Article;
 use DifferenceEngine;
-use ManualLogEntry;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
@@ -23,6 +22,7 @@ use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
