@@ -6,6 +6,7 @@ use BlueSpice\SMWConnector\PropertyValueProvider;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\MediaWikiServices;
+use SMW\MediaWiki\ExtendedDateTime;
 use SMWDataItem;
 use SMWDITime;
 
@@ -72,12 +73,16 @@ class ApprovalDatePropertyValueProvider extends PropertyValueProvider {
 	 * @param \SMW\DIProperty $property
 	 * @param \SMW\SemanticData $semanticData
 	 * @return void
+	 * @throws \Exception
 	 */
 	public function addAnnotation( $appFactory, $property, $semanticData ) {
 		$sp = $this->lookup->getLastRawStablePoint( $semanticData->getSubject()->getTitle()->toPageIdentity() );
 		if ( $sp instanceof StablePoint ) {
+			$smwTime = ExtendedDateTime::createFromFormat(
+				'Y-m-d H:i:s', $sp->getTime()->format( 'Y-m-d H:i:s' )
+			);
 			$semanticData->addPropertyObjectValue(
-				$property, SMWDITime::newFromDateTime( $sp->getTime() )
+				$property, SMWDITime::newFromDateTime( $smwTime )
 			);
 		}
 	}
