@@ -11,7 +11,7 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\ILoadBalancer;

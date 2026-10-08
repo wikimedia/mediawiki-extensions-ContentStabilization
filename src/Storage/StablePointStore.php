@@ -14,8 +14,8 @@ use MediaWiki\Revision\RevisionStore;
 use MediaWiki\User\UserFactory;
 use RepoGroup;
 use stdClass;
-use WANObjectCache;
 use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\ResultWrapper;
 
