@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\ContentStabilization;
 
-use HashBagOStuff;
 use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\GlobalVarConfig;
@@ -14,6 +13,7 @@ use MediaWiki\Parser\ParserFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use RepoGroup;
+use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class InclusionManager {
