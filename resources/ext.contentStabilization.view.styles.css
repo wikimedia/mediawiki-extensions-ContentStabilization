@@ -37,6 +37,13 @@
 	margin-right: 0;
 }
 
+/* ---- Active stable pill: colored background ---- */
+.pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-stable.pageinfo-pill__state {
+	background-color: var( --contentstabilization-info-pill-approve-bg );
+	color: var( --contentstabilization-info-pill-approve-fg ) !important;
+	margin-right: 0;
+}
+
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment {
 	margin-right: 0;
 }
