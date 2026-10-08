@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\ContentStabilization\Storage;
 use DateTime;
 use Exception;
 use File;
-use HashBagOStuff;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Page\PageIdentity;
@@ -16,6 +15,7 @@ use MediaWiki\User\UserFactory;
 use RepoGroup;
 use stdClass;
 use WANObjectCache;
+use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\ResultWrapper;
 
