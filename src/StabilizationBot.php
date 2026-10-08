@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\ContentStabilization;
 
-use IDBAccessObject;
 use MediaWiki\Block\Block;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionStatus;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Authority to be used for bot stabilization
