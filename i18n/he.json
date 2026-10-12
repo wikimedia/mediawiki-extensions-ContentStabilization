@@ -143,5 +143,5 @@
 	"contentstabilization-versionhistory-remove-approval-confirm": "האם באמת להסיר את האישור של הגרסה הזאת?",
 	"contentstabilization-pref-pdf-show-tag-help": "הוספת התאריכים של האישור ושל הגרסה האחרונה מתחת לכותרות הדפים בפלט ה־PDF",
 	"contentstabilization-pref-index-stable-help": "מבטיח שרק הגרסאות המאושרות של הדפים כלולות במפתח החיפוש",
-	"contentstabilization-event-stable-point-added-desc": "אושר דף"
+	"contentstabilization-event-stable-point-added-desc": "אישור דף"
 }
