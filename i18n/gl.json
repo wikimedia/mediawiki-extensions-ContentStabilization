@@ -154,5 +154,7 @@
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores.",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "Cando se aproba a páxina",
 	"contentstabilization-label-stabilize-ns-desc": "Permitir a creación de revisións de borrador e revisións aprobadas das páxinas",
-	"contentstabilization-label-stabilize-ns-ns-settings": "Aprobacións"
+	"contentstabilization-label-stabilize-ns-ns-settings": "Aprobacións",
+	"contentstabilization-pref-wiki-rag-index-stable": "Usar só as versións aprobadas como datos de orixe para a charla coa IA",
+	"contentstabilization-info-last-approved-date": "A páxina aprobouse o $2 ás $1"
 }

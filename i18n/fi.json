@@ -14,5 +14,7 @@
 	"contentstabilization-export-laststable-tag-text": "Hyväksytty:",
 	"contentstabilization-export-stablerevisiondate-tag-text": "Versio: $1",
 	"contentstabilization-stabilizationhistory-title": "Sivu",
-	"contentstabilization-overview-header-page-id": "Sivun tunniste"
+	"contentstabilization-overview-header-page-id": "Sivun tunniste",
+	"contentstabilization-event-stable-point-added-desc": "Hyväksy sivu",
+	"contentstabilization-info-last-approved-date": "Sivu hyväksyttiin $2 klo $1"
 }
