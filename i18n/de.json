@@ -148,7 +148,7 @@
 	"contentstabilization-wikiexplorer-filter-no-draft": "Hat keine Entwurfsversion",
 	"contentstabilization-pref-pdf-show-tag-help": "Fügt das letzte Freigabe- und Revisionsdatum unterhalb der Seitentitel in der PDF-Ausgabe ein",
 	"contentstabilization-pref-index-stable-help": "Stellt sicher, dass nur die freigegebenen Versionen von Seiten in den Such-Index aufgenommen werden",
-	"contentstabilization-event-stable-point-added-desc": "Eine Seite wurde freigegeben",
+	"contentstabilization-event-stable-point-added-desc": "Freigeben einer Seite",
 	"contentstabilization-preview-links-empty-preview-label": "Es sind keine Vorschauinhalte verfügbar",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Ausschließlich freigegebenen Inhalt für den KI-Chatbot verwenden",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Wenn aktiviert, verwendet der KI-Chatbot nur Inhalte als Quelle, die freigegeben wurden. Entwürfe sind ausgeschlossen",
@@ -156,5 +156,8 @@
 	"contentstabilization-pageinfoelement-pill-label-unstable": "Entwurf",
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Erstentwurf",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Freigeben",
-	"contentstabilization-pageinfoelement-pill-action-update": "Ressourcenänderungen freigeben"
+	"contentstabilization-pageinfoelement-pill-action-update": "Ressourcenänderungen freigeben",
+	"contentstabilization-label-stabilize-ns-desc": "Entwürfe und freigegebene Seitenversionen verwenden",
+	"contentstabilization-label-stabilize-ns-ns-settings": "Freigaben",
+	"contentstabilization-pref-wiki-rag-index-stable": "Ausschließlich freigegebene Versionen als Quelldaten für den KI-Chatbot verwenden"
 }
