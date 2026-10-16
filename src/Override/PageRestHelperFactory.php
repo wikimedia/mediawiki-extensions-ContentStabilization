@@ -14,7 +14,6 @@ use MediaWiki\Page\ParserOutputAccess;
 use MediaWiki\Page\RedirectStore;
 use MediaWiki\Parser\Parsoid\Config\SiteConfig as ParsoidSiteConfig;
 use MediaWiki\Parser\Parsoid\HtmlTransformFactory;
-use MediaWiki\Parser\Parsoid\PageBundleParserOutputConverter;
 use MediaWiki\Rest\Handler\Helper\PageContentHelper;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRenderer;
@@ -90,7 +89,6 @@ class PageRestHelperFactory extends \MediaWiki\Rest\Handler\Helper\PageRestHelpe
 	 * @param ChangeTagsStore $changeTagsStore
 	 * @param StatsFactory $statsFactory
 	 * @param ShadowPageLoader $shadowPageLoader
-	 * @param PageBundleParserOutputConverter $pageBundleParserOutputConverter
 	 * @param StabilizationLookup $stabilizationLookup
 	 */
 	public function __construct(
@@ -112,7 +110,6 @@ class PageRestHelperFactory extends \MediaWiki\Rest\Handler\Helper\PageRestHelpe
 		ChangeTagsStore $changeTagsStore,
 		StatsFactory $statsFactory,
 		ShadowPageLoader $shadowPageLoader,
-		PageBundleParserOutputConverter $pageBundleParserOutputConverter,
 		StabilizationLookup $stabilizationLookup
 	) {
 		parent::__construct(
@@ -133,8 +130,7 @@ class PageRestHelperFactory extends \MediaWiki\Rest\Handler\Helper\PageRestHelpe
 			$dbProvider,
 			$changeTagsStore,
 			$statsFactory,
-			$shadowPageLoader,
-			$pageBundleParserOutputConverter
+			$shadowPageLoader
 		);
 		$this->options = $options;
 		$this->revisionLookup = $revisionLookup;

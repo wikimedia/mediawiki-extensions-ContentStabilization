@@ -21,10 +21,7 @@ class OverrideServices implements MediaWikiServicesHook {
 			'PageRestHelperFactory',
 			static function ( MediaWikiServices $services ) {
 				return new PageRestHelperFactory(
-					new ServiceOptions(
-						PageRestHelperFactory::CONSTRUCTOR_OPTIONS,
-						$services->getMainConfig()
-					),
+					new ServiceOptions( PageRestHelperFactory::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
 					$services->getRevisionLookup(),
 					$services->getRevisionRenderer(),
 					$services->getTitleFormatter(),
@@ -42,7 +39,6 @@ class OverrideServices implements MediaWikiServicesHook {
 					$services->getChangeTagsStore(),
 					$services->getStatsFactory(),
 					$services->getShadowPageLoader(),
-					$services->getPageBundleParserOutputConverter(),
 					$services->getService( 'ContentStabilization.Lookup' )
 				);
 			}
