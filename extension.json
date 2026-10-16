@@ -418,6 +418,7 @@
 		"ContentStabilizationResetState": "stabilizeContent",
 		"WikiRAGMetadata": "addStabilizationMetadata",
 		"NeoWikiRegistration": "registerNeoWikiProperties",
+		"BlueSpiceGalaxyConnectorNeoWikiPagePropertyDefinitions": "registerNeoWikiProperties",
 		"SkinAfterContent": "addStabilizationInfoOnView"
 	},
 	"HookHandlers": {
