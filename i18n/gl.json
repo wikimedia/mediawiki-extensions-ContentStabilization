@@ -143,7 +143,7 @@
 	"contentstabilization-versionhistory-remove-approval-confirm": "Queres eliminar a aprobación desta revisión?",
 	"contentstabilization-pref-pdf-show-tag-help": "Engade as datas da última aprobación e mais da última revisión debaixo dos títulos das páxinas na saída en PDF",
 	"contentstabilization-pref-index-stable-help": "Garante que só as versións aprobadas das páxinas se inclúan no índice de procura",
-	"contentstabilization-event-stable-point-added-desc": "Aprobouse unha páxina",
+	"contentstabilization-event-stable-point-added-desc": "Aprobar a páxina",
 	"contentstabilization-preview-links-empty-preview-label": "Non está dispoñible a vista previa do contido",
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Usar só contido aprobado para o bot de charlas de IA",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "Cando está activado, bot de charlas de IA só usa contido que foi aprobado como fonte. Exclúense os borradores.",
@@ -153,5 +153,8 @@
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Primeiro borrador",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Aprobar",
 	"contentstabilization-pageinfoelement-pill-action-update": "Aprobar os cambios de recursos",
-	"contentstabilization-label-stabilize-ns-desc": "Permitir a creación de borradores e revisións aprobadas das páxinas"
+	"contentstabilization-label-stabilize-ns-desc": "Permitir a creación de revisións de borrador e revisións aprobadas das páxinas",
+	"contentstabilization-label-stabilize-ns-ns-settings": "Aprobacións",
+	"contentstabilization-pref-wiki-rag-index-stable": "Usar só as versións aprobadas como datos de orixe para a charla coa IA",
+	"contentstabilization-info-last-approved-date": "A páxina aprobouse o $2 ás $1"
 }

@@ -153,5 +153,7 @@
 	"contentstabilization-pageinfoelement-pill-label-unstable": "Нацрт",
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Прв нацрт",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Одобри",
-	"contentstabilization-pageinfoelement-pill-action-update": "Одобри промени во ресурсите"
+	"contentstabilization-pageinfoelement-pill-action-update": "Одобри промени во ресурсите",
+	"contentstabilization-label-stabilize-ns-desc": "Користи нацрти и одобрени верзии на страници",
+	"contentstabilization-label-stabilize-ns-ns-settings": "Одобренија"
 }

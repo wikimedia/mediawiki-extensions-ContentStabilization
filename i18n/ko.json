@@ -91,7 +91,7 @@
 	"content-stabilization-approval-notification-email-body": "$3님이 $1 문서를 {{GENDER:$2|승인했습니다}}",
 	"contentstabilization-ui-editor-approve": "내 변경 사항 승인",
 	"contentstabilization-stablepoint-added-links-view-changes": "변경사항 보기",
-	"contentstabilization-event-stable-point-added-desc": "문서가 승인되었습니다",
+	"contentstabilization-event-stable-point-added-desc": "문서 승인",
 	"contentstabilization-preview-links-empty-preview-label": "사용 가능한 미리보기 콘텐츠 없음",
 	"contentstabilization-pageinfoelement-pill-label-stable": "승인됨",
 	"contentstabilization-pageinfoelement-pill-label-unstable": "초안",
@@ -156,5 +156,8 @@
 	"contentstabilization-pref-wiki-rag-index-stable-label": "AI 챗봇에 승인된 내용만 사용",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "이 기능을 활성화하면 AI 챗봇은 승인된 내용만 사용합니다. 초안은 제외됩니다.",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "문서가 승인될 때",
-	"contentstabilization-label-stabilize-ns-desc": "문서의 초안 및 승인된 판의 생성을 허용합니다."
+	"contentstabilization-label-stabilize-ns-desc": "문서의 초안 및 승인된 판의 생성을 허용합니다.",
+	"contentstabilization-label-stabilize-ns-ns-settings": "승인",
+	"contentstabilization-pref-wiki-rag-index-stable": "AI 챗봇의 소스 데이터로써 승인된 버전만 사용",
+	"contentstabilization-info-last-approved-date": "문서가 $1, $2에 승인되었습니다."
 }

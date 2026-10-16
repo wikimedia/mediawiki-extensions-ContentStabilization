@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"PanWor",
 			"WaldiSt"
 		]
 	},
@@ -20,5 +21,8 @@
 	"contentstabilization-overview-header-has-changed-last-stable-ts": "Ostatnia data zatwierdzenia",
 	"contentstabilization-document-state-sesp-desc": "Stan strony. Może być „Zatwierdzony” (najnowsza wersja została pomyślnie sprawdzona), „W wersji roboczej” (jest wersja robocza tej strony) lub „Prośba o zatwierdzenie” (przepływ pracy recenzji został uruchomiony w odniesieniu do istniejącej wersji roboczej).",
 	"contentstabilization-stabilizationhistory-title": "Strona",
-	"contentstabilization-stabilizationhistory-comment": "Komentarz"
+	"contentstabilization-stabilizationhistory-comment": "Komentarz",
+	"logentry-stabilization-add": "$1 {{GENDER:$2|zatwierdził|zatwierdziła|zatwierdził(a)}} stronę „$3”",
+	"logentry-stabilization-remove": "$1 {{GENDER:$2|anulował|anulowała|anulował(a)}} zatwierdzenie strony „$3”",
+	"logentry-stabilization-update": "$1 {{GENDER:$2|zatwierdził|zatwierdziła|zatwierdził(a)}} zmiany w zasobach na stronie „$3”"
 }
