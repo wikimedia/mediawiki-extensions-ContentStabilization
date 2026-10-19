@@ -23,6 +23,7 @@ use MediaWiki\Title\Title;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
+use WANObjectCache;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -119,6 +120,7 @@ class InclusionManagerTest extends TestCase {
 					'timestamp' => '20210104000000', 'sha1' => 'b21234567890', 'source' => 'local'
 				],
 			],
+			'poDependency' => [ 'hash' => 'da39a3ee5e6b4b0d3255bfef95601890afd80709' ],
 		];
 	}
 
@@ -351,6 +353,7 @@ class InclusionManagerTest extends TestCase {
 			$lb ?? $this->mockLoadBalancer(),
 			$this->mockWikiPageFactory(),
 			$this->mockRevisionLookup(),
+			WANObjectCache::newEmpty(),
 			$this->mockRepoGroup(),
 			new HashConfig( [ 'InclusionMode' => 'default' ] ),
 			$this->getParserFactoryMock(),
