@@ -46,6 +46,7 @@ return [
 			$services->getDBLoadBalancer(),
 			$services->getWikiPageFactory(),
 			$services->getRevisionLookup(),
+			$services->getMainWANObjectCache(),
 			$services->getRepoGroup(),
 			$services->getService( 'ContentStabilization._Config' ),
 			$services->getParserFactory(),

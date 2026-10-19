@@ -8,13 +8,16 @@ use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Parser\ParserFactory;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Parser\ParserOutputLinkTypes;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class InclusionManager {
@@ -27,6 +30,8 @@ class InclusionManager {
 
 	/** @var RevisionLookup */
 	private $revisionLookup;
+
+	private WANObjectCache $wanObjectCache;
 
 	/** @var RepoGroup */
 	private $repoGroup;
@@ -56,6 +61,7 @@ class InclusionManager {
 	 * @param ILoadBalancer $loadBalancer
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param RevisionLookup $revisionLookup
+	 * @param WANObjectCache $wanObjectCache
 	 * @param RepoGroup $repoGroup
 	 * @param GlobalVarConfig $config
 	 * @param ParserFactory $parserFactory
@@ -63,13 +69,20 @@ class InclusionManager {
 	 * @param array $inclusionModes
 	 */
 	public function __construct(
-		ILoadBalancer $loadBalancer, WikiPageFactory $wikiPageFactory,
-		RevisionLookup $revisionLookup, RepoGroup $repoGroup, Config $config,
-		ParserFactory $parserFactory, HookContainer $hookContainer, array $inclusionModes
+		ILoadBalancer $loadBalancer,
+		WikiPageFactory $wikiPageFactory,
+		RevisionLookup $revisionLookup,
+		WANObjectCache $wanObjectCache,
+		RepoGroup $repoGroup,
+		Config $config,
+		ParserFactory $parserFactory,
+		HookContainer $hookContainer,
+		array $inclusionModes
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->revisionLookup = $revisionLookup;
+		$this->wanObjectCache = $wanObjectCache;
 		$this->repoGroup = $repoGroup;
 		$this->config = $config;
 		$this->parserFactory = $parserFactory;
@@ -90,6 +103,7 @@ class InclusionManager {
 		return [
 			'transclusions' => $this->storeTransclusions( $revision, $inclusions['transclusions'] ),
 			'images' => $this->storeImages( $revision, $inclusions['images'] ),
+			'poDependency' => $inclusions['poDependency'],
 		];
 	}
 
@@ -205,16 +219,9 @@ class InclusionManager {
 		return $this->inclusionMode;
 	}
 
-	/**
-	 * Get the latest revisions of inclusions at this time
-	 *
-	 * @param LinkTarget $target
-	 *
-	 * @return array[]
-	 */
-	private function getCurrentInclusions( LinkTarget $target ): array {
-		$page = $this->wikiPageFactory->newFromLinkTarget( $target );
+	private function getParserOutput( PageRecord $page ): ParserOutput {
 		$parserOptions = $page->makeParserOptions( 'canonical' );
+
 		$parser = $this->parserFactory->create();
 		// Set reason to let other extension know why this render is happening
 		$parserOptions->setRenderReason( 'CS_INCLUSION_FETCH' );
@@ -227,41 +234,77 @@ class InclusionManager {
 			/* $clearstate = */ true,
 			$page->getTitle()->getLatestRevID()
 		);
-		$transclusions = $parserOutput->getLinkList( ParserOutputLinkTypes::TEMPLATE );
-		$images = $parserOutput->getLinkList( ParserOutputLinkTypes::MEDIA );
 
-		$res = [ 'transclusions' => [], 'images' => [] ];
-		foreach ( $transclusions as $transclusion ) {
-			if ( $target->isSameLinkAs( $transclusion['link'] ) ) {
-				continue;
-			}
-			$res['transclusions'][] = [
-				'source' => 'local',
-				'revision' => $transclusion['revid'],
-				'namespace' => $transclusion['link']->getNamespace(),
-				'title' => $transclusion['link']->getDBkey(),
-			];
-		}
+		return $parserOutput;
+	}
 
-		foreach ( $images as $image ) {
-			// Source for images is the repo key
-			$source = 'local';
-			$file = $this->repoGroup->findFile( $image['link'] );
-			if ( $file ) {
-				$source = $file->getRepo()->getName();
-			}
-			$res['images'][] = [
-				'source' => $source,
-				'revision' => $this->revisionLookup->getRevisionByTitle( $image['link'] )?->getId() ?: 0,
-				'name' => $image['link']->getDBkey(),
-				'timestamp' => $image['time'],
-				'sha1' => $image['sha1'] ?: '',
-			];
-		}
+	/**
+	 * Get the latest revisions of inclusions at this time
+	 *
+	 * @param LinkTarget $linkTarget
+	 *
+	 * @return array[]
+	 */
+	private function getCurrentInclusions( LinkTarget $linkTarget ): array {
+		$page = $this->wikiPageFactory->newFromLinkTarget( $linkTarget );
 
-		$this->hookContainer->run( 'ContentStabilizationGetCurrentInclusions', [ $page, &$res ] );
+		$cache = $this->wanObjectCache->getWithSetCallback(
+			$this->wanObjectCache->makeKey(
+				'contentstabilization', 'getcurrentinclusions', $linkTarget->getText()
+			),
+			$this->wanObjectCache::TTL_HOUR,
+			function () use ( $page, $linkTarget ) {
+				$parserOutput = $this->getParserOutput( $page );
+				$transclusions = $parserOutput->getLinkList( ParserOutputLinkTypes::TEMPLATE );
+				$images = $parserOutput->getLinkList( ParserOutputLinkTypes::MEDIA );
 
-		return $res;
+				$res = [ 'transclusions' => [], 'images' => [] ];
+				foreach ( $transclusions as $transclusion ) {
+					if ( $linkTarget->isSameLinkAs( $transclusion['link'] ) ) {
+						continue;
+					}
+					$res['transclusions'][] = [
+						'source' => 'local',
+						'revision' => $transclusion['revid'],
+						'namespace' => $transclusion['link']->getNamespace(),
+						'title' => $transclusion['link']->getDBkey(),
+					];
+				}
+
+				foreach ( $images as $image ) {
+					// Source for images is the repo key
+					$source = 'local';
+					$file = $this->repoGroup->findFile( $image['link'] );
+					if ( $file ) {
+						$source = $file->getRepo()->getName();
+					}
+					$res['images'][] = [
+						'source' => $source,
+						'revision' => $this->revisionLookup->getRevisionByTitle( $image['link'] )?->getId() ?: 0,
+						'name' => $image['link']->getDBkey(),
+						'timestamp' => $image['time'],
+						'sha1' => $image['sha1'] ?: '',
+					];
+				}
+
+				$this->hookContainer->run( 'ContentStabilizationGetCurrentInclusions', [ $page, &$res ] );
+
+				// Track parser output hash to detect changes if a re-render happens.
+				$res['poDependency']['hash'] = sha1( $parserOutput->getRawText() ?? '' );
+
+				return $res;
+			},
+			[
+				'touchedCallback' => function ( $oldValue ) use ( $page ) {
+					$newDepHash = sha1( $this->getParserOutput( $page )->getRawText() );
+					$oldDepHash = $oldValue['poDependency']['hash'];
+
+					return ( $oldDepHash !== $newDepHash ) ? INF : null;
+				}
+			]
+		);
+
+		return $cache;
 	}
 
 	/**
