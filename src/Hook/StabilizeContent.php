@@ -12,6 +12,7 @@ use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\StableView;
+use MediaWiki\Hook\ApiBeforeMainHook;
 use MediaWiki\Hook\BeforeParserFetchFileAndTitleHook;
 use MediaWiki\Hook\BeforeParserFetchTemplateRevisionRecordHook;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
@@ -47,6 +48,7 @@ use PermissionsError;
 
 class StabilizeContent implements
 	ArticleViewHeaderHook,
+	ApiBeforeMainHook,
 	BeforeParserFetchTemplateRevisionRecordHook,
 	BeforeParserFetchFileAndTitleHook,
 	PageDeleteCompleteHook,
@@ -472,6 +474,47 @@ class StabilizeContent implements
 		}
 
 		return false;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onApiBeforeMain( &$main ) {
+		$request = $main->getRequest();
+		if ( $request->getVal( 'action' ) !== 'visualeditor' || $request->getVal( 'paction' ) !== 'parse' ) {
+			return;
+		}
+		if ( $request->getBool( 'nostabilize' ) ) {
+			return;
+		}
+
+		$oldid = $request->getInt( 'oldid' );
+		if ( !$oldid ) {
+			return;
+		}
+
+		$titleText = $request->getVal( 'page', $request->getVal( 'title' ) );
+		if ( !$titleText ) {
+			return;
+		}
+		$title = $this->titleFactory->newFromText( $titleText );
+		if ( !$title || !$title->exists() || !$this->lookup->isStabilizationEnabled( $title ) ) {
+			return;
+		}
+		if ( !$this->lookup->canUserSeeUnstable( $main->getUser() ) ) {
+			return;
+		}
+
+		$lastStableRevision = $this->lookup->getLastStableRevision( $title );
+		if ( !$lastStableRevision || $oldid !== $lastStableRevision->getId() ) {
+			return;
+		}
+		if ( $oldid === $title->getLatestRevID() ) {
+			return;
+		}
+
+		$request->setVal( 'stable', 0 );
+		$request->unsetVal( 'oldid' );
 	}
 
 	/**
