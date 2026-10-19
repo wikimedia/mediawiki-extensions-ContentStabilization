@@ -364,6 +364,7 @@
 		"BSApiExtJSStoreBaseBeforePostProcessData": "addStabilizationInfoToPageAssignments",
 		"BSPageAssignmentsOverview": "addStabilizationInfoToPageAssignments",
 		"MediaWikiPerformAction": "stabilizeContent",
+		"ApiBeforeMain": "stabilizeContent",
 		"SkinTemplateNavigation::Universal": "addApproveAction",
 		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "addApproveActionDiscovery",
 		"EditPageGetCheckboxesDefinition": "addApproveAction",
