@@ -47,6 +47,7 @@ class SecondaryDataProvider implements ISecondaryDataProvider {
 			$state = $dataSet->get( Record::STATUS );
 			$msg = Message::newFromKey( 'contentstabilization-status-' . $state );
 			$dataSet->set( Record::STATUS, $msg->text() );
+			$dataSet->set( Record::HAS_CHANGED_INCLUSIONS, false );
 
 			// This is very expensive, maybe even for an SDP, but there is no way to determine implicit draft otherwise
 			$currentView = $this->lookup->getStableView( $title );
