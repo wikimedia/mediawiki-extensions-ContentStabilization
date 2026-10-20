@@ -25,7 +25,7 @@ class Schema extends BaseSchema {
 			],
 			Record::PAGE_DISPLAY_TEXT => [
 				self::FILTERABLE => false,
-				self::SORTABLE => false,
+				self::SORTABLE => true,
 				self::TYPE => FieldType::STRING
 			],
 			Record::PAGE_LINK => [

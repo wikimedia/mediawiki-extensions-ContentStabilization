@@ -111,10 +111,14 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 		$conds = $this->getDefaultOptions();
 		$fields = array_values( $this->schema->getSortableFields() );
 		foreach ( $params->getSort() as $sort ) {
-			if ( !in_array( $sort->getProperty(), $fields ) ) {
+			$property = $sort->getProperty();
+			if ( !in_array( $property, $fields ) ) {
 				continue;
 			}
-			if ( !isset( $this->fields[$sort->getProperty()] ) ) {
+			if ( $property === Record::PAGE_DISPLAY_TEXT ) {
+				$property = Record::PAGE_TITLE;
+			}
+			if ( !isset( $this->fields[$property] ) ) {
 				continue;
 			}
 			if ( !isset( $conds['ORDER BY'] ) ) {
@@ -122,7 +126,7 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 			} else {
 				$conds['ORDER BY'] .= ",";
 			}
-			$sortField = $this->fields[$sort->getProperty()];
+			$sortField = $this->fields[$property];
 			$conds['ORDER BY'] .= "$sortField {$sort->getDirection()}";
 		}
 		return $conds;
