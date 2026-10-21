@@ -154,8 +154,9 @@
 	"contentstabilization-pref-wiki-rag-index-stable-label": "Use only approved content for the AI chatbot",
 	"contentstabilization-pref-wiki-rag-index-stable-help": "When enabled, the AI chatbot only uses content that has been approved as a source. Drafts are excluded.",
 	"contentstabilization-wiki-automation-trigger-page-stabilized": "When page is approved",
-	"contentstabilization-label-stabilize-ns-desc": "Allow creating draft and approved revisions of pages",
+	"contentstabilization-label-stabilize-ns-desc": "Use draft and approved page versions",
 	"contentstabilization-label-stabilize-ns-ns-settings": "Approvals",
 	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot",
-	"contentstabilization-info-last-approved-date": "Page was approved at $1, on $2"
+	"contentstabilization-info-last-approved-date": "Page was approved at $1, on $2",
+	"contentstabilization-neowiki-property-has-draft": "Has draft version"
 }
