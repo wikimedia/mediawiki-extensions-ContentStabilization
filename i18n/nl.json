@@ -158,6 +158,7 @@
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Eerste concept",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Goedkeuren",
 	"contentstabilization-pageinfoelement-pill-action-update": "Wijzigingen in bronnen goedkeuren",
-	"contentstabilization-label-stabilize-ns-desc": "Maakt het mogelijk concept- en goedgekeurde versies van pagina’s aan te maken",
-	"contentstabilization-label-stabilize-ns-ns-settings": "Goedkeuringen"
+	"contentstabilization-label-stabilize-ns-desc": "Concept- en goedgekeurde versies van pagina’s gebruiken",
+	"contentstabilization-label-stabilize-ns-ns-settings": "Goedkeuringen",
+	"contentstabilization-info-last-approved-date": "De pagina is goedgekeurd op $2 om $1"
 }

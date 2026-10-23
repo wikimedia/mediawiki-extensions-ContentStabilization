@@ -153,8 +153,9 @@
 	"contentstabilization-pageinfoelement-pill-label-first-unstable": "Primeiro borrador",
 	"contentstabilization-pageinfoelement-pill-action-approve": "Aprobar",
 	"contentstabilization-pageinfoelement-pill-action-update": "Aprobar os cambios de recursos",
-	"contentstabilization-label-stabilize-ns-desc": "Permitir a creación de revisións de borrador e revisións aprobadas das páxinas",
+	"contentstabilization-label-stabilize-ns-desc": "Usar versións de borrador e versións aprobadas das páxinas",
 	"contentstabilization-label-stabilize-ns-ns-settings": "Aprobacións",
 	"contentstabilization-pref-wiki-rag-index-stable": "Usar só as versións aprobadas como datos de orixe para a charla coa IA",
-	"contentstabilization-info-last-approved-date": "A páxina aprobouse o $2 ás $1"
+	"contentstabilization-info-last-approved-date": "A páxina aprobouse o $2 ás $1",
+	"contentstabilization-neowiki-property-has-draft": "Ten unha versión de borrador"
 }
