@@ -7,8 +7,8 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\DrawioEditor\Hook\DrawioGetFileHook;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\User\User;
-use RepoGroup;
 
 class StabilizeDrawioFiles implements DrawioGetFileHook {
 

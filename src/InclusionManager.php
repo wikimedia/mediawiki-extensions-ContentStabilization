@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
@@ -13,7 +14,6 @@ use MediaWiki\Parser\ParserOutputLinkTypes;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\WikiMap\WikiMap;
-use RepoGroup;
 use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\Rdbms\ILoadBalancer;
 
