@@ -7,13 +7,13 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\ContentStabilization\InclusionMode\Stable;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use PHPUnit\Framework\TestCase;
-use RepoGroup;
 
 /**
  * @covers \MediaWiki\Extension\ContentStabilization\InclusionMode\Stable
