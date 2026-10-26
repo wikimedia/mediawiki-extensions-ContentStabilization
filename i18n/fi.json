@@ -16,5 +16,7 @@
 	"contentstabilization-stabilizationhistory-title": "Sivu",
 	"contentstabilization-overview-header-page-id": "Sivun tunniste",
 	"contentstabilization-event-stable-point-added-desc": "Hyväksy sivu",
-	"contentstabilization-info-last-approved-date": "Sivu hyväksyttiin $2 klo $1"
+	"contentstabilization-label-stabilize-ns-desc": "Käytä luonnoksia ja sivun hyväksyttyjä versioita",
+	"contentstabilization-info-last-approved-date": "Sivu hyväksyttiin $2 klo $1",
+	"contentstabilization-neowiki-property-has-draft": "Tälle on luonnosversio"
 }
