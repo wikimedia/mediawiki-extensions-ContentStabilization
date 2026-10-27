@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Tests\InclusionMode;
 
-use File;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\ContentStabilization\InclusionMode\Stable;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Revision\RevisionLookup;

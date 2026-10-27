@@ -3,11 +3,11 @@
 namespace MediaWiki\Extension\ContentStabilization;
 
 use Exception;
-use File;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Request\WebRequest;

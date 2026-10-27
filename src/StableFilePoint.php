@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization;
 
 use DateTime;
-use File;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 
