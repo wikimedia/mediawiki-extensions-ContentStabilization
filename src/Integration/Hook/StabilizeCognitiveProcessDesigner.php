@@ -6,9 +6,9 @@ use CognitiveProcessDesigner\Hook\CognitiveProcessDesignerBeforeRenderHook;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
-use WikiPage;
 
 class StabilizeCognitiveProcessDesigner implements CognitiveProcessDesignerBeforeRenderHook {
 
