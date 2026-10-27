@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\ContentStabilization\Tests;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\FileRepo\RepoGroup;
-use MediaWiki\FileRepoRepoGroup;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
