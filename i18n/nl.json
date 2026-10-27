@@ -160,5 +160,6 @@
 	"contentstabilization-label-stabilize-ns-desc": "Concept- en goedgekeurde versies van pagina’s gebruiken",
 	"contentstabilization-label-stabilize-ns-ns-settings": "Goedkeuringen",
 	"contentstabilization-pref-wiki-rag-index-stable": "Gebruik alleen goedgekeurde versies als brongegevens voor AI-chatbot",
-	"contentstabilization-info-last-approved-date": "De pagina is goedgekeurd op $2 om $1"
+	"contentstabilization-info-last-approved-date": "De pagina is goedgekeurd op $2 om $1",
+	"contentstabilization-neowiki-property-has-draft": "Heeft een conceptversie"
 }
