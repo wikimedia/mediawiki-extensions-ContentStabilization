@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use File;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\DrawioEditor\Hook\DrawioGetFileHook;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\User\User;
 

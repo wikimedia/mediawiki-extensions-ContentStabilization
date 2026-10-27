@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\ContentStabilization\Storage;
 
 use DateTime;
 use Exception;
-use File;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Authority;

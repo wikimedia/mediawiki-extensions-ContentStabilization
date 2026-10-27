@@ -4,11 +4,11 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Integration\Hook;
 
-use File;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 
