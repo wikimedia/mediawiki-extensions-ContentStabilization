@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\ContentStabilization\Tests;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\FileRepo\RepoGroup;
+use MediaWiki\FileRepoRepoGroup;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -55,7 +56,7 @@ class StablePointStoreTest extends TestCase {
 			$lb,
 			$userFactory,
 			$this->mockRevisionStore(),
-			$this->createMock( \RepoGroup::class ),
+			$this->createMock( RepoGroup::class ),
 			$this->mockWANObjectCache()
 		);
 		$points = $store->query( [ 'sp_page' => 1 ] );
@@ -98,7 +99,7 @@ class StablePointStoreTest extends TestCase {
 			$lb,
 			$userFactory,
 			$this->mockRevisionStore(),
-			$this->createMock( \RepoGroup::class ),
+			$this->createMock( RepoGroup::class ),
 			$this->mockWANObjectCache()
 		);
 		$point = $store->getLatestMatchingPoint( [ 'sp_page' => 1 ] );
@@ -150,7 +151,7 @@ class StablePointStoreTest extends TestCase {
 			$lb,
 			$this->mockUserFactory(),
 			$this->mockRevisionStore(),
-			$this->createMock( \RepoGroup::class ),
+			$this->createMock( RepoGroup::class ),
 			$this->mockWANObjectCache()
 		);
 		$store->insertStablePoint( $revision, $user, 'Comment' );
@@ -207,7 +208,7 @@ class StablePointStoreTest extends TestCase {
 			$lb,
 			$this->mockUserFactory(),
 			$this->mockRevisionStore(),
-			$this->createMock( \RepoGroup::class ),
+			$this->createMock( RepoGroup::class ),
 			$this->mockWANObjectCache()
 		);
 		$store->removeStablePoint( $stablePoint );
