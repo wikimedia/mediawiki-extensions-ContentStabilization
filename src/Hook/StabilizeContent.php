@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
-use Article;
 use DifferenceEngine;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
 use MediaWiki\Context\IContextSource;
@@ -27,6 +26,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Page\Article;
 use MediaWiki\Page\Hook\ArticleViewHeaderHook;
 use MediaWiki\Page\Hook\ImagePageFindFileHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
