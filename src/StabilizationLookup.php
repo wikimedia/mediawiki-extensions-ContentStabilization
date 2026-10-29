@@ -9,6 +9,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ContentStabilization\Storage\StablePointStore;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\ObjectCache\ObjectCacheFactory;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Revision\RevisionRecord;
@@ -16,7 +17,6 @@ use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
-use ObjectCacheFactory;
 
 class StabilizationLookup {
 	/** @var StablePointStore */
