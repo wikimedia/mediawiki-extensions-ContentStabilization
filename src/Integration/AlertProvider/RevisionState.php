@@ -7,12 +7,12 @@ use MediaWiki\Config\Config;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableView;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\Title\TitleFactory;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\LabelWidget;
 use OOUI\Layout;
-use SkinTemplate;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RevisionState extends AlertProviderBase {
