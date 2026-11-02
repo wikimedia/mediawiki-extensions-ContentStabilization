@@ -330,6 +330,18 @@
 			"scripts": [
 				"ext.contentStabilization.export.plugin.js"
 			]
+		},
+		"ext.contentStabilization.neowiki": {
+			"scripts": [
+				"ext.contentStabilization.neowiki.js"
+			],
+			"messages": [
+				"contentstabilization-edit-notice-approval-needed",
+				"contentstabilization-neowiki-delete-confirm-title"
+			],
+			"dependencies": [
+				"ext.contentStabilization.bootstrap"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -419,8 +431,10 @@
 		"ContentStabilizationResetState": "stabilizeContent",
 		"WikiRAGMetadata": "addStabilizationMetadata",
 		"NeoWikiRegistration": "registerNeoWikiProperties",
+		"NeoWikiGetFrontendModules": "registerNeoWikiFrontendModule",
 		"BlueSpiceGalaxyConnectorNeoWikiPagePropertyDefinitions": "registerNeoWikiProperties",
-		"SkinAfterContent": "addStabilizationInfoOnView"
+		"SkinAfterContent": "addStabilizationInfoOnView",
+		"BlueSpiceEclipseMetadataPanelRender": "addNeoWikiEditNotice"
 	},
 	"HookHandlers": {
 		"addBootstrap": {
@@ -560,8 +574,15 @@
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\RegisterNeoWikiProperties",
 			"services": [ "TitleFactory", "ContentStabilization.Lookup", "RevisionLookup" ]
 		},
+		"registerNeoWikiFrontendModule": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\RegisterNeoWikiFrontendModule"
+		},
 		"triggerWikiAutomations": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\TriggerAutomations"
+		},
+		"addNeoWikiEditNotice": {
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Integration\\Hook\\AddNeoWikiEditNotice",
+			"services": [ "ContentStabilization.Lookup" ]
 		}
 	},
 	"SpecialPages": {

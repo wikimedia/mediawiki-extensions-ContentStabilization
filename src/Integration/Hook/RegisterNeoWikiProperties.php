@@ -6,6 +6,7 @@ use BlueSpice\GalaxyDistributionConnector\NeoWiki\PropertyType\UserProperty;
 use BlueSpice\GalaxyDistributionConnector\NeoWiki\Util\PropertyWithLabel;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointAddedHook;
 use MediaWiki\Extension\ContentStabilization\Hook\Interfaces\ContentStabilizationStablePointRemovedHook;
+use MediaWiki\Extension\ContentStabilization\Integration\NeoWiki\ApprovalNeededNoticeProvider;
 use MediaWiki\Extension\ContentStabilization\Integration\NeoWiki\StabilizationProperties;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
@@ -46,6 +47,9 @@ class RegisterNeoWikiProperties implements
 	public function onNeoWikiRegistration( NeoWikiRegistrar $registrar ): void {
 		$registrar->addPagePropertyProvider(
 			new StabilizationProperties( $this->titleFactory, $this->stabilizationLookup, $this->revisionLookup )
+		);
+		$registrar->addSubjectEditNoticeProvider(
+			new ApprovalNeededNoticeProvider( $this->titleFactory, $this->stabilizationLookup )
 		);
 	}
 
