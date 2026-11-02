@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\ContentStabilization\Hook;
 
-use DifferenceEngine;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Diff\DifferenceEngine;
 use MediaWiki\Diff\Hook\DifferenceEngineViewHeaderHook;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
