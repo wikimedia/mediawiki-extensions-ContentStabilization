@@ -158,5 +158,6 @@
 	"contentstabilization-label-stabilize-ns-ns-settings": "Approvals",
 	"contentstabilization-pref-wiki-rag-index-stable": "Use only approved versions as source data for AI chatbot",
 	"contentstabilization-info-last-approved-date": "Page was approved at $1, on $2",
-	"contentstabilization-neowiki-property-has-draft": "Has draft version"
+	"contentstabilization-neowiki-property-has-draft": "Has draft version",
+	"contentstabilization-neowiki-delete-confirm-title": "Delete subject?"
 }
