@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
 use Exception;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\User\User;
-use PermissionsError;
 
 /**
  * @group Database

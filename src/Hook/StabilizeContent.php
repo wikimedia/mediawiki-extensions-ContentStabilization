@@ -7,6 +7,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Diff\DifferenceEngine;
 use MediaWiki\Diff\Hook\DifferenceEngineViewHeaderHook;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\Extension\ContentStabilization\StableFilePoint;
@@ -44,7 +45,6 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
-use PermissionsError;
 
 class StabilizeContent implements
 	ArticleViewHeaderHook,
