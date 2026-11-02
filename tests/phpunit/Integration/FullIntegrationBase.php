@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
 use Exception;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Extension\ContentStabilization\ContentStabilizer;
 use MediaWiki\Extension\ContentStabilization\StabilizationLookup;
 use MediaWiki\MainConfigNames;
@@ -13,7 +14,6 @@ use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use PermissionsError;
 
 abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 	/** @var User */
