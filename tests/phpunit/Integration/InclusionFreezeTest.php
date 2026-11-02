@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\ContentStabilization\Tests\Integration;
 
 use Exception;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\User\User;
 
 /**
@@ -34,7 +35,7 @@ class InclusionFreezeTest extends FullIntegrationBase {
 	/**
 	 * @return void
 	 * @throws Exception
-	 * @throws \PermissionsError
+	 * @throws PermissionsError
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onArticleViewHeader
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onBeforeParserFetchFileAndTitle
 	 * @covers \MediaWiki\Extension\ContentStabilization\Hook\StabilizeContent::onBeforeParserFetchTemplateRevisionRecord
