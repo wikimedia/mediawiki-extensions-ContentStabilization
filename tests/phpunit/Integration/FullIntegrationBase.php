@@ -116,7 +116,9 @@ abstract class FullIntegrationBase extends MediaWikiIntegrationTestCase {
 		}
 
 		if ( $expected ) {
-			$this->assertStringContainsString( $expected, $outputPage->getHTML(), $message );
+			// Compare rendered text only, as Parsoid wraps transclusions in markup
+			$text = strip_tags( $outputPage->getHTML() );
+			$this->assertStringContainsString( $expected, $text, $message );
 		} else {
 			$this->assertTrue( $thrown );
 		}
