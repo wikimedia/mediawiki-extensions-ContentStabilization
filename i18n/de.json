@@ -159,5 +159,6 @@
 	"contentstabilization-pageinfoelement-pill-action-update": "Ressourcenänderungen freigeben",
 	"contentstabilization-label-stabilize-ns-desc": "Entwürfe und freigegebene Seitenversionen verwenden",
 	"contentstabilization-label-stabilize-ns-ns-settings": "Freigaben",
-	"contentstabilization-pref-wiki-rag-index-stable": "Ausschließlich freigegebene Versionen als Quelldaten für den KI-Chatbot verwenden"
+	"contentstabilization-pref-wiki-rag-index-stable": "Ausschließlich freigegebene Versionen als Quelldaten für den KI-Chatbot verwenden",
+	"contentstabilization-neowiki-delete-confirm-title": "Subjekt löschen?"
 }
