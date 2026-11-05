@@ -162,5 +162,6 @@
 	"contentstabilization-pref-wiki-rag-index-stable": "Label of an option on [[Special:ConfigManager]]",
 	"contentstabilization-info-last-approved-date": "Label for last approved date in page information section.\n$1 - time of last approval\n$2 - date of last approval",
 	"contentstabilization-label-stabilize-ns-ns-settings": "Label for config to enable approval in namespace",
-	"contentstabilization-neowiki-property-has-draft": "Label for a property in NeoWiki"
+	"contentstabilization-neowiki-property-has-draft": "Label for a property in NeoWiki",
+	"contentstabilization-neowiki-delete-confirm-title": "Title of the NeoWiki subject deletion dialog, used to detect the dialog. Mirrors {{msg-mw|neowiki-managesubjects-delete-confirm-title}}.\n{{Identical|Delete subject?}}"
 }
