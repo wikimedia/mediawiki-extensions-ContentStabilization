@@ -157,5 +157,6 @@
 	"contentstabilization-label-stabilize-ns-ns-settings": "Ansixinnada",
 	"contentstabilization-pref-wiki-rag-index-stable": "Isticmaal oo keliya noocyada la ansixiyay inay yihiin xogta isha ee chatbot-ka AI",
 	"contentstabilization-info-last-approved-date": "Bogga waxaa la ansixiyay $1, taariikhda $2",
-	"contentstabilization-neowiki-property-has-draft": "Waxay leedahay nooc qabyo ah"
+	"contentstabilization-neowiki-property-has-draft": "Waxay leedahay nooc qabyo ah",
+	"contentstabilization-neowiki-delete-confirm-title": "Tirtir mawduuca?"
 }
