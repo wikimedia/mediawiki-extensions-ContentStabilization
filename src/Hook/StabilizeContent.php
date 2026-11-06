@@ -160,7 +160,12 @@ class StabilizeContent implements
 		}
 
 		$revision = $this->view->getRevision();
-		$options = $this->parser->getOptions() ?? ParserOptions::newFromContext( $article->getContext() );
+		$parserOptions = $this->parser->getOptions();
+		$options = $parserOptions
+			? clone $parserOptions
+			: ParserOptions::newFromContext( $article->getContext() );
+		// Force legacy parser so BeforeParserFetchFileAndTitle is executed for image stabilization.
+		$options->setUseParsoid( false );
 		$options->setCurrentRevisionRecordCallback(
 			static function ( LinkTarget $link, $parser = null ) use ( $revision ) {
 				if ( $link instanceof PageIdentity ) {
