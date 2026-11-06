@@ -157,5 +157,6 @@
 	"contentstabilization-label-stabilize-ns-ns-settings": "Aprobacións",
 	"contentstabilization-pref-wiki-rag-index-stable": "Usar só as versións aprobadas como datos de orixe para a charla coa IA",
 	"contentstabilization-info-last-approved-date": "A páxina aprobouse o $2 ás $1",
-	"contentstabilization-neowiki-property-has-draft": "Ten unha versión de borrador"
+	"contentstabilization-neowiki-property-has-draft": "Ten unha versión de borrador",
+	"contentstabilization-neowiki-delete-confirm-title": "Queres eliminar o tema?"
 }
