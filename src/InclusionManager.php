@@ -250,7 +250,7 @@ class InclusionManager {
 
 		$cache = $this->wanObjectCache->getWithSetCallback(
 			$this->wanObjectCache->makeKey(
-				'contentstabilization', 'getcurrentinclusions', $linkTarget->getText()
+				'contentstabilization', 'getcurrentinclusions', $linkTarget->getNamespace(), $linkTarget->getText()
 			),
 			$this->wanObjectCache::TTL_HOUR,
 			function () use ( $page, $linkTarget ) {
@@ -290,13 +290,13 @@ class InclusionManager {
 				$this->hookContainer->run( 'ContentStabilizationGetCurrentInclusions', [ $page, &$res ] );
 
 				// Track parser output hash to detect changes if a re-render happens.
-				$res['poDependency']['hash'] = sha1( $parserOutput->getRawText() ?? '' );
+				$res['poDependency']['hash'] = sha1( $parserOutput->getContentHolderText() ?? '' );
 
 				return $res;
 			},
 			[
 				'touchedCallback' => function ( $oldValue ) use ( $page ) {
-					$newDepHash = sha1( $this->getParserOutput( $page )->getRawText() );
+					$newDepHash = sha1( $this->getParserOutput( $page )->getContentHolderText() );
 					$oldDepHash = $oldValue['poDependency']['hash'];
 
 					return ( $oldDepHash !== $newDepHash ) ? INF : null;
