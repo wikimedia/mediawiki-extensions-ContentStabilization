@@ -62,9 +62,9 @@ function watchForDeleteDialog() {
 }
 
 const pageName = mw.config.get( 'wgPageName' );
-if ( pageName && window.ext && window.ext.contentStabilization && window.ext.contentStabilization.list ) {
-	window.ext.contentStabilization.list( pageName )
-		.done( () => {
-			watchForDeleteDialog();
-		} );
+if (
+	pageName &&
+	window.ext && window.ext.contentStabilization && window.ext.contentStabilization.isEnabledForCurrentPage()
+) {
+	watchForDeleteDialog();
 }
