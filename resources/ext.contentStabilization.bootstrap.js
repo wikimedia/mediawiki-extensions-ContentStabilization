@@ -65,6 +65,9 @@ window.ext.contentStabilization = {
 			return dfd.promise();
 		}
 	},
+	isEnabledForCurrentPage: function () {
+		return mw.config.get( 'wgContentStabilizationEnabled' ) || false;
+	},
 	ui: {
 		testing: {}
 	}

@@ -438,7 +438,8 @@
 	},
 	"HookHandlers": {
 		"addBootstrap": {
-			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddBootstrap"
+			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\AddBootstrap",
+			"services": [ "ContentStabilization.Lookup" ]
 		},
 		"runDatabaseUpdates": {
 			"class": "MediaWiki\\Extension\\ContentStabilization\\Hook\\RunDatabaseUpdates"
