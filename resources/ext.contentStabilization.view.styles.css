@@ -41,6 +41,7 @@
 .pageinfo-pill.cs-pageinfo-pill--active.contentstabilization-pageinfo-page-stable.pageinfo-pill__state {
 	background-color: var( --contentstabilization-info-pill-approve-bg );
 	color: var( --contentstabilization-info-pill-approve-fg ) !important;
+	border: 1px solid var( --contentstabilization-info-pill-approve-fg );
 	margin-right: 0;
 }
 
@@ -52,6 +53,7 @@
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-stable {
 	color: var( --contentstabilization-info-pill-inactive-approve-fg ) !important;
 	border: 1px solid var( --contentstabilization-info-pill-inactive-approve-fg );
+	border-right: 0;
 	background-color: var( --contentstabilization-info-pill-inactive-approve-bg );
 }
 
@@ -64,6 +66,7 @@
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--inactive.contentstabilization-pageinfo-page-implicit-unstable {
 	color: var( --contentstabilization-info-pill-inactive-draft-fg ) !important;
 	border: 1px solid var( --contentstabilization-info-pill-inactive-draft-fg );
+	border-left: 0;
 	background-color: var( --contentstabilization-info-pill-inactive-draft-bg );
 }
 
@@ -76,14 +79,14 @@
 /* Active segment: filled with the state color, marks the shown version */
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-stable {
 	background-color: var( --contentstabilization-info-pill-approve-bg );
-	border: 1px solid var( --contentstabilization-info-pill-approve-bg );
+	border: 1px solid var( --contentstabilization-info-pill-approve-fg );
 	color: var( --contentstabilization-info-pill-approve-fg ) !important;
 }
 
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-unstable,
 .contentstabilization-pageinfo-versionswitch .pageinfo-pill__segment--active.contentstabilization-pageinfo-page-implicit-unstable {
 	background-color: var( --contentstabilization-info-pill-draft-bg );
-	border: 1px solid var( --contentstabilization-info-pill-draft-bg );
+	border: 1px solid var( --contentstabilization-info-pill-draft-fg );
 	color: var( --contentstabilization-info-pill-draft-fg ) !important;
 }
 
